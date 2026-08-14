@@ -1,0 +1,29 @@
+{
+  "slug": "blog/company-specific-interview-prep",
+  "title": "Company-Specific Interview Prep with AI (with examples)",
+  "description": "Turn a company and role into a tailored interview Q&A bank with AI, using the JPMorgan and Neuberger Berman approach, so your copilot stays grounded.",
+  "keywords": "company-specific interview prep, ai interview questions generator, jpmorgan interview prep, tailored interview questions, q&a generator, role-specific interview ai",
+  "ogType": "article",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Company-Specific Interview Prep with AI (with examples)",
+      "description": "A walkthrough of building a tailored interview Q&A bank for a specific company and role, using the JPMorgan and Neuberger Berman approach.",
+      "datePublished": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "author": { "@type": "Organization", "name": "OfferPilot AI", "url": "https://kidusb9.github.io/offerpilot-ai/" },
+      "publisher": { "@type": "Organization", "name": "OfferPilot AI", "logo": { "@type": "ImageObject", "url": "https://kidusb9.github.io/offerpilot-ai/assets/icon-180.png" } },
+      "mainEntityOfPage": "https://kidusb9.github.io/offerpilot-ai/blog/company-specific-interview-prep/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kidusb9.github.io/offerpilot-ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://kidusb9.github.io/offerpilot-ai/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Company-Specific Interview Prep with AI", "item": "https://kidusb9.github.io/offerpilot-ai/blog/company-specific-interview-prep/" }
+      ]
+    }
+  ]
+}

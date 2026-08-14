@@ -1,0 +1,101 @@
+{
+  "company": "JPMorgan Chase",
+  "role": "Software Engineer II, C#/.NET (Global / Healthcare Payments)",
+  "stack": ["C#", ".NET", "Postgres", "Azure DevOps", "Angular", "React Native"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself. / Walk me through your background.",
+      "answer": "I studied Computer Science at Bradley University and graduated with a 4.0 GPA. For the past two-plus years I've been an Operational Software Engineer at Universal Engineering Sciences, building enterprise applications in C# and .NET on a Postgres backend, with an Angular web front end and a React Native mobile app. My flagship project is UROCK, a platform we built to replace a third-party vendor system for inspection and field-data workflows, I worked across the stack, owned a lot of the CI/CD in Azure DevOps, and rolled it out to 35 branch offices. More recently I've focused on AI-assisted engineering, both using AI tools to ship faster and building internal AI services with real controls around sensitive data. Before UES I did a data-science co-op at OSF HealthCare on clinical prediction models, so the healthcare-payments focus here genuinely resonates. I'm excited about JPMorgan specifically because I want to work on payments infrastructure where correctness, security, and resiliency matter at scale.",
+      "keywords": ["tell me about yourself", "background", "intro", "walk me through"]
+    },
+    {
+      "section": "Opening",
+      "question": "Why JPMorgan Chase? / Why leave your current role?",
+      "answer": "Two reasons. First, scale and impact: I've built platforms used across 35 offices, but JPMorgan's payments systems move money for millions, the bar for correctness, resiliency, and security is on a different level, and I want to grow in that environment. Second, this team sits at the intersection of healthcare and payments, which lines up with both my OSF healthcare background and my C#/.NET work. I'm not running away from UES, I've had a lot of ownership there, I'm running toward higher engineering discipline, mentorship, and stakes.",
+      "keywords": ["why jpmorgan", "why leave", "motivation"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about the most challenging technical project you've worked on.",
+      "answer": "The hardest was the offline-first data sync for our UROCK mobile app. Our field inspectors work in zero-connectivity zones but still need to collect structured data that reliably reaches Postgres. I architected the mobile data layer so every record is written locally first, then reconciled with the server when connectivity returns. The hard part was conflict resolution for two people editing related records offline, so I designed a deterministic merge and a sync-queue with idempotent server writes so replays never create duplicates, and leaned on integration tests that simulated flaky connectivity. Result: about 40% better field data-collection efficiency in no-signal zones and essentially 100% data integrity on sync. The lesson, directly relevant to payments, is that idempotency and safe retries aren't optional; they're the whole game when the network can't be trusted.",
+      "keywords": ["challenging project", "hardest", "offline sync", "idempotency", "star"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a time you failed or something went wrong.",
+      "answer": "Early in the UROCK rollout I underestimated change management, I assumed good software would drive adoption on its own. We launched to the first branch offices and adoption lagged what I'd promised leadership; people fell back to the old system. I owned the rollout, so it was on me. I stopped treating it as purely engineering: I sat with inspectors, watched where they got stuck, shipped UX fixes and better error messages, set up a real training cadence instead of a one-time handoff, and started giving leadership honest bi-weekly status. We recovered to 100% adoption across all 35 offices. The lesson: shipping the code is half the job, the other half is the humans using it and telling stakeholders the truth even when it's 'we're behind.'",
+      "keywords": ["failure", "went wrong", "mistake", "adoption", "star"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a time you disagreed with a teammate or made a tough technical decision.",
+      "answer": "On UROCK I led a 10-person team and we disagreed on whether to keep patching the legacy vendor integration or build our own platform. A senior colleague preferred patching because it was lower risk short-term. As technical lead I had to make a defensible call, so instead of trading opinions I built a cost-and-latency comparison, the vendor was roughly $300K a year with poor data latency, and a small proof-of-concept showing we could cut latency dramatically in-house. I made sure his migration-risk concerns were folded into the rollout plan, not dismissed. We aligned on building UROCK, eliminated the licensing cost, and reached full adoption across 35 offices. The takeaway: convert disagreements into a measurable comparison and genuinely absorb the other person's risk concerns.",
+      "keywords": ["disagreement", "conflict", "tough decision", "star"]
+    },
+    {
+      "section": "Resume Deep-Dive",
+      "question": "Walk me through the UROCK platform. What was your specific role?",
+      "answer": "UROCK is the internal platform we built to replace a third-party vendor system for construction and inspection workflows, a C#/.NET backend on Postgres, an Angular web app, and a React Native mobile app, with CI/CD in Azure DevOps. I was technical lead on a 10-person team: I owned much of the architecture, the CI/CD pipeline, and the offline-first mobile data layer, and I drove the rollout across 35 branch offices. The business case was concrete, about $300K/year in licensing plus poor latency, so replacing it in-house paid for itself and gave us control of the data model.",
+      "keywords": ["urock", "your role", "platform", "flagship"]
+    },
+    {
+      "section": "Resume Deep-Dive",
+      "question": "You mention big latency and cost savings, how do you back those numbers up?",
+      "answer": "The $300K is the annual licensing and per-seat cost of the vendor system we retired, a hard, invoiced number. On latency, the win was moving from round-trips to an external service toward local-first reads on a data model we controlled, so hot-path reads that used to hit an external system now resolve locally. I'd describe it as orders-of-magnitude faster on hot-path reads, and I can walk through exactly which operations improved and how we measured before and after. I'd rather be precise and honest than overstate a number I can't defend.",
+      "keywords": ["latency", "cost savings", "300k", "numbers", "defend"]
+    },
+    {
+      "section": "Resume Deep-Dive",
+      "question": "Tell me about the AI assistant you built. How did you handle data security?",
+      "answer": "It's a multi-modal internal support assistant with real-time screen-and-voice streaming so a user gets help in context, streamed over SignalR/WebRTC to a locally-hosted LLM. The security decision was the point: rather than send internal screens and voice to an external AI API, I ran the model on-premise on our own GPU server behind internal REST APIs, containerized with Docker, so sensitive data never left our environment. That's the same trade-off a bank faces, you want the productivity of AI, but sensitive inputs and outputs have to stay inside your security boundary.",
+      "keywords": ["ai assistant", "data security", "on-prem", "responsible ai"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "What's the difference between a value type and a reference type?",
+      "answer": "A value type holds its data directly, int, bool, double, structs, so assigning or passing copies the value. A reference type, classes, arrays, strings, delegates, holds a reference to an object on the managed heap, so assigning copies the reference and two variables can point at the same object. Value types typically live on the stack or inline in their container; reference-type objects live on the heap and are managed by the GC. The practical impact is copy semantics and allocation: value types avoid heap allocation but copy by value.",
+      "keywords": ["value type", "reference type", "stack", "heap", "clr"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "What is boxing and unboxing, and why should you care?",
+      "answer": "Boxing wraps a value type in an object so it can be treated as a reference type, it allocates on the heap and copies the value in; unboxing extracts it back with a type check. Boxing is implicit, unboxing explicit. Why care: in hot paths, boxing causes heap allocations and GC pressure that quietly kill throughput, e.g. non-generic collections, or an object/interface where a generic would avoid the box. Generics and Span-style APIs let you avoid it. In payment processing doing millions of operations, that allocation pressure matters.",
+      "keywords": ["boxing", "unboxing", "gc pressure", "performance"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "IEnumerable vs IQueryable, what's the difference?",
+      "answer": "Both represent a query; the difference is where it runs. IEnumerable executes in application memory (LINQ-to-Objects), so filtering an IEnumerable from the database means you've already pulled all rows into memory and you're filtering in C#. IQueryable builds an expression tree the provider (like EF Core) translates to SQL and runs on the database server, so filtering happens at the source and you pull only what you need. The classic bug is materializing too early, ToList() then filter, which turns an efficient server-side query into pulling the whole table over the wire.",
+      "keywords": ["ienumerable", "iqueryable", "ef core", "linq", "deferred execution"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "What is IDisposable and the using statement for?",
+      "answer": "The GC handles managed memory but doesn't deterministically release unmanaged resources like file handles, sockets, or database connections. IDisposable gives you a Dispose method to release those promptly, and a using statement guarantees Dispose runs when the scope exits, even on an exception, effectively try/finally. In a service that opens lots of DB connections, using is how you avoid leaking connections from the pool.",
+      "keywords": ["idisposable", "using", "dispose", "resource cleanup"]
+    },
+    {
+      "section": "Coding",
+      "question": "Two Sum, return indices of the two numbers that add to a target.",
+      "answer": "I'll restate it, confirm assumptions (exactly one solution? can I reuse an element?, no), then reason about the optimal approach. Brute force is O(n²). The insight is a hash map from value → index: for each number, check if target − num is already seen in one pass. That's O(n) time, O(n) space. Then I'd dry-run [2,7,11,15], target 9 → at 7, 9−7=2 is in the map at index 0, return [0,1].",
+      "code": "public int[] TwoSum(int[] nums, int target) {\n    var seen = new Dictionary<int, int>();\n    for (int i = 0; i < nums.Length; i++) {\n        int need = target - nums[i];\n        if (seen.TryGetValue(need, out int j)) return new[] { j, i };\n        seen[nums[i]] = i;\n    }\n    return System.Array.Empty<int>();\n}\n// O(n) time, O(n) space, one pass, hash lookups are O(1) amortized.",
+      "lang": "csharp",
+      "keywords": ["two sum", "hash map", "array", "coding", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Detect a cycle in a linked list.",
+      "answer": "Floyd's tortoise and hare: advance one pointer by one and another by two; if they ever meet there's a cycle, if the fast pointer hits null there isn't. O(n) time, O(1) space, better than a hash set of visited nodes, which is O(n) space. I'd note the edge cases: empty list and a single node with no cycle both return false.",
+      "code": "public bool HasCycle(ListNode head) {\n    var slow = head; var fast = head;\n    while (fast != null && fast.next != null) {\n        slow = slow.next;\n        fast = fast.next.next;\n        if (slow == fast) return true;\n    }\n    return false;\n}\n// O(n) time, O(1) space.",
+      "lang": "csharp",
+      "keywords": ["linked list", "cycle", "floyd", "two pointers"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes, a few. How does this team measure a successful first 90 days for an SE II? What's the hardest reliability or correctness problem the payments platform is facing right now? And how do you balance shipping velocity against the change-management and security controls a bank needs? I ask because the 'who is downstream of this' mindset is how I already think, and I want to understand where I'd plug into it.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

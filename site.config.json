@@ -1,0 +1,14 @@
+{
+  "name": "OfferPilot AI",
+  "shortName": "OfferPilot",
+  "tagline": "Your invisible AI copilot for live interviews and coding tests.",
+  "domain": "kidusb9.github.io",
+  "baseUrl": "https://kidusb9.github.io/offerpilot-ai",
+  "basePath": "/offerpilot-ai",
+  "twitter": "@offerpilotai",
+  "email": "hello@offerpilot.ai",
+  "products": {
+    "interview": { "name": "Interview Copilot", "slug": "interview-copilot" },
+    "code": { "name": "Code Copilot", "slug": "code-copilot" }
+  }
+}

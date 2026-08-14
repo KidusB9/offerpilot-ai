@@ -1,0 +1,185 @@
+<!-- ============================ HERO ============================ -->
+<section class="section hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow"><span class="dot dot--live"></span> Interview Copilot · live &amp; screen-share safe</p>
+        <h1 class="balance">Real-time interview answers,<br>grounded in <span class="grad-text">your</span> prep.</h1>
+        <p class="hero__sub">Interview Copilot hears the question on-device, retrieves from your résumé and the company's Q&amp;A database, and streams a speakable answer to an overlay only you can see. Behavioral, system design, or domain: the answer sounds like you and fits the role.</p>
+        <div class="hero__cta">
+          <a class="btn btn--solid btn--lg" data-plan="free" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="/interview-copilot/#generator">Build a company Q&amp;A set</a>
+        </div>
+        <p class="hero__note"><span class="dot dot--live"></span> 20 min/day free · no card · Windows &amp; macOS</p>
+      </div>
+
+      <!-- SIGNATURE: the invisible overlay demo -->
+      <div class="hero__hud">
+        <div class="hud" id="heroHud">
+          <div class="hud__bar">
+            <div class="hud__dots"><i></i><i></i><i></i></div>
+            <span class="hud__title">Zoom · Final Round · Payments Team</span>
+            <span class="hud__meet"><span class="dot dot--live"></span> REC 12:04</span>
+          </div>
+          <div class="hud__stage">
+            <div class="hud__toggle" role="tablist" aria-label="Whose view">
+              <button data-view="you" class="is-active" role="tab">Your view</button>
+              <button data-view="interviewer" role="tab">Interviewer's view</button>
+            </div>
+            <div class="hud__call" aria-hidden="true">
+              <div class="hud__tile"><div class="hud__avatar"></div><span>Interviewer</span></div>
+              <div class="hud__tile"><div class="hud__avatar"></div><span>You</span></div>
+            </div>
+            <div class="hud__overlay" aria-label="OfferPilot overlay (only you see this)">
+              <div class="hud__overlay-head">
+                <span class="dot dot--live"></span><b>OfferPilot</b>
+                <span class="hud__shield">🛡 hidden from capture</span>
+              </div>
+              <div class="hud__q"><span class="lab">HEARD</span><div class="txt"></div></div>
+              <div class="hud__a"><span class="lab">SAY THIS</span><div class="txt"></div></div>
+            </div>
+            <div class="hud__watermark">↑ what the interviewer records: the overlay is gone</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HOW IT WORKS ============================ -->
+<section class="section section--tight" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow--num" data-num="/ 03">The pipeline</p>
+      <h2>It hears, it grounds, it says. In about a second.</h2>
+      <p class="lede">The whole loop runs the moment the interviewer stops talking. No clip uploads, no round-trip latency, nothing to catch up on.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Hears</h3><p>A fully on-device Vosk recognizer transcribes the interviewer live. Audio never leaves your machine, so there is no upload lag and nothing to intercept.</p></div></div>
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Grounds</h3><p>Your résumé and the company's Q&amp;A database are retrieved and fed to the model, so the answer draws on your real experience and the role, not a generic script.</p></div></div>
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Says</h3><p>A tight, first-person answer streams into the overlay, ready to speak. The prepared answer auto-scrolls into view as the question lands.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LIVE FEATURES ============================ -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Inside the copilot</p>
+      <h2 class="balance">Everything that makes the live answer land.</h2>
+      <p class="lede">Six systems working together, from the microphone to the words on your screen.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg>
+        </div>
+        <h3>On-device Vosk STT</h3>
+        <p>A streaming Vosk recognizer transcribes the interviewer locally in real time. No clip uploads, no cloud speech API, just audio that stays on your machine.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2M8 4v16M6 20h4M4 12h16M14 16h6M14 12v8"/></svg>
+        </div>
+        <h3>RAG grounding</h3>
+        <p>Retrieval pulls from your résumé and the company Q&amp;A set before the model answers, so every response cites your real experience and the company's domain.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12l7 7 7-7"/><path d="M5 4h14"/></svg>
+        </div>
+        <h3>Auto-scroll to your answer</h3>
+        <p>When a question matches your prepared bank, the copilot scrolls straight to that model answer, so you glance down and it is already there.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="7" r="2.4"/><circle cx="18" cy="7" r="2.4"/><circle cx="12" cy="17" r="2.4"/><path d="M6 9.4v3a2 2 0 0 0 2 2h2M18 9.4v3a2 2 0 0 1-2 2h-2"/></svg>
+        </div>
+        <h3>Multi-model, in parallel</h3>
+        <p>Answers run across Grok, DeepSeek, and Gemini at once, with a local model option for a fully offline path. You pick which models get called.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><path d="M4 4l16 16"/></svg>
+        </div>
+        <h3>Screen-share invisibility</h3>
+        <p>The overlay opts out of capture at the OS level with <span class="mono" style="color:var(--cyan)">WDA_EXCLUDEFROMCAPTURE</span>, so Zoom, Teams, Meet, OBS, and PrintScreen never record it.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="6" width="19" height="12" rx="2.2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h6"/></svg>
+        </div>
+        <h3>Global hotkeys</h3>
+        <p><span class="mono" style="color:var(--cyan)">M</span> pauses the copilot instantly; <span class="mono" style="color:var(--cyan)">P</span> toggles ghost mode to dim the overlay. Both are global, so you never touch the window mid-call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COMPANY Q&A GENERATOR ============================ -->
+<section class="section" id="generator">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow" style="justify-content:center">Company-specific prep</p>
+      <h2>Pick a company. Get a Q&amp;A database built for it.</h2>
+      <p class="lede" style="margin-inline:auto">Behavioral, fundamentals, and coding questions with model answers in your voice. The copilot grounds every live answer in this set.</p>
+    </div>
+    <div class="gen" id="qaGen">
+      <div class="gen__top">
+        <div class="field"><label for="genCompany">Company</label>
+          <input id="genCompany" list="genCompanies" placeholder="e.g. Stripe" autocomplete="off">
+          <datalist id="genCompanies"></datalist>
+        </div>
+        <div class="field"><label for="genRole">Role (optional)</label>
+          <input id="genRole" placeholder="e.g. Software Engineer" autocomplete="off">
+        </div>
+        <button class="btn btn--solid" id="genRun">Generate<span class="btn__arr" aria-hidden="true">→</span></button>
+      </div>
+      <div class="gen__chips" id="genChips"></div>
+      <div class="gen__body">
+        <div class="gen__list" id="genList"></div>
+        <div class="gen__detail" id="genDetail"></div>
+      </div>
+      <div class="gen__foot">
+        <span class="note" id="genTitle">…</span>
+        <a class="btn btn--ghost" id="genDownload" download>Download JSON</a>
+        <a class="btn btn--ghost" href="/download/">Open in desktop app</a>
+      </div>
+    </div>
+  </div>
+  <script src="/scripts/qa-generator.js" defer></script>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section section--tight" id="faq">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow" style="justify-content:center">Questions</p>
+      <h2>How the live copilot works.</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>How does it answer in real time?</summary><p>An on-device Vosk recognizer transcribes the interviewer as they speak. The moment they stop, your résumé and the company Q&amp;A database are retrieved and fed to the model, and a speakable answer streams into the overlay in about a second. No clip uploads and no round-trip latency.</p></details>
+      <details><summary>Can the interviewer see the overlay on screen share?</summary><p>No. On Windows the overlay uses <span class="mono">SetWindowDisplayAffinity(WDA_EXCLUDEFROMCAPTURE)</span>, so it renders on your monitor but is composited out of the frame Zoom, Teams, Meet, Discord, OBS, and PrintScreen capture. It also stays out of the taskbar and Alt-Tab, and a live shield badge shows the current protection state.</p></details>
+      <details><summary>What are the answers grounded in?</summary><p>Every live answer is retrieved from your résumé plus a company-specific Q&amp;A database of behavioral, fundamentals, and coding questions with model answers in your voice. You build that set in seconds with the Company Q&amp;A Generator above.</p></details>
+      <details><summary>Which AI models does it use?</summary><p>It queries Grok, DeepSeek, and Gemini, and can also run against a local model for a fully offline path. You choose which models to use, and only the ones you pick are called.</p></details>
+      <details><summary>What do the hotkeys do?</summary><p><span class="mono">M</span> pauses the copilot instantly so it stops listening and answering; <span class="mono">P</span> toggles ghost mode to dim the overlay. Both are global hotkeys, so you never touch the window during the call.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <p class="eyebrow" style="justify-content:center"><span class="dot dot--live"></span> Walk in with the answers ready</p>
+      <h2 class="balance">Bring the copilot only you can see.</h2>
+      <p class="lede" style="margin:0 auto 8px">Start free in a minute. Build your company's Q&amp;A set today.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" data-plan="free" href="/download/">Download OfferPilot<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/scripts/checkout.js" defer></script>

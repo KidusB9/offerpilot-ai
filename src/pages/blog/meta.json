@@ -1,0 +1,30 @@
+{
+  "slug": "blog",
+  "title": "OfferPilot AI resources, interview & coding copilot guides",
+  "description": "Field-tested guides on AI interview copilots, LeetCode coding assistants, screen-share undetectability, and company-specific interview prep.",
+  "keywords": "AI interview copilot guide, leetcode ai assistant, undetectable interview ai, company-specific interview prep, interview copilot blog, offerpilot resources",
+  "ogType": "website",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "OfferPilot AI resources",
+      "description": "Guides on AI interview copilots, coding assistants, undetectability, and company-specific interview prep.",
+      "url": "https://kidusb9.github.io/offerpilot-ai/blog/",
+      "hasPart": [
+        { "@type": "Article", "headline": "Best AI Interview Copilot in 2026 (Tested & Compared)", "url": "https://kidusb9.github.io/offerpilot-ai/blog/best-ai-interview-copilot-2026/" },
+        { "@type": "Article", "headline": "How to Use an AI Coding Copilot for LeetCode Interviews", "url": "https://kidusb9.github.io/offerpilot-ai/blog/ai-coding-copilot-leetcode/" },
+        { "@type": "Article", "headline": "Are AI Interview Copilots Undetectable on Zoom, Teams & Meet?", "url": "https://kidusb9.github.io/offerpilot-ai/blog/are-interview-copilots-undetectable/" },
+        { "@type": "Article", "headline": "Company-Specific Interview Prep with AI (with examples)", "url": "https://kidusb9.github.io/offerpilot-ai/blog/company-specific-interview-prep/" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kidusb9.github.io/offerpilot-ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://kidusb9.github.io/offerpilot-ai/blog/" }
+      ]
+    }
+  ]
+}

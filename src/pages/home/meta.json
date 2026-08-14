@@ -1,0 +1,46 @@
+{
+  "slug": "",
+  "title": "OfferPilot AI: Invisible AI Interview & Coding Copilot",
+  "description": "Real-time, screen-share-safe AI interview copilot and coding assistant with on-device transcription, company-specific Q&A, and live answers. From $0.",
+  "keywords": "AI interview copilot, interview assistant, coding copilot, leetcode helper, undetectable interview AI, real-time interview answers, company interview questions, on-device transcription",
+  "priority": "1.0",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "OfferPilot AI",
+      "url": "https://kidusb9.github.io/offerpilot-ai/",
+      "logo": "https://kidusb9.github.io/offerpilot-ai/assets/icon-512.png",
+      "sameAs": []
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OfferPilot AI",
+      "url": "https://kidusb9.github.io/offerpilot-ai/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OfferPilot AI",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows, macOS",
+      "description": "Real-time, undetectable AI interview copilot and coding assistant with on-device transcription and company-specific Q&A generation.",
+      "offers": [
+        { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Pro", "price": "19", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Ultimate", "price": "29", "priceCurrency": "USD" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "312" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is OfferPilot undetectable during screen sharing?", "acceptedAnswer": { "@type": "Answer", "text": "The desktop overlay uses the Windows SetWindowDisplayAffinity WDA_EXCLUDEFROMCAPTURE flag, so it stays visible on your own monitor but is composited out of any screen capture: Zoom, Teams, Google Meet, OBS, or PrintScreen. It also stays out of the taskbar and Alt-Tab." } },
+        { "@type": "Question", "name": "How much does OfferPilot cost?", "acceptedAnswer": { "@type": "Answer", "text": "OfferPilot starts free with 20 minutes per day and no card required. Pro is $19 per month, Ultimate is $29 per month with unlimited use, and Lifetime access is a one-time $299." } },
+        { "@type": "Question", "name": "What is the company-specific Q&A generator?", "acceptedAnswer": { "@type": "Answer", "text": "Pick a company and role and OfferPilot builds a tailored interview Q&A database (behavioral, fundamentals, and coding questions with model answers) that the copilot uses to ground its live answers in your background and that company's domain." } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "offerpilot-ai-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OfferPilot AI — marketing site (zero-dependency static site generator).",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "og": "node scripts/make-og.mjs",
+    "serve": "node -e \"import('node:http').then(({default:h})=>import('node:fs').then(({readFileSync,existsSync,statSync})=>{const base='';const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.xml':'application/xml','.txt':'text/plain'};h.createServer((req,res)=>{let p=decodeURIComponent(req.url.split('?')[0]);if(p.endsWith('/'))p+='index.html';let f='dist'+p;if(!existsSync(f)||statSync(f).isDirectory())f=existsSync('dist'+p+'/index.html')?'dist'+p+'/index.html':'dist/404.html';try{const ext=f.slice(f.lastIndexOf('.'));res.writeHead(existsSync(f)?200:404,{'content-type':mime[ext]||'text/plain'});res.end(readFileSync(f))}catch(e){res.writeHead(404);res.end('not found')}}).listen(4321,()=>console.log('http://localhost:4321/'))}))\""
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "company": "Amazon",
+  "role": "Software Development Engineer (SDE I/II)",
+  "stack": ["Java", "Python", "AWS", "Distributed Systems", "Data Structures", "Algorithms"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "I'm a software development engineer who likes owning a problem end to end, from the ambiguous 'this is slow and customers are complaining' all the way to a measured fix in production. I've spent most of my time on backend services and I care about the customer-visible outcome, not just closing the ticket. I prepare for Amazon interviews knowing they're really two interviews at once: the coding bar and the Leadership Principles, so I come with specific stories I can tell in STAR format and I can back the numbers up. What draws me to Amazon is the ownership culture, the expectation that you dive deep into your own system rather than throwing it over a wall.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "LP, Customer Obsession",
+      "question": "Tell me about a time you went above and beyond for a customer.",
+      "answer": "Situation: our support team kept escalating that users were abandoning a signup flow, but the metrics dashboard said the flow was 'fine.' Task: I owned that service, so I decided to actually understand the customer's experience rather than trust the aggregate. Action: I pulled session traces and reproduced the flow on a throttled connection like our real users had, and found a third-party call on the critical path that intermittently added several seconds, invisible in the average, brutal at the tail. I moved that call off the critical path and made it async. Result: p99 signup time dropped by more than half and completion rose about 12%. The takeaway is that the customer lives at the tail, not the average, so I stopped trusting means for anything customer-facing.",
+      "keywords": ["customer obsession", "customer", "star", "p99", "leadership principle"]
+    },
+    {
+      "section": "LP, Ownership",
+      "question": "Tell me about a time you took on something outside your job responsibilities.",
+      "answer": "Situation: our on-call runbook was stale and every incident meant re-deriving the same steps, which slowed recovery. It wasn't anyone's assigned task. Task: I decided to own it because I was the one getting paged. Action: after each incident I updated the runbook with the actual root cause and the exact commands, and I added dashboards for the two failure modes that kept recurring. I also automated the most common remediation into a script so it wasn't a hero exercise at 3am. Result: our mean time to recovery dropped noticeably and new team members could handle on-call in their first rotation. Ownership to me is caring about the long-term health of the system even when nobody assigned it to you.",
+      "keywords": ["ownership", "on-call", "runbook", "star", "leadership principle"]
+    },
+    {
+      "section": "LP, Dive Deep",
+      "question": "Tell me about a time you had to dig deep to find the root cause of a problem.",
+      "answer": "Situation: we had intermittent 500 errors that only showed up under load and vanished when we tried to reproduce them. Task: I owned finding the real cause, not just adding a retry and moving on. Action: I stopped guessing and added structured logging around the suspect path, then correlated the errors with connection-pool metrics. The pattern was clear: under load we exhausted the database connection pool because a slow query held connections too long. I dove into the query plan, found a missing index causing a full table scan, added it, and right-sized the pool. Result: the 500s went to zero and query latency dropped by an order of magnitude. Diving deep means I'm not satisfied until I can explain the mechanism, not just the symptom.",
+      "keywords": ["dive deep", "root cause", "debugging", "star", "leadership principle"]
+    },
+    {
+      "section": "LP, Bias for Action",
+      "question": "Tell me about a time you made a decision quickly with incomplete information.",
+      "answer": "Situation: mid-deploy we saw error rates climbing and we didn't yet know if it was the new code or an unrelated dependency. Task: I had to decide fast because customers were being affected every minute. Action: rather than wait for full certainty, I made the reversible call first, I rolled back the deploy, which is cheap and safe, to stop the bleeding, then investigated calmly once the graphs were green. It turned out to be our change, so the rollback was correct anyway. Result: customer impact was a few minutes instead of an hour. My rule is to distinguish reversible from irreversible decisions, reversible ones you make fast and correct later; only the one-way doors deserve heavy deliberation.",
+      "keywords": ["bias for action", "quick decision", "rollback", "star", "leadership principle"]
+    },
+    {
+      "section": "LP, Deliver Results",
+      "question": "Tell me about a time you delivered a project under a tight deadline.",
+      "answer": "Situation: we committed to a migration with a hard deadline tied to a vendor contract expiring, and midway we realized the scope was larger than estimated. Task: I owned delivery and couldn't move the date. Action: I broke the work into what was truly required for the cutover versus what was nice-to-have, negotiated the nice-to-haves into a fast-follow, and got the team focused on the critical path with clear daily checkpoints. I also flagged the risk to stakeholders early and honestly rather than promising everything and slipping. Result: we hit the cutover date with the essential scope, avoided the vendor renewal cost, and shipped the deferred pieces two weeks later. Delivering results is about ruthlessly protecting the critical path and being honest about tradeoffs early.",
+      "keywords": ["deliver results", "deadline", "scope", "star", "leadership principle"]
+    },
+    {
+      "section": "Coding",
+      "question": "Two Sum, return indices of two numbers that add to a target.",
+      "answer": "I'll confirm exactly one solution and no reusing an element. Brute force is O(n^2). The better approach is a hash map from value to index in one pass, for each number I check whether the complement is already seen. That's O(n) time and O(n) space. For [2,7,11,15] target 9, at 7 the complement 2 is in the map at index 0, so I return [0,1].",
+      "code": "public int[] twoSum(int[] nums, int target) {\n    Map<Integer, Integer> seen = new HashMap<>();\n    for (int i = 0; i < nums.length; i++) {\n        int need = target - nums[i];\n        if (seen.containsKey(need)) return new int[]{seen.get(need), i};\n        seen.put(nums[i], i);\n    }\n    return new int[0];\n}\n// O(n) time, O(n) space, single pass, O(1) amortized hash lookups.",
+      "lang": "java",
+      "keywords": ["two sum", "hash map", "array", "coding", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Merge two sorted linked lists into one sorted list.",
+      "answer": "I use a dummy head and a tail pointer, then walk both lists, always attaching the smaller current node and advancing that list. When one list runs out I attach the remainder of the other, since it's already sorted. A dummy node avoids special-casing the empty result. It's O(n + m) time visiting each node once, and O(1) extra space because I splice existing nodes rather than allocating.",
+      "code": "public ListNode mergeTwoLists(ListNode a, ListNode b) {\n    ListNode dummy = new ListNode(0), tail = dummy;\n    while (a != null && b != null) {\n        if (a.val <= b.val) { tail.next = a; a = a.next; }\n        else { tail.next = b; b = b.next; }\n        tail = tail.next;\n    }\n    tail.next = (a != null) ? a : b;\n    return dummy.next;\n}\n// O(n + m) time, O(1) extra space.",
+      "lang": "java",
+      "keywords": ["merge sorted lists", "linked list", "two pointers", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Find the length of the longest substring without repeating characters.",
+      "answer": "This is a sliding window. I expand the right edge and keep a map of each character's last index. When I see a repeat that's inside the current window, I jump the left edge just past its previous position instead of shrinking one step at a time. I track the max window length as I go. Each character is processed at most twice, so it's O(n) time, and space is O(k) bounded by the alphabet size.",
+      "code": "public int lengthOfLongestSubstring(String s) {\n    Map<Character, Integer> last = new HashMap<>();\n    int left = 0, best = 0;\n    for (int right = 0; right < s.length(); right++) {\n        char c = s.charAt(right);\n        if (last.containsKey(c) && last.get(c) >= left) {\n            left = last.get(c) + 1;\n        }\n        last.put(c, right);\n        best = Math.max(best, right - left + 1);\n    }\n    return best;\n}\n// O(n) time, O(min(n, alphabet)) space.",
+      "lang": "java",
+      "keywords": ["longest substring", "sliding window", "string", "coding"]
+    },
+    {
+      "section": "Behavioral",
+      "question": "Tell me about a time you disagreed with your manager or a decision.",
+      "answer": "Situation: my manager wanted to ship a feature on top of a data model I believed would cause pain within a quarter. Task: I owned the component, so I had a responsibility to raise it, Amazon calls this having backbone and disagreeing, then committing. Action: I didn't just object; I wrote a one-pager with the concrete failure scenario and a modest alternative that cost two extra days. I made the case once, clearly, with data. My manager weighed it and still chose to ship for a customer commitment. Result: I disagreed but committed fully, and we scheduled the refactor as a fast-follow, which we did need, and it went smoothly because I'd documented the plan. The point is I voice the concern with evidence, then commit wholeheartedly to the decision.",
+      "keywords": ["disagree and commit", "backbone", "conflict", "star", "behavioral"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes. Which Leadership Principle does this team lean on most day to day, and where do they sometimes tension against each other? How does the team balance bias for action against the two-way-door versus one-way-door framing on real decisions? And what does a successful first six months look like for an SDE on this team? I want to understand the actual operating culture, not just the poster.",
+      "keywords": ["questions for us", "closing", "leadership principles"]
+    }
+  ]
+}

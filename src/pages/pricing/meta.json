@@ -1,0 +1,41 @@
+{
+  "slug": "pricing",
+  "title": "OfferPilot AI pricing: from $0, Pro $19, Ultimate $29",
+  "description": "OfferPilot AI pricing: Free 20 min a day, Pro $19/mo, Ultimate $29/mo unlimited, Lifetime $299. Affordable live interview copilot, cancel anytime.",
+  "keywords": "OfferPilot AI pricing, interview copilot price, unlimited interview copilot, lifetime interview AI, Pro Ultimate plan, affordable interview assistant",
+  "priority": "0.9",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kidusb9.github.io/offerpilot-ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Pricing", "item": "https://kidusb9.github.io/offerpilot-ai/pricing/" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "OfferPilot AI",
+      "description": "Affordable real-time, screen-share-safe interview copilot and coding assistant with on-device transcription and company-specific Q&A generation.",
+      "brand": { "@type": "Brand", "name": "OfferPilot AI" },
+      "url": "https://kidusb9.github.io/offerpilot-ai/pricing/",
+      "offers": [
+        { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "url": "https://kidusb9.github.io/offerpilot-ai/pricing/", "description": "20 minutes per day of live copilot, no card required." },
+        { "@type": "Offer", "name": "Pro", "price": "19", "priceCurrency": "USD", "url": "https://kidusb9.github.io/offerpilot-ai/pricing/", "description": "3 hours per day of live copilot, all four AI models, unlimited company Q&A." },
+        { "@type": "Offer", "name": "Ultimate", "price": "29", "priceCurrency": "USD", "url": "https://kidusb9.github.io/offerpilot-ai/pricing/", "description": "Truly unlimited live minutes, local offline model, multi-monitor, crash-restore." },
+        { "@type": "Offer", "name": "Lifetime", "price": "299", "priceCurrency": "USD", "url": "https://kidusb9.github.io/offerpilot-ai/pricing/", "description": "Ultimate forever, one-time payment, all future updates included." }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Can I cancel anytime?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pro and Ultimate are month-to-month with no contract. Cancel from your account at any time and you keep access until the end of the billing period you already paid for." } },
+        { "@type": "Question", "name": "Do you offer refunds?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every paid plan, including Lifetime, is covered by a 7-day refund window. If OfferPilot is not right for you, email us within seven days of purchase for a full refund." } },
+        { "@type": "Question", "name": "What counts as a minute?", "acceptedAnswer": { "@type": "Answer", "text": "A minute is counted only while the live copilot is actively listening and generating answers during a session. Company Q&A generation, browsing your prep, and Code Copilot captures do not consume live minutes." } },
+        { "@type": "Question", "name": "Is my data private?", "acceptedAnswer": { "@type": "Answer", "text": "Transcription runs fully on-device and audio is never uploaded. On Ultimate and Lifetime you can run answers against a local offline model for a completely private path. Cloud models are optional and used only for the models you choose." } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "company": "Meta",
+  "role": "Software Engineer (E3/E4), Product / Infra",
+  "stack": ["Python", "C++", "React", "PHP/Hack", "Data Structures", "Algorithms"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "I'm a software engineer who's happiest shipping, I like a bias toward getting something in front of users, measuring it, and iterating rather than polishing in a vacuum. Most of my work has been on product-facing services where I own a slice end to end and partner closely with design and data science. I prep for Meta interviews knowing the coding rounds are fast and expect clean, working code with tight complexity, so I practice talking and coding at the same time. What pulls me to Meta is the move-fast culture backed by real infrastructure, you're expected to ship, but on top of systems that let you ship safely at scale.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "Coding",
+      "question": "Valid anagram, determine if two strings are anagrams of each other.",
+      "answer": "If the lengths differ they can't be anagrams. Otherwise I count character frequencies from the first string and decrement for the second; if any count goes negative or anything is left over, it's false. A single count array or dict is enough, no need to sort, which would be O(n log n). This is O(n) time and O(k) space bounded by the alphabet.",
+      "code": "def is_anagram(s, t):\n    if len(s) != len(t):\n        return False\n    counts = {}\n    for c in s:\n        counts[c] = counts.get(c, 0) + 1\n    for c in t:\n        if counts.get(c, 0) == 0:\n            return False\n        counts[c] -= 1\n    return True\n# O(n) time, O(k) space where k is the alphabet size.",
+      "lang": "python",
+      "keywords": ["valid anagram", "string", "hash map", "frequency count", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Move all zeroes in an array to the end while keeping the order of non-zeros.",
+      "answer": "Two-pointer in place. I keep a write index for the next non-zero slot and scan with a read index; every time I see a non-zero I write it at the write index and advance it. After the scan, everything from the write index onward gets set to zero. That's O(n) time, O(1) extra space, and it preserves relative order. I'd mention the small optimization of swapping instead of a second pass, but the two-phase version is clearer to reason about.",
+      "code": "def move_zeroes(nums):\n    write = 0\n    for read in range(len(nums)):\n        if nums[read] != 0:\n            nums[write] = nums[read]\n            write += 1\n    for i in range(write, len(nums)):\n        nums[i] = 0\n    return nums\n# O(n) time, O(1) extra space, stable order of non-zeros.",
+      "lang": "python",
+      "keywords": ["move zeroes", "two pointers", "array", "in place", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Clone a graph, return a deep copy of a connected undirected graph.",
+      "answer": "I traverse the graph and build copies as I go, keeping a hash map from original node to its clone so I never duplicate a node and I can wire up neighbors. BFS or DFS both work; I'll use DFS. For each original node, if I haven't cloned it I create the clone, record it in the map, then recurse into neighbors and append their clones to the copy's neighbor list. The map both prevents infinite loops on cycles and gives O(1) lookup. It's O(V + E) time and O(V) space for the map and stack.",
+      "code": "def clone_graph(node):\n    if not node:\n        return None\n    clones = {}\n\n    def dfs(n):\n        if n in clones:\n            return clones[n]\n        copy = Node(n.val)\n        clones[n] = copy\n        for nb in n.neighbors:\n            copy.neighbors.append(dfs(nb))\n        return copy\n\n    return dfs(node)\n# O(V + E) time, O(V) space for the map and recursion stack.",
+      "lang": "python",
+      "keywords": ["clone graph", "graph", "dfs", "hash map", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Given an array, return an array where each element is the product of all others, without using division.",
+      "answer": "Without division, I use prefix and suffix products. First pass, left to right, I fill the output with the running product of everything to the left of each index. Second pass, right to left, I multiply each position by the running product of everything to its right, tracked in a single variable. That gives the product of all other elements. It's O(n) time and O(1) extra space beyond the output array, and it handles zeros correctly, which the naive division approach doesn't.",
+      "code": "def product_except_self(nums):\n    n = len(nums)\n    out = [1] * n\n    for i in range(1, n):\n        out[i] = out[i-1] * nums[i-1]\n    right = 1\n    for i in range(n-1, -1, -1):\n        out[i] *= right\n        right *= nums[i]\n    return out\n# O(n) time, O(1) extra space (output not counted).",
+      "lang": "python",
+      "keywords": ["product of array except self", "prefix product", "array", "coding"]
+    },
+    {
+      "section": "Algorithms",
+      "question": "How do you approach a problem you don't immediately recognize in a fast coding round?",
+      "answer": "I resist jumping to code. First I restate the problem and confirm the constraints and edge cases out loud so the interviewer can correct me early. Then I state a brute force to establish correctness and a baseline complexity, that's never wrong to have. From there I look for the standard levers: is there a hash map that turns a nested loop into one pass, a sorting or two-pointer structure, a sliding window, or overlapping subproblems that suggest DP. I say my plan before coding, then write clean code and dry-run it on a small example. In a fast round the goal is a correct, optimal, running solution with clear communication, not cleverness for its own sake.",
+      "keywords": ["problem solving", "approach", "brute force", "optimization", "fast round"]
+    },
+    {
+      "section": "Product / System Sense",
+      "question": "How would you design the backend for a news feed?",
+      "answer": "The core question is fan-out. On write, when someone posts I push the post into their followers' feed lists, great read latency, but it explodes for celebrities with millions of followers. On read, I assemble the feed by pulling from the people you follow at request time, cheap writes, expensive reads. The right answer is hybrid: fan-out on write for normal users, and fan-out on read for high-follower accounts, merged at request time. I'd cache assembled feeds, rank rather than show pure reverse-chronological, and page the results. I'd close by asking about the read-to-write ratio and whether ranking is in scope, since those drive the whole design.",
+      "keywords": ["system design", "news feed", "fan-out", "caching", "product sense"]
+    },
+    {
+      "section": "Product / System Sense",
+      "question": "If you shipped a feature and engagement dropped, how would you investigate?",
+      "answer": "First I'd make sure the drop is real and not noise or a logging bug, check the metric definition and the confidence interval. Then I'd segment: is it all users or a cohort, all platforms or just one, immediate or delayed. I'd look at the funnel to find which step regressed rather than treating engagement as one number. If it correlates with my launch, I'd check whether it's a bug, a latency regression, or a genuine product signal that users don't like the change. Because it's reversible, I'd be quick to roll back or ramp down if impact is bad, then run a clean experiment. The instinct is measure, segment, form a hypothesis, and let the data decide rather than defend the feature.",
+      "keywords": ["metrics", "engagement", "product sense", "experimentation", "funnel"]
+    },
+    {
+      "section": "Behavioral",
+      "question": "Tell me about a time you moved fast and shipped something quickly.",
+      "answer": "Situation: we had a small window to ship an integration ahead of a partner launch. Task: I owned it and the timeline was tight. Action: I scoped it to a thin but complete slice, the real path working end to end, feature-flagged so I could ship it dark and ramp it gradually rather than gate on perfection. I shipped behind the flag in days, watched the metrics on a small percentage of traffic, fixed two issues the ramp surfaced, then rolled it out. Result: we made the partner date and, because it was flagged, the risk of moving fast was contained. To me moving fast responsibly means shipping small, safe increments behind flags, not skipping safety.",
+      "keywords": ["move fast", "ship", "feature flag", "star", "behavioral"]
+    },
+    {
+      "section": "Behavioral",
+      "question": "Tell me about a time you worked cross-functionally with non-engineers.",
+      "answer": "Situation: a design and data-science partner and I disagreed on a feature, design wanted a richer interaction, data wanted a change we could cleanly measure. Task: I was the engineer in the middle and needed one plan we all owned. Action: I translated both sides into concrete tradeoffs, the richer version cost more latency and was harder to A/B cleanly, and proposed an instrumented middle version we could ship and measure. I kept the conversation on the shared goal, which was user value we could prove, not whose idea won. Result: we shipped the measurable version, the experiment gave us a clear signal, and we iterated toward the richer design once the data justified it. Working cross-functionally is mostly translating between languages and anchoring on a shared metric.",
+      "keywords": ["cross-functional", "collaboration", "design", "data science", "behavioral"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes. How does the team keep 'move fast' from turning into tech debt that slows you down later? What does the path from shipping code to actually influencing product direction look like here? And what's a hard problem the team is wrestling with right now? I'd rather hear the messy version than the recruiting pitch.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

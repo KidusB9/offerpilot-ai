@@ -1,0 +1,66 @@
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/blog/" style="color:var(--muted-2)">Resources</a> · Guide</p>
+      <h1 class="balance">How to use an AI coding copilot for LeetCode interviews</h1>
+      <p class="meta">2026 · ~7 min read · OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">An AI coding copilot is at its best as a study partner and a safety net for nerves, not as a machine that types your solution for you. Used well, it teaches you the pattern behind a problem so you can produce it yourself next time. Here's how to get real value from one during LeetCode-style practice and technical screens, and where the line sits.</p>
+
+      <h2>What a coding copilot actually does</h2>
+      <p>A tool like <a href="/code-copilot/">Code Copilot</a> captures a coding prompt from the screen with a hotkey, runs OCR on it, and streams back a structured answer: the approach, the intuition behind it, a dry run on a sample input, and the Big-O for time and space. It can run the same prompt across several models, Grok, DeepSeek, Gemini, and a local model, so you can compare how different solvers frame the same problem. The point isn't the finished code block; it's the reasoning around it.</p>
+
+      <h2>Step 1, capture the prompt cleanly</h2>
+      <p>Garbage in, garbage out. OCR is only as good as what you feed it, so a clean capture matters more than people expect.</p>
+      <ul>
+        <li><strong>Grab the whole problem.</strong> Include the constraints and the examples, not just the title. "Two Sum" with <code>2 &lt;= nums.length &lt;= 10^4</code> is a different problem than "Two Sum" with a billion elements, the constraints dictate the approach.</li>
+        <li><strong>Capture the function signature.</strong> The expected return type and parameter names tell the model what shape of answer to produce.</li>
+        <li><strong>Avoid cropping mid-line.</strong> A half-visible constraint leads to a confidently wrong solution.</li>
+      </ul>
+
+      <h2>Step 2, read the approach before the code</h2>
+      <p>The single most common mistake is scrolling straight to the code block. Do the opposite. Read the approach and the intuition first, then predict the code yourself before you look at it. Ask three questions every time:</p>
+      <ul>
+        <li><strong>What's the pattern?</strong> Is this a hash-map lookup, two pointers, a sliding window, a heap, binary search, dynamic programming? Naming the pattern is what transfers to the next problem.</li>
+        <li><strong>Why is this better than brute force?</strong> If the copilot says "hash map for O(n) instead of the O(n²) nested loop," make sure you understand the trade, you're spending O(n) space to buy O(n) time.</li>
+        <li><strong>What's the complexity, and does it fit the constraints?</strong> If <code>n</code> can be 10⁵, an O(n²) solution is roughly 10¹⁰ operations and will time out. The Big-O isn't trivia; it's how you know the approach is viable.</li>
+      </ul>
+
+      <h2>Step 3, dry-run it by hand</h2>
+      <p>Take the sample input and walk it through the logic yourself, one step at a time, before you trust the output. This catches off-by-one errors, wrong edge-case handling, and the occasional hallucinated line. It also builds the muscle you need in a live round, where you'll be expected to trace your own code out loud. If the dry run doesn't match the expected output, you've learned something more valuable than a passing submission.</p>
+
+      <h2>Step 4, practice out loud</h2>
+      <p>Interviews are performances as much as puzzles. Once you understand a solution, close the copilot and re-derive it while narrating: state the brute force, explain why it's too slow, propose the optimization, code it, then state the complexity. Do this until the explanation is smooth. The copilot gave you the map; talking through it without the map is how you actually learn the route. This mirrors how the <a href="/interview-copilot/">Interview Copilot</a> is meant to be used for behavioral rounds, as a prompt for rehearsal, not a script to read.</p>
+
+      <h2>Step 5, build a pattern library</h2>
+      <p>After each problem, write one sentence: the trigger and the technique. "Sorted array, find a pair → two pointers." "Substring with a constraint → sliding window." "Kth largest → min-heap of size k." After a few dozen problems you'll have a personal lookup table that fires automatically, and you'll reach for the copilot less and less. That's the goal, a tool that makes itself unnecessary.</p>
+
+      <h2>The ethics and the rules</h2>
+      <p>This matters, so we'll be direct. Whether it's appropriate to have any assistance open depends entirely on the rules of the specific round you're in, and those rules are set by the company, not by us.</p>
+      <ul>
+        <li><strong>Take-home and open-book screens.</strong> Many companies explicitly allow references, documentation, and yes, AI tools. In that context a copilot is a legitimate accelerator, the same as using an IDE with autocomplete. Read the instructions; they usually say.</li>
+        <li><strong>Proctored or "no external tools" rounds.</strong> If the rules say no outside help, respect that. Using a copilot there isn't a clever edge; it's misrepresenting your ability, and it tends to fall apart the moment the interviewer asks a follow-up you can't answer.</li>
+        <li><strong>When in doubt, ask.</strong> "Is it okay if I reference documentation?" is a normal question. The answer tells you where the line is.</li>
+      </ul>
+      <p>The most reliable use of a coding copilot is the one that doesn't depend on any of this: preparation. In your own practice, before the interview, there are no rules to bend, only patterns to learn.</p>
+
+      <h2>Put it to work</h2>
+      <p>Start with a set of problems in the pattern you're weakest at, capture each one with <a href="/code-copilot/">Code Copilot</a>, and force yourself through the read-predict-dry-run loop above. The free tier gives you 20 minutes a day to try it, and if it earns a place in your routine, <a href="/pricing/">Pro is $19/month</a>. Either way, treat the finished code as the least interesting part of the answer.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Learn the pattern, not just the answer.</h2>
+      <p class="lede" style="margin:0 auto 8px">Capture a prompt, read the approach and Big-O, and practice out loud.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">Open Code Copilot<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Start free</a>
+      </div>
+    </div>
+  </div>
+</section>

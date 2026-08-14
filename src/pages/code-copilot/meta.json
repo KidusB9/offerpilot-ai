@@ -1,0 +1,43 @@
+{
+  "slug": "code-copilot",
+  "title": "Code Copilot: AI Coding & LeetCode Interview Assistant",
+  "description": "Screenshot any coding prompt with a hotkey. Code Copilot reads it with OCR plus vision, then streams the optimal solution with approach, a dry run, and Big-O.",
+  "keywords": "AI coding copilot, leetcode helper, coding interview assistant, AI for hackerrank, codesignal assistant, coderpad helper, screenshot to code, OCR coding solver",
+  "priority": "0.9",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OfferPilot AI Code Copilot",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, macOS",
+      "url": "https://kidusb9.github.io/offerpilot-ai/code-copilot/",
+      "description": "A screen-share-safe coding interview assistant. Press a hotkey to screenshot any LeetCode, HackerRank, CodeSignal, or CoderPad prompt; it OCRs and reads the image, then streams the optimal solution with approach, intuition, a dry run, and Big-O across four AI models in parallel.",
+      "featureList": [
+        "Hotkey screenshot capture (Ctrl+Alt+S)",
+        "Tesseract OCR plus vision-model image reading",
+        "Streamed optimal solution with approach, intuition, dry run, and Big-O",
+        "Four models in parallel: Grok, DeepSeek, Gemini, and a local knowledge-base model",
+        "Multi-capture batching and crash-proof session cache",
+        "Screen-share invisible overlay"
+      ],
+      "offers": [
+        { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Pro", "price": "19", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Ultimate", "price": "29", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Lifetime", "price": "299", "priceCurrency": "USD" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How does Code Copilot capture a coding prompt?", "acceptedAnswer": { "@type": "Answer", "text": "Press Ctrl+Alt+S to screenshot whatever coding prompt is on screen. Code Copilot runs the image through Tesseract OCR to extract the text and also sends the raw screenshot to a vision model, so diagrams, test cases, and formatting that OCR misses are still read accurately." } },
+        { "@type": "Question", "name": "Which coding platforms does it work with?", "acceptedAnswer": { "@type": "Answer", "text": "Code Copilot works with LeetCode, HackerRank, CodeSignal, and CoderPad. Because it captures the screen rather than integrating with a site, it works anywhere a prompt is visible, including PDFs and take-home documents." } },
+        { "@type": "Question", "name": "What AI models does Code Copilot use?", "acceptedAnswer": { "@type": "Answer", "text": "It runs four models in parallel (Grok, DeepSeek, Gemini, and a local knowledge-base model for offline and instant matches) and lets you switch between their answers instantly. The local model returns cached matches immediately with no network round-trip." } },
+        { "@type": "Question", "name": "What happens if the app crashes mid-problem?", "acceptedAnswer": { "@type": "Answer", "text": "A crash-proof session cache writes every answer as it streams. If the app dies, it restores your captures and solutions on the next launch, so you never lose a worked problem." } },
+        { "@type": "Question", "name": "Is Code Copilot visible during a screen share?", "acceptedAnswer": { "@type": "Answer", "text": "No. The overlay opts out of screen capture at the OS level, so it renders on your monitor but is composited out of the frame that Zoom, Teams, Meet, and screen recorders receive. It also stays out of the taskbar and Alt-Tab." } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/blog/" style="color:var(--muted-2)">Resources</a> · Explainer</p>
+      <h1 class="balance">Are AI interview copilots undetectable on Zoom, Teams &amp; Meet?</h1>
+      <p class="meta">2026 · ~7 min read · OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Short answer: a well-built overlay is genuinely invisible to screen capture, because the operating system removes it from the frame before Zoom, Teams, or Meet ever sees it. But "invisible to capture" is a precise, narrow claim, it does not make you invisible in every sense, and understanding the difference is what keeps you honest and out of trouble. Here's how it actually works.</p>
+
+      <h2>How screen-capture exclusion works</h2>
+      <p>On Windows, every window can carry a "display affinity" flag that tells the compositor how it may be captured. OfferPilot sets it to the strongest available value:</p>
+      <div class="card" style="padding:0;overflow:hidden;margin:22px 0">
+        <div class="hud__bar"><div class="hud__dots"><i></i><i></i><i></i></div><span class="hud__title">display affinity</span><span class="hud__shield" style="margin-left:auto">🛡 excluded</span></div>
+        <pre class="code" style="margin:0;border:none;border-radius:0"><span class="cm">// Opt the overlay window out of capture</span>
+user32.<span class="kw">SetWindowDisplayAffinity</span>(
+    hwnd, WDA_EXCLUDEFROMCAPTURE);</pre>
+      </div>
+      <p>With <code>WDA_EXCLUDEFROMCAPTURE</code> set, the window still renders normally on your physical monitor, but the Desktop Window Manager composites it <em>out</em> of any capture stream. The capturing application doesn't receive a blurred or blacked-out region, it receives a frame as if the window were never there. That's the key distinction from older tricks: it's not hiding the window from you, and it's not a black box the interviewer can see. To every capture tool, the pixels simply don't exist.</p>
+      <p>This is an operating-system feature, not a hack against any particular app, which is why it holds across the whole category: Zoom, Microsoft Teams, Google Meet in the browser, Discord, OBS, the Snipping Tool, and a plain PrintScreen all read from the same excluded compositor output.</p>
+
+      <h2>What it hides</h2>
+      <ul>
+        <li><strong>Screen sharing.</strong> Whether the interviewer asks you to share your whole screen or a single window, the overlay is absent from the shared stream.</li>
+        <li><strong>Recordings.</strong> Because the exclusion happens at capture time, anything recorded, cloud recording, local recording, a third-party screen recorder, records the frame without the overlay.</li>
+        <li><strong>Screenshots.</strong> PrintScreen and snipping tools capture the same excluded output, so a screenshot won't reveal it either.</li>
+        <li><strong>The taskbar and Alt-Tab.</strong> A good overlay also stays out of the taskbar and the Alt-Tab switcher, so its presence doesn't leak through the window list if the interviewer is watching a full-screen share.</li>
+      </ul>
+      <p>OfferPilot re-asserts the flag on a timer so it self-heals if the UI framework ever recreates the underlying native window, and it shows a live shield badge: green when protection is confirmed, and a loud banner if the OS ever reports the exclusion failed. The point is that it tells you the truth rather than quietly assuming it's safe.</p>
+
+      <h2>What it does NOT hide</h2>
+      <p>This is the part every honest article has to spell out, because the marketing word "undetectable" oversells a specific technical guarantee.</p>
+      <ul>
+        <li><strong>Your camera.</strong> Capture exclusion has nothing to do with your webcam. If your eyes track back and forth reading an overlay, or your face changes as you scan text, that's visible on video. Reading aloud from a script looks like reading aloud from a script.</li>
+        <li><strong>Your behavior.</strong> Long pauses before every answer, a sudden shift in vocabulary, or answers that don't survive a follow-up question are all human-detectable signals no software addresses.</li>
+        <li><strong>Older or restricted systems.</strong> On Windows versions before the 2004 build, the strongest flag isn't available and the fallback merely blacks the window out of capture, which <em>is</em> visible as a black box. OfferPilot reports this state instead of pretending; capture-safe invisibility is strongest on Windows 10 (2004+) and 11.</li>
+        <li><strong>Managed or monitored devices.</strong> A company-controlled laptop with monitoring agents, or a locked-down remote-assessment environment, is a different threat model entirely. Screen-capture exclusion is not designed to defeat endpoint monitoring, and you should assume it doesn't.</li>
+      </ul>
+
+      <h2>So, "undetectable", yes or no?</h2>
+      <p>To the screen-capture pipeline, yes: on a supported Windows machine the overlay is reliably excluded from shares, recordings, and screenshots. To a human paying attention, that guarantee only holds if your behavior doesn't give you away. The technology solves exactly one problem, pixels in a capture stream, and solves it well. It does not, and cannot, solve the problem of you looking like you're reading.</p>
+
+      <h2>Using it responsibly</h2>
+      <p>We build this as a preparation and accessibility tool, and the responsible-use case is the one it's genuinely good at:</p>
+      <ul>
+        <li><strong>Accessibility.</strong> For people with anxiety, memory-retrieval difficulties, or who interview in a second language, a quiet on-screen prompt of the answer they already prepared is the difference between freezing and performing. That's assistive technology, not deception.</li>
+        <li><strong>Rehearsal.</strong> The strongest use happens before the interview, generating a company-specific question bank and practicing out loud until the overlay is a safety net you rarely need. See <a href="/blog/company-specific-interview-prep/">company-specific interview prep with AI</a>.</li>
+        <li><strong>Know the rules of your round.</strong> Some interviews explicitly permit references; some don't. Screen-capture exclusion doesn't change what's appropriate, the interviewer's rules do. If you'd be uncomfortable disclosing that you used assistance, that's a signal worth listening to.</li>
+      </ul>
+      <p>The overlay being invisible to capture is a real, verifiable property. Whether to lean on it, and how much, is a judgment call that stays with you. Used to steady your nerves and surface answers you actually know, it's a legitimate edge. Used to fake expertise you don't have, it tends to collapse at the first follow-up question, no software fixes that.</p>
+
+      <h2>See it for yourself</h2>
+      <p>The <a href="/interview-copilot/">Interview Copilot</a> page shows the live shield badge and the overlay in action, and the <a href="/pricing/">free tier</a> lets you confirm the capture behavior on your own machine before you rely on it in a real round.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Verify the capture behavior yourself.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free, no card. Share your screen in a test call and watch the overlay stay off the frame.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>

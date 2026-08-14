@@ -1,0 +1,52 @@
+{
+  "slug": "interview-copilot",
+  "title": "Interview Copilot: Real-Time AI Interview Answers",
+  "description": "Hears the question, grounds the answer in your résumé and company Q&A, and streams real-time interview answers to a screen-share-safe overlay only you can see.",
+  "keywords": "AI interview copilot, real-time interview answers, company interview questions, live interview assistant, on-device transcription, company Q&A generator, screen-share safe overlay",
+  "priority": "0.9",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kidusb9.github.io/offerpilot-ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Interview Copilot", "item": "https://kidusb9.github.io/offerpilot-ai/interview-copilot/" }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OfferPilot AI Interview Copilot",
+      "url": "https://kidusb9.github.io/offerpilot-ai/interview-copilot/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows, macOS",
+      "description": "A real-time AI interview copilot that transcribes the interviewer on-device, grounds every answer in your résumé and a company-specific Q&A database, and streams a speakable answer to a screen-share-safe overlay only you can see.",
+      "featureList": [
+        "On-device Vosk speech-to-text",
+        "RAG grounding in your résumé and company Q&A",
+        "Auto-scroll to your prepared answer",
+        "Multi-model answers across Grok, DeepSeek and Gemini",
+        "Screen-share invisibility via display affinity",
+        "Pause and ghost hotkeys"
+      ],
+      "offers": [
+        { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "20 minutes per day" },
+        { "@type": "Offer", "name": "Pro", "price": "19", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Ultimate", "price": "29", "priceCurrency": "USD", "description": "Unlimited" },
+        { "@type": "Offer", "name": "Lifetime", "price": "299", "priceCurrency": "USD" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "312" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How does the interview copilot answer in real time?", "acceptedAnswer": { "@type": "Answer", "text": "A fully on-device Vosk recognizer transcribes the interviewer as they speak. The moment they stop, your résumé and the company Q&A database are retrieved and fed to the model, and a tight, speakable answer streams into the overlay in about a second. No clip uploads and no round-trip latency." } },
+        { "@type": "Question", "name": "Can the interviewer see the copilot on screen share?", "acceptedAnswer": { "@type": "Answer", "text": "No. On Windows the overlay uses SetWindowDisplayAffinity with WDA_EXCLUDEFROMCAPTURE, so it renders on your monitor but is composited out of the frame Zoom, Teams, Google Meet, Discord, OBS, and PrintScreen capture. It also stays out of the taskbar and Alt-Tab, and a live shield badge shows the current protection state." } },
+        { "@type": "Question", "name": "What are the interview questions grounded in?", "acceptedAnswer": { "@type": "Answer", "text": "Every live answer is retrieved from your résumé plus a company-specific Q&A database of behavioral, fundamentals, and coding questions with model answers in your voice. You build that database in seconds with the Company Q&A Generator on this page." } },
+        { "@type": "Question", "name": "Which AI models does the interview copilot use?", "acceptedAnswer": { "@type": "Answer", "text": "It queries Grok, DeepSeek, and Gemini, and can also run against a local model for a fully offline path. You choose which models to use, and only the models you pick are called." } },
+        { "@type": "Question", "name": "What do the hotkeys do?", "acceptedAnswer": { "@type": "Answer", "text": "M pauses the copilot instantly so it stops listening and answering, and P toggles ghost mode to dim the overlay. Both are global hotkeys, so you never touch the window during the call." } }
+      ]
+    }
+  ]
+}

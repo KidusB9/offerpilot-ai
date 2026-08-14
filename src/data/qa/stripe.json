@@ -1,0 +1,73 @@
+{
+  "company": "Stripe",
+  "role": "Software Engineer, Payments & API Platform",
+  "stack": ["Ruby", "Java", "Go", "APIs", "HTTP", "Distributed Systems"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself and why Stripe.",
+      "answer": "I'm a software engineer with a Computer Science degree and a 4.0 GPA, and for the past two-plus years I've built backend services and integrations where correctness and reliability were the whole point, idempotent writes, safe retries, and clean APIs that other teams could actually build on. Stripe appeals to me because it's an engineering company whose product is developer-facing infrastructure that moves money: the API has to be intuitive, the money has to be exactly right, and the system has to stay up. That combination of developer empathy and financial correctness is exactly the kind of work I want to do, and I care a lot about the person on the other side of the API.",
+      "keywords": ["tell me about yourself", "why stripe", "intro", "developer experience"]
+    },
+    {
+      "section": "API Integration / Coding",
+      "question": "Write a client that calls a paginated REST endpoint and returns all results across pages.",
+      "answer": "I'll clarify the pagination style, Stripe uses cursor-based pagination with a has_more flag and the last object's id as the starting_after cursor, which is more robust than offset pagination under concurrent writes. The loop is: request a page with a limit, collect the data, and if has_more is true, set starting_after to the id of the last item and repeat until has_more is false. I keep the page size reasonable to bound memory and I'd add retry and rate-limit handling around each call in production. The complexity is O(total items) requests amortized by page size, and constant working memory if I stream rather than accumulate.",
+      "code": "def fetch_all(client, path, limit: 100)\n  results = []\n  starting_after = nil\n  loop do\n    params = { limit: limit }\n    params[:starting_after] = starting_after if starting_after\n    page = client.get(path, params)\n    results.concat(page[\"data\"])\n    break unless page[\"has_more\"]\n    starting_after = page[\"data\"].last[\"id\"]\n  end\n  results\nend\n# O(n) items over n/limit requests; constant extra state per page.",
+      "lang": "ruby",
+      "keywords": ["pagination", "cursor", "rest api", "has_more", "starting_after"]
+    },
+    {
+      "section": "Reliability / Coding",
+      "question": "Implement retry with exponential backoff and jitter for a flaky network call. When is it unsafe to retry?",
+      "answer": "The idea is to retry transient failures, timeouts, 429s, 5xxs, but not deterministic ones like a 400 or 402, where retrying just repeats the same failure. I use exponential backoff so I don't hammer a struggling service, and I add jitter so many clients don't retry in a synchronized thundering herd. The critical safety point: retrying is only safe if the operation is idempotent, because a request can succeed on the server but time out before the response reaches me. For anything that moves money I attach an idempotency key so a retry is deduplicated server-side rather than charging twice. I also cap the number of attempts and respect a Retry-After header when the server sends one.",
+      "code": "def with_retries(max_attempts: 5, base: 0.2, cap: 10.0)\n  attempt = 0\n  begin\n    attempt += 1\n    yield\n  rescue Transient => e\n    raise if attempt >= max_attempts\n    backoff = [cap, base * (2 ** (attempt - 1))].min\n    sleep(rand * backoff) # full jitter\n    retry\n  end\nend\n# retry only idempotent ops; never retry 4xx except 429.",
+      "lang": "ruby",
+      "keywords": ["retry", "exponential backoff", "jitter", "idempotency", "transient errors"]
+    },
+    {
+      "section": "Payments Correctness",
+      "question": "How would you design idempotency so a charge is never created twice, even if the client retries?",
+      "answer": "The client sends an idempotency key, a unique token per logical operation, in a header. On the server I store that key with the request fingerprint and the resulting response. When a request arrives, I look up the key: if it's new, I process the charge and persist the key plus the response atomically in the same transaction as the charge; if the key already exists, I return the stored response without re-executing. The subtle parts are concurrency and partial failure: I take a unique constraint or lock on the key so two simultaneous retries can't both process, and I only mark the key complete inside the same transaction that creates the charge, so a crash mid-flight leaves the key in-progress rather than falsely complete. I'd also expire keys after a bounded window and validate that a reused key carries the same request body, rejecting it if the payload differs.",
+      "keywords": ["idempotency key", "exactly once", "charge", "transaction", "deduplication"]
+    },
+    {
+      "section": "Parsing / Coding",
+      "question": "Parse a webhook payload, verify its signature, and dispatch on event type. What correctness concerns matter?",
+      "answer": "Webhooks are untrusted input over the public internet, so verification comes before parsing logic. Stripe signs the payload with a secret and sends a timestamp and signature in a header; I recompute the HMAC over the timestamp and raw body, compare it in constant time to prevent timing attacks, and reject if the timestamp is outside a tolerance window to stop replay. Only then do I parse the JSON and dispatch on the event type. Two more correctness points: handlers must be idempotent because Stripe can deliver the same event more than once, so I dedupe on the event id; and I acknowledge quickly with a 2xx and do heavy work asynchronously, so a slow handler doesn't cause retries and duplicate processing.",
+      "code": "def handle_webhook(raw_body, sig_header, secret)\n  ts, sig = parse_header(sig_header)\n  expected = OpenSSL::HMAC.hexdigest(\"SHA256\", secret, \"#{ts}.#{raw_body}\")\n  raise \"bad signature\" unless Rack::Utils.secure_compare(expected, sig)\n  raise \"stale\" if (Time.now.to_i - ts.to_i).abs > 300\n  event = JSON.parse(raw_body)\n  return if already_processed?(event[\"id\"]) # idempotent dispatch\n  dispatch(event[\"type\"], event[\"data\"])\nend\n# verify (constant-time) before parsing; dedupe on event id.",
+      "lang": "ruby",
+      "keywords": ["webhook", "hmac signature", "constant time", "replay", "idempotent"]
+    },
+    {
+      "section": "Extend This System",
+      "question": "We have a service that charges cards synchronously. Extend it to support asynchronous payment methods that confirm minutes or days later.",
+      "answer": "The core change is that a payment is no longer a single synchronous call, it becomes a state machine. I'd model a payment with explicit states like requires_confirmation, processing, succeeded, and failed, persisted durably, rather than assuming the result is known when the request returns. For asynchronous methods I create the payment in a pending state, return immediately, and let the final outcome arrive later via a webhook or a poll of the provider, which transitions the state and triggers fulfillment. That means fulfillment logic keys off the succeeded transition, not the initial request, and it must be idempotent because the confirmation can be delivered more than once. I'd add a reconciliation job that sweeps payments stuck in processing past a timeout and queries the provider for the truth, so nothing is silently orphaned. The insight is to stop treating a payment as a function call and start treating it as durable state that the provider drives.",
+      "keywords": ["state machine", "asynchronous payments", "reconciliation", "webhooks", "extend"]
+    },
+    {
+      "section": "Distributed Systems",
+      "question": "A charge succeeded at the payment provider but our database write to record it failed. How do you avoid losing or double-counting money?",
+      "answer": "This is the classic dual-write problem: two systems must agree but you can't update both atomically. I don't try to make the external call and the local write one transaction. Instead I write intent first, record the payment as pending in my database in a local transaction before calling the provider, so I always have a durable record that an attempt exists. I attach an idempotency key to the provider call so a retry can't double-charge. If the provider succeeds but my confirmation write fails, a reconciliation process reads pending records, asks the provider for their true status using the same key, and settles the local state to match. So the provider is the source of truth for whether money moved, and reconciliation converges my records to it. The principle is: never assume a dual write is atomic, record intent, make the remote call idempotent, and reconcile.",
+      "keywords": ["dual write", "reconciliation", "source of truth", "idempotency", "consistency"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a time you improved the experience for the users or developers of something you built.",
+      "answer": "I built an internal service that other teams integrated against, and early on I watched people repeatedly get stuck on the same two error cases, the messages just said the request failed without saying why. I treated that as a real defect, not cosmetics: I rewrote the error responses to name the exact field and the fix, added examples to the docs, and instrumented which errors people actually hit so I could prioritize. Integration questions to my team dropped noticeably and teams onboarded without needing me. The lesson I carry is that for anything developer-facing, the error message and the docs are part of the product, and empathy for the person integrating is measurable in how fast they succeed.",
+      "keywords": ["user impact", "developer experience", "error messages", "empathy", "star"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Give me an example of when rigor or correctness mattered more than shipping fast.",
+      "answer": "While building a data-load job I found the row counts before and after a join didn't reconcile, a subtle fan-out that would have double-counted a subset of money-related records. It wasn't in scope and fixing it would slip the timeline, but shipping wrong totals wasn't an option, so I stopped and traced it to a join key I'd assumed was unique but wasn't. I fixed the join, added an assertion that fails the pipeline loudly if counts ever diverge again, and backfilled the affected batch before release. We shipped a little later but correct. The habit I keep is reconciling counts and money at every boundary and comparing amounts with a tolerance rather than trusting a step did what I expected.",
+      "keywords": ["rigor", "correctness", "reconciliation", "attention to detail", "star"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes. How does this team think about the trade-off between shipping fast and the correctness bar that money demands, where's the line? What does the on-call and incident culture look like when a payment path degrades? And how close is the loop between engineers and the developers who integrate the API, do you get their feedback directly? I ask because I care most about the person on the other end of the API, and I want to see how that shows up day to day.",
+      "keywords": ["questions for us", "closing", "on-call", "culture"]
+    }
+  ]
+}

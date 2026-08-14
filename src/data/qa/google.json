@@ -1,0 +1,79 @@
+{
+  "company": "Google",
+  "role": "Software Engineer (L3/L4), General",
+  "stack": ["Python", "Java", "C++", "Data Structures", "Algorithms", "Distributed Systems"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "I'm a software engineer with a strong CS foundation and a few years shipping production systems. Day to day I write backend services and care a lot about correctness and clarity, I like problems where the naive solution is obvious but the good one takes a real insight about the data structure. Outside of feature work I've spent time on performance profiling and cleaning up hot paths, which is where a lot of my algorithms and complexity intuition actually comes from rather than just from LeetCode. I'm drawn to Google specifically because the scale forces you to think about complexity for real, an O(n^2) that's fine at a thousand rows falls over at a billion, and I want to work where that distinction matters.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "Coding",
+      "question": "Two Sum, return indices of the two numbers that add up to a target.",
+      "answer": "I'll confirm assumptions first: exactly one solution, can't reuse the same element. Brute force is O(n^2) checking every pair. The insight is a hash map from value to index, for each number I check whether target minus that number is already in the map in a single pass. That's O(n) time and O(n) space. Dry run [2,7,11,15] target 9: at 7, I look up 9-7=2, it's in the map at index 0, so I return [0,1].",
+      "code": "def two_sum(nums, target):\n    seen = {}\n    for i, x in enumerate(nums):\n        need = target - x\n        if need in seen:\n            return [seen[need], i]\n        seen[x] = i\n    return []\n# O(n) time, O(n) space, one pass, O(1) amortized hash lookups.",
+      "lang": "python",
+      "keywords": ["two sum", "hash map", "array", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Number of islands, count connected groups of land in a grid.",
+      "answer": "This is connected components on an implicit graph where each cell is a node and edges connect orthogonally adjacent land cells. I scan the grid; when I hit an unvisited '1' I increment the island count and flood-fill from it, marking every reachable land cell so I don't recount it. I'll use DFS here; BFS with a queue is equally valid and avoids deep recursion on huge grids. Every cell is visited once, so it's O(rows times cols) time. Space is O(rows times cols) worst case for the recursion or queue.",
+      "code": "def num_islands(grid):\n    if not grid:\n        return 0\n    R, C = len(grid), len(grid[0])\n    count = 0\n\n    def dfs(r, c):\n        if r < 0 or r >= R or c < 0 or c >= C or grid[r][c] != '1':\n            return\n        grid[r][c] = '0'\n        dfs(r+1, c); dfs(r-1, c); dfs(r, c+1); dfs(r, c-1)\n\n    for r in range(R):\n        for c in range(C):\n            if grid[r][c] == '1':\n                count += 1\n                dfs(r, c)\n    return count\n# O(R*C) time, O(R*C) space worst case for recursion stack.",
+      "lang": "python",
+      "keywords": ["number of islands", "graph", "dfs", "bfs", "connected components"]
+    },
+    {
+      "section": "Coding",
+      "question": "Longest increasing subsequence, return its length.",
+      "answer": "The clean DP is O(n^2): dp[i] is the LIS length ending at i, computed by scanning all earlier j with nums[j] < nums[i]. But the optimal is O(n log n) with patience sorting, I keep a 'tails' array where tails[k] is the smallest possible tail of an increasing subsequence of length k+1. For each number I binary-search for the first tail that's greater than or equal to it and replace it, or append if it extends everything. The length of tails is the answer. Tails isn't a real subsequence, but its length is provably correct.",
+      "code": "from bisect import bisect_left\n\ndef length_of_lis(nums):\n    tails = []\n    for x in nums:\n        i = bisect_left(tails, x)\n        if i == len(tails):\n            tails.append(x)\n        else:\n            tails[i] = x\n    return len(tails)\n# O(n log n) time, O(n) space, binary search per element.",
+      "lang": "python",
+      "keywords": ["longest increasing subsequence", "dynamic programming", "binary search", "dp"]
+    },
+    {
+      "section": "Algorithms & Complexity",
+      "question": "Walk me through analyzing time and space complexity, how do you reason about it?",
+      "answer": "I count operations as a function of input size, keep the dominant term, and drop constants, that's Big-O for the worst case. I'm careful about hidden costs: string concatenation in a loop, slicing that copies, or a nested lookup that's secretly O(n). For recursion I write the recurrence and either expand it or use the Master Theorem, merge sort is T(n) = 2T(n/2) + O(n) which is O(n log n). For space I count the extra memory beyond input, and I explicitly include the recursion stack depth, which people often forget. When it matters I also separate worst case from amortized, a dynamic array push is O(n) worst case on a resize but O(1) amortized.",
+      "keywords": ["big-o", "complexity", "master theorem", "amortized", "recurrence"]
+    },
+    {
+      "section": "Algorithms & Complexity",
+      "question": "How does a hash map work, and when does it degrade?",
+      "answer": "A hash map applies a hash function to a key to pick a bucket, giving O(1) average insert, lookup, and delete. Collisions are handled by chaining or open addressing. It degrades to O(n) when many keys collide into one bucket, a bad hash function, or adversarial inputs designed to collide. It also has a hidden cost: as it fills past its load factor it resizes and rehashes everything, which is O(n) on that operation but amortizes to O(1). So I'd never rely on hashing inside a tight worst-case guarantee, for that I'd reach for a balanced tree with O(log n) worst case and ordering.",
+      "keywords": ["hash map", "hashing", "collisions", "load factor", "amortized"]
+    },
+    {
+      "section": "Algorithms & Complexity",
+      "question": "When would you use BFS versus DFS on a graph?",
+      "answer": "Both visit every node in O(V + E). I use BFS when I need the shortest path in an unweighted graph or level-order processing, because BFS explores in order of distance from the source. I use DFS for reachability, topological sort, cycle detection, or exploring full paths, anything that's naturally recursive on structure. The practical tradeoff is memory and depth: BFS can hold a whole frontier that's wide, while DFS recursion can blow the stack on a deep graph, in which case I convert it to an explicit stack. For weighted shortest paths neither is right, that's Dijkstra or Bellman-Ford.",
+      "keywords": ["bfs", "dfs", "graph traversal", "shortest path", "topological sort"]
+    },
+    {
+      "section": "System Sense",
+      "question": "How would you design a URL shortener like tinyurl?",
+      "answer": "The core is a mapping from a short key to a long URL. To generate keys I'd base62-encode an auto-incrementing ID or a distributed counter, which gives short, collision-free keys, a hash of the URL works too but you have to handle collisions. Reads massively outnumber writes, so I'd put a cache like a distributed key-value store in front of the database and shard by the short key. For scale I'd keep the write path simple and the read path cache-heavy, add analytics asynchronously off the hot path, and think about key length: seven base62 characters is about 3.5 trillion combinations, which is plenty. I'd close by asking about custom aliases, expiration, and read-versus-write ratio, since those change the design.",
+      "keywords": ["system design", "url shortener", "base62", "caching", "sharding"]
+    },
+    {
+      "section": "Googleyness & Collaboration",
+      "question": "Tell me about a time you worked with a difficult teammate or resolved a conflict.",
+      "answer": "On a service rewrite a teammate and I disagreed on whether to keep the existing schema or redesign it. Rather than argue preferences, I asked what outcome each of us was optimizing for, he was protecting delivery timeline, I was worried about a data model that wouldn't scale. Once that was explicit, we agreed on a small benchmark and a migration risk assessment as the tiebreaker. The data showed the redesign was worth it, but I folded his timeline concern in by phasing the migration so nothing shipped late. We stayed on schedule and got the better schema. The lesson I carry is to separate the person from the position and turn opinions into something measurable.",
+      "keywords": ["conflict", "collaboration", "googleyness", "teamwork", "difficult teammate"]
+    },
+    {
+      "section": "Googleyness & Collaboration",
+      "question": "Tell me about a time you had to learn something quickly or work through ambiguity.",
+      "answer": "I got handed a latency regression in a service I'd never touched, with no clear owner and a vague bug report. I started by reproducing it and getting a real measurement instead of guessing, then profiled to find the hot path, it turned out to be an accidental O(n^2) from a lookup inside a loop that should have been a set. I fixed the immediate issue, but I also wrote up what I'd learned about the service and added a benchmark to the CI so the regression couldn't come back silently. I'm comfortable in ambiguity because I anchor on measurement first and leave the place better documented than I found it.",
+      "keywords": ["ambiguity", "learn quickly", "debugging", "ownership", "googleyness"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes. What does the strongest engineer on your team do differently from a solid one? How does the team decide when to invest in a cleaner abstraction versus shipping the pragmatic version under a deadline? And what's a technical problem the team is stuck on right now? I ask that last one because I'd rather understand the real hard parts than the polished version.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "title": "Download OfferPilot AI for Windows & macOS",
+  "description": "Download OfferPilot AI for Windows and macOS. Screen-share-safe overlay, on-device transcription, coding capture, and company-specific Q&A prep. Free to start.",
+  "keywords": "download OfferPilot AI, interview copilot download, Windows interview assistant, macOS coding copilot, Vosk on-device STT, screen share safe overlay, offline interview prep app",
+  "priority": "0.9",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "OfferPilot AI",
+      "url": "https://kidusb9.github.io/offerpilot-ai/download/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows, macOS",
+      "softwareRequirements": "Windows 10 (2004+) or 11, or macOS; Python 3; optional Vosk small English model and Tesseract",
+      "description": "Python desktop interview and coding copilot with a screen-share-safe overlay, on-device transcription, and company-specific Q&A generation. Runs on Windows and macOS.",
+      "offers": [
+        { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Pro", "price": "19", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Ultimate", "price": "29", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "Lifetime", "price": "299", "priceCurrency": "USD" }
+      ],
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "312" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kidusb9.github.io/offerpilot-ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Download", "item": "https://kidusb9.github.io/offerpilot-ai/download/" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "slug": "blog/ai-coding-copilot-leetcode",
+  "title": "AI Coding Copilot for LeetCode Interviews: A Guide",
+  "description": "A practical guide to using an AI coding copilot for LeetCode interviews: capturing prompts, reading the approach and Big-O, and practicing out loud.",
+  "keywords": "ai coding copilot leetcode, leetcode interview assistant, code copilot ocr, coding interview prep ai, big-o complexity helper, technical screen ai",
+  "ogType": "article",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Use an AI Coding Copilot for LeetCode Interviews",
+      "description": "A practical, ethics-aware guide to using an AI coding copilot during LeetCode-style technical interviews and practice.",
+      "datePublished": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "author": { "@type": "Organization", "name": "OfferPilot AI", "url": "https://kidusb9.github.io/offerpilot-ai/" },
+      "publisher": { "@type": "Organization", "name": "OfferPilot AI", "logo": { "@type": "ImageObject", "url": "https://kidusb9.github.io/offerpilot-ai/assets/icon-180.png" } },
+      "mainEntityOfPage": "https://kidusb9.github.io/offerpilot-ai/blog/ai-coding-copilot-leetcode/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kidusb9.github.io/offerpilot-ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://kidusb9.github.io/offerpilot-ai/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "AI Coding Copilot for LeetCode Interviews", "item": "https://kidusb9.github.io/offerpilot-ai/blog/ai-coding-copilot-leetcode/" }
+      ]
+    }
+  ]
+}

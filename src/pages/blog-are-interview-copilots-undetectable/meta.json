@@ -1,0 +1,29 @@
+{
+  "slug": "blog/are-interview-copilots-undetectable",
+  "title": "Are AI Interview Copilots Undetectable on Zoom & Teams?",
+  "description": "How OS-level screen-capture exclusion hides an interview overlay from Zoom, Teams, and Meet, what it cannot hide, and how to use it responsibly.",
+  "keywords": "are interview copilots undetectable, undetectable on zoom, WDA_EXCLUDEFROMCAPTURE, SetWindowDisplayAffinity, screen capture exclusion, hidden overlay teams meet",
+  "ogType": "article",
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Are AI Interview Copilots Undetectable on Zoom, Teams & Meet?",
+      "description": "An explainer on OS-level screen-capture exclusion, what it does and doesn't hide, and how to use a screen-share-safe overlay responsibly.",
+      "datePublished": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "author": { "@type": "Organization", "name": "OfferPilot AI", "url": "https://kidusb9.github.io/offerpilot-ai/" },
+      "publisher": { "@type": "Organization", "name": "OfferPilot AI", "logo": { "@type": "ImageObject", "url": "https://kidusb9.github.io/offerpilot-ai/assets/icon-180.png" } },
+      "mainEntityOfPage": "https://kidusb9.github.io/offerpilot-ai/blog/are-interview-copilots-undetectable/"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://kidusb9.github.io/offerpilot-ai/" },
+        { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://kidusb9.github.io/offerpilot-ai/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Are AI Interview Copilots Undetectable?", "item": "https://kidusb9.github.io/offerpilot-ai/blog/are-interview-copilots-undetectable/" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "company": "Microsoft",
+  "role": "Software Engineer, C#/.NET",
+  "stack": ["C#", ".NET", "ASP.NET Core", "Azure", "SQL Server", "Data Structures"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "I'm a software engineer who works primarily in C# and .NET, building backend services and APIs. I care about writing code that's correct and maintainable, clean object-oriented design, the right abstraction, and tests that actually protect the behavior. I've spent real time in the CLR internals too, not just the syntax, because understanding value versus reference semantics and how the garbage collector behaves changes how you write hot paths. What draws me to Microsoft is partly the platform, I use .NET and Azure every day, and partly the growth-mindset culture. I like environments that treat 'I don't know that yet' as a starting point rather than a verdict.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "What's the difference between a value type and a reference type in C#?",
+      "answer": "A value type holds its data directly, int, bool, double, structs, enums, so assigning or passing it copies the value. A reference type, classes, arrays, strings, delegates, holds a reference to an object on the managed heap, so assigning copies the reference and two variables can point at the same object. Value types typically live on the stack or inline in their container; reference-type objects live on the heap and are collected by the GC. The practical impact is copy semantics and allocation cost: value types avoid heap allocation but copy by value, which matters for large structs.",
+      "keywords": ["value type", "reference type", "stack", "heap", "clr"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "How does garbage collection work in .NET, and what are generations?",
+      "answer": "The .NET GC is a generational, mark-and-sweep collector for managed memory. It groups objects into generation 0, 1, and 2 on the assumption that most objects die young. New objects start in gen 0, which is collected frequently and cheaply; survivors get promoted to gen 1 and then gen 2, which is collected rarely. This makes the common case fast. It doesn't handle unmanaged resources, though, file handles, sockets, connections, so for those I implement IDisposable and use a using block for deterministic cleanup. Understanding this is why I avoid unnecessary allocations in hot paths: they create gen 0 pressure and more frequent collections.",
+      "keywords": ["garbage collection", "generations", "gc", "clr", "memory"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "Explain async/await. What does it actually do?",
+      "answer": "async/await lets me write asynchronous code that reads sequentially while freeing the thread during I/O waits. When I await an operation that isn't complete, the method returns control to the caller and the thread goes back to the pool instead of blocking; when the awaited work finishes, execution resumes after the await via a state machine the compiler generates. The point is throughput and scalability, for an I/O-bound web service, not blocking a thread on every database or network call means the same thread count serves far more concurrent requests. The classic mistakes are blocking on async with .Result or .Wait(), which can deadlock, and using async for CPU-bound work where it doesn't help.",
+      "keywords": ["async await", "asynchronous", "task", "threads", "scalability"]
+    },
+    {
+      "section": "OOP & SOLID",
+      "question": "Walk me through the SOLID principles.",
+      "answer": "SOLID is five design principles for maintainable OO code. Single Responsibility: a class has one reason to change. Open/Closed: open for extension, closed for modification, add behavior via new types, not by editing existing ones. Liskov Substitution: a subtype must be usable anywhere its base type is expected without breaking correctness. Interface Segregation: prefer several focused interfaces over one fat one so clients don't depend on methods they don't use. Dependency Inversion: depend on abstractions, not concretions, which in .NET usually means constructor-injecting an interface. The through-line is decoupling, each principle reduces how much one change ripples through the codebase, which is what keeps a system testable and safe to modify.",
+      "keywords": ["solid", "oop", "single responsibility", "dependency inversion", "design principles"]
+    },
+    {
+      "section": "OOP & SOLID",
+      "question": "What's the difference between an abstract class and an interface, and when do you use each?",
+      "answer": "An interface is a pure contract, it declares members a type must implement and supports a type implementing many of them, which is how C# does multiple inheritance of behavior. An abstract class can hold state, fields, constructors, and shared implementation, but a class can only inherit one. So I reach for an interface when I'm defining a capability that unrelated types might have, IDisposable, IComparable, and for dependency inversion and mocking in tests. I reach for an abstract base class when several related types share real implementation and a common identity, and I want to provide default behavior. Modern C# blurs this with default interface methods, but the state-versus-contract and single-versus-multiple distinction is still how I decide.",
+      "keywords": ["abstract class", "interface", "inheritance", "oop", "polymorphism"]
+    },
+    {
+      "section": "Coding",
+      "question": "Reverse a singly linked list.",
+      "answer": "I walk the list with three pointers, previous, current, and next. At each node I save the next node, point current's next back at previous, then move previous and current forward by one. When current hits null, previous is the new head. It's O(n) time visiting each node once and O(1) space since I'm rewiring in place. The recursive version is elegant but costs O(n) stack space, so for a long list I prefer the iterative one.",
+      "code": "public ListNode Reverse(ListNode head) {\n    ListNode prev = null, cur = head;\n    while (cur != null) {\n        ListNode next = cur.next;\n        cur.next = prev;\n        prev = cur;\n        cur = next;\n    }\n    return prev;\n}\n// O(n) time, O(1) space, in-place pointer reversal.",
+      "lang": "csharp",
+      "keywords": ["reverse linked list", "linked list", "pointers", "coding", "in place"]
+    },
+    {
+      "section": "Coding",
+      "question": "Check whether a string has balanced parentheses, brackets, and braces.",
+      "answer": "This is a stack problem. I scan the string; on any opening bracket I push its expected closing bracket, and on any closing bracket I check it matches the top of the stack, if the stack is empty or the top doesn't match, it's unbalanced. At the end the string is valid only if the stack is empty, meaning everything was closed. It's O(n) time and O(n) space in the worst case of all opening brackets. Using a map from open to close keeps the matching clean.",
+      "code": "public bool IsBalanced(string s) {\n    var pairs = new Dictionary<char, char> { {'(',')'}, {'[',']'}, {'{','}'} };\n    var stack = new Stack<char>();\n    foreach (char c in s) {\n        if (pairs.ContainsKey(c)) {\n            stack.Push(pairs[c]);\n        } else if (stack.Count == 0 || stack.Pop() != c) {\n            return false;\n        }\n    }\n    return stack.Count == 0;\n}\n// O(n) time, O(n) space worst case.",
+      "lang": "csharp",
+      "keywords": ["balanced parentheses", "stack", "string", "valid brackets", "coding"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "IEnumerable vs IQueryable, what's the difference?",
+      "answer": "Both represent a query; the difference is where it executes. IEnumerable runs in application memory as LINQ-to-Objects, so filtering an IEnumerable that came from the database means you've already pulled every row into memory and you're filtering in C#. IQueryable builds an expression tree that the provider, like EF Core, translates into SQL and runs on the database, so the filter happens at the source and you only pull what you need. The classic performance bug is materializing too early, calling ToList() and then filtering, which turns an efficient server-side query into dragging the whole table across the wire.",
+      "keywords": ["ienumerable", "iqueryable", "linq", "ef core", "deferred execution"]
+    },
+    {
+      "section": "Behavioral (Growth Mindset)",
+      "question": "Tell me about a time you received hard feedback or learned from a failure.",
+      "answer": "In a code review a senior engineer pointed out that my service was hard to test because I'd wired dependencies directly instead of injecting them, my classes were doing too much and were tightly coupled. It stung because I'd been proud of shipping it fast. Instead of getting defensive, I treated it as a gap to close: I read up on dependency inversion, refactored to constructor-injected interfaces, and the test coverage I'd struggled to write suddenly became straightforward. More importantly I carried that lesson forward and started designing for testability from the start. That's the growth mindset to me, feedback is information about how to get better, not a judgment on whether I'm good.",
+      "keywords": ["growth mindset", "feedback", "learning", "failure", "behavioral"]
+    },
+    {
+      "section": "Behavioral (Growth Mindset)",
+      "question": "Tell me about a time you had to learn a new technology quickly.",
+      "answer": "I was assigned to a service that used a message queue and event-driven patterns I hadn't worked with, and the team needed the feature soon. Rather than fake it, I was upfront that it was new to me and made a plan: I read the core docs, built a tiny throwaway prototype to understand delivery guarantees and idempotency, and asked a teammate a couple of targeted questions to check my mental model. Then I built the real feature with safe retries because I understood at-least-once delivery could duplicate messages. It shipped on time and, because I'd actually learned the fundamentals rather than copying a pattern, I could debug it later when something went wrong. I'm comfortable being a beginner in public because that's the fastest way to stop being one.",
+      "keywords": ["learn new technology", "growth mindset", "learning agility", "behavioral"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes. How does the team practice growth mindset in a concrete way, what happens when something ships and fails? How do you balance moving to the newest .NET and Azure capabilities against the stability of what's already in production? And what would make someone really successful on this team in their first six months? I want to understand how the team actually learns, not just how it ships.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

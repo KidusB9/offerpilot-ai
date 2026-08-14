@@ -1,0 +1,59 @@
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/blog/" style="color:var(--muted-2)">Resources</a> · Guide</p>
+      <h1 class="balance">Company-specific interview prep with AI (with examples)</h1>
+      <p class="meta">2026 · ~7 min read · OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Generic interview prep gives you generic answers, and interviewers can hear a generic answer from across the table. The alternative is to build a question bank tailored to the exact company and role you're chasing, then rehearse against it until the answers are yours. Here's the method we use, the same one behind our JPMorgan and Neuberger Berman prep sets, and how to build your own in a few minutes.</p>
+
+      <h2>Why "company-specific" beats "practice questions"</h2>
+      <p>A list of the top 50 behavioral questions is a fine warm-up, but it isn't preparation for <em>this</em> interview. A payments team at a bank probes idempotency, correctness under retries, and how you reason about money moving at scale. An asset-management firm cares about data integrity, latency, and how you handle sensitive information. The behavioral questions are similar everywhere; the framing, the follow-ups, and the technical depth are not. Company-specific prep aligns three things: the company's domain, the exact role's stack, and your own background, so every answer lands as relevant instead of rehearsed.</p>
+
+      <h2>The JPMorgan example</h2>
+      <p>Take a real shape: a Software Engineer II role on a C#/.NET payments team, with a stack of Postgres, Azure DevOps, and an Angular front end. A tailored Q&amp;A bank for that role doesn't just list "tell me about yourself." It generates the answer <em>framed for the role</em>:</p>
+      <blockquote>"My flagship project is a platform we built to replace a third-party vendor system … I owned the offline-first mobile data layer, where every record is written locally first, then reconciled with idempotent server writes so replays never create duplicates. The lesson, directly relevant to payments, is that idempotency and safe retries aren't optional; they're the whole game when the network can't be trusted."</blockquote>
+      <p>Notice what's happening. A generic "hardest project" answer becomes a payments answer, because the generator knows the role cares about correctness under retries and bridges your actual experience to it. The same bank then produces domain fundamentals, "boxing, unboxing, and GC pressure" for the C# screen, and coding questions with complexity follow-ups, all in one place.</p>
+
+      <h2>The Neuberger Berman example</h2>
+      <p>Change the company and the whole emphasis shifts. For an asset-management firm, the same background gets reframed around data integrity, latency, and handling sensitive financial data, because that's what the domain rewards. Your offline-sync story is still the anchor, but now the takeaway you lead with is "essentially 100% data integrity on sync," not throughput. Same you, same project, different lens. That reframing is exactly what a company-specific generator automates, and it's why the JPMorgan set and the Neuberger Berman set read differently even when the résumé behind them is identical.</p>
+
+      <h2>How the Q&amp;A generator builds your bank</h2>
+      <p>The <a href="/interview-copilot/#generator">Q&amp;A generator</a> turns this from a weekend of manual work into a few minutes. You give it three inputs and it builds the bank:</p>
+      <div class="steps" style="margin:22px 0">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>The company and role</h3><p>Type where you're interviewing and the exact title. This sets the domain lens, payments, asset management, cloud infra, and the seniority bar the questions are pitched at.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Your résumé</h3><p>The generator grounds answers in your real projects, so the output sounds like you and cites work you can actually defend under follow-up questions, not invented achievements.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>The stack</h3><p>Add the technologies in the job description and it produces the fundamentals and coding questions specific to them, each with a model answer and, where relevant, complexity.</p></div></div>
+      </div>
+      <p>The result is a structured bank across the sections that actually appear in a loop: opening questions, behavioral STAR stories, résumé deep-dives, domain fundamentals, and coding with complexity. Every answer is written in the first person, in your voice, so rehearsing it feels like practicing your own words rather than memorizing a script.</p>
+
+      <h2>How to rehearse against it</h2>
+      <p>The bank is the raw material; the practice is what wins the offer.</p>
+      <ul>
+        <li><strong>Read each answer once, then close it and say it out loud.</strong> If you can't reproduce the shape of the answer without looking, you don't know it yet.</li>
+        <li><strong>Pressure-test the follow-ups.</strong> For every STAR story, ask yourself "and then what broke?" A tailored answer should survive two or three layers of "why." If it doesn't, you've found a gap to fill before the interview, not during it.</li>
+        <li><strong>Trim to speakable length.</strong> A written answer is often too long to say. Cut each to the two or three sentences that carry the point, and let the follow-up questions pull the detail out.</li>
+      </ul>
+
+      <h2>Where the copilot fits</h2>
+      <p>Once the bank exists, it does double duty. Before the interview it's your rehearsal script. During a live round, the <a href="/interview-copilot/">Interview Copilot</a> retrieves from that same bank to ground its real-time answers, so what surfaces on screen is the answer you already practiced, grounded in your résumé and framed for the company, not a generic guess from a cold model. That grounding is the difference between a copilot that helps and one that hands you something you'd never actually say. It's also the feature that, in our <a href="/blog/best-ai-interview-copilot-2026/">2026 comparison</a>, separates the field.</p>
+
+      <p>Keep it honest: the generator writes from your real experience, and it's on you to only claim what you can defend. Prep that's grounded in the truth is the kind that turns into an offer you keep. See how it works on the <a href="/interview-copilot/">Interview Copilot</a> page, then <a href="/interview-copilot/#generator">generate a sample set</a> for a company you're targeting.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Build your company's Q&amp;A bank today.</h2>
+      <p class="lede" style="margin:0 auto 8px">Pick a company and role, ground it in your résumé, and rehearse against the real thing.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a sample set<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See pricing</a>
+      </div>
+    </div>
+  </div>
+</section>

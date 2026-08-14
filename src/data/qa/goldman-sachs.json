@@ -1,0 +1,77 @@
+{
+  "company": "Goldman Sachs",
+  "role": "Software Engineer / Analyst, Engineering Division",
+  "stack": ["Java", "C++", "Python", "SQL", "Data Structures", "Systems"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself and why Goldman Sachs Engineering.",
+      "answer": "I'm a software engineer with a Computer Science degree and a 4.0 GPA, and for the past two-plus years I've built enterprise systems end to end, backend services, data pipelines, and CI/CD, with a real focus on correctness and reliability. What draws me to Goldman Engineering is that it's a technology firm as much as a bank: engineers own systems that price, book, and risk-manage real money, so latency, correctness, and resiliency actually matter. I like that the feedback loop is short and the stakes are high, and I want to grow as an engineer surrounded by people who hold that bar.",
+      "keywords": ["tell me about yourself", "why goldman", "intro", "engineering division"]
+    },
+    {
+      "section": "CS Fundamentals",
+      "question": "Walk me through the common collision-resolution strategies in a hash table and their trade-offs.",
+      "answer": "The two main families are separate chaining and open addressing. Chaining stores a list (or tree) of entries per bucket, so collisions just extend the bucket, simple, tolerant of high load factors, but with pointer-chasing and extra memory per node. Open addressing keeps everything in the array and probes for the next free slot, linear probing, quadratic probing, or double hashing. Open addressing is cache-friendlier and has no per-node allocation, but it degrades badly as the load factor approaches one and needs tombstones for deletion. Java's HashMap uses chaining and converts long buckets to trees to bound worst-case lookups at O(log n); many high-performance C++ maps prefer open addressing for cache locality. The right choice depends on load factor, deletion frequency, and how much you care about cache behavior.",
+      "keywords": ["hash table", "chaining", "open addressing", "load factor", "cache"]
+    },
+    {
+      "section": "CS Fundamentals",
+      "question": "In Java, what is the difference between the stack and the heap, and how does garbage collection relate?",
+      "answer": "Each thread has its own stack holding method frames, local variables, operands, and return addresses, which unwinds automatically as methods return. The heap is shared across threads and holds all objects; local variables that are references live on the stack but point to objects on the heap. Primitives declared locally live on the stack. Garbage collection only concerns the heap: the JVM reclaims objects that are no longer reachable from any GC root, using generational collectors because most objects die young. The practical implications are that allocation pressure and object lifetime drive GC pauses, and that you never manually free, you make objects unreachable.",
+      "keywords": ["stack", "heap", "garbage collection", "jvm", "gc roots"]
+    },
+    {
+      "section": "Finance / Markets Awareness",
+      "question": "You're building a system that stores tick data and computes a moving VWAP. What correctness and design concerns come up?",
+      "answer": "VWAP is volume-weighted average price, the sum of price times volume over the sum of volume across a window. First, correctness of the numbers: I'd use exact arithmetic or integer sub-units for money to avoid float drift, and define the window precisely, is it a rolling time window or a session-to-date accumulation. Second, ordering and late data: ticks can arrive out of order, so I key on exchange timestamp and decide policy for late or corrected prints rather than silently including them. Third, throughput: tick rates are high, so I'd keep the running numerator and denominator incrementally instead of recomputing, and be careful about resetting cleanly at session boundaries. The theme is that in markets data the boring correctness details, ordering, restatements, exact money math, matter more than any clever algorithm.",
+      "keywords": ["vwap", "tick data", "markets", "correctness", "rolling window"]
+    },
+    {
+      "section": "Brainteaser / Probability",
+      "question": "You roll a fair six-sided die repeatedly and sum the values until the running total is 4 or more. What is the probability the final total is exactly 4?",
+      "answer": "I want the probability the sum lands on exactly 4 at the moment it first reaches 4 or more. Let me condition on the first roll. If the first roll is 4, 5, or 6, we stop immediately and only 4 gives a total of 4, contributing probability 1/6 for rolling a 4. If the first roll is 1, 2, or 3, we continue and need the remaining rolls to make up exactly 4. Define f(n) as the probability of ever hitting an exact running total of n on the way up. Hitting 4 exactly means we land on it. Working it cleanly: f(1)=1/6; f(2)=1/6 + (1/6)f(1) = 7/36; f(3)=1/6 + (1/6)(f(1)+f(2)) = 49/216; f(4)=1/6 + (1/6)(f(1)+f(2)+f(3)) = 343/1296. So the probability is 343/1296, which is about 0.2646. The clean pattern here is f(n) = (7/6)^(n-1) / 6, and this is the classic renewal-process answer.",
+      "keywords": ["probability", "brainteaser", "dice", "renewal", "conditioning"]
+    },
+    {
+      "section": "Coding",
+      "question": "Given an array of daily stock prices, find the maximum profit from a single buy-then-sell.",
+      "answer": "I'll restate it: I buy on one day and sell on a strictly later day, and I want the maximum profit, or zero if no profit is possible. The brute force compares every pair, which is O(n squared). The insight is a single pass tracking the minimum price seen so far: at each day the best sale is today's price minus the lowest price before it, so I keep a running minimum and a running best profit. I'd dry-run [7,1,5,3,6,4]: min tracks 7 then 1, best profit reaches 6 minus 1 equals 5. Edge cases: a strictly decreasing array returns 0, and a single element returns 0.",
+      "code": "public int maxProfit(int[] prices) {\n    int minPrice = Integer.MAX_VALUE;\n    int best = 0;\n    for (int p : prices) {\n        if (p < minPrice) minPrice = p;\n        else if (p - minPrice > best) best = p - minPrice;\n    }\n    return best;\n}\n// O(n) time, O(1) space, one pass tracking the running minimum.",
+      "lang": "java",
+      "keywords": ["max profit", "stock", "one pass", "array", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Determine whether a string of brackets is balanced, supporting (), [], and {}.",
+      "answer": "I'll clarify the alphabet, three bracket types, and that any non-bracket character is ignored or invalid; I'll assume the string is only brackets. The natural structure is a stack: push every opening bracket, and on a closing bracket check the top matches the expected opener, popping it. If the stack is empty on a close, or a close mismatches, it's unbalanced; at the end the stack must be empty. I'd dry-run '([{}])' as balanced and '([)]' as unbalanced because the ']' would find '(' on top. That's O(n) time and O(n) space in the worst case of all openers.",
+      "code": "public boolean isBalanced(String s) {\n    Deque<Character> stack = new ArrayDeque<>();\n    Map<Character, Character> pairs = Map.of(')', '(', ']', '[', '}', '{');\n    for (char c : s.toCharArray()) {\n        if (c == '(' || c == '[' || c == '{') {\n            stack.push(c);\n        } else if (pairs.containsKey(c)) {\n            if (stack.isEmpty() || stack.pop() != pairs.get(c)) return false;\n        }\n    }\n    return stack.isEmpty();\n}\n// O(n) time, O(n) worst-case space.",
+      "lang": "java",
+      "keywords": ["balanced brackets", "stack", "parsing", "matching", "complexity"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a time you had to deliver under significant time pressure with a team.",
+      "answer": "During a platform rollout we hit a hard deadline when a downstream integration broke a week before go-live. As the lead, I triaged fast: I split the team so two people isolated the failing integration while the rest kept the release path moving, and I set short daily check-ins so blockers surfaced within hours instead of days. I made the tough call to ship a narrower but correct scope rather than a wider fragile one, and I communicated that trade-off to stakeholders honestly. We hit the date with the reduced scope, then folded the rest in the following sprint. The lesson was that under pressure, clear ownership and honest scope trade-offs beat heroics.",
+      "keywords": ["time pressure", "teamwork", "deadline", "ownership", "star"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Give me an example of when attention to detail prevented a serious problem.",
+      "answer": "While reviewing a data-load job I noticed the row counts before and after a join didn't reconcile, a small fan-out that would have silently double-counted a subset of records downstream. It wasn't in the ticket, but the numbers didn't add up, so I stopped and traced it to a many-to-many join key that should have been one-to-one. I fixed the join, added a row-count assertion to the pipeline so any future fan-out fails loudly, and backfilled the affected batch. Catching it before it reached a report saved us from publishing wrong totals. The habit I keep is reconciling counts and money at every boundary rather than trusting that a join did what I expected.",
+      "keywords": ["attention to detail", "reconciliation", "data quality", "row counts", "star"]
+    },
+    {
+      "section": "System Design",
+      "question": "How would you design a rate limiter for an internal API that must survive many application instances?",
+      "answer": "I'd clarify the limit, say N requests per key per window, and whether it must be strict or approximate. The core is a token-bucket or sliding-window counter keyed per client. Because there are many instances, the counter state can't live in one process; I'd centralize it in a fast shared store like Redis, using atomic increment-and-expire or a Lua script so the check-and-decrement is race-free across instances. Token bucket gives smooth bursting; a sliding-window log is more precise but heavier. I'd fail open or closed deliberately depending on whether availability or protection matters more if the store is unreachable, and I'd return a clear 429 with a retry-after header. The key insight is that correctness under concurrency comes from making the read-modify-write atomic at the shared store.",
+      "keywords": ["rate limiter", "token bucket", "redis", "distributed", "concurrency"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes. What does a strong first year look like for an analyst on this team, and how is impact measured? What's the hardest correctness or latency problem the desk's systems are dealing with right now? And how much do engineers interact directly with the traders or the business they support? I ask because I do my best work close to the people who depend on the system, where I can see whether the numbers are right.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

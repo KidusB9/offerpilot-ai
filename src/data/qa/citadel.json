@@ -1,0 +1,73 @@
+{
+  "company": "Citadel",
+  "role": "Software Engineer, Low-Latency / High-Frequency Trading",
+  "stack": ["C++", "Linux", "Concurrency", "Networking", "Algorithms", "Probability"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself and why low-latency engineering at Citadel.",
+      "answer": "I'm a software engineer with a Computer Science degree and a 4.0 GPA, and I've spent the last two-plus years building performance-sensitive backend systems, profiling hot paths, and caring about the details that actually move latency, allocation, memory layout, and lock contention. Citadel appeals to me because low-latency trading is one of the few places where microseconds are a real product feature and the engineering has nowhere to hide: the machine, the cache, and the network all show up in your numbers. I want to work where performance is measured rigorously and where being right and fast are the same goal.",
+      "keywords": ["tell me about yourself", "why citadel", "low latency", "hft", "intro"]
+    },
+    {
+      "section": "Systems / Performance",
+      "question": "Why does cache locality matter so much on the hot path, and how do you design for it?",
+      "answer": "A last-level cache miss to main memory costs on the order of a hundred nanoseconds, while an L1 hit is a nanosecond or two, so on a latency-critical path, cache behavior dominates the algorithm's constant factors. I design for it by keeping data contiguous and accessed sequentially so the hardware prefetcher wins: prefer a struct-of-arrays layout over array-of-structs when I stream one field, size hot structures to fit in a cache line, and avoid pointer-chasing data structures like linked lists on the hot path in favor of flat arrays or open-addressed maps. I also watch for false sharing, two threads writing different fields that share a 64-byte line, and pad or align to separate them. The mental model is that Big-O tells you scaling, but on the hot path the cache tells you the actual latency.",
+      "keywords": ["cache locality", "cache line", "prefetch", "false sharing", "struct of arrays"]
+    },
+    {
+      "section": "Concurrency",
+      "question": "Explain the basics of a lock-free single-producer single-consumer ring buffer and why it's fast.",
+      "answer": "An SPSC ring buffer is a fixed-size array with a head index owned by the consumer and a tail index owned by the producer. Because exactly one thread writes each index, you never need a mutex, you use atomic loads and stores with acquire/release ordering so the reader sees the data before it sees the updated index. The producer publishes an element by writing the slot, then doing a release store to advance the tail; the consumer does an acquire load of the tail, reads the slot, then release-stores the head. It's fast because there's no kernel involvement, no contention on a lock, and no blocking, the only synchronization is a couple of atomics with the weakest ordering that's still correct. To avoid false sharing you put head and tail on separate cache lines. It only works cleanly for one producer and one consumer; multi-producer needs a CAS loop and is trickier.",
+      "keywords": ["lock-free", "ring buffer", "spsc", "memory ordering", "acquire release"]
+    },
+    {
+      "section": "Systems / Performance",
+      "question": "What causes latency jitter in a C++ trading process, and how do you keep the tail latency low?",
+      "answer": "Tail latency is usually not the algorithm, it's the system underneath. The big sources are dynamic memory allocation causing page faults and lock contention in the allocator, the OS scheduler migrating or preempting your thread, page faults from cold memory, garbage in the branch predictor and cache after a context switch, and NUMA effects where memory is remote to the core. To fight jitter I pre-allocate and reuse memory pools so there's no malloc on the hot path, pin threads to isolated cores and keep interrupts off them, pre-fault and lock memory with mlock, keep data NUMA-local, and avoid system calls and logging inline, I hand work off to a separate thread. I measure the full latency distribution, not the average, because in trading the 99.9th percentile is what actually costs money.",
+      "keywords": ["jitter", "tail latency", "memory pool", "core pinning", "numa"]
+    },
+    {
+      "section": "Probability / Quant",
+      "question": "A random variable is the number of fair coin flips until you see two heads in a row. What is its expected value?",
+      "answer": "I'll set up states by how much progress I've made toward two consecutive heads. Let E0 be the expected additional flips from a state with no progress, and E1 from a state where the last flip was a head. From E0: I always flip once; with probability one-half I get a head and move to E1, with one-half a tail and stay at E0. So E0 = 1 + (1/2)E1 + (1/2)E0. From E1: I flip once; with one-half I get a second head and finish, with one-half a tail and reset to E0. So E1 = 1 + (1/2)(0) + (1/2)E0. Substituting the second into the first: E0 = 1 + (1/2)(1 + (1/2)E0) + (1/2)E0, which gives E0 = 1.5 + (3/4)E0, so (1/4)E0 = 1.5 and E0 = 6. The expected number of flips is 6. The general result for k heads in a row on a fair coin is 2^(k+1) minus 2, which checks out at 6 for k equals 2.",
+      "keywords": ["probability", "expected value", "markov chain", "coin flips", "states"]
+    },
+    {
+      "section": "Algorithms / Coding",
+      "question": "Find the length of the longest substring without repeating characters.",
+      "answer": "I'll restate it: the longest contiguous run with all distinct characters. The brute force checks every substring for uniqueness, which is O(n squared) or worse. The efficient approach is a sliding window with a last-seen index per character: I move a right pointer across the string, and when I see a character whose last occurrence is inside the current window, I jump the left pointer to just past that occurrence. That keeps the window always valid in a single pass. I'd dry-run 'abcabcbb': the window grows to 'abc', then at the second 'a' left jumps forward, and the best length stays 3. It's O(n) time and O(min(n, alphabet)) space.",
+      "code": "int longestUnique(const std::string& s) {\n    std::array<int, 256> last;\n    last.fill(-1);\n    int left = 0, best = 0;\n    for (int right = 0; right < (int)s.size(); ++right) {\n        unsigned char c = s[right];\n        if (last[c] >= left) left = last[c] + 1;\n        last[c] = right;\n        best = std::max(best, right - left + 1);\n    }\n    return best;\n}\n// O(n) time, O(1) space (fixed 256-entry table).",
+      "lang": "cpp",
+      "keywords": ["sliding window", "longest substring", "two pointers", "hashing", "complexity"]
+    },
+    {
+      "section": "Algorithms / Coding",
+      "question": "Given a stream of numbers, design a structure that returns the running median efficiently.",
+      "answer": "I'll clarify that numbers arrive one at a time and I need the median after each insertion. Sorting on every query is too slow. The classic structure is two heaps: a max-heap holding the lower half and a min-heap holding the upper half, kept balanced in size by at most one. On insert I push to the correct heap by comparing against the max-heap's top, then rebalance so the sizes differ by at most one. The median is the top of the larger heap, or the average of the two tops when they're equal in size. Insertion is O(log n) because of the heap operations, and reading the median is O(1). I'd verify with 1, then 2 giving 1.5, then 3 giving 2.",
+      "code": "class RunningMedian {\n    std::priority_queue<int> lo;                                   // max-heap, lower half\n    std::priority_queue<int, std::vector<int>, std::greater<>> hi; // min-heap, upper half\npublic:\n    void add(int x) {\n        if (lo.empty() || x <= lo.top()) lo.push(x); else hi.push(x);\n        if (lo.size() > hi.size() + 1) { hi.push(lo.top()); lo.pop(); }\n        else if (hi.size() > lo.size()) { lo.push(hi.top()); hi.pop(); }\n    }\n    double median() const {\n        if (lo.size() == hi.size()) return (lo.top() + hi.top()) / 2.0;\n        return lo.top();\n    }\n};\n// add: O(log n), median: O(1), space: O(n).",
+      "lang": "cpp",
+      "keywords": ["running median", "two heaps", "priority queue", "streaming", "complexity"]
+    },
+    {
+      "section": "Algorithms / Coding",
+      "question": "Detect whether a directed graph has a cycle.",
+      "answer": "I'll clarify it's a directed graph, so I need directed-cycle detection, not just connectivity. I use a DFS with three colors per node: white for unvisited, gray for on the current recursion stack, and black for fully explored. If the DFS ever reaches a gray node, that's a back edge and therefore a cycle. Nodes finished without hitting gray become black. This is O(V + E) time and O(V) space for the color array and recursion stack. I'd note the iterative version if recursion depth is a concern on large graphs. As a sanity check, a simple two-node cycle A to B to A trips the gray check immediately.",
+      "code": "bool hasCycle(int n, const std::vector<std::vector<int>>& adj) {\n    std::vector<int> color(n, 0); // 0 white, 1 gray, 2 black\n    std::function<bool(int)> dfs = [&](int u) {\n        color[u] = 1;\n        for (int v : adj[u]) {\n            if (color[v] == 1) return true;           // back edge\n            if (color[v] == 0 && dfs(v)) return true;\n        }\n        color[u] = 2;\n        return false;\n    };\n    for (int i = 0; i < n; ++i)\n        if (color[i] == 0 && dfs(i)) return true;\n    return false;\n}\n// O(V + E) time, O(V) space.",
+      "lang": "cpp",
+      "keywords": ["directed cycle", "dfs", "graph", "back edge", "complexity"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a performance problem you profiled and fixed.",
+      "answer": "A processing service had a latency spike under load that averages hid. Rather than guess, I profiled it and looked at the tail, not the mean, and found the hot path was allocating temporary objects per request, driving allocator contention and cache misses. I replaced the per-request allocations with a reusable pre-allocated buffer pool, moved the logging off the hot path onto a background thread, and re-measured the full latency distribution. The 99th percentile dropped substantially and, just as important, became stable rather than spiky. The discipline I keep from that is to measure the distribution and let the profiler tell me where the time goes instead of trusting intuition.",
+      "keywords": ["profiling", "latency", "allocation", "tail latency", "star"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Yes. Where does this team's latency budget actually get spent today, is the bottleneck the network, the parsing, or the strategy logic? How do you measure and regression-test latency so a change that adds a microsecond gets caught? And how closely do engineers work with the researchers and traders whose signals run on the system? I ask because I want to be somewhere latency is measured rigorously, not just talked about.",
+      "keywords": ["questions for us", "closing", "latency budget", "culture"]
+    }
+  ]
+}

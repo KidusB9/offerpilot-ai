@@ -1,0 +1,160 @@
+<!-- ============================ HERO ============================ -->
+<section class="section hero">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow"><span class="dot dot--live"></span> Desktop app · Windows &amp; macOS</p>
+      <h1 class="balance">Download <span class="grad-text">OfferPilot</span> for Windows and macOS.</h1>
+      <p class="lede">One download, a few minutes to set up. You get on-device transcription, a screen-share-safe overlay, and hotkey coding capture, all grounded in the company-specific Q&amp;A you generate on the web. This is a preparation and accessibility tool, meant to be used within your assessment's rules.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/assets/offerpilot-desktop.zip" download>Download OfferPilot<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See pricing</a>
+      </div>
+      <p class="hero__note"><span class="dot dot--live"></span> Free tier: 20 min/day, no card required. Buy a plan and we email a receipt that unlocks the same download.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ OS CARDS ============================ -->
+<section class="section section--tight" id="platforms">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Two platforms</p>
+      <h2 class="balance">Full stealth on Windows, a rehearsal build on macOS.</h2>
+      <p class="lede">The same download runs on both. What differs is how deep the overlay hides, since screen-capture exclusion is a Windows-only OS capability.</p>
+    </div>
+    <div class="grid grid--2">
+      <div class="card reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5.5 10.5 4v7H3V5.5ZM10.5 13H3v5.5L10.5 20v-7ZM12.5 3.7 21 2v9h-8.5V3.7ZM21 13h-8.5v8.3L21 22v-9Z"/></svg>
+        </div>
+        <h3>Windows 10 (2004+) &amp; 11</h3>
+        <p>The full experience. The overlay opts out of screen capture at the OS level with <span class="mono" style="color:var(--cyan)">WDA_EXCLUDEFROMCAPTURE</span>, so it renders on your monitor but is composited out of every frame Zoom, Teams, Meet, OBS, and PrintScreen record. Hotkey-driven coding capture with OCR is fully supported.</p>
+        <ul class="plan__list" style="list-style:none;padding:0;margin:16px 0 20px;display:grid;gap:10px">
+          <li class="muted">✦ Full screen-share invisibility, self-healing on a timer</li>
+          <li class="muted">✦ Coding-screen capture and OCR with a global hotkey</li>
+          <li class="muted">✦ Stays out of the taskbar and Alt-Tab</li>
+        </ul>
+        <a class="btn btn--solid btn--block" href="/assets/offerpilot-desktop.zip" download>Download OfferPilot<span class="btn__arr" aria-hidden="true">→</span></a>
+      </div>
+      <div class="card reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 7c.4-2.2 2-3.8 4-4-.1 2-1.4 3.6-4 4Z"/><path d="M16.5 12.5c0-2.3 1.8-3.4 1.9-3.5-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.6.8-3.3.8-.7 0-1.8-.8-2.9-.8-1.5 0-2.9.9-3.6 2.2-1.6 2.7-.4 6.8 1.1 9 .7 1.1 1.6 2.3 2.7 2.3 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.8.7 1.2 0 1.9-1.1 2.6-2.2.5-.8.9-1.6 1.1-2.3-2.9-1.1-2.9-3.6 0-3.8Z"/></svg>
+        </div>
+        <h3>macOS</h3>
+        <p>The interview copilot and the company Q&amp;A generator run on macOS today. Live on-device transcription streams a speakable answer grounded in your résumé and the company you picked. Screen-capture exclusion is a Windows-only OS capability, so treat macOS as a preparation and rehearsal build.</p>
+        <ul class="plan__list" style="list-style:none;padding:0;margin:16px 0 20px;display:grid;gap:10px">
+          <li class="muted">✦ Live interview copilot with on-device STT</li>
+          <li class="muted">✦ Company-specific Q&amp;A, generated for your role</li>
+          <li class="muted">✦ Local-model option for a fully offline path</li>
+        </ul>
+        <a class="btn btn--solid btn--block" href="/assets/offerpilot-desktop.zip" download>Download OfferPilot<span class="btn__arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REQUIREMENTS & QUICK START ============================ -->
+<section class="section" id="quickstart">
+  <div class="wrap split">
+    <div class="split__body reveal">
+      <p class="eyebrow eyebrow--num" data-num="/ 03">Requirements &amp; quick start</p>
+      <h2 class="balance">A Python desktop app. Three steps to running.</h2>
+      <p class="lede">OfferPilot ships as a Python desktop app so transcription and models can run locally. You need Python 3 installed. Nothing about your audio or screen leaves the machine once you are set up.</p>
+      <div class="steps mt">
+        <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Unzip the download</h3><p>Extract <span class="mono" style="color:var(--cyan)">offerpilot-desktop.zip</span> anywhere you like, then open a terminal in that folder.</p></div></div>
+        <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Install dependencies</h3><p>Install the Python requirements with <span class="mono" style="color:var(--cyan)">pip install -r requirements.txt</span>.</p></div></div>
+        <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Add your keys</h3><p>Copy <span class="mono" style="color:var(--cyan)">offerpilot_keys.example.json</span> to <span class="mono" style="color:var(--cyan)">offerpilot_keys.json</span> and paste in your keys. Launch with <span class="mono" style="color:var(--cyan)">python app.py</span>.</p></div></div>
+      </div>
+      <p class="muted mt-s">Optional, for the fully offline path: drop the Vosk small English model into <span class="mono" style="color:var(--cyan)">./models/</span> for on-device speech-to-text, and install Tesseract to OCR captured coding screens.</p>
+    </div>
+    <div class="split__media reveal">
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="hud__bar"><div class="hud__dots"><i></i><i></i><i></i></div><span class="hud__title">quick start · terminal</span><span class="hud__shield" style="margin-left:auto">🛡 on-device</span></div>
+        <pre class="code" style="margin:0;border:none;border-radius:0"><span class="cm"># 1 · unzip and open a terminal here</span>
+unzip offerpilot-desktop.zip
+
+<span class="cm"># 2 · install Python dependencies</span>
+pip install -r requirements.txt
+
+<span class="cm"># 3 · add keys, then run</span>
+cp offerpilot_keys.example.json <span class="st">offerpilot_keys.json</span>
+python app.py
+
+<span class="cm"># optional · offline STT + OCR</span>
+<span class="st">vosk-model-small-en-us</span>  → ./models/
+tesseract  → coding-screen OCR</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HOTKEYS ============================ -->
+<section class="section section--tight" id="hotkeys">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Hotkeys reference</p>
+      <h2>Drive the overlay without touching the mouse.</h2>
+      <p class="lede">Every action is a global shortcut, so you stay in the call and the overlay stays out of sight.</p>
+    </div>
+    <div class="grid grid--4">
+      <div class="card reveal">
+        <p class="mono" style="font-size:15px;color:var(--cyan)">Ctrl · Alt · S</p>
+        <p class="mt-s">Capture the coding screen and OCR the prompt.</p>
+      </div>
+      <div class="card reveal">
+        <p class="mono" style="font-size:15px;color:var(--cyan)">M</p>
+        <p class="mt-s">Pause and resume live transcription.</p>
+      </div>
+      <div class="card reveal">
+        <p class="mono" style="font-size:15px;color:var(--cyan)">P</p>
+        <p class="mt-s">Ghost mode. Dim the overlay instantly.</p>
+      </div>
+      <div class="card reveal">
+        <p class="mono" style="font-size:15px;color:var(--cyan)">Ctrl · Alt · H</p>
+        <p class="mt-s">Hide the overlay entirely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COMPANY Q&A NOTE ============================ -->
+<section class="section" id="companyqa">
+  <div class="wrap split split--rev">
+    <div class="split__media reveal">
+      <div class="card">
+        <p class="mono" style="font-size:11px;letter-spacing:.14em;color:var(--muted-2);text-transform:uppercase">generated on the web</p>
+        <h3 style="margin:8px 0 14px">company-qa.json</h3>
+        <pre class="code" style="margin:0"><span class="kw">{</span>
+  <span class="st">"company"</span>: <span class="st">"JPMorgan"</span>,
+  <span class="st">"role"</span>: <span class="st">"SE II"</span>,
+  <span class="st">"questions"</span>: <span class="kw">[</span> … <span class="kw">]</span>
+<span class="kw">}</span></pre>
+      </div>
+    </div>
+    <div class="split__body reveal">
+      <p class="eyebrow">Bring your prep into the app</p>
+      <h2 class="balance">Generate a company Q&amp;A, then open the JSON in the app.</h2>
+      <p class="lede">The company-specific Q&amp;A generator runs on the web and produces a JSON file: behavioral, fundamentals, and coding questions with model answers in your voice. Save it, then open it in the desktop app so the copilot grounds every live answer in that set.</p>
+      <div class="hero__cta mt">
+        <a class="btn btn--ghost" href="/interview-copilot/#generator">Generate a Q&amp;A set<span class="btn__arr" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <p class="eyebrow" style="justify-content:center"><span class="dot dot--live"></span> Prep tool · use within your assessment's rules</p>
+      <h2 class="balance">Install it. Rehearse. Walk in ready.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free to start with 20 minutes a day. Pro is $19/mo, Ultimate $29/mo unlimited, and Lifetime is $299 once. Every paid plan emails a receipt and unlocks the same download.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" data-plan="free" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/scripts/checkout.js" defer></script>
