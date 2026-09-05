@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Microsoft Software Engineer, C#/.NET Interview Questions and Answers (2026)</title>
+  <meta name="description" content="12 real Microsoft Software Engineer, C#/.NET interview questions with model answers, covering opening, c#/.net fundamentals, oop & solid, coding.">
+  <meta name="keywords" content="Microsoft interview questions, Microsoft Software Engineer, C#/.NET interview, Microsoft interview questions and answers, Microsoft behavioral interview questions, Microsoft technical interview prep">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/interview-questions/microsoft/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Microsoft Software Engineer, C#/.NET Interview Questions and Answers (2026)">
+  <meta property="og:description" content="12 real Microsoft Software Engineer, C#/.NET interview questions with model answers, covering opening, c#/.net fundamentals, oop & solid, coding.">
+  <meta property="og:url" content="https://offerpilotai.ink/interview-questions/microsoft/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/interview-questions-microsoft.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Microsoft Software Engineer, C#/.NET Interview Questions and Answers (2026)">
+  <meta name="twitter:description" content="12 real Microsoft Software Engineer, C#/.NET interview questions with model answers, covering opening, c#/.net fundamentals, oop & solid, coding.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/interview-questions-microsoft.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Microsoft Software Engineer, C#/.NET Interview Questions and Answers","url":"https://offerpilotai.ink/interview-questions/microsoft/","mainEntity":[{"@type":"Question","name":"Tell me about yourself.","acceptedAnswer":{"@type":"Answer","text":"Give a concise arc centered on C#/.NET backend work and a genuine care for code that is correct and maintainable, clean OO design, the right abstraction, and tests that protect behavior. Signal depth by mentioning you understand CLR internals, value versus reference semantics and GC behavior, not just syntax, because that changes how you write hot paths. Close on what draws you to Microsoft, the .NET and Azure platform plus a growth-mindset culture that treats not knowing something yet as a starting point."}},{"@type":"Question","name":"What's the difference between a value type and a reference type in C#?","acceptedAnswer":{"@type":"Answer","text":"Define it precisely: a value type holds its data directly so assigning or passing copies the value, while a reference type holds a reference to a heap object so assignment copies the reference and two variables can alias the same object. Note where each lives, value types on the stack or inline, reference-type objects on the GC-managed heap. Close on the practical impact, copy semantics and allocation cost, which especially matters for large structs."}},{"@type":"Question","name":"How does garbage collection work in .NET, and what are generations?","acceptedAnswer":{"@type":"Answer","text":"Explain the .NET GC as a generational mark-and-sweep collector that groups objects into gen 0, 1, and 2 on the assumption that most objects die young, so gen 0 is collected often and cheaply and survivors get promoted. Note it does not handle unmanaged resources, so for file handles, sockets, and connections you implement IDisposable and use a using block for deterministic cleanup. Close on why this shapes your code: avoiding unnecessary allocations in hot paths reduces gen 0 pressure and collection frequency."}},{"@type":"Question","name":"Explain async/await. What does it actually do?","acceptedAnswer":{"@type":"Answer","text":"Explain that async/await lets you write asynchronous code that reads sequentially while freeing the thread during I/O waits: awaiting an incomplete operation returns control to the caller and the thread goes back to the pool, then execution resumes after the await via a compiler-generated state machine. Make the point that this is about throughput and scalability for I/O-bound services, the same thread count serves far more concurrent requests. Call out the classic mistakes, blocking on async with .Result or .Wait() which can deadlock, and using async for CPU-bound work where it does not help."}},{"@type":"Question","name":"Walk me through the SOLID principles.","acceptedAnswer":{"@type":"Answer","text":"Name and define each crisply: Single Responsibility, one reason to change; Open/Closed, extend via new types rather than editing existing ones; Liskov Substitution, a subtype is usable anywhere its base is; Interface Segregation, several focused interfaces over one fat one; and Dependency Inversion, depend on abstractions, usually constructor-injected interfaces in .NET. Tie them together with the through-line, decoupling, each principle reduces how far one change ripples, which keeps a system testable and safe to modify."}},{"@type":"Question","name":"What's the difference between an abstract class and an interface, and when do you use each?","acceptedAnswer":{"@type":"Answer","text":"Contrast them: an interface is a pure contract that a type can implement many of, giving multiple inheritance of behavior, while an abstract class can hold state, constructors, and shared implementation but only one can be inherited. Say when you reach for each, an interface for a capability unrelated types might have and for dependency inversion and mocking, an abstract base when related types share real implementation and a common identity. Acknowledge default interface methods blur this, but the state-versus-contract and single-versus-multiple distinction still drives the decision."}},{"@type":"Question","name":"Reverse a singly linked list.","acceptedAnswer":{"@type":"Answer","text":"Describe the three-pointer walk, previous, current, and next: save the next node, point current's next back at previous, then advance previous and current, and when current hits null previous is the new head. State O(n) time and O(1) space since you rewire in place. Mention the recursive version is elegant but costs O(n) stack space, so you prefer iterative for a long list."}},{"@type":"Question","name":"Check whether a string has balanced parentheses, brackets, and braces.","acceptedAnswer":{"@type":"Answer","text":"Frame it as a stack problem: on each opening bracket push its expected closing bracket, and on each closing bracket check it matches the top, failing if the stack is empty or the top does not match. The string is valid only if the stack is empty at the end. State O(n) time and O(n) worst-case space, and note that a map from open to close keeps the matching clean."}},{"@type":"Question","name":"IEnumerable vs IQueryable, what's the difference?","acceptedAnswer":{"@type":"Answer","text":"Frame it as where the query executes. IEnumerable runs in application memory as LINQ-to-Objects, so filtering database rows means you have already pulled them all into memory, while IQueryable builds an expression tree the provider like EF Core translates to SQL so the filter happens at the source and you pull only what you need. Call out the classic bug, materializing too early with ToList() then filtering, which turns an efficient server-side query into dragging the whole table across the wire."}},{"@type":"Question","name":"Tell me about a time you received hard feedback or learned from a failure.","acceptedAnswer":{"@type":"Answer","text":"Pick real feedback you initially found stinging and show you treated it as information, not a verdict, which is the growth mindset Microsoft looks for. A strong shape is a review that flagged tightly coupled, hard-to-test code, and your response, learning dependency inversion, refactoring to constructor-injected interfaces, and finding the tests suddenly became straightforward. Close on carrying the lesson forward by designing for testability from the start."}},{"@type":"Question","name":"Tell me about a time you had to learn a new technology quickly.","acceptedAnswer":{"@type":"Answer","text":"Choose a story where you were upfront that something was new to you and made a plan rather than faking it. Describe reading the core docs, building a small throwaway prototype to understand the fundamentals like delivery guarantees and idempotency, and asking a teammate a couple of targeted questions, then building the real feature with safe retries because you understood at-least-once delivery. Close that you are comfortable being a beginner in public because it is the fastest way to stop being one."}},{"@type":"Question","name":"Do you have any questions for us?","acceptedAnswer":{"@type":"Answer","text":"Ask questions that reveal how the team actually learns, not just how it ships. Strong ones: how the team practices growth mindset concretely when something ships and fails, how they balance adopting the newest .NET and Azure capabilities against production stability, and what would make someone really successful in their first six months."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Interview questions","item":"https://offerpilotai.ink/interview-questions/"},{"@type":"ListItem","position":3,"name":"Microsoft","item":"https://offerpilotai.ink/interview-questions/microsoft/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/interview-questions/" style="color:var(--muted-2)">Interview questions</a> · Big Tech / Cloud</p>
+      <h1 class="balance">Microsoft Software Engineer, C#/.NET Interview Questions and Answers</h1>
+      <p class="meta">12 questions with model answers · Stack: C#,.NET,ASP.NET Core,Azure,SQL Server,Data Structures</p>
+    </div>
+    <article class="prose reveal">
+      <p class="lede">These are the questions a Microsoft loop for a Software Engineer, C#/.NET actually asks, each with an answer you can adapt and say out loud. Rehearse them first, then run <a href="/download/">OfferPilot AI</a> live in the interview so the copilot hears the question and drafts your answer in real time.</p>
+      <h2>Opening</h2>
+      <h3>Tell me about yourself.</h3>
+      <p>Give a concise arc centered on C#/.NET backend work and a genuine care for code that is correct and maintainable, clean OO design, the right abstraction, and tests that protect behavior. Signal depth by mentioning you understand CLR internals, value versus reference semantics and GC behavior, not just syntax, because that changes how you write hot paths. Close on what draws you to Microsoft, the .NET and Azure platform plus a growth-mindset culture that treats not knowing something yet as a starting point.</p>
+      <h2>C#/.NET Fundamentals</h2>
+      <h3>What's the difference between a value type and a reference type in C#?</h3>
+      <p>Define it precisely: a value type holds its data directly so assigning or passing copies the value, while a reference type holds a reference to a heap object so assignment copies the reference and two variables can alias the same object. Note where each lives, value types on the stack or inline, reference-type objects on the GC-managed heap. Close on the practical impact, copy semantics and allocation cost, which especially matters for large structs.</p>
+      <h3>How does garbage collection work in .NET, and what are generations?</h3>
+      <p>Explain the .NET GC as a generational mark-and-sweep collector that groups objects into gen 0, 1, and 2 on the assumption that most objects die young, so gen 0 is collected often and cheaply and survivors get promoted. Note it does not handle unmanaged resources, so for file handles, sockets, and connections you implement IDisposable and use a using block for deterministic cleanup. Close on why this shapes your code: avoiding unnecessary allocations in hot paths reduces gen 0 pressure and collection frequency.</p>
+      <h3>Explain async/await. What does it actually do?</h3>
+      <p>Explain that async/await lets you write asynchronous code that reads sequentially while freeing the thread during I/O waits: awaiting an incomplete operation returns control to the caller and the thread goes back to the pool, then execution resumes after the await via a compiler-generated state machine. Make the point that this is about throughput and scalability for I/O-bound services, the same thread count serves far more concurrent requests. Call out the classic mistakes, blocking on async with .Result or .Wait() which can deadlock, and using async for CPU-bound work where it does not help.</p>
+      <h3>IEnumerable vs IQueryable, what's the difference?</h3>
+      <p>Frame it as where the query executes. IEnumerable runs in application memory as LINQ-to-Objects, so filtering database rows means you have already pulled them all into memory, while IQueryable builds an expression tree the provider like EF Core translates to SQL so the filter happens at the source and you pull only what you need. Call out the classic bug, materializing too early with ToList() then filtering, which turns an efficient server-side query into dragging the whole table across the wire.</p>
+      <h2>OOP &amp; SOLID</h2>
+      <h3>Walk me through the SOLID principles.</h3>
+      <p>Name and define each crisply: Single Responsibility, one reason to change; Open/Closed, extend via new types rather than editing existing ones; Liskov Substitution, a subtype is usable anywhere its base is; Interface Segregation, several focused interfaces over one fat one; and Dependency Inversion, depend on abstractions, usually constructor-injected interfaces in .NET. Tie them together with the through-line, decoupling, each principle reduces how far one change ripples, which keeps a system testable and safe to modify.</p>
+      <h3>What's the difference between an abstract class and an interface, and when do you use each?</h3>
+      <p>Contrast them: an interface is a pure contract that a type can implement many of, giving multiple inheritance of behavior, while an abstract class can hold state, constructors, and shared implementation but only one can be inherited. Say when you reach for each, an interface for a capability unrelated types might have and for dependency inversion and mocking, an abstract base when related types share real implementation and a common identity. Acknowledge default interface methods blur this, but the state-versus-contract and single-versus-multiple distinction still drives the decision.</p>
+      <h2>Coding</h2>
+      <h3>Reverse a singly linked list.</h3>
+      <p>Describe the three-pointer walk, previous, current, and next: save the next node, point current's next back at previous, then advance previous and current, and when current hits null previous is the new head. State O(n) time and O(1) space since you rewire in place. Mention the recursive version is elegant but costs O(n) stack space, so you prefer iterative for a long list.</p>
+      <h3>Check whether a string has balanced parentheses, brackets, and braces.</h3>
+      <p>Frame it as a stack problem: on each opening bracket push its expected closing bracket, and on each closing bracket check it matches the top, failing if the stack is empty or the top does not match. The string is valid only if the stack is empty at the end. State O(n) time and O(n) worst-case space, and note that a map from open to close keeps the matching clean.</p>
+      <h2>Behavioral (Growth Mindset)</h2>
+      <h3>Tell me about a time you received hard feedback or learned from a failure.</h3>
+      <p>Pick real feedback you initially found stinging and show you treated it as information, not a verdict, which is the growth mindset Microsoft looks for. A strong shape is a review that flagged tightly coupled, hard-to-test code, and your response, learning dependency inversion, refactoring to constructor-injected interfaces, and finding the tests suddenly became straightforward. Close on carrying the lesson forward by designing for testability from the start.</p>
+      <h3>Tell me about a time you had to learn a new technology quickly.</h3>
+      <p>Choose a story where you were upfront that something was new to you and made a plan rather than faking it. Describe reading the core docs, building a small throwaway prototype to understand the fundamentals like delivery guarantees and idempotency, and asking a teammate a couple of targeted questions, then building the real feature with safe retries because you understood at-least-once delivery. Close that you are comfortable being a beginner in public because it is the fastest way to stop being one.</p>
+      <h2>Closing</h2>
+      <h3>Do you have any questions for us?</h3>
+      <p>Ask questions that reveal how the team actually learns, not just how it ships. Strong ones: how the team practices growth mindset concretely when something ships and fails, how they balance adopting the newest .NET and Azure capabilities against production stability, and what would make someone really successful in their first six months.</p>
+      <h2>Answer these live, not just in practice</h2>
+      <p>Preparation gets you the shape of an answer. In the room, the follow-up you did not rehearse is what decides the loop. OfferPilot AI listens to the interviewer, transcribes on-device, and drafts a speakable answer grounded in your own résumé, while staying off the screen-share stream. <a href="/download/">Download it free</a> and get 5 minutes a day, or see <a href="/pricing/">plans</a>.</p>
+    </article>
+  </div>
+</section>
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

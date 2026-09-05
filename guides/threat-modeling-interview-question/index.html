@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Threat Modeling Interview Question: STRIDE on a Real System</title>
+  <meta name="description" content="The STRIDE threat modeling question run live against a file upload service: an enumerated threat list, layered mitigations by name, and the junior versus senior bar.">
+  <meta name="keywords" content="threat modeling interview question, stride interview answer, stride threat model example, threat modeling file upload service, security engineer interview questions, application security interview questions, appsec threat model whiteboard, how to answer threat modeling interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/threat-modeling-interview-question/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Threat Modeling Interview Question: STRIDE on a Real System">
+  <meta property="og:description" content="The STRIDE threat modeling question run live against a file upload service: an enumerated threat list, layered mitigations by name, and the junior versus senior bar.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/threat-modeling-interview-question/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-threat-modeling-interview-question.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Threat Modeling Interview Question: STRIDE on a Real System">
+  <meta name="twitter:description" content="The STRIDE threat modeling question run live against a file upload service: an enumerated threat list, layered mitigations by name, and the junior versus senior bar.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-threat-modeling-interview-question.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Threat Modeling Interview Question: STRIDE on a Real System","description":"The STRIDE threat modeling question run live against a file upload service: an enumerated threat list, layered mitigations by name, and the junior versus senior bar.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/threat-modeling-interview-question/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Threat Modeling Interview Question: STRIDE on a Real System","url":"https://offerpilotai.ink/guides/threat-modeling-interview-question/","mainEntity":[{"@type":"Question","name":"How do you answer a threat modeling question in a security interview?","acceptedAnswer":{"@type":"Answer","text":"Pick one concrete system, draw its data flows and trust boundaries before you say any letters, then walk STRIDE against those boxes. For each letter give a named attack on that specific system rather than a definition, then a mitigation with a real mechanism behind it and a second layer under that. Close by ranking the threats and saying which one you would fix first and why."}},{"@type":"Question","name":"What does STRIDE stand for and why is it used in interviews?","acceptedAnswer":{"@type":"Answer","text":"Spoofing, Tampering, Repudiation, Information disclosure, Denial of service and Elevation of privilege. Each letter is the violation of one property: authentication, integrity, non repudiation, confidentiality, availability and authorization. The value in an interview is not the acronym, it is that walking six categories against every flow crossing a trust boundary stops you at coverage instead of the two threats you thought of first."}},{"@type":"Question","name":"What separates a senior threat modeling answer from a junior one?","acceptedAnswer":{"@type":"Answer","text":"Specificity and layers. Junior answers recite the OWASP Top 10 and say validate input, encrypt data, apply least privilege. Senior answers name the mechanism: magic byte sniffing instead of trusting Content-Type, a separate cookieless serving origin with nosniff and attachment disposition, a scan worker with no network egress and a prefix scoped role. Then they name the residual risk each control leaves behind."}},{"@type":"Question","name":"How would you threat model a file upload service?","acceptedAnswer":{"@type":"Answer","text":"Name the flows first: browser to gateway, a presigned write into a quarantine bucket, a scanner worker that parses attacker controlled bytes, a metadata database, and a CDN serving downloads. The high value threats are stored cross site scripting from a file served on the app domain, cross tenant access through guessable keys, server side request forgery in an import from URL feature, and parser exploits inside the worker."}},{"@type":"Question","name":"Should I use STRIDE or attack trees in the interview?","acceptedAnswer":{"@type":"Answer","text":"STRIDE for breadth, attack trees for depth. STRIDE is the better opening because it gives the interviewer visible coverage across six categories in a fixed order and is easy to follow on a whiteboard. Switch to an attack tree when they zoom in on one goal, such as read another tenant's files, and want every path to that goal enumerated."}},{"@type":"Question","name":"What are the common mistakes in a threat modeling interview answer?","acceptedAnswer":{"@type":"Answer","text":"Starting the acronym before a diagram exists, so the threats attach to nothing. Listing controls with no attack in front of them. Treating every threat as equal instead of ranking by what an unauthenticated attacker gets in one request. Claiming a control is complete when it is not, for example calling antivirus scanning a defense against stored cross site scripting."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Threat modeling interview question","item":"https://offerpilotai.ink/guides/threat-modeling-interview-question/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Interview formats and question types</p>
+      <h1 class="balance">The threat modeling interview question: STRIDE applied to one real system</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">The question is almost never "define STRIDE". It is "here is a system, threat model it", and the grader is watching whether six letters turn into named attacks on the boxes drawn in front of you. So draw the system first, walk each flow that crosses a trust boundary, produce one concrete threat per letter, and defend each threat at more than one layer with a mechanism you can name. Reciting the acronym and adding "validate input, encrypt data, least privilege" passes a screening call and dies in a senior loop.</p>
+
+      <h2>Draw the system before you say a single letter</h2>
+      <p>Take a file upload service, because it touches every letter and almost every candidate has built one. A B2B product where tenants upload documents and images. The flows are: browser to an API gateway that terminates TLS and validates a JWT; the upload service returns a presigned PUT to a quarantine bucket; the object lands and fires an event onto a queue; a scanner worker pulls the bytes, runs a signature scan and a content sniff, re-encodes images, copies clean objects to a serving bucket and writes a metadata row to Postgres; downloads leave through a CDN behind signed URLs.</p>
+      <p>Now say the trust boundaries out loud, because that is where the threats live and where the interviewer is scoring coverage:</p>
+      <ul>
+        <li><strong>Internet to edge.</strong> Everything the client sends is a claim, including the filename, the size and the <code>Content-Type</code>.</li>
+        <li><strong>Tenant to tenant.</strong> One bucket and one database hold many customers, so isolation is a control you implement, not a property the architecture gives you.</li>
+        <li><strong>Data into a parser.</strong> The scanner and the image resizer read attacker supplied bytes. This is the boundary juniors never draw.</li>
+        <li><strong>Serving origin to browser.</strong> A stored file that executes on your own domain is a same origin problem, not a storage problem.</li>
+      </ul>
+      <p>Name the assets too: the file bytes, the metadata row, tenant isolation itself, and the worker's cloud credentials. A STRIDE pass with no asset list produces a flat list nobody can rank.</p>
+
+      <h2>STRIDE run against that system, letter by letter</h2>
+      <p>Six letters, one specific attack each. None of these sentences would fit any other system, which is the point.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Letter</th><th>Threat on this upload service</th><th>What the attacker gets</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Spoofing</strong></td>
+              <td>A presigned PUT URL leaks through a <code>Referer</code> header, a proxy log or a support ticket. It is a bearer token with no identity attached. Separately, the gateway validates a JWT without pinning <code>alg</code>, <code>iss</code> and <code>aud</code>.</td>
+              <td>Writes into another tenant's prefix, as that tenant.</td>
+            </tr>
+            <tr>
+              <td><strong>Tampering</strong></td>
+              <td>The client sends <code>image/png</code> for an SVG carrying script, or puts <code>../</code> in a filename that gets used to build the object key. The metadata row is patched through an object reference the API never checks against the caller's tenant.</td>
+              <td>Stored cross site scripting on the serving domain, and cross tenant overwrite of a real document.</td>
+            </tr>
+            <tr>
+              <td><strong>Repudiation</strong></td>
+              <td>Only the bucket owner appears in the storage access log, so nothing records which principal minted the presigned URL or which user triggered the delete.</td>
+              <td>An incident nobody can attribute, and a customer dispute you cannot answer.</td>
+            </tr>
+            <tr>
+              <td><strong>Information disclosure</strong></td>
+              <td>Sequential object keys, plus a signed URL with a seven day expiry sitting in a Slack thread. GPS coordinates left in image EXIF. A stack trace returning the internal bucket name and region.</td>
+              <td>Enumeration of other tenants' files, and reconnaissance for the next step.</td>
+            </tr>
+            <tr>
+              <td><strong>Denial of service</strong></td>
+              <td>A 5 GB body buffered before any check runs. A decompression bomb that expands to tens of gigabytes inside the resizer. A flood of tiny uploads that backs the scan queue up.</td>
+              <td>Clean files never publish, and the worker fleet falls over while the API keeps accepting work.</td>
+            </tr>
+            <tr>
+              <td><strong>Elevation of privilege</strong></td>
+              <td>A parser bug in the image pipeline gives execution inside a worker whose role can read every prefix. Or an import from URL feature fetches <code>http://169.254.169.254/</code> and returns instance credentials.</td>
+              <td>Reads across every tenant, and in the SSRF case a role that may reach well past this service.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Layered mitigations, with names attached</h2>
+      <p>One control per threat is a junior answer. Say where the control sits, and say what still gets through it.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>At the edge, before a body is buffered</h3>
+            <p>A hard body size cap at the proxy, <code>client_max_body_size</code> in nginx or the equivalent limit on the load balancer, so an oversized upload is refused before it reaches application memory. A per tenant quota and a token bucket rate limit on the presign endpoint, since the cheap request to abuse is the one that mints URLs. The JWT validated against a JWKS endpoint with algorithm, issuer and audience pinned, never a shared secret, and never with <code>alg</code> read out of the token.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Never let the client name the file or the type</h3>
+            <p>Generate the storage key yourself, a UUID under <code>tenant/{tenant_id}/</code>, and keep the user's filename as a column rather than a path component, which deletes traversal as a category instead of filtering for it. Presign that exact key with a five minute expiry and a content length range condition, so the URL cannot be reused for a different object or a bigger one. Sniff the real type server side with libmagic through python-magic, or with Apache Tika, then allowlist, and treat the client's <code>Content-Type</code> as a hint you throw away.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Parse hostile bytes inside something disposable</h3>
+            <p>The scan and transform worker gets no network egress and a role scoped to the quarantine prefix only, so a parser exploit lands somewhere with nothing worth stealing. Re-encode images rather than validating them, with libvips or an ImageMagick <code>policy.xml</code> that disables the coder delegates, which kills the SVG script payload and strips EXIF in the same pass. Set explicit decode memory and pixel limits so a compression bomb hits a ceiling instead of a timeout. For import from URL, resolve the hostname first, reject loopback, link local and RFC1918 ranges, then pin and re-check the resolved address to close the DNS rebinding window, or push the whole feature through an egress proxy with an allowlist.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Split the buckets and make deletion provable</h3>
+            <p>Quarantine and serving are separate buckets with public access blocked at the account level. Server side encryption, versioning, and object lock on the serving bucket, so a delete is recoverable and repudiation stops being free. Authorization on read runs against the metadata row and the caller's tenant, never against the shape of the key, because a key that looks unguessable is not an access control.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Serve from a domain that owns nothing</h3>
+            <p>Downloads go out from a separate origin such as <code>files-usercontent.example.net</code>, with no cookies and no session ever scoped to it, so a file that does execute has no same origin data to reach. On every response: <code>Content-Disposition: attachment</code>, <code>X-Content-Type-Options: nosniff</code>, a <code>Content-Security-Policy</code> of <code>sandbox; default-src 'none'</code>, and the content type you sniffed rather than the one they sent. Signed URLs measured in minutes and bound to one object.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Log the thing that will be disputed</h3>
+            <p>An append only audit event for every presign and every delete: principal, tenant, object key, content hash, request id. Alert on scan failure rate, on upload volume per tenant against that tenant's own baseline, and on any spike of denied cross prefix reads, which is what stolen worker credentials look like from the outside.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The junior bar and the senior bar, said plainly</h2>
+      <p>Both columns below are correct. Only one of them earns a senior rating, and the difference is not vocabulary. It is a named mechanism with a second layer behind it.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Letter</th><th>Passing answer</th><th>Senior answer</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>S</strong></td><td>"Authenticate the user."</td><td>Presign one key for five minutes with a length condition, pin JWT <code>alg</code>, <code>iss</code> and <code>aud</code>, and say out loud that a leaked URL is a bearer token, which is why the short TTL is the actual control.</td></tr>
+            <tr><td><strong>T</strong></td><td>"Validate the input."</td><td>Server generated keys so traversal cannot exist, magic byte sniffing over the declared type, and re-encoding instead of validating, because a validator that accepts an SVG has already lost.</td></tr>
+            <tr><td><strong>R</strong></td><td>"Add logging."</td><td>Append only audit with principal and content hash, plus object versioning and object lock, so the storage layer can contradict a customer who says they never deleted it.</td></tr>
+            <tr><td><strong>I</strong></td><td>"Encrypt the data."</td><td>Cookieless serving origin, <code>nosniff</code>, attachment disposition, short signed URLs, EXIF stripped during re-encode, and no bucket name in any error body.</td></tr>
+            <tr><td><strong>D</strong></td><td>"Rate limit it."</td><td>Size cap at the proxy before buffering, decode limits for compression bombs, and queue isolation so scan backpressure degrades publishing instead of taking the upload path down.</td></tr>
+            <tr><td><strong>E</strong></td><td>"Least privilege."</td><td>A worker with zero egress and a prefix scoped role, ImageMagick delegates disabled, and SSRF filtering applied after resolution rather than before, so rebinding does not walk straight to the metadata endpoint.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The left column is the OWASP Top 10 recited from memory. Interviewers assume that knowledge, so a round spent there reads as having nothing underneath it. Two further things separate the columns. Seniors name the residual risk: signature scanning catches known malware and does nothing at all about a stored XSS payload, so it is not an answer to Tampering. And seniors rank. Close with something like this: "the stored XSS on the serving origin and the SSRF in import from URL are what I fix this quarter, because both are full compromise from a single unauthenticated request. The compression bomb is a paging incident, not a breach, so it sits behind them." If they want a scoring model, DREAD is fine, as long as you say the numbers are subjective and you use them to sort, not to justify.</p>
+
+      <h2>Where a live copilot is the wrong tool for this round</h2>
+      <p>Threat modeling is the security round that live assistance helps least with. You are drawing, the interviewer interrupts mid sentence to ask why an extension allowlist is not enough, and the whole answer is anchored to a diagram whose shape you chose. Generic STRIDE text arriving on a screen cannot know you drew a quarantine bucket, and the follow up question lands on your reasoning rather than on the list.</p>
+      <ul>
+        <li><strong>OfferPilot AI runs on Windows 10 and 11 only.</strong> No macOS, no Linux, no mobile, no browser extension. On a Mac, none of it is available to you.</li>
+        <li><strong>Capture exclusion covers screen sharing and screen recording, nothing more.</strong> The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots, while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a second device camera, or a person watching you at a physical whiteboard, and plenty of threat modeling rounds are exactly that.</li>
+        <li><strong>The rules belong to the company.</strong> Some interviews permit documentation and AI assistance and some do not. Read the instructions, and ask when they are ambiguous.</li>
+        <li><strong>This is the answer to memorize instead.</strong> One system modeled properly, with the header names and library names attached, transfers to almost every application security prompt you will be given.</li>
+      </ul>
+
+      <h2>Practise on your own architecture, not a generic one</h2>
+      <p>Run this exact pass on a service you actually shipped, then again on a payment webhook receiver and on an internal admin tool, and hold yourself to twelve minutes. Coverage comes from the six letters. The rating comes from the specific header, the specific library, and the second layer behind each control. The <a href="/interview-questions/">question banks</a> are a reasonable source of systems to run it against, and the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank from your resume for one company and role, which matters here because a payments company and an infrastructure company push on different letters. OfferPilot AI is free for 5 minutes a day with no card, and it meters listening time only.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/conflict-with-a-coworker-interview-answer/">Tell Me About a Time You Had a Conflict With a Coworker</a></li>
+        <li><a href="/guides/hirevue-interview-format/">HireVue Interview Format: What to Expect, Question by Question</a></li>
+        <li><a href="/guides/tell-me-about-yourself-software-engineer/">Tell Me About Yourself: Software Engineer Answer, 3 Versions</a></li>
+        <li><a href="/guides/ageism-tech-interviews-over-50/">Tech Interviews Over 50: Reframes for the Five Coded Questions</a></li>
+        <li><a href="/guides/bootcamp-grad-interview-questions/">Bootcamp Grad Interview Questions: The 4 CS Grads Never Get</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Walk into the security round with the specifics ready.</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company-specific question bank from your own resume, then rehearse the STRIDE pass out loud until it fits in twelve minutes.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

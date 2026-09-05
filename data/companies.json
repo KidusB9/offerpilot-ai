@@ -1,0 +1,16 @@
+{
+  "companies": [
+    { "slug": "jpmorgan-chase", "name": "JPMorgan Chase", "role": "Software Engineer II, C#/.NET", "sector": "Banking / Payments", "curated": true },
+    { "slug": "neuberger-berman", "name": "Neuberger Berman", "role": "Application Developer II, Private Markets", "sector": "Asset Management", "curated": true },
+    { "slug": "google", "name": "Google", "role": "Software Engineer L3/L4", "sector": "Big Tech", "curated": true },
+    { "slug": "amazon", "name": "Amazon", "role": "SDE I/II", "sector": "Big Tech / Cloud", "curated": true },
+    { "slug": "meta", "name": "Meta", "role": "Software Engineer E4", "sector": "Big Tech", "curated": true },
+    { "slug": "microsoft", "name": "Microsoft", "role": "Software Engineer II", "sector": "Big Tech / Cloud", "curated": true },
+    { "slug": "goldman-sachs", "name": "Goldman Sachs", "role": "Software Engineer, Analyst", "sector": "Investment Banking", "curated": true },
+    { "slug": "citadel", "name": "Citadel", "role": "Software Engineer", "sector": "Hedge Fund / HFT", "curated": true },
+    { "slug": "stripe", "name": "Stripe", "role": "Software Engineer", "sector": "Fintech / Payments", "curated": true },
+    { "slug": "apple", "name": "Apple", "role": "Software Engineer", "sector": "Big Tech", "curated": false },
+    { "slug": "netflix", "name": "Netflix", "role": "Software Engineer", "sector": "Streaming", "curated": false },
+    { "slug": "capital-one", "name": "Capital One", "role": "Software Engineer", "sector": "Banking / Fintech", "curated": false }
+  ]
+}

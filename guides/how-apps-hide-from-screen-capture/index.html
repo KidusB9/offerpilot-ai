@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Apps Hide From Screen Sharing on Windows (and the Limits)</title>
+  <meta name="description" content="An app hides by flagging its own window so the Windows compositor leaves it out of every capture frame. Here is the exact mechanism, and what it cannot hide.">
+  <meta name="keywords" content="how do apps hide from screen sharing, hide window from screen share, SetWindowDisplayAffinity, WDA_EXCLUDEFROMCAPTURE, window not showing in screen share, hide app from zoom screen share, invisible to screen capture windows, exclude window from screen recording, why is my window black in screen share">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/how-apps-hide-from-screen-capture/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="How Apps Hide From Screen Sharing on Windows (and the Limits)">
+  <meta property="og:description" content="An app hides by flagging its own window so the Windows compositor leaves it out of every capture frame. Here is the exact mechanism, and what it cannot hide.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/how-apps-hide-from-screen-capture/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-how-apps-hide-from-screen-capture.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="How Apps Hide From Screen Sharing on Windows (and the Limits)">
+  <meta name="twitter:description" content="An app hides by flagging its own window so the Windows compositor leaves it out of every capture frame. Here is the exact mechanism, and what it cannot hide.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-how-apps-hide-from-screen-capture.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How Apps Hide From Screen Sharing on Windows (and the Limits)","description":"An app hides by flagging its own window so the Windows compositor leaves it out of every capture frame. Here is the exact mechanism, and what it cannot hide.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/how-apps-hide-from-screen-capture/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"How Apps Hide From Screen Sharing on Windows (and the Limits)","url":"https://offerpilotai.ink/guides/how-apps-hide-from-screen-capture/","mainEntity":[{"@type":"Question","name":"How do apps hide from screen sharing on Windows?","acceptedAnswer":{"@type":"Answer","text":"The app calls a Windows function called SetWindowDisplayAffinity on its own window, using the flag WDA_EXCLUDEFROMCAPTURE. The Desktop Window Manager keeps drawing that window on your physical monitor, but strips it out of the frames it hands to screen capture. Zoom, Teams, Meet, OBS and the Print Screen key all read those frames, so the window is missing from every one of them at once."}},{"@type":"Question","name":"Can I make any window invisible to screen sharing myself?","acceptedAnswer":{"@type":"Answer","text":"No. The exclusion call only works on windows owned by the process that makes it, so an application has to build the behaviour into itself. There is no Windows setting, registry key or checkbox in Zoom that hides an arbitrary window such as Chrome or Notepad from a share. If the app does not ship it, you cannot add it from outside."}},{"@type":"Question","name":"Why does an excluded window vanish from Zoom, Teams, OBS and screenshots at the same time?","acceptedAnswer":{"@type":"Answer","text":"Because the removal happens before any of them receive a pixel. The compositor builds one image for your monitor and a separate one for capture, and the excluded window is left out of the capture image. Meeting apps, recorders and screenshot tools are all just consumers of that same feed, so a single flag covers all of them and no setting inside Zoom can override it."}},{"@type":"Question","name":"Why do some windows show as a black rectangle in a recording instead of disappearing?","acceptedAnswer":{"@type":"Answer","text":"That is the older WDA_MONITOR flag, which blanks the window in capture rather than removing it, so viewers see a black hole in the shape and position of the window. Protected video playback produces a similar black box through a different mechanism in the video pipeline. Absence means the newer exclusion flag; a black rectangle means one of those two."}},{"@type":"Question","name":"Does hiding a window from screen capture defeat a webcam or a proctored exam?","acceptedAnswer":{"@type":"Answer","text":"No. Capture exclusion only affects software that asks Windows for the screen. It does nothing about a webcam, a phone camera pointed at your monitor, a person sitting behind you, eye tracking, or a lockdown browser that takes over the machine and enforces its own rules. It also does not hide the process itself from software running on your computer."}},{"@type":"Question","name":"How can I check whether a window is really excluded from capture?","acceptedAnswer":{"@type":"Answer","text":"Press Windows key and Print Screen. Windows saves a full screenshot to your Pictures folder under Screenshots. Open that PNG. If the window is not in the file, exclusion is working on the capture path. Then record ten seconds with Xbox Game Bar and play the file back, because a live preview is not proof and the saved file is."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"How Apps Hide From Screen Capture","item":"https://offerpilotai.ink/guides/how-apps-hide-from-screen-capture/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">How some Windows apps stay off a screen share, and what that cannot do</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A Windows application can ask the operating system to keep its own window out of anything that captures the screen. It is one function call, <code>SetWindowDisplayAffinity</code>, with the flag <code>WDA_EXCLUDEFROMCAPTURE</code>. The desktop compositor keeps drawing that window on your physical monitor but leaves it out of the frames it hands to capture, so the window is missing from Zoom, Teams, Meet, OBS and a plain screenshot simultaneously. Two things follow that people usually get wrong: an app can only do this to its own windows, and it hides nothing from a camera.</p>
+
+      <h2>The one function that does the work</h2>
+      <p>Every top-level window on Windows carries a property called display affinity. The default is <code>WDA_NONE</code>, meaning treat me like everything else. An application can change its own window to <code>WDA_EXCLUDEFROMCAPTURE</code>, which has been available since Windows 10 version 2004, build 19041. Both Windows 10 and Windows 11 support it. On older builds the call falls back to the earlier behaviour described further down.</p>
+      <p>The important restriction is who is allowed to make the call. Display affinity is set by the process that owns the window. You cannot point a utility at Chrome, Notepad or a PDF reader and switch it on for them. There is no Windows setting for it, no registry key that reliably does it, and nothing in Zoom's or Teams' options that hides a chosen window from your own share. That is why searching the operating system's settings for a way to keep a window off a screen share turns up nothing. The switch exists, but it sits on the other side of the fence, inside the application, and a developer has to have decided to use it.</p>
+      <p>You have probably met the result without knowing the mechanism: a messaging client with a screen security option whose window drops out of screenshots, or a credential prompt that refuses to photograph. Software handling secrets reaches for this, because the cheapest way to stop a password landing in someone's support recording is to make the window uncapturable in the first place.</p>
+
+      <h2>Where the pixels actually get removed</h2>
+      <p>Since Windows Vista, no application draws directly onto your monitor. Each top-level window renders into its own off-screen buffer, and the Desktop Window Manager composites those buffers into the image you see. Capture reads that composited output rather than the glass, which is the design decision that makes exclusion possible and also defines its boundary.</p>
+      <p>When a window is marked as excluded, DWM includes it in the composition sent to your display hardware and omits it from the composition offered to capture. The removal therefore happens upstream of every application that could receive a frame. Zoom never gets the window and then filters it out. Zoom is handed an image that never contained it. This explains behaviour that otherwise looks like magic: one flag knocks a window out of a dozen unrelated programs at once, and no setting inside any of those programs can undo it, because none of them are making the decision.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Capture path</th>
+              <th>How it gets its pixels</th>
+              <th>Does an excluded window appear?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Zoom, Teams or Webex sharing an entire screen</strong></td>
+              <td>Windows display capture of one monitor.</td>
+              <td>No. Viewers see the desktop behind it.</td>
+            </tr>
+            <tr>
+              <td><strong>Sharing a single window, pointed at the excluded window itself</strong></td>
+              <td>Per-window capture of that window's surface.</td>
+              <td>No. The source comes back empty or black.</td>
+            </tr>
+            <tr>
+              <td><strong>Google Meet, or any browser-based share</strong></td>
+              <td>Chrome or Edge calls the same Windows capture APIs behind <code>getDisplayMedia</code>.</td>
+              <td>No. The browser inherits the exclusion.</td>
+            </tr>
+            <tr>
+              <td><strong>Local or cloud meeting recording</strong></td>
+              <td>Encodes the stream that was already being shared.</td>
+              <td>No. A file cannot contain what the stream never carried.</td>
+            </tr>
+            <tr>
+              <td><strong>OBS, in display, window or game capture mode</strong></td>
+              <td>The same three Windows capture routes.</td>
+              <td>No, in all three modes.</td>
+            </tr>
+            <tr>
+              <td><strong>Print Screen, Windows key with Shift and S, Snipping Tool, Xbox Game Bar</strong></td>
+              <td>Same composition path, one frame instead of many.</td>
+              <td>No.</td>
+            </tr>
+            <tr>
+              <td><strong>Remote control tools such as Quick Assist or TeamViewer</strong></td>
+              <td>Usually the same capture APIs, though some use their own display driver or session.</td>
+              <td>Usually no. This is the one row worth testing rather than assuming.</td>
+            </tr>
+            <tr>
+              <td><strong>A phone camera, a webcam pointed at the monitor, a capture card in the video cable</strong></td>
+              <td>Photographs the light leaving the panel, or taps the signal after composition.</td>
+              <td><strong>Yes. Fully visible.</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Software on your machine listing running processes and windows</strong></td>
+              <td>Not a capture path at all.</td>
+              <td><strong>Yes. The window and its process still exist.</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Absent, blanked, or black for a completely different reason</h2>
+      <p>Three outcomes look similar in a recording and mean different things. Telling them apart is genuinely useful.</p>
+      <ul>
+        <li><strong>The window is simply not there.</strong> That is <code>WDA_EXCLUDEFROMCAPTURE</code>. The capture frame shows whatever sits behind the window, so nothing in the image suggests a window was ever in that spot.</li>
+        <li><strong>A black rectangle in the exact shape and position of a window.</strong> That is the older <code>WDA_MONITOR</code> flag, which blanks the window's pixels in capture instead of removing the window. It protects the content, but it advertises itself, because the viewer sees a hole that moves when you drag it.</li>
+        <li><strong>A black rectangle where a video was playing.</strong> A different mechanism entirely. Protected playback is enforced in the media pipeline rather than by a window flag, which is why a streaming service goes black in a screenshot on a machine where nothing else does.</li>
+      </ul>
+      <p>Absence is unremarkable. A moving black hole is close to the most conspicuous artefact you can put on a screen share, so people who report that their hidden window is obvious are nearly always looking at the older flag or at protected video.</p>
+
+      <h2>Verify it on your own machine in three minutes</h2>
+      <p>Do not take any vendor's word for this, ours included. The test is short, it produces a file you can open, and it is worth re-running after a Windows feature update.</p>
+
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Take a full screenshot from the keyboard</h3><p>Press Windows key and Print Screen together. Windows writes a PNG into your Pictures folder under Screenshots. Open it. If the window you expected to be hidden is not in that image, exclusion is working on the capture path.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Record ten seconds and play the file back</h3><p>Windows key with Alt and R starts an Xbox Game Bar recording. A live preview proves nothing, since the preview is drawn on your own machine. The saved MP4 is the artefact that matters, so watch it rather than the window showing it.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Start a meeting with only yourself in it</h3><p>Open Zoom, Teams or Meet, start a meeting alone, share your entire screen, then join the same meeting from your phone as a second participant. What arrives on the phone is exactly what a viewer receives, with none of the guesswork.</p></div></div>
+      </div>
+
+      <p>This is the mechanism <a href="/interview-copilot/">OfferPilot AI</a> uses for its overlay on Windows 10 and 11, which is why the answer panel stays readable on your own monitor while being absent from Zoom, Teams, Meet, OBS and screenshots. The same applies to the selection rectangle you drag after Ctrl+Alt+S in <a href="/code-copilot/">Code Copilot</a>, because it belongs to the same excluded surface. Capture exclusion is on <a href="/pricing/">every plan, including the free tier</a>, so the three tests above can be run before you pay for anything.</p>
+
+      <h2>What capture exclusion cannot do</h2>
+      <p>This is the part most explanations leave out, and it decides whether the mechanism is any use to you. Exclusion affects software that asks Windows for the screen, and nothing else. It does nothing about:</p>
+      <ul>
+        <li><strong>A webcam.</strong> Your camera sees your face and your room. It is a separate device on a separate pipeline and it is completely unaffected.</li>
+        <li><strong>A phone or a second camera pointed at your monitor.</strong> The panel is emitting light. Anything photographing that light records every pixel on it, excluded or not.</li>
+        <li><strong>A lockdown browser or a dedicated proctoring client.</strong> These take over the machine, apply their own rules, commonly require other applications to be closed before an assessment starts, and may simply refuse to begin. Capture behaviour does not change what those rules say, and this is not a workaround for them.</li>
+        <li><strong>Eye tracking, or a human watching your gaze.</strong> Reading is visible. Eyes moving along a line of text while you are supposed to be talking is legible to a person on a video call with no technology involved.</li>
+        <li><strong>Someone standing behind you.</strong> Worth writing down, because it is the failure that actually happens.</li>
+        <li><strong>Software running on your own computer.</strong> An excluded window is still a window. It has a process, a handle and an entry in Task Manager. A monitoring agent enumerating running software is not looking at pixels, so none of this touches it.</li>
+        <li><strong>A hardware capture card, or audio.</strong> A card between your GPU and your display taps the signal after composition, and nothing here affects your microphone.</li>
+      </ul>
+      <p>Every item there follows from what the flag is. It removes one window from one data path. Treating that as invisibility is the mistake.</p>
+
+      <h2>Where this is the wrong tool</h2>
+      <p>If your assessment is proctored under rules you have agreed to, with a lockdown browser or a live invigilator, none of the above helps you and OfferPilot AI is the wrong product for that situation. The honest uses are preparation, live assistance in ordinary conversational interviews, and accessibility support for people keeping pace with a fast interviewer in a second language. There is a hard platform limit too: this is a Windows 10 and 11 mechanism, with no macOS, Linux, mobile or browser-extension equivalent. Where you are unsure how a platform behaves, run the test above against the exact software the interview will use. Your own machine is a better source than any article, this one included.</p>
+
+      <p>The short version: apps stay off a screen share by flagging their own window so Windows leaves it out of the capture stream. That covers every screen sharing and recording tool at once, and it covers no camera at all.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/windows-excluded-from-screen-recording/">Window Not Showing in Screen Share Recording: Why It Happens</a></li>
+        <li><a href="/guides/what-meeting-recordings-capture/">Does a Zoom, Teams or Meet Recording Capture My Whole Screen?</a></li>
+        <li><a href="/guides/black-window-screen-share/">Window Shows Black When Screen Sharing: Causes and Fixes</a></li>
+        <li><a href="/guides/webex-share-application-vs-screen/">Webex Share Application vs Share Screen (and Share a Portion)</a></li>
+        <li><a href="/guides/chrome-extension-vs-desktop-interview-copilot/">Chrome Extension vs Desktop Interview Copilot: What Shows</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Test the capture behaviour yourself.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card required. Run the screenshot test and the phone test before you decide anything.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API Design Interview vs System Design Interview: The Tells</title>
+  <meta name="description" content="API design rounds scope one feature like refunds. System design rounds scope a whole service. A rubric table, the 60-second tell, and a worked refunds endpoint.">
+  <meta name="keywords" content="api design interview vs system design interview, api design interview, api design round, system design interview, design a refunds api, idempotency key interview, rest api design interview questions, backend interview rounds explained">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/api-design-vs-system-design-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="API Design Interview vs System Design Interview: The Tells">
+  <meta property="og:description" content="API design rounds scope one feature like refunds. System design rounds scope a whole service. A rubric table, the 60-second tell, and a worked refunds endpoint.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/api-design-vs-system-design-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-api-design-vs-system-design-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="API Design Interview vs System Design Interview: The Tells">
+  <meta name="twitter:description" content="API design rounds scope one feature like refunds. System design rounds scope a whole service. A rubric table, the 60-second tell, and a worked refunds endpoint.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-api-design-vs-system-design-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"API Design Interview vs System Design Interview: The Tells","description":"API design rounds scope one feature like refunds. System design rounds scope a whole service. A rubric table, the 60-second tell, and a worked refunds endpoint.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/api-design-vs-system-design-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"API Design Interview vs System Design Interview: The Tells","url":"https://offerpilotai.ink/guides/api-design-vs-system-design-interview/","mainEntity":[{"@type":"Question","name":"How do I tell whether I am in an API design interview or a system design interview?","acceptedAnswer":{"@type":"Answer","text":"Look at the size of the noun in the prompt. One feature inside a product that already exists, refunds, comments, likes or follows, means API design: they want the endpoint contract, status codes and idempotency. A whole deployable service, a URL shortener, a notification service or a job scheduler, means system design: they want capacity numbers, storage, queues and a named bottleneck."}},{"@type":"Question","name":"What gets you rejected in an API design round?","acceptedAnswer":{"@type":"Answer","text":"Drawing a deployment diagram instead of a contract. Listing eight CRUD endpoints with no error model, no auth scope and no versioning stance. Returning 200 on an operation that failed. Using a floating point number for money. The most common single failure is having no answer for the duplicate request: if the client retries, your design must say whether the customer is refunded twice."}},{"@type":"Question","name":"Do I need to estimate QPS in an API design interview?","acceptedAnswer":{"@type":"Answer","text":"Usually no, and volunteering a capacity estimate in the first two minutes reads as answering a different question. Numbers matter only when they change the contract: a result set large enough to force cursor pagination instead of offset, a rate limit that needs a 429 and a Retry-After header, or work slow enough that the endpoint has to return a pending resource."}},{"@type":"Question","name":"What is an idempotency key and why does it come up in every API design round?","acceptedAnswer":{"@type":"Answer","text":"A client-generated string sent in a header on a write request. The server stores it alongside a hash of the request body and the response it returned, commonly for about 24 hours. A repeat with the same key and the same body replays the stored response instead of doing the work twice. A repeat with the same key and a different body should fail rather than succeed quietly."}},{"@type":"Question","name":"Can one interview be both an API design and a system design round?","acceptedAnswer":{"@type":"Answer","text":"Yes, and hybrids are common. A round often starts at the endpoint contract and then asks how it holds up at a hundred times the traffic, or starts at boxes and arrows and then asks what the actual request body looks like. Treat the pivot as an instruction rather than a trap: stop expanding the layer you are on and answer at the layer they just named."}},{"@type":"Question","name":"How should I open an API design interview?","acceptedAnswer":{"@type":"Answer","text":"Name the resource and the operation in one sentence, then confirm the scope. For refunds that is: a refund is its own resource with its own id, created against a charge, because a charge can be refunded partially and more than once. Then ask who calls it, a first-party mobile client or third-party developers, because that decides your versioning and error verbosity."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"API design vs system design interview","item":"https://offerpilotai.ink/guides/api-design-vs-system-design-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">API design interview vs system design interview: how to tell which round you are in</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Both rounds open with the word "design". The difference is the size of the noun after it. If the prompt names one capability inside a product that already exists, refunds, comments, likes, follows, you are in an API design round and the deliverable is a contract: resources, payloads, status codes, idempotency. If it names something you could deploy on its own, a URL shortener, a notification service, a job scheduler, you are in a system design round and the deliverable is a shape: rough numbers, stores, queues, one named bottleneck. Answer at the wrong layer and a good answer still scores badly, because the rubric has rows you never touched.</p>
+
+      <h2>The two rubrics, side by side</h2>
+      <p>Interviewers are usually filling in a form. These are the rows where the two forms diverge.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Rubric row</th><th>API design round</th><th>System design round</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unit of thought</strong></td>
+              <td>The request. One resource, one operation, the exact bytes crossing the wire in both directions, including on failure.</td>
+              <td>The box and the arrow. Services, stores and queues, plus what happens when one of them is down.</td>
+            </tr>
+            <tr>
+              <td><strong>Native vocabulary</strong></td>
+              <td>Idempotency key, cursor versus offset pagination, PUT versus PATCH, 409 versus 422, ETag and If-Match, error envelope, additive versioning, Retry-After.</td>
+              <td>Read to write ratio, storage per year, shard key, hot partition, replication lag, cache invalidation, fanout on read versus write, backpressure, dead letter queue.</td>
+            </tr>
+            <tr>
+              <td><strong>What earns points</strong></td>
+              <td>Pinning down the awkward case exactly. What the caller sees on a duplicate submit, a partial failure, a slow downstream. Naming the status code and the body, not the intent.</td>
+              <td>A quantity, then a bottleneck, then a mitigation, then the cost of that mitigation said out loud. Tradeoffs where you name the side you gave up.</td>
+            </tr>
+            <tr>
+              <td><strong>What gets you buried</strong></td>
+              <td>Sketching Kafka and read replicas while your endpoint still returns 200 on a failed refund. Eight CRUD routes with no auth scope, no error model, no versioning stance. Money as a float.</td>
+              <td>Ten minutes on JSON field names. Never producing a single number. Naming a technology with no reason attached. Building for a scale nobody asked for.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Neither round is the senior one, whatever the folklore says. API design is the harder one to bluff, because nearly every claim is checkable against real HTTP semantics and there is nowhere to hide behind a diagram.</p>
+
+      <h2>The 60-second tell</h2>
+      <p>Read the scope of the thing you were asked to design. A feature is a contract question. A product is a topology question.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Prompt</th><th>Read it as</th><th>Because</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"Design the refunds API"</td><td>API design</td><td>Refunds sit inside a payments system that already exists. Duplicate submits and partial amounts are the meat.</td></tr>
+            <tr><td>"Design comments on a post"</td><td>API design</td><td>Threading, ordering and pagination of a reply tree are contract decisions before they are storage decisions.</td></tr>
+            <tr><td>"Design likes"</td><td>API design, with a scale tail</td><td>The toggle, the count and the idempotent double-tap are contract work. Only a celebrity-post follow-up turns it into fanout.</td></tr>
+            <tr><td>"Design a URL shortener"</td><td>System design</td><td>The product is the service. Key generation, collisions and a read-heavy cache are the answer.</td></tr>
+            <tr><td>"Design a notification service"</td><td>System design</td><td>Queues, fanout, retries, deduplication, per-channel delivery. The API surface is three endpoints and nobody cares.</td></tr>
+            <tr><td>"Design a job scheduler"</td><td>System design</td><td>Leases, at-least-once execution, clock skew, and what happens when a worker dies mid-job.</td></tr>
+            <tr><td>"Design a rate limiter"</td><td>Genuinely either</td><td>A distributed counter problem and a response header contract at once. This is the prompt to ask about.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Three tie-breakers when the noun alone does not settle it:</p>
+      <ul>
+        <li><strong>The tool they handed you.</strong> A shared text document or code editor usually means they expect signatures typed out. A blank infinite canvas usually means boxes. A hint, not a rule.</li>
+        <li><strong>The words around the verb.</strong> "Endpoint", "contract", "client", "SDK", "third-party" pull towards API design. "At scale", "millions of users", "throughput", "availability" pull towards system design.</li>
+        <li><strong>Who is asking.</strong> Platform and infrastructure teams tend to run the topology round. Teams whose product is itself an API tend to run the contract round, because that is the artefact their customers touch.</li>
+      </ul>
+      <p>If it is still ambiguous, spend one sentence on it: "would you like me to start at the endpoint contract, or at the deployment shape?" That question has never cost anyone points. Guessing wrong and finding out at minute twenty-five has.</p>
+
+      <h2>A worked answer skeleton: design the refunds API</h2>
+      <p>The shape of a strong first ten minutes on an API prompt. Notice how little of it is about servers.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Make the refund its own resource</h3>
+            <p>Open with <code>POST /v1/charges/{charge_id}/refunds</code> returning a refund object with its own id, not <code>PATCH /v1/charges/{id}</code> carrying a <code>refunded: true</code> flag. Say why in one line: a charge can be refunded partially and more than once, each attempt fails independently, and webhooks and support tickets need something to point at. That sentence separates people who have shipped an API from people who have read about one.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Write the request body out loud</h3>
+            <p><code>amount</code> as an integer in minor units, optional, defaulting to the remaining refundable balance. <code>reason</code> as a closed enum, <code>duplicate</code>, <code>fraudulent</code>, <code>requested_by_customer</code>, because free text here becomes an analytics problem forever. <code>metadata</code> as an opaque map. Say "integer minor units" explicitly: floating point money is one of the few things that ends an API round on the spot.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Handle the duplicate request before they ask</h3>
+            <p>An <code>Idempotency-Key</code> header, client-generated, scoped to the endpoint and the account. This is the highest-value minute in the round, so slow down and be specific about storage and expiry instead of saying the word and moving on. The rules below are what the interviewer is listening for.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Name the status codes and the error envelope</h3>
+            <p><code>201</code> with the refund object. <code>422</code> with a stable machine-readable <code>code</code> such as <code>amount_exceeds_refundable</code>, plus a human <code>message</code> and a <code>param</code> naming the offending field. <code>404</code> rather than <code>403</code> for a charge in another account, so you do not confirm it exists. <code>429</code> with <code>Retry-After</code>. Clients branch on <code>code</code> and never on the prose, so those strings are public contract and cannot be renamed later.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Admit the operation is asynchronous</h3>
+            <p>Settlement takes days, so the endpoint cannot honestly return <code>succeeded</code>. Give the resource a <code>status</code> of <code>pending</code>, <code>succeeded</code> or <code>failed</code>, return <code>201</code> with <code>pending</code>, and deliver completion by signed <code>refund.updated</code> webhook with at-least-once delivery, backed by polling <code>GET /v1/refunds/{id}</code>. Candidates who return a synchronous success get taken apart at exactly this point.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Close with listing, auth and versioning</h3>
+            <p><code>GET /v1/charges/{id}/refunds</code> with cursor pagination, because offset pagination skips and duplicates rows when new refunds land mid-scan. Authorisation scoped to the account owning the charge plus a separate refund permission, since reading a charge should not imply the right to move money. Versioning in one sentence: new fields are additive and optional, an existing field never changes meaning, breaking changes get a new version.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>The idempotency detail, since it is the graded part</h3>
+      <ul>
+        <li>Store the key with a hash of the request body and the full response you returned, under a time to live. Roughly 24 hours is a common window, and any number is defensible if you say it is deliberate.</li>
+        <li>Same key, same body, inside the window: replay the stored response byte for byte. One refund, however many times the client retries.</li>
+        <li>Same key, different body: <code>409</code>. Accepting it quietly means a retry with a changed amount refunds a different sum than the caller believes.</li>
+        <li>Same key, first request still in flight: <code>409</code> with a retryable code, so a racing double-submit does not create two ledger entries.</li>
+        <li>Say what the client does with each. Retry <code>429</code> and <code>5xx</code> with exponential backoff and jitter, never retry a <code>422</code>.</li>
+      </ul>
+
+      <h2>When the round changes lanes mid-way</h2>
+      <p>The common hybrid is an API prompt that pivots at minute twenty-five: "fine, now it is a hundred times the traffic and the ledger writes are the bottleneck". Not a trick, just the second half of the rubric. Stop refining field names and move up a layer: double-entry ledger writes, the transactional outbox that keeps webhook delivery alive across a crash between the database commit and the publish, deduplication on the consumer because at-least-once means the same event arrives twice. It runs the other way too, and both pivots are lost the same way, by carrying on answering the previous question in more detail.</p>
+
+      <h2>Where a copilot is the wrong tool for this round</h2>
+      <p>API design is the round where live assistance helps least. The output is a document you type while the interviewer watches, often in a shared editor where your keystrokes land on their screen as you make them, so polished paragraphs arriving at typing speed are conspicuous in a way a spoken answer is not. And the round is graded on the follow-up: why a header and not a body field, what breaks if the key expires after an hour, what if two clients generate the same key. A contract you did not reason your way to collapses at the second question.</p>
+      <ul>
+        <li><strong>OfferPilot AI runs on Windows 10 and 11 only.</strong> No macOS, no Linux, no mobile, no browser extension. If your interview is on a Mac, none of this applies to you.</li>
+        <li><strong>Capture exclusion covers screen sharing and screen recording, nothing else.</strong> The overlay is excluded from screen capture at the operating system level, so it is absent from Zoom, Teams, Meet, OBS and screenshots while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a second-device camera, or someone in the room.</li>
+        <li><strong>The rules of the round belong to the company.</strong> Some interviews explicitly permit documentation and AI assistance, some do not. Read the instructions and ask when they are ambiguous.</li>
+        <li><strong>Preparation beats improvisation here.</strong> The idempotency answer, the error envelope and the pagination argument are close to identical in every API round you will sit. Worth knowing cold rather than reading off a screen.</li>
+      </ul>
+
+      <h2>Practise the tell, not just the answers</h2>
+      <p>Take ten prompts and classify each in under a minute before designing anything, then check yourself against the scope rule: feature or product. That habit is worth more than another read of a system design book, because misclassification rather than ignorance is what sinks most of these rounds. The <a href="/interview-questions/">question banks</a> are a reasonable source of prompts to sort, the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank for a specific company and role from your resume so the prompts match the team you are actually interviewing with, and <a href="/code-copilot/">Code Copilot</a> covers the algorithm round that usually sits alongside these two. OfferPilot AI's free tier is 5 minutes a day with no card; paid <a href="/pricing/">plans</a> start at $39 a month and meter listening time only.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/ml-engineer-vs-data-scientist-interview/">ML Engineer vs Data Scientist Interview: Every Round Compared</a></li>
+        <li><a href="/guides/ml-system-design-interview-answer-structure/">ML System Design Interview: The Answer Spine Candidates Skip</a></li>
+        <li><a href="/guides/data-engineer-sql-interview-round/">Data Engineer SQL Interview Round: What to Expect in 45 Minutes</a></li>
+        <li><a href="/guides/devops-interview-vs-sre-interview/">DevOps Interview vs SRE Interview: Two Different Question Sets</a></li>
+        <li><a href="/guides/sdet-test-case-design-interview/">SDET Interview Test Case Design: Writing Cases for File Upload</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Know which round you are in by minute one.</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company-specific question bank from your own resume, and practise the classification before the prompt is live.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

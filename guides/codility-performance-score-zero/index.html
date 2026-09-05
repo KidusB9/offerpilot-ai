@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codility Performance Score 0%, Correctness 100%: Why It Happens</title>
+  <meta name="description" content="Codility grades correctness and performance as separate test groups. When every large-input test times out, correctness reads 100% and performance reads 0%.">
+  <meta name="keywords" content="codility performance score 0 percent, codility 0 performance, codility correctness 100 performance 0, codility timeout error, codility task score calculation, codility detected time complexity, codility performance tests, how is codility scored, codility large_random test failed">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/codility-performance-score-zero/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Codility Performance Score 0%, Correctness 100%: Why It Happens">
+  <meta property="og:description" content="Codility grades correctness and performance as separate test groups. When every large-input test times out, correctness reads 100% and performance reads 0%.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/codility-performance-score-zero/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-codility-performance-score-zero.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Codility Performance Score 0%, Correctness 100%: Why It Happens">
+  <meta name="twitter:description" content="Codility grades correctness and performance as separate test groups. When every large-input test times out, correctness reads 100% and performance reads 0%.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-codility-performance-score-zero.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Codility Performance Score 0%, Correctness 100%: Why It Happens","description":"Codility grades correctness and performance as separate test groups. When every large-input test times out, correctness reads 100% and performance reads 0%.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/codility-performance-score-zero/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Codility Performance Score 0%, Correctness 100%: Why It Happens","url":"https://offerpilotai.ink/guides/codility-performance-score-zero/","mainEntity":[{"@type":"Question","name":"What does a 0 percent performance score on Codility mean?","acceptedAnswer":{"@type":"Answer","text":"It means your solution failed every test in the performance group. Those tests use large inputs, typically arrays of around 100,000 elements, and each one has its own time limit. Your logic is right, because the correctness tests passed, but the work your code does grows too fast with the input size, so every large test hits the limit and scores nothing."}},{"@type":"Question","name":"How is a Codility task score calculated from test cases?","acceptedAnswer":{"@type":"Answer","text":"Each task runs against a fixed grid of hidden tests split into a correctness group and a performance group. Correctness percentage is the share of the correctness group you pass, performance percentage the share of the performance group. The task score reflects the whole grid, so on a ten test grid split six correctness and four performance, passing six of ten reads as 60 percent."}},{"@type":"Question","name":"Why did my code pass every correctness test but fail every performance test?","acceptedAnswer":{"@type":"Answer","text":"Correctness tests are deliberately tiny, often arrays of one, two or forty elements, so a slow algorithm finishes them instantly and returns the right answer. Performance tests jump to around 100,000 elements. A nested loop that costs 1,600 operations at N equal to 40 costs 5,000,000,000 at N equal to 100,000. Same code, same correct answer, no chance of finishing in time."}},{"@type":"Question","name":"Does a 0 percent performance score always mean a timeout?","acceptedAnswer":{"@type":"Answer","text":"No. Performance tests can also fail with a runtime error or a wrong answer. A recursive solution can exceed the stack depth only once the input is large. A 32 bit integer counter can overflow only once the values are large. Both produce zero on the performance group while every small correctness test still passes, and neither is caused by slowness."}},{"@type":"Question","name":"What does Detected time complexity O(N**2) mean on a Codility report?","acceptedAnswer":{"@type":"Answer","text":"Codility times your submission across inputs of increasing size and fits a curve to the measured runtimes, then prints the closest match in its own notation, where O(N**2) means quadratic. It is an empirical estimate, not a reading of your source code, so it can be approximate. Seeing O(N**2) next to a 0 percent performance score confirms the shape of the problem."}},{"@type":"Question","name":"Is it worth submitting a brute force solution on Codility?","acceptedAnswer":{"@type":"Answer","text":"Yes. Scoring is per test case, so a correct but slow solution that clears the whole correctness group still banks a substantial task score, whereas an unfinished optimal solution that does not compile scores nothing. Write the brute force first, submit it, then improve it. A working 60 percent on the clock beats an elegant idea that never ran."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Codility Performance Score 0%","item":"https://offerpilotai.ink/guides/codility-performance-score-zero/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Coding assessment platforms</p>
+      <h1 class="balance">Why your Codility performance score is 0% when correctness is 100%</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Codility grades each task against two groups of hidden tests. The correctness group uses tiny inputs, one element, two elements, forty elements, and only asks whether your answer is right. The performance group uses inputs at the top of the stated constraint, usually around 100,000 elements, and every test in it carries a time limit. A 0% performance score means every test in that second group failed, almost always because your algorithm does work that grows faster than the input does. Your logic is correct. Your complexity is not.</p>
+
+      <h2>The two numbers, and the grid underneath them</h2>
+      <p>Those percentages are not two opinions about your code. They are two counts. Each task has a fixed grid of hidden tests, each test belongs to one group, and each percentage is the share of its own group that passed. The pair 100% and 0% is not a contradiction, it is the signature of a correct brute force.</p>
+      <p>Below them the report lists every test by name with its verdict and running time, and prints a line like <code>Detected time complexity: O(N**2)</code>. That is measured, not read off your source. Codility times the submission across inputs of growing size, fits the curve, and prints the nearest match in its own notation, where <code>**</code> means "to the power of". It is an estimate, so it can be approximate, but next to a zero it is confirmation rather than news.</p>
+
+      <h2>One task, two solutions, ten hidden tests</h2>
+      <p>Take a task in the shape Codility sets. Given an array <code>A</code> of <code>N</code> integers and a target <code>K</code>, return the number of index pairs <code>(i, j)</code> with <code>i &lt; j</code> where <code>A[i] + A[j] == K</code>. The constraints: <code>N</code> is within the range 1 to 100,000, each element within -1,000,000,000 to 1,000,000,000. Those two numbers are the task. The first says what your algorithm may cost, the second what your accumulator has to hold.</p>
+      <p><strong>Solution A, the obvious one.</strong> Two nested loops, <code>for i in range(N)</code> then <code>for j in range(i + 1, N)</code>, incrementing a counter whenever the pair sums to <code>K</code>. Four lines, unarguably correct, roughly <code>N * N / 2</code> pair checks.</p>
+      <p><strong>Solution B, the one the constraint is asking for.</strong> One pass with a hash map of value counts: for each element <code>x</code>, add the number of times <code>K - x</code> has already been seen to the running total, then record <code>x</code>. Every pair counted once, in index order, no second loop. <code>O(N)</code> time, <code>O(N)</code> space.</p>
+      <p>Both return identical answers on every input. Here is the grid: six correctness tests, four performance tests. Names vary by task, but this is the convention Codility reports use.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th>Test</th><th>Group</th><th>Input</th><th>Solution A</th><th>Solution B</th></tr>
+          <tr><td><code>extreme_single</code></td><td>Correctness</td><td>N = 1</td><td>OK</td><td>OK</td></tr>
+          <tr><td><code>extreme_two</code></td><td>Correctness</td><td>N = 2</td><td>OK</td><td>OK</td></tr>
+          <tr><td><code>simple</code></td><td>Correctness</td><td>N = 6, the statement's example</td><td>OK</td><td>OK</td></tr>
+          <tr><td><code>small_random</code></td><td>Correctness</td><td>N = 40</td><td>OK</td><td>OK</td></tr>
+          <tr><td><code>small_negative</code></td><td>Correctness</td><td>N = 60, mixed signs</td><td>OK</td><td>OK</td></tr>
+          <tr><td><code>extreme_all_equal</code></td><td>Correctness</td><td>N = 50, all identical</td><td>OK</td><td>OK</td></tr>
+          <tr><td><code>medium_random</code></td><td>Performance</td><td>N = 10,000</td><td>TIMEOUT</td><td>OK, 0.01 s</td></tr>
+          <tr><td><code>large_random</code></td><td>Performance</td><td>N = 100,000</td><td>TIMEOUT</td><td>OK, 0.08 s</td></tr>
+          <tr><td><code>large_range</code></td><td>Performance</td><td>N = 100,000, values 1 to N</td><td>TIMEOUT</td><td>OK, 0.08 s</td></tr>
+          <tr><td><code>extreme_large</code></td><td>Performance</td><td>N = 100,000, maximal values</td><td>TIMEOUT</td><td>OK, 0.09 s</td></tr>
+        </table>
+      </div>
+
+      <p>Each failing line reads roughly <code>TIMEOUT ERROR, running time: &gt;6.00 sec., time limit: 4.00 sec.</code> The seconds differ by task and language, because Codility scales the allowance rather than judging an interpreted language against C++ wall-clock, but the shape never changes: a measured time, a limit, no partial credit for getting close. On <code>large_random</code>, Solution A performs about five billion pair checks. On <code>small_random</code>, at <code>N</code> equal to 40, it performs 780. That is the whole report in two numbers, and nothing in the correctness group was built to expose the difference.</p>
+
+      <h2>Where the 60% comes from</h2>
+      <p>Six of the ten tests passed. That is the task score.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th>Submission</th><th>Correctness</th><th>Performance</th><th>Passed</th><th>Task score</th></tr>
+          <tr><td>Nested loops, interpreted language</td><td>6 of 6 = 100%</td><td>0 of 4 = 0%</td><td>6 of 10</td><td>60%</td></tr>
+          <tr><td>Nested loops, compiled language</td><td>6 of 6 = 100%</td><td>1 of 4 = 25%</td><td>7 of 10</td><td>70%</td></tr>
+          <tr><td>Hash map, 32 bit counter</td><td>6 of 6 = 100%</td><td>2 of 4 = 50%</td><td>8 of 10</td><td>80%</td></tr>
+          <tr><td>Hash map, 64 bit counter</td><td>6 of 6 = 100%</td><td>4 of 4 = 100%</td><td>10 of 10</td><td>100%</td></tr>
+        </table>
+      </div>
+
+      <p>Row two is the same algorithm in a faster language. <code>medium_random</code> at <code>N</code> equal to 10,000 is fifty million pair checks, which a compiled language clears and an interpreted one does not, so identical logic lands on 25% or 0%. Row three is not slow at all, and gets its own section below. Row one is still 60%, which is 60 points more than an optimal solution that never compiled.</p>
+      <p>One caveat. Codility does not publish a universal grid size or weighting, and the hiring company configures which tasks appear, so treat six and four as the shape rather than a constant. Some tasks carry no performance group at all, in which case correctness is the whole score. The direction never varies: failing every performance test caps the task well below full marks, however clean the logic is.</p>
+
+      <h2>When 0% performance is not about speed</h2>
+      <p>Not every zero is a timeout, and the difference changes the fix. Read the verdict column, not the headline percentage.</p>
+      <ul>
+        <li><strong>Runtime error from recursion depth.</strong> A recursive walk is fine at <code>N</code> equal to 60 and dies at 100,000. Python's default recursion limit sits around 1,000 frames, so you get <code>RUNTIME ERROR</code> on all four performance tests beside a perfect correctness score. Rewrite it as a loop with an explicit stack.</li>
+        <li><strong>Wrong answer from integer overflow.</strong> Row three above. A Java or C# <code>int</code> tops out at 2,147,483,647, so counting pairs in an array where most elements match overflows silently and returns a negative number. Correctness tests use small values and never touch it. Move the accumulator to <code>long</code>.</li>
+        <li><strong>Memory.</strong> Anything sized <code>N</code> by <code>N</code> is ten billion cells at the top constraint. It allocates happily on a forty element test and fails on every large one.</li>
+      </ul>
+      <blockquote>Read the upper bound on <code>N</code> before you write a line, and turn it into a budget. Around 100,000 rules out <code>O(N**2)</code> and points at a single pass, one sort, or a hash map. Around 1,000 makes <code>O(N**2)</code> safe. The constraint is not decoration, it is the specification of the algorithm they want.</blockquote>
+
+      <h2>Where a copilot is the wrong tool for this</h2>
+      <p>OfferPilot AI publishes this guide, so the limits belong inside it. Our <a href="/code-copilot/">Code Copilot</a> reads a problem from a screenshot and returns a solution with the intuition, a dry run and the Big-O, and its overlay is excluded from screen capture at the operating-system level, so it stays out of Zoom, Teams, Meet, OBS and screenshots. That guarantee is narrow. It does nothing about a webcam, a lockdown browser, an invigilator in the room, eye tracking, or a phone camera beside your desk, and it is Windows 10 and 11 only, with no macOS, Linux, mobile or browser extension. A Codility session also records the edit stream behind its code playback, which is <a href="/guides/codility-tab-switching-and-paste-detection/">how a reviewer watches a solution get written</a>.</p>
+      <p>More to the point, the gap this page describes is not an information gap. Nobody scores 0% on performance because they had never heard of a hash map. They score it because they read a constraint of 100,000 and typed a nested loop anyway. That reflex comes from working timed problems until the budget calculation happens before the first line, and no overlay installs it inside the ninety minutes you have.</p>
+
+      <h2>The three traps behind most performance zeroes</h2>
+      <p>Nearly every quadratic solution that scores zero is one of these three. The first is visible. The other two are not, which is why they survive a read-through.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Nested loops over the same input</h3>
+            <p>Two loop headers walking the array, one inside the other. Solution A in its honest form, catchable by counting indentation levels before you submit. The fix is almost always one of three moves: a hash map for "have I seen this before", a prefix sum array for "what is the total of this range", or one sort followed by two pointers.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>A linear search hiding inside a single loop</h3>
+            <p>One visible loop, and inside it <code>if x in seen</code> where <code>seen</code> is a list, or <code>arr.indexOf(x)</code>, or <code>list.contains(x)</code>, or <code>Array.prototype.includes</code>. Each scans the whole collection, so one loop is quietly <code>N * N</code>. Same trap: <code>list.pop(0)</code>, <code>arr.shift()</code> and <code>max(A[i:])</code> are linear per call. Swap the list for a set or dictionary and membership drops to constant time.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>String concatenation in a loop</h3>
+            <p>Strings are immutable in Java, C#, Python and JavaScript, so <code>result += c</code> allocates a fresh string and copies everything built so far. Do that 100,000 times and you have copied roughly five billion characters to build one string, with no nested loop visible anywhere. Collect the pieces in a list and join once, or use a <code>StringBuilder</code>. CPython sometimes optimises the single-reference case, but that is an implementation detail, not a plan.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>If you are staring at a report right now: check that the failing verdicts really are timeouts rather than runtime errors or wrong answers, work out which trap you wrote, then recompute your cost against the upper bound on <code>N</code> before touching the keyboard. A 60% you understand is a better position than it looks, because correctness is the half that takes judgement, and you already have it.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/devskiller-test-what-to-expect/">DevSkiller Test: What to Expect, Real Code Not LeetCode</a></li>
+        <li><a href="/guides/codility-similarity-check-flag/">Codility Similarity Check Flagged: What Triggers It and Why</a></li>
+        <li><a href="/guides/codesignal-gca-score-explained/">What Is a Good CodeSignal Score? Inside the 200-600 GCA Band</a></li>
+        <li><a href="/guides/coding-assessment-disconnected-crash/">HackerRank Test Disconnected? What Happens and How to Recover</a></li>
+        <li><a href="/guides/google-during-coding-assessment/">Can You Google During a HackerRank or Coding Assessment?</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Practise until the complexity check happens before the first line.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card required. Work timed problems with the intuition, the dry run and the Big-O spelled out.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

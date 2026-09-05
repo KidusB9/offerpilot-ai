@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coding Interview Prep After Years of Not Interviewing: 6 Weeks</title>
+  <meta name="description" content="A 6-week rebuild for engineers who ship features instead of solving puzzles: week 1 is re-fluency drills only, weeks 2 to 4 rebuild patterns from easies, weeks 5 and 6 add timed mediums.">
+  <meta name="keywords" content="how to prepare for coding interviews after years of not interviewing, interviewing again after years away, coding interview prep for senior engineers, rusty at leetcode after years of work, 6 week coding interview plan, first interview in 5 years software engineer, senior engineer leetcode rust, relearning data structures for interviews, coding interview prep for experienced developers">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/coding-interview-prep-after-years-away/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Coding Interview Prep After Years of Not Interviewing: 6 Weeks">
+  <meta property="og:description" content="A 6-week rebuild for engineers who ship features instead of solving puzzles: week 1 is re-fluency drills only, weeks 2 to 4 rebuild patterns from easies, weeks 5 and 6 add timed mediums.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/coding-interview-prep-after-years-away/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-coding-interview-prep-after-years-away.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Coding Interview Prep After Years of Not Interviewing: 6 Weeks">
+  <meta name="twitter:description" content="A 6-week rebuild for engineers who ship features instead of solving puzzles: week 1 is re-fluency drills only, weeks 2 to 4 rebuild patterns from easies, weeks 5 and 6 add timed mediums.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-coding-interview-prep-after-years-away.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Coding Interview Prep After Years of Not Interviewing: 6 Weeks","description":"A 6-week rebuild for engineers who ship features instead of solving puzzles: week 1 is re-fluency drills only, weeks 2 to 4 rebuild patterns from easies, weeks 5 and 6 add timed mediums.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/coding-interview-prep-after-years-away/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Coding Interview Prep After Years of Not Interviewing: 6 Weeks","url":"https://offerpilotai.ink/guides/coding-interview-prep-after-years-away/","mainEntity":[{"@type":"Question","name":"How do you prepare for coding interviews after years of not interviewing?","acceptedAnswer":{"@type":"Answer","text":"Give it six weeks with different jobs. Week one is language re-fluency only: write a hash map count, a grid BFS and a binary search lower bound from memory, each in under ten minutes with no lookups. Weeks two to four rebuild patterns starting from easies. Weeks five and six add a 35-minute timer and narration out loud."}},{"@type":"Question","name":"Why start with re-fluency drills instead of LeetCode problems?","acceptedAnswer":{"@type":"Answer","text":"Because what decayed after years of shipping features is typing recall, not reasoning. If the first six minutes of a 35-minute round go on remembering which import gives you a queue, that time comes straight out of your thinking budget, and the interviewer reads hesitation rather than rust. Fix the fingers first, in five days."}},{"@type":"Question","name":"What three habits do senior candidates fail coding interviews on?","acceptedAnswer":{"@type":"Answer","text":"Coding before narrating, so the interviewer has no plan to grade. Building the production version, meaning validation, custom exceptions and interfaces that are never scored and eat the clock. Skipping the brute force, either dismissing it silently or deflecting with what they would use at work, which loses a free checkpoint."}},{"@type":"Question","name":"How many problems should you solve in a six-week rebuild?","acceptedAnswer":{"@type":"Answer","text":"Roughly 60 across weeks two to four at five sessions a week, plus about 20 timed repeats in weeks five and six. Week one has no problems at all, only three drills repeated daily. That is far fewer than a 150-problem list, but each one is solved from a blank file rather than read once."}},{"@type":"Question","name":"Should you start with easy problems if you are a senior engineer?","acceptedAnswer":{"@type":"Answer","text":"Yes, deliberately below your level for two weeks. An easy solved in eight minutes with the trigger written down is worth more than a medium you half-finished with the editorial open. A pattern is not learned until you can name the property of the input that should make it fire."}},{"@type":"Question","name":"Is six weeks enough to prepare for a senior software engineer loop?","acceptedAnswer":{"@type":"Answer","text":"For the coding rounds, yes. A senior loop is usually two coding rounds plus two or three system design and behavioural rounds, and this plan covers none of the latter. If your loop is design heavy, compress the coding rebuild to four weeks and spend the rest on design and stories."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Interviewing Again After Years Away","item":"https://offerpilotai.ink/guides/coding-interview-prep-after-years-away/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Prep timelines and study plans</p>
+      <h1 class="balance">How to prepare for coding interviews after years of not interviewing</h1>
+      <p class="meta">2026 &middot; ~9 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Spend the first week on your fingers, not on problems. After years of shipping features, what decayed is not your reasoning, it is your ability to type a hash map count, a grid BFS and a binary search from memory without looking anything up. Weeks two to four rebuild patterns starting from easies you will find insulting. Weeks five and six add a 35-minute timer and the sound of your own voice, which is where most senior candidates actually lose the round.</p>
+
+      <h2>What actually rusted, and what did not</h2>
+      <p>The instinct is to open a medium on day one, stall on it for forty minutes, and conclude you have forgotten how to code. You have not. Open your last three pull requests. They are better than anything a new grad writes.</p>
+      <p>Three specific things went. Syntax recall under a clock, because your editor has been finishing <code>collections.deque</code> for you for years. The ritual of thinking out loud in front of a stranger, which nothing in your job rehearses, since design docs are asynchronous and standups are status. And tolerance for a problem with no product context, no existing code, and no ticket explaining why anyone wants it. None of those are repaired by grinding mediums, and grinding mediums in week one is how people quit in week two.</p>
+      <p>You also keep advantages a new grad does not have. You debug fast. You spot the edge case before you are asked. You can talk about a trade-off without rehearsing it. The last two weeks of this plan exist to convert that into something an interviewer can actually score.</p>
+
+      <h2>Week 1: three drills from memory, and nothing else</h2>
+      <p>No problem sites this week. You are not solving problems, you are rebuilding typing. Three drills, every morning, from a blank file, with no autocomplete, no documentation tab, and no assistant.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The count</h3>
+            <p>Given a list of strings, return the most frequent one, ties broken by first appearance. Then run it on three test cases you wrote yourself, one of which is an empty list.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The grid BFS</h3>
+            <p>Shortest path from top-left to bottom-right of a grid of open cells and walls, four directions, returning -1 when unreachable. Mark cells visited when you enqueue them, not when you dequeue them.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The lower bound</h3>
+            <p>In a sorted array, return the leftmost index whose value is greater than or equal to the target, and the array length if there is none. Not whether the value exists. The lower bound form is the one interviews actually build on.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Each one has to land in under ten minutes, correct on the first run, with zero lookups. On day one expect twenty to thirty minutes each and at least one syntax error you would be embarrassed to show a colleague. That is the point of measuring it. By Friday all three should be under ten, and that is a gate: do not start week two until you pass it.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Drill</th><th>What it exposes</th><th>Pass condition</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>The count</strong></td><td>The default-dict or get-or-default idiom, sorting by value, whether your language preserves insertion order in a map</td><td>Under 10 minutes, correct on your own three tests</td></tr>
+            <tr><td><strong>Grid BFS</strong></td><td>Which import gives you a queue, visiting at enqueue time so you do not revisit, bounds check before the grid read</td><td>Under 10 minutes, returns -1 on a fully blocked grid</td></tr>
+            <tr><td><strong>Lower bound</strong></td><td>Whether you write <code>while lo &lt; hi</code> with <code>hi = mid</code>, or <code>while lo &lt;= hi</code> with <code>hi = mid - 1</code>, and whether you mix the two under pressure</td><td>Under 10 minutes, correct on empty, all-smaller and all-larger arrays</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The reason this comes first is arithmetic. The first six minutes of a 35-minute round are the expensive ones. Spend them recalling that a priority queue defaults to a min heap and that you wanted the opposite, and that time comes out of thinking, not out of slack. The interviewer does not see rust, they see hesitation.</p>
+
+      <h2>Weeks 2 to 4: patterns, from easies upward</h2>
+      <p>Start below your level on purpose. An easy solved in eight minutes with the trigger written down beats a medium you half-finished with the editorial open in the next tab. One pattern per session, and a pattern is not finished until you can write its trigger sentence, meaning the property of the input that should make it fire.</p>
+      <ul>
+        <li>Sorted input, and you need a pair meeting a condition, fires two pointers.</li>
+        <li>Longest or shortest run subject to a constraint fires a sliding window.</li>
+        <li>Nearest greater or smaller element fires a monotonic stack.</li>
+        <li>Shortest path with unweighted edges fires BFS, and never DFS.</li>
+      </ul>
+      <p>If you cannot write the sentence, you memorised a solution rather than learning a pattern, and it will not survive the version with different wording.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Week</th><th>Patterns</th><th>Session shape</th><th>Length</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>2</strong></td><td>Counting and hashing, two pointers, sliding window, stacks</td><td>Three easies, then one medium</td><td>60 min</td></tr>
+            <tr><td><strong>3</strong></td><td>Tree traversal and depth, BFS by level, linked lists, binary search variants, heaps and top-k</td><td>Two easies, then two mediums</td><td>75 min</td></tr>
+            <tr><td><strong>4</strong></td><td>Graphs on grids and adjacency lists, backtracking, intervals, one-dimensional DP</td><td>One easy, then two mediums</td><td>90 min</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Five sessions a week, so roughly twenty problems a week and about sixty across the three weeks. One rule holds all of it together: every session opens by re-solving one problem from the previous session, from a blank file, before you read anything new. It costs ten minutes and it is the only reason week four is possible.</p>
+
+      <h2>Weeks 5 and 6: the timer and the speech</h2>
+      <p>The failure mode changes now. It is no longer knowledge, it is delivery. Two sessions a day: an unlabelled problem pulled at random from the weeks two to four topics, a 35-minute timer, a screen recording running, and you talking aloud from the first second even though nobody is there.</p>
+      <p>The opening is a fixed ritual, four to six minutes, identical every time:</p>
+      <ol>
+        <li>Restate the problem in your own words, including the input type and what gets returned.</li>
+        <li>Ask exactly one clarifying question that could change the answer. Whether the array can be empty is filler. Whether the intervals arrive sorted by start is not.</li>
+        <li>Say the brute force out loud with its complexity, even when it is embarrassing.</li>
+        <li>Name the improvement, the data structure that buys it, and the new complexity.</li>
+        <li>Ask whether they want you to code that. Only then do you type.</li>
+      </ol>
+      <p>Then review the recording, but only the first six minutes of it, at 1.5 speed. Count every silence longer than twenty seconds. In week five you will find three or four. By the end of week six you want none, and the way there is narrating the dead ends. Saying that you are checking whether sorting first breaks the index requirement is a sentence. Staring at the screen is not. In week six, replace two solo sessions with live mocks against a human, and spend the recovered time re-solving whatever broke.</p>
+
+      <h2>The three habits senior candidates specifically fail on</h2>
+      <p>These are not beginner mistakes. Each one is the direct result of several good years of engineering.</p>
+      <p><strong>1. Coding before narrating.</strong> At work the code is the explanation, and nobody makes you defend a plan for a thirty-line function before you write it, so you stopped doing it. In an interview the plan is a graded artifact. A senior who opens the editor at minute two and types quietly for fifteen has handed the interviewer nothing to score, and a correct solution that arrived in silence reads as memorised rather than solved. The fix is mechanical: nothing gets typed until step five of the ritual above.</p>
+      <p><strong>2. Building the production version.</strong> You will reach for input validation, a custom exception type, a small interface, a note about thread safety, because that is what code review trained into you. In a 35-minute problem none of it is scored and all of it costs clock. Solve the stated problem for the stated inputs. Pay the production instinct with one sentence, that in real code you would validate the grid here but will assume it is well formed, and move on.</p>
+      <p><strong>3. Skipping the brute force.</strong> Seniors dismiss it, usually silently, because they can already see the good answer coming, or they deflect by saying they would just reach for a library at work. Both lose points. The brute force is a free checkpoint, and stating its complexity is what makes your improvement legible as an improvement. Say the quadratic answer in one sentence, then beat it.</p>
+
+      <h2>Where this plan, and this tool, are wrong for you</h2>
+      <p>Six weeks buys you the coding rounds and nothing else. A senior loop is usually two coding rounds plus two or three system design and behavioural rounds, and none of that appears above. If your loop is design heavy, compress this rebuild to four weeks and spend the rest elsewhere. If you moved into management and have not written the interview language in years, one week of re-fluency is not enough. Give it two, accept that the plan is now seven weeks, and do not skip the gate. And if your first interview is more than eight weeks out, slow weeks two to four down rather than piling more problems into them.</p>
+      <p>On tooling, the honest limitation runs against us. During a timed session in weeks five and six, <a href="/code-copilot/">Code Copilot</a> is the wrong tool, and opening it inside the timer destroys the only unfaked measurement in this plan. It belongs at minute 36, when you want the optimal solution with the intuition, a dry run and the Big-O in one place rather than spread across four forum threads. The practical facts: OfferPilot AI runs on Windows 10 and 11 only, with no macOS, Linux, mobile or browser version. Its overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots. That covers screen sharing and nothing beyond it. It does nothing about a webcam, a lockdown browser, a proctor sitting next to you, eye tracking, or a phone pointed at your desk. Where an assessment forbids outside help, the six weeks before it are the part that counts.</p>
+
+      <h2>Start tonight, not Monday</h2>
+      <p>Open a blank file and run the count drill right now against a timer. Whatever number comes back is your baseline, and it is the one measurement here you cannot argue with. Then put five weekday sessions in the calendar and defend them like meetings. If the loop also has behavioural rounds, the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a role-specific bank from your resume, and it belongs in weeks five and six, not week one. The free tier is five minutes a day with no card.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/coding-interview-prep-1-month-with-a-job/">Coding Interview Prep in 1 Month While Working Full Time</a></li>
+        <li><a href="/guides/coding-interview-prep-2-weeks/">2-Week Coding Interview Prep Plan: Build Week, Simulate Week</a></li>
+        <li><a href="/guides/coding-interview-prep-1-week/">How to Prepare for a Coding Interview in 1 Week: 7-Day Plan</a></li>
+        <li><a href="/guides/coding-interview-prep-3-days/">3-Day Coding Interview Prep Plan: Hour-by-Hour Schedule</a></li>
+        <li><a href="/guides/morning-of-interview-warm-up/">How to Warm Up Before a Coding Interview: A 40-Minute Plan</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Fingers first, patterns second, voice last.</h2>
+      <p class="lede" style="margin:0 auto 8px">Six weeks is enough when week one goes on drills instead of mediums you are not ready for yet.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">Open Code Copilot<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Start free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

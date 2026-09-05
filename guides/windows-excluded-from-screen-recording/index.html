@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Window Not Showing in Screen Share Recording: Why It Happens</title>
+  <meta name="description" content="A window can be missing from a Zoom, Teams, Meet or OBS capture because Windows lets it set a display affinity flag, so the compositor never draws it into the captured frame.">
+  <meta name="keywords" content="why is my window not showing in screen share recording, window missing from screen recording, window not captured in obs, setwindowdisplayaffinity, wda_excludefromcapture, window invisible in zoom screen share, teams recording missing window, screenshot does not show window, exclude window from screen capture windows 11">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/windows-excluded-from-screen-recording/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Window Not Showing in Screen Share Recording: Why It Happens">
+  <meta property="og:description" content="A window can be missing from a Zoom, Teams, Meet or OBS capture because Windows lets it set a display affinity flag, so the compositor never draws it into the captured frame.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/windows-excluded-from-screen-recording/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-windows-excluded-from-screen-recording.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Window Not Showing in Screen Share Recording: Why It Happens">
+  <meta name="twitter:description" content="A window can be missing from a Zoom, Teams, Meet or OBS capture because Windows lets it set a display affinity flag, so the compositor never draws it into the captured frame.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-windows-excluded-from-screen-recording.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Window Not Showing in Screen Share Recording: Why It Happens","description":"A window can be missing from a Zoom, Teams, Meet or OBS capture because Windows lets it set a display affinity flag, so the compositor never draws it into the captured frame.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/windows-excluded-from-screen-recording/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Window Not Showing in Screen Share Recording: Why It Happens","url":"https://offerpilotai.ink/guides/windows-excluded-from-screen-recording/","mainEntity":[{"@type":"Question","name":"Why is my window not showing in a screen share or recording?","acceptedAnswer":{"@type":"Answer","text":"Either you shared a single window or a monitor that does not contain it, or the program set a display affinity flag asking Windows to leave its window out of capture. With that flag, the desktop compositor builds the captured frame without the window in it, so Zoom, Teams, Meet and OBS receive an image the window was never drawn into. Check a screenshot first, because screenshots use the same path."}},{"@type":"Question","name":"What is the Windows flag that removes a window from screen capture?","acceptedAnswer":{"@type":"Answer","text":"It is set with SetWindowDisplayAffinity on a top level window handle. WDA_NONE is normal capture, WDA_MONITOR renders the window to your monitor only and leaves a black rectangle in the capture, and WDA_EXCLUDEFROMCAPTURE removes the window from the captured frame entirely so viewers see whatever sits behind it. The removal value needs Windows 10 version 2004 or later."}},{"@type":"Question","name":"How do I test whether a window is excluded from capture?","acceptedAnswer":{"@type":"Answer","text":"Press Windows key and Print Screen, then open the PNG saved in your Pictures Screenshots folder. If the window is missing there while you can still see it on your monitor, the flag is set, because a screenshot travels the same compositor path a meeting app does. Confirm by starting a meeting alone, sharing your whole screen, and watching from your phone."}},{"@type":"Question","name":"Why can Zoom, Teams or OBS not show a window that is excluded?","acceptedAnswer":{"@type":"Answer","text":"Because none of them ever hold those pixels. They ask Windows for a frame through a capture API, and the compositor hands back an image that was assembled without the excluded window. The sharing app is not filtering anything out, so no quality setting, capture mode, driver update or restart inside Zoom, Teams, Meet or OBS restores it."}},{"@type":"Question","name":"Why is my window a black rectangle instead of missing entirely?","acceptedAnswer":{"@type":"Answer","text":"A black rectangle in the exact shape of the window usually means the older WDA_MONITOR value, which blanks the window region rather than removing it. Protected video playback and a graphics acceleration mismatch also produce black. Missing means the newer removal value. Whether the window vanishes or blanks is decided by the program and the Windows build, not by the meeting app."}},{"@type":"Question","name":"Does capture exclusion hide a window from a webcam or a proctor?","acceptedAnswer":{"@type":"Answer","text":"No. The flag only affects software that asks Windows for the screen. A webcam, a phone camera pointed at your monitor, an HDMI capture device on the display output, a person in the room, eye tracking and lockdown browsers that inspect running processes are all unaffected, because the window still renders normally to your physical display."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Window Missing From Screen Recording","item":"https://offerpilotai.ink/guides/windows-excluded-from-screen-recording/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">Why some windows never appear in a screen recording</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A window you can plainly see on your monitor can be completely absent from a Zoom share, a Teams recording or an OBS capture, and that is usually deliberate rather than broken. Windows lets a program set a display affinity flag on its own window, and one value of that flag tells the desktop compositor to build the frame it hands to capture without that window in it. Zoom, Teams, Meet and OBS then receive a picture the window was never composited into, which is why no setting inside them brings it back. Two duller causes look identical from the outside, so rule those out first.</p>
+
+      <h2>Rule out the two boring causes in thirty seconds</h2>
+      <p>Most people who search this phrase have not met the flag at all. They have met a scope problem, and it takes half a minute to eliminate.</p>
+      <ul>
+        <li><strong>You shared a window, not a screen.</strong> A single window share sends that one window and nothing else. Anything you open afterwards, including dialogs the app itself spawns, may never enter the stream. In a browser, sharing a tab is narrower still: it sends that tab's contents, not the browser around it and not your desktop.</li>
+        <li><strong>The window is on a display you did not share.</strong> Sharing Screen 1 while the window sits on Screen 2 produces exactly the symptom people describe. Drag the window onto the shared display and watch whether it appears.</li>
+      </ul>
+      <p>Two smaller ones are worth a glance. A minimised window can capture as blank or as a stale frame, so keep it open on screen while you test. And a User Account Control prompt runs on a separate secure desktop that no capture tool can read, which freezes or blanks the whole share for as long as the prompt is up.</p>
+      <p>If you shared the entire display, the window is on that display, it is open and unminimised, and it still does not arrive, you are looking at capture exclusion.</p>
+
+      <h2>The flag itself: SetWindowDisplayAffinity</h2>
+      <p>Windows exposes a call named <code>SetWindowDisplayAffinity</code> that takes a top level window handle and one of three values. The program that owns the window makes the call on itself. There is no user setting, no registry switch and no meeting app option that sets or clears it on another application's window.</p>
+      <ul>
+        <li><code>WDA_NONE</code>, value 0x00000000. Normal. The window is composited into everything, capture included.</li>
+        <li><code>WDA_MONITOR</code>, value 0x00000001. The window renders to your physical display, but its region comes back blanked in a capture. This is the old behaviour, available for well over a decade, and it is where the classic black rectangle comes from.</li>
+        <li><code>WDA_EXCLUDEFROMCAPTURE</code>, value 0x00000011. The window is left out of the captured frame altogether. Viewers see whatever sits behind it, and nothing marks the gap. This value needs Windows 10 version 2004, build 19041, or newer, which neatly explains why one application can produce a black box on an old machine and a clean absence on a current one.</li>
+      </ul>
+      <p>A matching <code>GetWindowDisplayAffinity</code> call reads the value back, which is how a program checks its own state. Password managers, banking clients, credential prompts, protected video players and some overlays use one of the two protective values.</p>
+
+      <h2>Why the meeting app is not the place to fix it</h2>
+      <p>It helps to follow the pixels. Your application draws into a surface. The Desktop Window Manager composites all those surfaces into the image sent to your monitor. Separately, when something asks to capture, the compositor assembles an output for capture, and it is at that assembly step that an excluded window is skipped. Only then does a capture API hand the result over: Desktop Duplication for many older tools, Windows Graphics Capture for the modern picker, the same stack underneath <code>getDisplayMedia</code> when Google Meet or any other browser based platform asks Chrome for your screen. Zoom, Teams, Meet, OBS and the Xbox Game Bar recorder all sit downstream of that step.</p>
+      <p>So the sharing app is not filtering, hiding or censoring anything. It receives a frame in which those pixels never existed, then encodes it and sends it. That is the whole reason changing capture mode, lowering quality, restarting the client, updating a driver or switching platforms changes nothing. The decision was made one layer below all of them, before any of those tools was handed a single frame.</p>
+
+      <h2>How to test it, in order</h2>
+      <p>Run these on the machine that owns the window. The first step alone answers the question in most cases.</p>
+
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Take a screenshot with Windows key and Print Screen</h3><p>Open the PNG that lands in Pictures, then Screenshots. A screenshot travels the same compositor path a meeting app does, so it is a faithful proxy for what viewers get without needing a second person. Window visible on your monitor but missing from the file means the removal value. Present as a black rectangle in the file means the blanking value, or protected video, or a graphics acceleration mismatch.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Start a meeting with only yourself in it</h3><p>Open Zoom, Teams or Meet, start a meeting, share the whole screen, then join that same meeting from your phone and look at the phone. Never trust the local preview thumbnail. It is drawn on your own machine and is not evidence of what leaves it. This is also the only step that tests the exact platform you care about.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Compare Display Capture and Window Capture in OBS</h3><p>Add a Display Capture source, then a Window Capture source pointed at the same window. Display Capture reads the composited desktop, so an excluded window is simply not in it. Window Capture targets the handle directly and typically returns black or nothing at all. Two different capture routes agreeing is strong evidence that the exclusion sits on the window rather than in one tool.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Record ten seconds and watch the file back</h3><p>Use the Game Bar with Windows key, Alt and R, or record the meeting itself, then play the file. Recording and live sharing draw on the same capture path, so a window absent from one is absent from the other. Worth doing explicitly if what matters to you is a recording somebody reviews later rather than a live share.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Check the owning application's own settings</h3><p>If you want the window back, the only place that can grant it is the program that owns the window. Some apps expose a screen security or privacy toggle that flips the flag. If it does not, the window stays out, and nothing the person receiving your share does will override it.</p></div></div>
+      </div>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>What viewers get</th>
+              <th>Underlying cause</th>
+              <th>Fastest proof</th>
+              <th>Can it be changed?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Window absent, desktop visible behind it</td>
+              <td>Capture exclusion, removal value</td>
+              <td>A Windows key and Print Screen file with no window in it</td>
+              <td><strong>Only by the app itself</strong></td>
+            </tr>
+            <tr>
+              <td>Black rectangle shaped exactly like the window</td>
+              <td>Capture exclusion, older blanking value</td>
+              <td>Same screenshot, but a black box appears in it</td>
+              <td><strong>Only by the app itself</strong></td>
+            </tr>
+            <tr>
+              <td>Only a video area black, page and controls fine</td>
+              <td>Protected playback</td>
+              <td>Pause it: the still frame often returns</td>
+              <td><strong>No.</strong> Designed behaviour</td>
+            </tr>
+            <tr>
+              <td>Black on a window share, fine on a full screen share</td>
+              <td>Graphics acceleration mismatch</td>
+              <td>Switch to whole screen and it appears</td>
+              <td><strong>Yes.</strong> Align both apps to one GPU</td>
+            </tr>
+            <tr>
+              <td>Window missing, but you shared one window or one tab</td>
+              <td>Share scope, not exclusion</td>
+              <td>Reshare the entire display instead</td>
+              <td><strong>Yes,</strong> immediately</td>
+            </tr>
+            <tr>
+              <td>Everything frozen or blank for a few seconds</td>
+              <td>A UAC prompt on the secure desktop</td>
+              <td>A permission dialog is open right now</td>
+              <td><strong>Yes.</strong> Answer the prompt</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What the flag does not touch, stated plainly</h2>
+      <p>Display affinity affects software that asks Windows for the screen. It does not affect the picture going to your monitor, because that is the entire point of the mechanism, and everything downstream of the monitor is therefore untouched.</p>
+      <ul>
+        <li>A webcam, or a phone propped up pointing at your display, records what your eyes see.</li>
+        <li>A capture device sitting on the HDMI or DisplayPort output generally sees the window, since it reads the display signal rather than a compositor frame.</li>
+        <li>A live proctor in the room, eye tracking, and lockdown browsers that enumerate running processes are all unaffected by a rendering flag.</li>
+        <li>Behaviour inside a virtual machine, or through Remote Desktop, varies by configuration and is worth testing rather than assuming.</li>
+      </ul>
+      <p>The overlay in <a href="/interview-copilot/">OfferPilot AI</a> uses the removal value for exactly the reason described above, which is why it is absent from Zoom, Teams, Meet, OBS and screenshots while staying readable on the user's own monitor. That is a statement about screen capture and nothing more. It is not a claim about cameras, proctors or supervised exams.</p>
+
+      <h2>When this page, and our product, are the wrong answer</h2>
+      <p>If you came here because a colleague cannot see your app in a work call, your fix is in the boring causes section or the acceleration row of the table, and there is nothing here for you to install. If you are on macOS or Linux there is no equivalent of this exact flag to go hunting for, and OfferPilot AI does not run there at all, since it is Windows 10 and 11 only with no mobile app and no browser extension. And if you are sitting an assessment under rules you agreed to, with a lockdown browser or a live invigilator, capture exclusion is not a workaround for that, and we will not describe it as one. The positioning is preparation, live assistance and accessibility, on calls where the choice to use it is yours to make.</p>
+
+      <p>Short version. Missing from a screenshot as well means the window asked Windows to leave it out, and only its own developer can change that. Missing only from the share means you shared the wrong scope. Black rather than missing means the older blanking value, protected video or a graphics mismatch, and the last of those is the only one you can fix from your side.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/how-apps-hide-from-screen-capture/">How Apps Hide From Screen Sharing on Windows (and the Limits)</a></li>
+        <li><a href="/guides/what-meeting-recordings-capture/">Does a Zoom, Teams or Meet Recording Capture My Whole Screen?</a></li>
+        <li><a href="/guides/teams-share-window-vs-screen/">Microsoft Teams Share Window vs Share Screen: What Others See</a></li>
+        <li><a href="/guides/windows-screen-recorders-capture-modes/">OBS Display vs Window Capture: What Gets Recorded on Windows</a></li>
+        <li><a href="/guides/teams-screen-share-notifications/">Will My Notifications Show When I Share My Screen in Teams?</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Want to watch capture exclusion behave for yourself?</h2>
+      <p class="lede" style="margin:0 auto 8px">The free tier needs no card. Run the screenshot test and the second device test in five minutes.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Hide Notifications While Screen Sharing on Windows 11</title>
+  <meta name="description" content="Settings, System, Notifications, then switch on Do not disturb. Here is the exact click path, why the duplicating-my-display rule never fires during a share, and the leaks it misses.">
+  <meta name="keywords" content="hide notifications while screen sharing windows 11, turn off notifications during screen share, windows 11 do not disturb screen sharing, stop teams notifications while presenting, disable slack popups screen share, windows 11 focus assist screen sharing, when I'm duplicating my display setting, hide message previews during zoom share, presentation mode notifications windows 11">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/hide-notifications-screen-share-windows/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="How to Hide Notifications While Screen Sharing on Windows 11">
+  <meta property="og:description" content="Settings, System, Notifications, then switch on Do not disturb. Here is the exact click path, why the duplicating-my-display rule never fires during a share, and the leaks it misses.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/hide-notifications-screen-share-windows/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-hide-notifications-screen-share-windows.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="How to Hide Notifications While Screen Sharing on Windows 11">
+  <meta name="twitter:description" content="Settings, System, Notifications, then switch on Do not disturb. Here is the exact click path, why the duplicating-my-display rule never fires during a share, and the leaks it misses.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-hide-notifications-screen-share-windows.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Hide Notifications While Screen Sharing on Windows 11","description":"Settings, System, Notifications, then switch on Do not disturb. Here is the exact click path, why the duplicating-my-display rule never fires during a share, and the leaks it misses.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/hide-notifications-screen-share-windows/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"How to Hide Notifications While Screen Sharing on Windows 11","url":"https://offerpilotai.ink/guides/hide-notifications-screen-share-windows/","mainEntity":[{"@type":"Question","name":"How do I hide notifications while screen sharing on Windows 11?","acceptedAnswer":{"@type":"Answer","text":"Press Windows key and I, choose System, then Notifications, and switch Do not disturb on. It sits directly under the master Notifications toggle. The one-click version is Windows key and N to open the notification center, then the bell icon in its top right corner. Banners stop appearing immediately, and anything that arrives queues silently in the notification center instead."}},{"@type":"Question","name":"Does Windows 11 turn on Do Not Disturb automatically when I share my screen?","acceptedAnswer":{"@type":"Answer","text":"No. The automatic rule people expect to cover this is called when I am duplicating my display, and duplicating means the Windows display mode you set with Windows key and P, usually for a projector. A Zoom, Teams or Meet share is a software capture that never changes display mode, so Windows does not know it is happening and no rule fires."}},{"@type":"Question","name":"Why do Teams or Slack messages still pop up when Do Not Disturb is on?","acceptedAnswer":{"@type":"Answer","text":"Because some apps draw their own banners instead of handing the notification to Windows. Microsoft Teams has a Notification style setting that can be set to Teams built-in rather than Windows, and a built-in banner is painted by Teams itself, so Do Not Disturb never sees it. Switch the style to Windows, or pause notifications inside each app as well."}},{"@type":"Question","name":"What does Do Not Disturb fail to hide during a screen share?","acceptedAnswer":{"@type":"Answer","text":"Unread counts on taskbar icons, browser tab titles that read seven new messages, bolded channel names inside an app window, priority notifications such as incoming calls and reminders which pass through by design, and the notification center backlog itself, which dumps every suppressed message on screen the moment you open the calendar flyout."}},{"@type":"Question","name":"Is there a keyboard shortcut for Do Not Disturb in Windows 11?","acceptedAnswer":{"@type":"Answer","text":"There is no single default hotkey that toggles it. The closest thing is Windows key and N, which opens the notification center, followed by the bell icon at the top right of that panel. That is two inputs and works from anywhere, including from inside a meeting window, which makes it the practical shortcut to memorise before a call."}},{"@type":"Question","name":"Should I use a scheduled Do Not Disturb window for interviews?","acceptedAnswer":{"@type":"Answer","text":"Yes, because it is the only automatic rule that reliably covers a screen share. Open Settings, System, Notifications, expand Turn on do not disturb automatically, tick During these times, and set the block your calls actually sit in with the repeat option set to weekdays. Manual toggling fails on the day you forget."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Hiding Notifications While Screen Sharing","item":"https://offerpilotai.ink/guides/hide-notifications-screen-share-windows/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Screen sharing and video calls</p>
+      <h1 class="balance">How to hide notifications while screen sharing on Windows 11</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Press <strong>Windows key + I</strong>, click <strong>System</strong>, click <strong>Notifications</strong>, and switch <strong>Do not disturb</strong> on. It is the first control under the master Notifications toggle. The one-click version, and the one worth memorising, is <strong>Windows key + N</strong> followed by the <strong>bell icon in the top right of the notification panel</strong>. Then the part that catches people out: the automatic rule named <em>When I'm duplicating my display</em> does not fire when you share a screen in Zoom or Teams. Sharing is not duplicating, and Windows cannot tell the difference because it never sees the share at all.</p>
+
+      <h2>The exact click path, in order</h2>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Windows key + I, System, Notifications</h3><p>System sits near the top of the left rail, Notifications a few entries down the right pane. The page opens with a master <strong>Notifications</strong> toggle at the top and <strong>Do not disturb</strong> immediately beneath it. Those are two different switches. The master toggle kills everything, including behaviour you will want back later, so leave it alone and use the one below it.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Switch Do not disturb on</h3><p>Banners stop instantly, with no restart and no sign out. Confirm it took: the bell in the taskbar corner picks up a small crossed-out mark, and the header of the notification panel shows the same struck-through bell. Messages keep arriving. They queue silently in the notification center instead of drawing themselves across your shared screen.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Open Set priority notifications and cut the exceptions</h3><p>This link sits directly under the Do not disturb switch, and it is the step almost everyone skips. Priority items are allowed <em>through</em> Do Not Disturb by design. Out of the box that includes <strong>Show incoming calls, including VoIP</strong> and <strong>Show reminders, regardless of app used</strong>, plus any apps already on the list underneath. An incoming call banner names the caller. Turn both off for a call you are sharing.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Expand Turn on do not disturb automatically</h3><p>Five checkboxes live here. Tick <strong>During these times</strong>, set a start and end that genuinely covers your interview block, and set the repeat to weekdays. This is the only automatic rule that dependably applies to a screen share, because it keys off the clock rather than off something Windows has to detect.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Clear the notification center before you share, not after</h3><p>Windows key + N, then <strong>Clear all</strong>. Everything Do Not Disturb suppressed is still sitting in that panel. Open the calendar flyout mid-call to check a date and the whole backlog appears at once, sender names and message previews included, which is a worse leak than the single banner you were trying to avoid.</p></div></div>
+      </div>
+
+      <h2>Why "When I'm duplicating my display" never fires during a share</h2>
+      <p>The wording is a trap. <em>Duplicating your display</em> means the Windows display mode you set with <strong>Windows key + P</strong>, the one used for a projector or a meeting room television, where a single desktop is painted onto two panels. It has nothing to do with sending pixels over a network. Zoom, Teams, Meet and Webex capture the desktop through the graphics stack, and Windows treats that like any other application reading the screen. No display mode changes, so no rule is triggered.</p>
+
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Automatic rule</th><th>Typical default</th><th>What actually triggers it</th><th>Covers a Zoom or Teams share?</th></tr></thead><tbody>
+        <tr><td>When I'm duplicating my display</td><td>On</td><td>Display mode set to Duplicate with Windows key + P, usually a projector or room TV</td><td>No. A software share never changes display mode.</td></tr>
+        <tr><td>When playing a game</td><td>On</td><td>Windows classifying the foreground app as a full screen game</td><td>No.</td></tr>
+        <tr><td>When using an app in full screen mode</td><td>On</td><td>True full screen, not a maximised window. A maximised Chrome does not count, F11 usually does</td><td>Sometimes, by accident, if the meeting client itself is full screen. Never plan around it.</td></tr>
+        <tr><td>For the first hour after a Windows feature update</td><td>On</td><td>The hour following a feature update install</td><td>No.</td></tr>
+        <tr><td>During these times</td><td>Off</td><td>A clock schedule you set, with a daily, weekends or weekdays repeat</td><td>Yes, if the call falls inside the window. This is the one to use.</td></tr>
+      </tbody></table></div>
+
+      <blockquote>Plug in a projector and Do Not Disturb switches itself on. Share your screen with twelve people and nothing happens. That asymmetry is the whole reason this page exists.</blockquote>
+
+      <p>Label wording drifts between Windows 11 builds, so you may see <em>When duplicating my display</em> without the pronoun, and the full screen entry sometimes carries a parenthetical about duplication. The behaviour is the same. If your Notifications page reads differently from the table above, trust your page and match by meaning rather than by string.</p>
+
+      <h2>The leaks Do Not Disturb does not close</h2>
+      <p>Do Not Disturb governs exactly one channel: notifications handed to the Windows notification system. A surprising amount of what appears on your screen never goes through it.</p>
+      <ul>
+        <li><strong>Apps that draw their own banners.</strong> Microsoft Teams has a <em>Notification style</em> setting under Settings, Notifications and activity, offering a Windows style and a Teams built-in style. On the built-in setting Teams paints the banner itself, so Windows Do Not Disturb never sees it and cannot suppress it. Set the style to Windows, or set your Teams presence to Do not disturb, or do both.</li>
+        <li><strong>Slack, twice over.</strong> Pause notifications inside Slack as well: click your avatar, then <em>Pause notifications</em>, or type <code>/dnd 60</code> in any channel. Even paused, the window keeps changing. Channel names go bold, the mention badge climbs, huddle invitations land in the sidebar, and a shared Slack window shows every bit of it.</li>
+        <li><strong>Window titles and browser tabs.</strong> A tab reading <em>(7) Slack</em> or <em>(3) Inbox</em> is drawn inside the page, in the window you are sharing. No Windows setting touches it. Close those tabs, or share from a second browser profile that is signed into nothing.</li>
+        <li><strong>Taskbar badges and previews.</strong> The unread count on the Mail or Teams icon keeps climbing. While you are in Settings, Personalisation, Taskbar deserves a visit too: the Widgets button rewrites its own headline text on the taskbar with no notification involved at all.</li>
+        <li><strong>Sounds.</strong> Do Not Disturb silences the suppressed Windows notifications, but an app drawing its own alert plays its own sound. If you ticked share system audio, the room hears the ping even though nobody sees the banner.</li>
+        <li><strong>Windows system prompts.</strong> Restart required, low battery, low disk space, a USB device connected. Behaviour under Do Not Disturb varies and several of these are engineered to be hard to ignore. Plug the laptop in and defer updates instead of trusting a setting to hold them back.</li>
+      </ul>
+      <p>Test rather than assume. Start a meeting with yourself, share the screen you plan to share, join from your phone, then send yourself a Slack DM and a Teams message from another account. Ninety seconds, and you learn which of your apps route through Windows and which paint their own pixels. That answer differs by app version, which is exactly why no generic list can settle it for you.</p>
+
+      <h2>Where this stops being the right tool</h2>
+      <p>Do Not Disturb suppresses interruptions. It is not a privacy layer, and it does nothing about whatever is already on screen when you press share: an open document, a bookmarks bar, an address bar that autocompletes somewhere personal, a desktop covered in filenames. If the worry is what is visible rather than what pops up, the fix is a tidy desktop and a single window share instead of a full screen share, not a notifications setting.</p>
+      <p>Being direct about our own product, since this question often arrives next to it. The <a href="/interview-copilot/">OfferPilot AI</a> overlay is excluded from screen capture at the operating system level, so it stays out of a Zoom, Teams, Meet or OBS stream and out of screenshots while remaining visible on your own monitor, on every plan including the free one. That is a different mechanism solving a different problem, so do not read it as a substitute: your Slack banners are still yours to silence. It is Windows 10 and 11 only, with nothing for macOS. And capture exclusion has no effect on a webcam, a lockdown browser, a proctor watching you in the room or a phone camera pointed at your desk. On a monitored assessment it is the wrong tool, and we would rather say so plainly. The free tier on the <a href="/pricing/">pricing page</a> asks for no card if you want to check any of that yourself.</p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li><strong>Windows key + N, then the bell.</strong> Two inputs, works from inside a meeting window, and no default hotkey binds Do Not Disturb directly.</li>
+        <li><strong>Schedule it rather than remember it.</strong> <em>During these times</em> is the only automatic rule that covers a share. The duplication and full screen rules do not.</li>
+        <li><strong>Check the priority list.</strong> Incoming calls and reminders come through Do Not Disturb on purpose, and a call banner carries a name.</li>
+        <li><strong>Silence the apps too, then clear the panel.</strong> Teams notification style set to Windows, Slack paused, noisy tabs closed, notification center emptied before you click share.</li>
+      </ul>
+      <p>Set the schedule once and everything above collapses into a ten second check before you present.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/teams-screen-share-notifications/">Will My Notifications Show When I Share My Screen in Teams?</a></li>
+        <li><a href="/guides/black-window-screen-share/">Window Shows Black When Screen Sharing: Causes and Fixes</a></li>
+        <li><a href="/guides/how-apps-hide-from-screen-capture/">How Apps Hide From Screen Sharing on Windows (and the Limits)</a></li>
+        <li><a href="/guides/webex-share-application-vs-screen/">Webex Share Application vs Share Screen (and Share a Portion)</a></li>
+        <li><a href="/guides/teams-share-window-vs-screen/">Microsoft Teams Share Window vs Share Screen: What Others See</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Quiet screen, clear head.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card. Windows 10 and 11 only.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

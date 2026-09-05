@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does CoderPad Track Tab Switching? What Playback Really Shows</title>
+  <meta name="description" content="Yes. CoderPad playback replays your keystrokes, every run and its output, and marks each moment the pad lost browser focus. It sees its own tab, not your machine.">
+  <meta name="keywords" content="does coderpad track tab switching, coderpad playback, coderpad focus loss marker, does coderpad know if i switch tabs, coderpad playback what the interviewer sees, coderpad replay timeline, coderpad tab switch detection, can coderpad see my other windows">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/coderpad-playback-tab-switching/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does CoderPad Track Tab Switching? What Playback Really Shows">
+  <meta property="og:description" content="Yes. CoderPad playback replays your keystrokes, every run and its output, and marks each moment the pad lost browser focus. It sees its own tab, not your machine.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/coderpad-playback-tab-switching/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-coderpad-playback-tab-switching.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does CoderPad Track Tab Switching? What Playback Really Shows">
+  <meta name="twitter:description" content="Yes. CoderPad playback replays your keystrokes, every run and its output, and marks each moment the pad lost browser focus. It sees its own tab, not your machine.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-coderpad-playback-tab-switching.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does CoderPad Track Tab Switching? What Playback Really Shows","description":"Yes. CoderPad playback replays your keystrokes, every run and its output, and marks each moment the pad lost browser focus. It sees its own tab, not your machine.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/coderpad-playback-tab-switching/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does CoderPad Track Tab Switching? What Playback Really Shows","url":"https://offerpilotai.ink/guides/coderpad-playback-tab-switching/","mainEntity":[{"@type":"Question","name":"Does CoderPad track tab switching?","acceptedAnswer":{"@type":"Answer","text":"It tracks focus, which is close but not identical. CoderPad listens to standard browser events that tell the page it is no longer visible or no longer holds the keyboard. Those moments are marked on the playback timeline with a start time and a duration. The event carries no destination, so the record says the pad stopped being focused, never which tab, app or window took over."}},{"@type":"Question","name":"What does CoderPad playback show the interviewer afterwards?","acceptedAnswer":{"@type":"Answer","text":"Three layers on one scrubbable timeline. First, the pad's edit history at keystroke resolution, so the solution rebuilds itself at the speed it was written. Second, every execution you ran with the output it produced at that moment. Third, markers wherever the pad lost browser focus, showing when and for how long. It is a recording of the document, not of you."}},{"@type":"Question","name":"Does opening the browser dev console count as a tab switch on CoderPad?","acceptedAnswer":{"@type":"Answer","text":"In practice yes, which surprises most candidates. Developer tools take the keyboard away from the page whether they are docked in the same window or floating in their own, so the pad registers exactly the same focus loss it would for a second tab. Hitting F12 to read a stack trace therefore leaves a marker in playback. Saying out loud that you are opening it removes all ambiguity."}},{"@type":"Question","name":"Can CoderPad see my other windows or what is on my second monitor?","acceptedAnswer":{"@type":"Answer","text":"No. CoderPad runs as a web page inside your browser tab and has no operating system level view of your machine. It cannot enumerate running applications, read other windows, capture your screen or see a second monitor. The one exception is a screen share on the video call, which is a separate stream you started yourself, not something the pad collected."}},{"@type":"Question","name":"How long does a focus loss have to be before it matters?","acceptedAnswer":{"@type":"Answer","text":"There is no threshold that passes or fails you, because a human reads the timeline. Short losses scattered evenly across an hour look like notifications and are usually ignored. What draws attention is a single long gap positioned right after a hard requirement appears, followed by a burst of finished code. Duration matters far less than what happens immediately afterwards."}},{"@type":"Question","name":"Does an overlay hidden from screen capture avoid a CoderPad focus marker?","acceptedAnswer":{"@type":"Answer","text":"No. Capture exclusion removes a window from screen shares, recordings and screenshots, and focus detection never looks at pixels. It reads which window the operating system considers focused, so clicking any overlay produces the same marker as any other application. Capture exclusion also does nothing against webcam monitoring, lockdown browsers, eye tracking or a person watching you in the room."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"CoderPad playback and tab switching","item":"https://offerpilotai.ink/guides/coderpad-playback-tab-switching/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Coding assessment platforms</p>
+      <h1 class="balance">Does CoderPad track tab switching, and what does playback show?</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Yes, in the one way that survives the interview: CoderPad's playback marks every moment the pad lost browser focus, and those marks sit on the same timeline as your keystrokes and your runs. Anyone with the link can scrub back to a gap, see how long it lasted, and watch what appeared in the editor the second it ended. What the marker cannot say is where you went, because the browser event behind it carries no destination. And CoderPad has no view of your machine beyond its own tab, unless you are the one screen sharing.</p>
+
+      <p>Most write-ups stop at the live interview, where a human is already watching your caret move. Playback is the part that outlives the call: a replayable artefact attached to the pad, openable by someone who was never in the room, and on an asynchronous pad often the only thing a reviewer looks at.</p>
+
+      <h2>The three layers stacked on one timeline</h2>
+      <p>Playback is not a video and not a diff. It is a reconstruction of the pad rebuilt from the events it recorded, which is why it can be scrubbed to any second and why it shows things a finished file cannot.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The edit history, at keystroke resolution</h3>
+            <p>Your solution reassembles itself at the speed you typed it. The reviewer sees the order you built things in, not the tidy final order: the helper you wrote first, the variable renamed twice, the twenty seconds the caret sat still before you saw the trick, the block you deleted. They also see the opposite shape, forty finished lines appearing in one frame with no typing in between.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Every run, with the output it produced</h3>
+            <p>Each time you hit run, that execution and its result are pinned to the timeline where it happened. This is the layer candidates forget exists. The failing test you fixed quietly, the stack trace you never mentioned, the five runs in ninety seconds while you guessed at an off by one, all replayable beside the code as it stood at that instant.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Markers wherever the pad lost focus</h3>
+            <p>Focus losses appear as their own marks along the timeline, rendered in orange in the interface, each with a start point and a duration. Clicking one jumps the replay to it. That placement is the whole point: a gap is never read on its own, it is read together with the code that arrived immediately after it.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Exact labelling and colouring depend on the CoderPad version and the plan the hiring team is on, so treat the orange marks as the current shape of the feature rather than a fixed contract. The signal underneath is stable: the browser's own visibility and focus events, recorded with timestamps.</p>
+
+      <h2>A worked example: two identical solutions, two very different replays</h2>
+      <p>Two candidates finish the same string parsing question with near identical final code. Here is what the scrubber shows.</p>
+
+      <ol>
+        <li><strong>00:00 to 04:10, both.</strong> Reading, a few clarifying comments typed into the pad, a first naive loop.</li>
+        <li><strong>04:10, candidate A.</strong> A ninety second focus gap. When it ends, typing resumes at the same pace as before, on the same naive loop, which then gets refactored over six minutes with three runs and two failing outputs along the way.</li>
+        <li><strong>04:10, candidate B.</strong> A four minute focus gap. When it ends, thirty two lines of a correct sliding window appear in one frame, followed by a single run that passes first time, then nothing.</li>
+        <li><strong>Final state, both.</strong> Working code, similar structure, similar length.</li>
+      </ol>
+
+      <p>Nothing in the playback says candidate B did anything. The marker holds no URL, no window title and no screenshot. What it does is place a four minute absence directly against a burst of finished code that never failed once, and reviewers react to that shape even when they cannot name it. Candidate A's gap is longer than a notification, but the work either side is continuous. Duration on its own decides very little. Adjacency decides a lot.</p>
+
+      <h2>The dev console counts, and so do four other innocent things</h2>
+      <p>The surprise for engineers is that opening developer tools registers as a focus loss. Docked or undocked, the tools take the keyboard away from the document, so the pad receives the same event it would receive for a second tab. A front-end candidate who reflexively hits F12 to read why a fetch is failing leaves a marker on the timeline while never actually leaving the page.</p>
+
+      <blockquote>The habit that produces the marker is the habit you want in a hire. In playback it looks identical to the habit you do not.</blockquote>
+
+      <p>The same goes for a chat notification that steals focus, a password manager popup, the machine locking itself, and clicking a second monitor while the pad stays fully visible on the first. None arrive labelled as innocent, and playback cannot tell them apart. In a live pad the fix is verbal: say what you are doing before you do it, because a gap announced in advance carries no information.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Question a reviewer might have</th><th>Can playback answer it?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>When did they stop typing, and for how long?</td><td>Yes, to the second</td></tr>
+            <tr><td>What did the code look like at any given moment?</td><td>Yes, scrub to it</td></tr>
+            <tr><td>What did their third run output?</td><td>Yes, runs and results sit on the timeline</td></tr>
+            <tr><td>Did a large block arrive all at once?</td><td>Yes, this is very visible in replay</td></tr>
+            <tr><td>Which tab or app did they switch to?</td><td>No, the browser event has no destination</td></tr>
+            <tr><td>What was on the rest of their screen?</td><td>No, the pad holds no screen recording</td></tr>
+            <tr><td>What did they type in another window?</td><td>No, the pad records only itself</td></tr>
+            <tr><td>Was anyone else in the room with them?</td><td>No, playback has no camera</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Where CoderPad's view genuinely stops</h2>
+      <p>This is the half that gets overstated in both directions online. CoderPad is a web application running in a browser tab. It has no operating system level access to your computer: it cannot enumerate your running applications, read other windows, list your open tabs, capture your desktop, see a second monitor or inspect your clipboard history. It knows its own tab gained or lost focus, and it knows what entered the editor.</p>
+      <p>The exception is screen sharing. If the round runs on a video call and you share your screen, everything inside that share is visible and, where the team records the call, recorded. That stream belongs to the meeting tool, not the pad, and is not part of playback. Two separate records can exist from one interview, with different retention and different audiences.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool</h2>
+      <p>Worth stating plainly on a page published by a company that sells an interview assistant. The OfferPilot overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom, Teams or Meet share, in a recording, or in a screenshot. That property is irrelevant to everything on this page. Focus detection never looks at pixels. It reads which window the operating system considers focused, so clicking any overlay, or firing the <a href="/code-copilot/">Code Copilot</a> capture shortcut, moves focus off the pad and produces the same marker anything else would. Capture exclusion also does nothing against webcam monitoring, a lockdown browser, eye tracking, a second device camera or a proctor sitting beside you.</p>
+      <p>There is a second reason a shared pad is the wrong venue. Playback records how the answer was built, so a solution you cannot rebuild, defend and extend on request reads worse than an honest partial one you wrote yourself. The realistic use of an assistant here is before the round rather than during it.</p>
+
+      <h2>Making your playback read the way your work actually went</h2>
+      <ul>
+        <li><strong>Narrate anything that moves focus,</strong> the console included. One sentence beforehand turns a marker into a non event.</li>
+        <li><strong>Keep the pad on one screen</strong> and put nothing you will click on the other, since a click over there blurs the pad even though it never leaves your view.</li>
+        <li><strong>Type your scaffolding rather than pasting it.</strong> Text typed by hand replays as typing, the same text pasted from a notes app arrives in one frame.</li>
+        <li><strong>Run early and run often.</strong> A trail of failing then passing runs is good evidence of a real debugging process, and it is all on the timeline.</li>
+        <li><strong>Mute notifications before you join.</strong> Every toast that steals focus is a mark someone may scrub to later.</li>
+      </ul>
+
+      <p>If your next round is a conversation rather than a shared editor, that is the format <a href="/interview-copilot/">Interview Copilot</a> is built for, on Windows 10 and 11, free for five minutes a day with no card. Terms are on the <a href="/pricing/">pricing page</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/google-during-coding-assessment/">Can You Google During a HackerRank or Coding Assessment?</a></li>
+        <li><a href="/guides/hackerrank-candidate-report/">What Recruiters See in Your HackerRank Report: Field by Field</a></li>
+        <li><a href="/guides/hackerrank-copy-paste-detection/">Can HackerRank Detect Copy and Paste? What the Report Shows</a></li>
+        <li><a href="/guides/hackerearth-proctoring-camera/">Does HackerEarth Use Your Camera? Every Proctoring Toggle</a></li>
+        <li><a href="/guides/hackerrank-proctoring-settings/">Does HackerRank Record Your Screen? Proctoring Tiers Explained</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

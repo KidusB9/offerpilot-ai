@@ -1,0 +1,11 @@
+{
+  "provider": "stripe",
+  "comment": "Paste your Stripe Payment Link URLs below to go live. Create them at dashboard.stripe.com/payment-links (one per paid plan). Set each link's post-payment redirect to https://offerpilotai.ink/welcome/. Until a link is set, its button routes to the free download so the site never dead-ends.",
+  "links": {
+    "pro": "",
+    "ultimate": "",
+    "lifetime": ""
+  },
+  "free_href": "/download/",
+  "fallback_href": "/download/"
+}

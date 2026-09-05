@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can You Google During a HackerRank or Coding Assessment?</title>
+  <meta name="description" content="Usually yes for syntax and docs, and the platform rarely blocks it. HackerRank, CodeSignal, Codility and HackerEarth log that you left, never where you went.">
+  <meta name="keywords" content="can you google during a hackerrank test, can you use google during a coding assessment, is googling allowed on codility, hackerrank tab switching detection, codesignal external resources rule, hackerearth tab switch auto submit, can you look up syntax during a coding test, does hackerrank know what you searched">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/google-during-coding-assessment/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Can You Google During a HackerRank or Coding Assessment?">
+  <meta property="og:description" content="Usually yes for syntax and docs, and the platform rarely blocks it. HackerRank, CodeSignal, Codility and HackerEarth log that you left, never where you went.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/google-during-coding-assessment/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-google-during-coding-assessment.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Can You Google During a HackerRank or Coding Assessment?">
+  <meta name="twitter:description" content="Usually yes for syntax and docs, and the platform rarely blocks it. HackerRank, CodeSignal, Codility and HackerEarth log that you left, never where you went.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-google-during-coding-assessment.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Can You Google During a HackerRank or Coding Assessment?","description":"Usually yes for syntax and docs, and the platform rarely blocks it. HackerRank, CodeSignal, Codility and HackerEarth log that you left, never where you went.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/google-during-coding-assessment/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Can You Google During a HackerRank or Coding Assessment?","url":"https://offerpilotai.ink/guides/google-during-coding-assessment/","mainEntity":[{"@type":"Question","name":"Can you Google during a HackerRank test?","acceptedAnswer":{"@type":"Answer","text":"In the standard configuration nothing stops you, because the test runs in an ordinary browser tab. Whether you are permitted to is set by the invite and the instructions screen, not by HackerRank itself. Where tab proctoring is enabled, leaving writes a timestamped focus event with a duration attached, and a warning banner usually appears the first time you go."}},{"@type":"Question","name":"Does the assessment platform know what I searched for?","acceptedAnswer":{"@type":"Answer","text":"Not from a browser event. The visibilitychange and blur events carry no URL, no window title and no keystrokes from wherever you went, so the log stores that focus left and for how long, never the destination. The exception is a session recording your desktop, where the search is visible because the pixels were captured."}},{"@type":"Question","name":"Is looking up language syntax counted as cheating?","acceptedAnswer":{"@type":"Answer","text":"Usually not, and several assessments say so outright on the instructions screen. The line most employers draw sits between reference material and the answer itself. Checking an argument order or a heap library signature is reference. Searching the problem statement verbatim and lifting a published solution is the answer, and that one collides with similarity checking."}},{"@type":"Question","name":"Can switching tabs end a coding assessment automatically?","acceptedAnswer":{"@type":"Answer","text":"It can, where the employer configured that consequence. HackerEarth style setups often state a tab switch or full screen exit allowance on the instructions page and warn that exceeding it submits or ends the session. Read that screen for a number before you start, because the threshold is set per test rather than by the platform."}},{"@type":"Question","name":"Do any coding assessments actually block the internet?","acceptedAnswer":{"@type":"Answer","text":"A few do, through a locked down or secure browser environment that an employer switches on, and those are announced in advance because they normally require a download or an extra permission step. The common browser delivered test blocks nothing at all. It watches instead, which is why the duration of an absence matters more than the fact of one."}},{"@type":"Question","name":"Does hiding a window from screen capture help during an assessment?","acceptedAnswer":{"@type":"Answer","text":"No. Focus detection reads which window the operating system considers focused, not pixels, so an excluded overlay writes the same blur event as any other application would. Capture exclusion also does nothing against webcam monitoring, a lockdown browser, eye tracking, a second device camera, or a person sitting in the room with you."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Googling during a coding assessment","item":"https://offerpilotai.ink/guides/google-during-coding-assessment/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Coding assessment platforms</p>
+      <h1 class="balance">Can you Google during a coding assessment?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Physically, on a normal HackerRank, Codility or HackerEarth test, yes. It is a web page in your browser and there is nothing between you and a second tab. Whether you are <em>allowed</em> to is decided by the invite email and the instructions screen, not by the platform, and the four big platforms differ far less in what they block than in what happens after you leave. Only a locked down browser environment actually stops the lookup. Everything else records a focus event with a duration and no destination.</p>
+
+      <h2>The four platforms, hard block versus logged event</h2>
+      <p>Read the second column first. It answers the literal question, and in the common configuration the answer is the same on all four, which is why the third column is the one that matters.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Platform</th><th>Is external lookup hard-blocked?</th><th>What leaving actually produces</th><th>Where the documentation line sits</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>HackerRank</strong></td>
+              <td>Not in the standard setup. An ordinary browser tab, no domain blocking, no enforced isolation. Only the strictest configurations add a locked or secure environment, and enforced full screen is not a lock, Esc leaves it and fires its own event.</td>
+              <td>A focus event: timestamp, duration, running count, written when the tab is blurred or hidden. Plus a paste flag with size. A warning banner normally appears the first time you leave.</td>
+              <td>Set by the employer in the invite and the instructions. Plenty of tests permit language documentation outright. The platform maintains no allowlist of sites.</td>
+            </tr>
+            <tr>
+              <td><strong>CodeSignal</strong></td>
+              <td>Also not blocked, but this is the one platform of the four whose strict tier can see the answer to the question. Where full desktop recording is enabled, your search is in frame because the pixels were captured.</td>
+              <td>Focus events as above, and on a recorded session, video or periodic frames of the display you granted. That footage has a destination in it, unlike any browser event.</td>
+              <td>Standardised scored assessments state their own rules on the start screen and are the strictest of the four about outside resources. Company built tests vary, and many do not restrict reference material at all.</td>
+            </tr>
+            <tr>
+              <td><strong>Codility</strong></td>
+              <td>No, and a lockdown browser is not part of the usual delivery. The test page watches rather than restricts.</td>
+              <td><code>visibilitychange</code> and <code>blur</code> handlers writing timestamp, duration and count, sitting in the report beside code playback and a similarity check against public solutions and other candidates.</td>
+              <td>The lookup is rarely the thing that flags you here. The similarity comparison runs on your submitted code, so what you paste back matters more than what you read.</td>
+            </tr>
+            <tr>
+              <td><strong>HackerEarth</strong></td>
+              <td>No browser lock, but the strictest configurable <em>consequence</em> of the four. Some tests attach a hard action to the counter rather than only logging it.</td>
+              <td>The same browser events, wired to a limit. Instruction screens frequently state a tab switch or full screen exit allowance and warn that exceeding it auto submits or ends the session.</td>
+              <td>Stated on the instructions page, which is also where the number lives. If a number is shown, treat every lookup as spending from a budget.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>One caveat belongs under that table. Every row is a per-test choice made by the hiring company, and product tiers change, so a live pairing session behaves nothing like an unattended timed test on the same platform. Where you cannot tell which configuration you were sent, assume focus is being logged, because that assumption costs you nothing.</p>
+
+      <h2>Why a lock and a log are different animals</h2>
+      <p>A lockdown or secure browser is an application running on your machine. It can take over the display, refuse to launch alongside other processes, and prevent navigation, because it holds operating system privileges you granted when you installed it. That is a hard block, and it is loud. You had to download something, and you knew about it days in advance.</p>
+      <p>A logged focus event is six lines of JavaScript in a web page. The <code>visibilitychange</code> event fires when the tab stops being visible. The <code>blur</code> event fires on any loss of keyboard focus, a much lower bar that alt-tab and a click on a second monitor both trip. Neither carries a URL, a window title, a page title, or a single keystroke from the other application. A web page cannot enumerate your tabs or read your desktop, so no proctoring setting turns a focus log into a record of what you looked at.</p>
+      <blockquote>The honest version of the answer is that the platform does not know you Googled. It knows you were gone for four minutes and eleven seconds, starting forty seconds after the hardest task loaded. Duration and timing carry the signal. The raw count carries almost none of it and gets most of the attention.</blockquote>
+
+      <h2>The four minute check before you press start</h2>
+      <p>You can work out which regime you are in rather than guessing, and every step below is something you can verify on screen.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Search the invite for the rule, not the platform name</h3>
+            <p>Look for the words resources, documentation, references, or open book. An invite saying you may consult language documentation but not search for solutions has already answered you, and it overrides anything a forum thread says about the platform in general.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Read the instructions screen for a number</h3>
+            <p>A stated allowance such as three tab switches, or a sentence about exiting full screen, means the counter has an action attached to it. No number and no warning language usually means logging only. That screen is untimed on most platforms, so read it properly rather than clicking through.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Watch what the start flow asks permission for</h3>
+            <p>A camera prompt means webcam stills. A browser prompt that says share your entire screen means the desktop is recorded, and the browser keeps a sharing indicator up all session. A required download means a controlled environment. No prompt at all means a plain browser test.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Open what you expect to need before the timer starts</h3>
+            <p>Have the standard library reference for your language sitting in one other tab already. It does not stop the blur event firing, but it turns a two minute search into a six second glance, and duration is the field that actually gets read.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Remove the accidental triggers</h3>
+            <p>Notification toasts, password manager popups, developer tools, an antivirus prompt, the screen auto locking, and clicking anything on a second monitor all write the identical event to a deliberate exit. Do Not Disturb on, chat apps quit rather than minimised, one screen.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Where the line actually falls, with real search strings</h2>
+      <p>Most people typing this question are not trying to lift a solution. They want to remember whether the comparator argument comes first. Those are different acts, reviewers treat them differently, and the ladder is worth writing out.</p>
+      <ol>
+        <li><strong>Syntax and standard library signatures.</strong> Searching for heapq heappush tuple ordering in Python, or what an array sort comparator should return in JavaScript, is reference material. Almost every assessment tolerates it, many say so explicitly, and no employer has ever been impressed by a memorised argument order.</li>
+        <li><strong>Language and API behaviour.</strong> Checking whether a substring call copies or returns a view is still reference. It is a question about the tool, not about the task.</li>
+        <li><strong>Algorithm concepts in the abstract.</strong> Searching sliding window maximum monotonic deque is the grey band. You are still writing the code, but you are importing the idea the task was set to test, and if the interviewer asks you to derive it live you will be exposed.</li>
+        <li><strong>The problem statement itself.</strong> Pasting the exact task title with the word solution after it is the line, on every platform in the table above. It is also the search that leads you to the published code a similarity check compares your submission against, which is how it surfaces later without anyone opening a focus log at all.</li>
+      </ol>
+      <p>One practical consequence. Keep scratch work inside the test editor rather than in a separate window. Code you typed by hand earlier in the same session appears in the playback, so reusing it later carries its own alibi. Park it outside and you have thrown away the context that would have explained the paste.</p>
+
+      <h2>Where our own tool is the wrong answer</h2>
+      <p>This page is published by a company that sells a live interview assistant, so the limits belong in the page rather than the small print. The OfferPilot AI overlay is excluded from screen capture at the operating system level, so it is absent from a Zoom, Teams or Meet share, from a recording, and from a screenshot. On the question you typed, that property is close to irrelevant. Focus detection never inspects pixels, it reads which window the operating system considers focused, so clicking the overlay or firing the <a href="/code-copilot/">Code Copilot</a> capture shortcut moves focus off the test tab and writes the same event any other application would. Capture exclusion also does nothing against webcam monitoring, a lockdown browser, eye tracking, a second device camera, or a person watching you in the room.</p>
+      <p>On a proctored assessment whose rules say no outside assistance, that makes it the wrong tool for the job, and we would rather write that here than sell you something that fails on the exact terms of the question. It is a Windows 10 and 11 desktop app built for live conversational rounds and for untimed practice, not for unattended timed tests.</p>
+
+      <p>If your next stage is a person on a call rather than a countdown timer, the <a href="/interview-copilot/">Interview Copilot</a> drafts from your own resume while you talk, and the free tier on the <a href="/pricing/">pricing page</a> is five minutes a day with no card required.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/hackerearth-proctoring-camera/">Does HackerEarth Use Your Camera? Every Proctoring Toggle</a></li>
+        <li><a href="/guides/hackerrank-candidate-report/">What Recruiters See in Your HackerRank Report: Field by Field</a></li>
+        <li><a href="/guides/leetcode-vs-hackerrank-vs-codesignal/">LeetCode vs HackerRank vs CodeSignal: Which Matches Your OA</a></li>
+        <li><a href="/guides/coding-assessment-disconnected-crash/">HackerRank Test Disconnected? What Happens and How to Recover</a></li>
+        <li><a href="/guides/hackerrank-proctoring-settings/">Does HackerRank Record Your Screen? Proctoring Tiers Explained</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

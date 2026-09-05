@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spaced Repetition Schedule for LeetCode: 1/3/7/21/60 Days</title>
+  <meta name="description" content="Re-solve every carded LeetCode problem on days 1, 3, 7, 21 and 60, from a blank file rather than a re-read, with a three-line card back and a hard pass rule.">
+  <meta name="keywords" content="spaced repetition leetcode, leetcode review schedule, spaced repetition schedule for leetcode problems, anki for leetcode, how often should i redo leetcode problems, re-solving leetcode problems, leetcode flashcards, leetcode spaced repetition intervals, leetcode retention">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/spaced-repetition-leetcode-review-schedule/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Spaced Repetition Schedule for LeetCode: 1/3/7/21/60 Days">
+  <meta property="og:description" content="Re-solve every carded LeetCode problem on days 1, 3, 7, 21 and 60, from a blank file rather than a re-read, with a three-line card back and a hard pass rule.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/spaced-repetition-leetcode-review-schedule/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-spaced-repetition-leetcode-review-schedule.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Spaced Repetition Schedule for LeetCode: 1/3/7/21/60 Days">
+  <meta name="twitter:description" content="Re-solve every carded LeetCode problem on days 1, 3, 7, 21 and 60, from a blank file rather than a re-read, with a three-line card back and a hard pass rule.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-spaced-repetition-leetcode-review-schedule.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Spaced Repetition Schedule for LeetCode: 1/3/7/21/60 Days","description":"Re-solve every carded LeetCode problem on days 1, 3, 7, 21 and 60, from a blank file rather than a re-read, with a three-line card back and a hard pass rule.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/spaced-repetition-leetcode-review-schedule/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Spaced Repetition Schedule for LeetCode: 1/3/7/21/60 Days","url":"https://offerpilotai.ink/guides/spaced-repetition-leetcode-review-schedule/","mainEntity":[{"@type":"Question","name":"What is a good spaced repetition schedule for LeetCode problems?","acceptedAnswer":{"@type":"Answer","text":"Re-solve each problem one day, three days, seven days, twenty-one days and sixty days after your first solve, then retire it. Intervals count from your last passing review rather than from the first solve, so a held review repeats the same gap and a failed one resets to day one. Cap each sitting: fifteen minutes at day one, falling to eight minutes by day twenty-one."}},{"@type":"Question","name":"Should I re-read my old LeetCode solution or re-solve the problem?","acceptedAnswer":{"@type":"Answer","text":"Re-solve it from an empty file. Re-reading your own working code produces a strong feeling of understanding that does not survive an empty editor, because recognition and recall are different abilities and an interview only tests the second. Clear the editor before the timer starts, since LeetCode generally restores your last submission when you reopen a problem."}},{"@type":"Question","name":"What should be on a LeetCode flashcard?","acceptedAnswer":{"@type":"Answer","text":"The front carries the problem name and nothing else, no difficulty tag and no pattern label, because the interviewer will not label it either. The back carries exactly three lines: the pattern with its specific shape, the one invariant that makes the solution correct stated as a claim about state, and the time and space complexity with the reason. No code on the back."}},{"@type":"Question","name":"What counts as passing a LeetCode review?","acceptedAnswer":{"@type":"Answer","text":"Three things together: you stated the invariant before typing, the code ran inside your time cap, and you needed at most one typo fix. Passing the judge after several off-by-one guesses is a hold rather than a pass, and repeats the same interval. Opening your old solution, the editorial or the discussion tab before the cap resets the problem to day one."}},{"@type":"Question","name":"How many new LeetCode problems can I add per day using spaced repetition?","acceptedAnswer":{"@type":"Answer","text":"Fewer than most people plan for. Every carded problem generates five reviews, so at steady state your daily review load is five times your daily intake. At roughly ten minutes a review, a sixty minute budget supports about one new card a day and a hundred minutes supports two. Card only the problems you actually got wrong."}},{"@type":"Question","name":"Do I need Anki to do spaced repetition for LeetCode?","acceptedAnswer":{"@type":"Answer","text":"No. Five review dates per problem is a small enough schedule for a spreadsheet with columns for the problem name, the next due date, the current interval and the last grade. Anki helps if you already live in it, but its automatic scheduler will fight a fixed one, three, seven, twenty-one, sixty ladder unless you set the steps yourself."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Spaced Repetition for LeetCode","item":"https://offerpilotai.ink/guides/spaced-repetition-leetcode-review-schedule/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Prep timelines and study plans</p>
+      <h1 class="balance">A spaced repetition schedule for LeetCode problems</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Re-solve every problem you card on day 1, day 3, day 7, day 21 and day 60, then retire it. A review means an empty file and writing the solution again from nothing, not scrolling your old submission and nodding at it. The front of the card is the problem name and nothing else. The back is three lines: the pattern, the one invariant that makes the solution correct, and the complexity. A pass is running code inside the time cap, with the invariant said out loud before you typed.</p>
+
+      <h2>The ladder: 1, 3, 7, 21, 60</h2>
+      <p>Five sittings, each with a shorter clock than the last. The clock matters as much as the date, because a solution you can only re-derive in twenty minutes is not stored, it is being rebuilt from scratch.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Sitting</th><th>Days after last pass</th><th>Cap</th><th>What it tests</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>First solve</strong></td><td>Day 0</td><td>None</td>
+              <td>Nothing. This is acquisition. Write the card that evening, while you still remember which line beat you.</td>
+            </tr>
+            <tr>
+              <td><strong>Review 1</strong></td><td>+1 day</td><td>15 min</td>
+              <td>Whether you understood it or watched someone else understand it. A day is enough to lose a shrink condition.</td>
+            </tr>
+            <tr>
+              <td><strong>Review 2</strong></td><td>+3 days</td><td>12 min</td>
+              <td>The steep part of the forgetting curve. If the invariant is going, it goes here, not at week three.</td>
+            </tr>
+            <tr>
+              <td><strong>Review 3</strong></td><td>+7 days</td><td>10 min</td>
+              <td>Whether the invariant is a claim you can state or just muscle memory of a code shape.</td>
+            </tr>
+            <tr>
+              <td><strong>Review 4</strong></td><td>+21 days</td><td>8 min</td>
+              <td>Transfer. You have solved neighbours by now, so this shows whether you recall <em>this problem</em> or the family.</td>
+            </tr>
+            <tr>
+              <td><strong>Review 5</strong></td><td>+60 days</td><td>8 min</td>
+              <td>A maintenance ping. Pass and it retires, which is what stops the deck eating your calendar.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Gaps count from your last <em>passing</em> review, never from the first solve. Hold at day 7 and the next sitting is seven days later, not twenty-one. Intervals roughly triple because each sits just before you would lose the material, and the benefit comes from retrieving something that has started to fade. Reviewing on day 2 because you have a free evening feels productive and buys nothing.</p>
+
+      <h2>A review is a blank file, not a re-read</h2>
+      <p>Re-reading your own correct solution is the most pleasant thing in interview prep and one of the least useful: it trains recognition, and interviews ask for recall into an empty editor.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Clear the editor before the timer starts</h3>
+            <p>LeetCode generally restores your last submission when you reopen a problem, so select all and delete before you read a word. Better, work in a local file with no template and no saved test harness. If your old code is on screen, you are testing your eyes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Say the invariant before you type</h3>
+            <p>One sentence on what is true of your state at every step, inside thirty seconds. If nothing comes, the review is already a hold, but sit it anyway. The failed retrieval is where the learning happens.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Do not open the back of your own card</h3>
+            <p>The back is for grading against afterwards, not consulting during. Same for the editorial and the discussion tab. One glance and the sitting has measured nothing.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Stop at the cap, then diff</h3>
+            <p>When the timer goes, stop typing mid-line if you have to. Open the old solution and compare. The diff is the review. Note the one line you got wrong and why, then leave the rest.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The card: a name on the front, three lines on the back</h2>
+      <p>The front is the problem name. Not the difficulty, not the topic tag, not the list it came from. A front reading "Sliding Window: Longest Repeating Character Replacement" has handed you the answer, which is exactly the help no interviewer gives you. The back is three lines:</p>
+      <ul>
+        <li><strong>Pattern.</strong> Family plus the shape inside it. "Sliding window, right always advances, left advances at most once per step" beats a bare "sliding window".</li>
+        <li><strong>The one invariant.</strong> A claim about state, not a description of steps. It should rewrite to start "at every step it is true that". If you wrote "then we move the left pointer", that is a step.</li>
+        <li><strong>Complexity.</strong> Time and space, each with its reason in about four words. "O(n), one pass, 26-slot count array", not a bare "O(n)".</li>
+      </ul>
+      <p>No code on the back, ever. Code is the one thing that turns the deck back into a re-reading habit, because you will glance at it, recognise it and feel fluent, and that feeling is what the ladder exists to disprove. A real card:</p>
+      <blockquote><strong>Front:</strong> Longest Repeating Character Replacement<br><strong>Back:</strong> Sliding window, right always advances, left advances at most once per step. At every step the window is valid when its length minus the count of its most frequent character is at most k, because that difference is exactly the number of replacements it needs. O(n) time, one pass with a running max, O(1) space for a 26-slot count array.</blockquote>
+      <p>Writing that back is the real work of day 0. If you failed the problem cold and need the reasoning compressed into three lines, <a href="/code-copilot/">Code Copilot</a> returns an optimal solution with intuition, a dry run and the Big-O. Use it on day 0 and never on a review day.</p>
+
+      <h2>Grading: pass, hold, reset</h2>
+      <p>Grade what you did, not whether the judge went green.</p>
+      <ul>
+        <li><strong>Pass.</strong> Invariant stated before typing, running code inside the cap, at most one typo fix. Advance a rung.</li>
+        <li><strong>Hold.</strong> Over the cap, or correct by trial and error with the invariant never articulated, or you needed one look at the back. Repeat the same gap from today: a day-7 review finished in eleven minutes returns on day 14, not day 28.</li>
+        <li><strong>Reset.</strong> You opened the old solution, the editorial or the discussion tab before the cap, or never got running code. Back to day 1. Two resets running means park it and clear two easier problems in the family first.</li>
+      </ul>
+      <p>Three submissions of off-by-one guesswork ending in green is a hold, or the schedule stops measuring anything and becomes a chore list.</p>
+
+      <h2>One problem, four reviews, and what moved each time</h2>
+      <p>The card above, up the ladder. Day 0 was a 38-minute first solve that stalled on when to shrink and ended in the editorial.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Sitting</th><th>What happened</th><th>Grade</th><th>What changed on the card</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Day 1</strong><br>cap 15</td>
+              <td>12 min. Invariant stated, but in the editorial's words, and <code>max(count.values())</code> recomputed every iteration, quietly O(26n).</td>
+              <td>Pass</td>
+              <td>Nothing added. A pencilled margin question: does that max need recomputing?</td>
+            </tr>
+            <tr>
+              <td><strong>Day 4</strong><br>cap 12</td>
+              <td>8 min, in her own phrasing for the first time. Margin question answered: the running max never needs to decrease, since a later window with a smaller max is shorter than the best already recorded.</td>
+              <td>Pass</td>
+              <td>Line 3 sharpened from "O(26n)" to "O(n), one pass, running max never decreases", and that reason moved up into the invariant.</td>
+            </tr>
+            <tr>
+              <td><strong>Day 11</strong><br>cap 10</td>
+              <td>5 min. Wrote a <code>while</code> for the shrink, then saw an <code>if</code> suffices, because the window grows by exactly one per iteration.</td>
+              <td>Pass</td>
+              <td>Nothing added. A hedge <em>deleted</em> from line 1. The card is shorter than the day it was written.</td>
+            </tr>
+            <tr>
+              <td><strong>Day 32</strong><br>cap 8</td>
+              <td>4 min, first submission green. Later that day, longest substring with at most k distinct characters read as the same skeleton with a different validity test dropped in.</td>
+              <td>Pass</td>
+              <td>Line 1 rewritten onto the family: "expand right, shrink left while a predicate is violated, record the best", with this problem's predicate demoted to a sub-clause.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Day 60 took four minutes and produced nothing new, so the card retired. That shape repeats. Pass one you recall the words, pass two the reasons behind them, pass three you start deleting, pass four the card stops being about the problem and becomes a card about the family, which is the only version that helps on something you have never seen. A card still growing at pass three has a bad invariant line, bad the same way every time: it describes steps instead of stating what is true.</p>
+
+      <h2>The arithmetic that kills this at week three</h2>
+      <p>Each carded problem generates five reviews, so two months in, your daily load settles at roughly five times your daily intake. At ten minutes a sitting, three new cards a day is 150 minutes of review before you solve anything new. Week three is where most people quietly stop, and that is arithmetic, not weak discipline.</p>
+      <p>Three fixes. Card at most one problem in three, since something you solved cold with the invariant already in your head was never wrong. Set intake from your budget, not your ambition: 60 minutes a day supports about one new card, 100 minutes supports two. Retire hard at day 60, because an unbounded deck is an abandoned deck.</p>
+      <p>Honest limits. This is retention, not acquisition, so if you have never met dynamic programming a ladder will not teach it to you. It does nothing for narration, about half of what an interviewer grades, so pair it with mocks where you talk the whole way through. For system design it is close to useless, because there is no single correct artefact to re-derive.</p>
+      <p>On tooling, since a vendor publishes this page: OfferPilot AI has no review scheduler and will not run your deck, so a four-column spreadsheet is the right tool for the schedule itself. It fits at day 0 and at the diff, with Gemini selected, the recommended model for LeetCode-style problems. It is Windows 10 and 11 only, no macOS, Linux, mobile or browser version. Running it during a review destroys the measurement, which is the point of a review. The free tier is five minutes a day with no card required, and paid plans are on the <a href="/pricing/">pricing page</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/leetcode-hours-per-day-without-burnout/">How Many Hours a Day Should I LeetCode Without Burning Out?</a></li>
+        <li><a href="/guides/coding-interview-prep-1-week/">How to Prepare for a Coding Interview in 1 Week: 7-Day Plan</a></li>
+        <li><a href="/guides/coding-interview-prep-3-days/">3-Day Coding Interview Prep Plan: Hour-by-Hour Schedule</a></li>
+        <li><a href="/guides/blind-75-vs-neetcode-150-by-time-left/">Blind 75 vs NeetCode 150 vs Grind 75: Choose by Time Left</a></li>
+        <li><a href="/guides/coding-interview-prep-2-weeks/">2-Week Coding Interview Prep Plan: Build Week, Simulate Week</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Day 0 is for learning it. Every day after is a blank file.</h2>
+      <p class="lede" style="margin:0 auto 8px">Code Copilot gives you the intuition, dry run and Big-O to compress into a three-line card back. The re-solving is on you.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">See Code Copilot<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

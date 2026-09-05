@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pair Programming Interview Tips: What to Expect in a Real Repo</title>
+  <meta name="description" content="A pair programming interview hands you a codebase you did not write and one ticket against it. What the format grades, how to spend the first four minutes, and a worked example.">
+  <meta name="keywords" content="pair programming interview tips, pair programming interview what to expect, pair programming technical interview, collaborative coding interview, existing codebase interview, how to prepare for a pair programming interview, live coding with an interviewer, pair programming interview format">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/pair-programming-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Pair Programming Interview Tips: What to Expect in a Real Repo">
+  <meta property="og:description" content="A pair programming interview hands you a codebase you did not write and one ticket against it. What the format grades, how to spend the first four minutes, and a worked example.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/pair-programming-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-pair-programming-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Pair Programming Interview Tips: What to Expect in a Real Repo">
+  <meta name="twitter:description" content="A pair programming interview hands you a codebase you did not write and one ticket against it. What the format grades, how to spend the first four minutes, and a worked example.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-pair-programming-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Pair Programming Interview Tips: What to Expect in a Real Repo","description":"A pair programming interview hands you a codebase you did not write and one ticket against it. What the format grades, how to spend the first four minutes, and a worked example.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/pair-programming-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Pair Programming Interview Tips: What to Expect in a Real Repo","url":"https://offerpilotai.ink/guides/pair-programming-interview/","mainEntity":[{"@type":"Question","name":"What is a pair programming interview?","acceptedAnswer":{"@type":"Answer","text":"A pair programming interview gives you an existing repository you did not write, a small feature or bug ticket, and an interviewer who plays a teammate rather than a silent examiner. You are expected to ask them questions, read the surrounding code, and add your change in the style the project already uses. There is no hidden grader, only their judgement of how you work."}},{"@type":"Question","name":"What should I do in the first four minutes of a pair programming interview?","acceptedAnswer":{"@type":"Answer","text":"Keep your hands off the keyboard. Read the ticket back in your own words and name the condition that means it is done, skim the file tree rather than the files, trace one existing feature that resembles the ticket from entry point down to the data, open a test file and ask how tests are run, then say which files you plan to change and ask whether that matches how they would do it."}},{"@type":"Question","name":"Is the interviewer really acting as a teammate, or is it still a test?","acceptedAnswer":{"@type":"Answer","text":"Both, and using them is the behaviour they want to see. They will genuinely answer questions, point at files and explain context, because that is what a colleague would do in your first week. They are also writing notes throughout. Ask about conventions, constraints and intent, not about things you could read for yourself in ten seconds."}},{"@type":"Question","name":"How much of the codebase should I read before I start typing?","acceptedAnswer":{"@type":"Answer","text":"Enough to place your change, not the whole project. In practice that is the entry point, the one existing feature closest to the ticket, and a test file. Trace a single request or a single render from the top down to the data and back. Reading more burns the clock, and reading less means your code lands in the wrong layer."}},{"@type":"Question","name":"Do I have to write tests in a pair programming interview?","acceptedAnswer":{"@type":"Answer","text":"Decide out loud rather than asking permission. Many interviewers will not expect a full suite in the time available, but adding one focused test for the case you know is risky reads far better than saying you would write tests if there were more time. Name the layer you are testing and the cases you are deliberately skipping."}},{"@type":"Question","name":"What should I do if I get stuck during a pair programming round?","acceptedAnswer":{"@type":"Answer","text":"Say what you are stuck on within about thirty seconds. Silence is the real failure mode, because the interviewer cannot tell whether you are thinking or lost. Naming the decision you are caught between and asking for a nudge is ordinary teammate behaviour, and how you recover is usually a larger part of the score than the stall itself."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Pair programming interview","item":"https://offerpilotai.ink/guides/pair-programming-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Interview formats and rounds</p>
+      <h1 class="balance">Pair programming interview tips: what to expect when the repo is not yours</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Expect a repository you have never opened, one small ticket against it, and an interviewer who behaves like the person who sits next to you rather than an examiner watching in silence. They are still taking notes. What those notes measure is whether working with you next Tuesday would be cheap or expensive. Most of that is decided in the first four minutes, and you should spend them reading and talking, not typing.</p>
+
+      <h2>What the format actually is</h2>
+      <p>The setup is usually a small service or app, somewhere between a few hundred and a few thousand lines, running in a shared editor, a Codespace, a sandbox link, or a repo you cloned an hour earlier. It is often deliberately imperfect. Expect one oversized file, an inconsistent naming convention, a helper nobody uses, and a test suite with something skipped. That mess is not an accident, it is the material you are being asked to work inside.</p>
+      <p>The ticket is small on purpose. Common shapes:</p>
+      <ul>
+        <li>Add one field end to end, through the model, the endpoint and the view.</li>
+        <li>Add a second filter or a sort to a list endpoint that already has one filter.</li>
+        <li>Fix a test that was left red, where the bug is real and one layer away from where it fails.</li>
+        <li>Handle an edge case in an existing parser, importer or formatter.</li>
+        <li>Add one transition to a small state machine, or one new event type to a handler.</li>
+      </ul>
+      <p>Then comes the line almost every interviewer says in some form: treat me as a teammate who knows this code, or, I inherited this too, ask me anything. That is a real offer and it is also part of the exercise. Candidates waste it in two opposite ways. Some never ask anything, believing questions look weak, and spend eight minutes deducing something a colleague would have answered in five seconds. Others treat the interviewer as a hint dispenser and ask what a function returns when the function is nine lines long and on screen. Ask about intent, conventions and constraints. Read the things you can read.</p>
+
+      <h2>The first four minutes, before you touch the keyboard</h2>
+      <p>This is the part you can rehearse and the part almost nobody rehearses. Say all of it out loud. Your hands stay off the keys except to navigate.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>0:00 to 0:45, restate the ticket and name the done condition</h3>
+            <p>Say the ticket back in your own words, then say what would make it finished. Then ask the one scoping question with the largest blast radius, usually about how your change interacts with something that already exists. Getting this wrong is the most expensive mistake available, because it is discovered at minute twenty five.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>0:45 to 2:00, read the tree, not the files</h3>
+            <p>Look at the folder structure and the entry point only. Say what the layout implies before you verify it. Routes, services and a data folder means your change is probably three small edits rather than one clever one. A single flat folder of twenty files means convention will have to come from reading a sibling. You are placing your change, not learning the project.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>2:00 to 3:15, trace the nearest sibling feature top to bottom</h3>
+            <p>The highest value move in the whole round. Find the existing feature that most resembles the ticket and follow it from the entry point down to the data and back. Search for one distinctive identifier and read every place it appears. You now have the shape of your diff, in this project's style, without inventing anything.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>3:15 to 4:00, open a test, then state your plan</h3>
+            <p>Open the test file covering that sibling and ask two things: how do I run these, and how long do they take. If the suite runs in seconds you will lean on it constantly. Then say your plan as three or four concrete edits, name the files, and ask whether that is where they would put it. Cheap to say, and it catches the case where validation lives in a schema file you have not seen.</p>
+          </div>
+        </div>
+      </div>
+      <p>At the four minute mark you have written no code, and you know the shape of the change, the conventions you are matching, and how you will check yourself. The candidate who started typing at thirty seconds is usually putting logic in the wrong layer right now, and will move it later under time pressure while explaining why.</p>
+
+      <h2>A worked example: add a status filter to an orders endpoint</h2>
+      <p>Small Node service. Folders are <code>routes</code>, <code>services</code>, <code>db</code> and <code>tests</code>. The ticket says orders can already be filtered by customer, now add filtering by status. Here is the actual sequence, with the sentences said out loud.</p>
+      <ol>
+        <li><strong>Restate and scope.</strong> "So a request to the orders endpoint with a status parameter returns only orders in that status. Done means it combines with the existing customer filter and still paginates correctly. Is that right?" That one sentence forecloses the classic failure, a second filter that quietly replaces the first.</li>
+        <li><strong>Ask the edge case now, not at minute thirty.</strong> "What should happen for a status value that is not valid, a rejection or an empty list?" If they answer with "what do you think", pick one, give a reason in a sentence, and move on. Rejection is usually the better default, because an empty list hides typos from the caller.</li>
+        <li><strong>Read the tree, forty seconds.</strong> "Routes, services, db. I would expect no SQL in the route layer and no request objects in the db layer, so this is likely three small edits. Let me check that assumption rather than trust it."</li>
+        <li><strong>Trace the sibling.</strong> Search for the customer filter identifier. It appears three times: the route reads it from the query string, the service puts it into a filter object, the data layer turns it into a condition. Read all three. Note how validation is written, whether the filter object is built with defaults, and what the existing error shape looks like.</li>
+        <li><strong>Open the test for that filter.</strong> There is a case asserting the customer filter narrows the result set. Ask how the suite is run. A test you can copy and modify is worth more than any amount of confidence about your own code.</li>
+        <li><strong>State the plan and get agreement.</strong> "Parse and validate status in the route the way customer is parsed, pass it through the filter object, add one condition in the data layer, then copy the existing filter test with status swapped in and add one for the invalid value. Does that match how you would do it?"</li>
+      </ol>
+      <p>Now type. Run the tests after the first edit, not after the last. If you finish early, do not add features nobody asked for. Say what you would do next and why you stopped, which is a senior habit and takes twenty seconds.</p>
+
+      <h2>Narrating, so it sounds like thinking rather than commentary</h2>
+      <p>Narration is not describing your cursor. It is saying your prediction before you check it, so the interviewer can correct a wrong model early instead of watching you build on it for ten minutes.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Moment</th><th>Commentary, weak</th><th>Narration, strong</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Opening the tree</strong></td><td>"OK, so there is a src folder here."</td><td>"Layered, so I expect the change in the service and not the route handler. Checking whether that holds."</td></tr>
+            <tr><td><strong>Opening a file</strong></td><td>"This is the orders controller."</td><td>"I am looking for where the existing filter is built, because I would rather copy its shape than invent one."</td></tr>
+            <tr><td><strong>Hitting an error</strong></td><td>Silence, then a fix appears.</td><td>"That is a 500 where I expected a 400, so validation is not running before the query. Reading the trace."</td></tr>
+            <tr><td><strong>A real choice</strong></td><td>Quietly picks one.</td><td>"I can filter in the query or in memory after fetching. In memory is two lines but it breaks pagination, so query."</td></tr>
+            <tr><td><strong>Stuck</strong></td><td>Two minutes of nothing.</td><td>"I have been going in circles on how status is stored. Is it an enum column or a plain string?"</td></tr>
+            <tr><td><strong>Finding a helper</strong></td><td>Writes a second one.</td><td>"There is already a parser in utils doing this. Using it, so the behaviour stays consistent."</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Thirty seconds is roughly the limit on silence before it starts costing you. Reaching for the interviewer at that point is not a penalty, it is the behaviour the format exists to observe.</p>
+
+      <h2>What ends up on their notes</h2>
+      <ul>
+        <li>Did the change land in the right layer, and does it follow conventions already visible in the file.</li>
+        <li>Did they reuse what exists instead of writing a parallel version of it.</li>
+        <li>Did they ask before assuming, and were the questions worth the interruption.</li>
+        <li>Did they run the code and the tests along the way, or only at the end.</li>
+        <li>When something broke, did they read the error out loud or flinch and start changing things at random.</li>
+        <li>Would the repository be in a coherent state if the call ended right now.</li>
+      </ul>
+      <p>Almost nothing on that list is typing speed or recall. A rough but well placed change, one test, and a clear sentence about what is unfinished usually beats a finished change delivered in silence.</p>
+
+      <blockquote>Nobody hires a pair for their typing. They hire for whether the next four hours next to you would be cheap or expensive.</blockquote>
+
+      <h2>Where OfferPilot AI is the wrong tool for this round</h2>
+      <p>Worth being direct, since this is a vendor page. A pair programming round is close to the worst fit for live coding assistance, for reasons that are structural rather than ethical.</p>
+      <ul>
+        <li><strong>The problem is not self-contained.</strong> <a href="/code-copilot/">Code Copilot</a> captures a problem statement from your screen and returns a solution with intuition, a dry run and complexity. That is built for algorithm prompts. It cannot know that this project keeps validation in a schema file, that the filter object is built with defaults, or that a helper already exists two folders over. The entire difficulty of a pair round is the context that is not on your screen.</li>
+        <li><strong>You are interrupted constantly.</strong> A teammate asks why every few minutes, in the middle of the code, pointing at one line. Anything you did not reason through yourself falls apart on the second follow up, in front of the person deciding.</li>
+        <li><strong>Windows 10 and 11 only.</strong> No macOS, no Linux, no mobile, no browser extension. If your interview is on a Mac, none of this is available to you at all.</li>
+        <li><strong>Be accurate about capture exclusion.</strong> The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots, while staying visible on your own monitor. That covers screen sharing and recording, nothing else. It does nothing about a webcam, a lockdown browser, a proctor in the room, eye tracking, or a camera on a second device. Company rules still apply, so ask before the call if the invitation is ambiguous.</li>
+      </ul>
+      <p>The honest use for this round is everything before it. Live help fits self-contained algorithm rounds and question heavy conversations. Fluency in an unfamiliar repository comes from practice you cannot outsource.</p>
+
+      <h2>How to practise the format</h2>
+      <p>Reading about pair rounds does very little. Three drills that transfer:</p>
+      <ol>
+        <li><strong>The four minute drill.</strong> Open an unfamiliar open source repo, pick any small issue, set a timer for four minutes and narrate the whole opening to an empty room. Record it. Listen for the moment you stop predicting and start describing.</li>
+        <li><strong>The trace drill.</strong> Given a repo you have never seen, find where one specific behaviour is implemented in under three minutes. Speed here is the actual skill the format rewards.</li>
+        <li><strong>The teammate drill.</strong> Have a friend hold the ticket, answer questions in character, and stay quiet otherwise. Ten minutes of this reveals more than an evening of solo practice.</li>
+      </ol>
+      <p>Then spend the closing minutes on the round's own currency. Ask how they onboard someone new into this codebase and what their review culture looks like, since you have just lived a compressed version of both.</p>
+
+      <p>OfferPilot AI runs on Windows 10 and 11 and meters listening time only, with a free tier of five minutes a day and no card required. It fits the rounds where the problem is on the screen, not the rounds where the problem is a repository.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/technical-phone-screen-30-minutes/">Technical Phone Screen: What to Expect in a 30-Minute Call</a></li>
+        <li><a href="/guides/hirevue-interview-format/">HireVue Interview Format: What to Expect, Question by Question</a></li>
+        <li><a href="/guides/amazon-bar-raiser-round/">Amazon Bar Raiser Round: What That Interviewer Is Actually Doing</a></li>
+        <li><a href="/guides/amazon-online-assessment-format/">Amazon Online Assessment: What to Expect in Each Section</a></li>
+        <li><a href="/guides/stuck-in-a-coding-interview/">What to Do When You Get Stuck in a Coding Interview: 5 Rungs</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">For the rounds where the problem is on screen.</h2>
+      <p class="lede" style="margin:0 auto 8px">Capture a multi-scroll problem in one pass and get intuition, a dry run and complexity back, so the reasoning is yours before anyone asks why.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Download for Windows<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

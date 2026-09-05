@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile Engineer Interview Questions: iOS vs Android, Paired</title>
+  <meta name="description" content="Five themes every mobile loop asks on both platforms, in parallel columns: lifecycle, memory leaks, queues against dispatchers, feed image caching, and MVVM against MVC.">
+  <meta name="keywords" content="mobile engineer interview questions ios vs android, ios vs android interview questions, activity lifecycle vs view controller lifecycle interview, memory leak interview question android ios, gcd queues vs coroutine dispatchers, recyclerview image loading interview question, mvvm vs mvc mobile interview, android fragment lifecycle interview question">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/mobile-engineer-interview-ios-vs-android/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Mobile Engineer Interview Questions: iOS vs Android, Paired">
+  <meta property="og:description" content="Five themes every mobile loop asks on both platforms, in parallel columns: lifecycle, memory leaks, queues against dispatchers, feed image caching, and MVVM against MVC.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/mobile-engineer-interview-ios-vs-android/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-mobile-engineer-interview-ios-vs-android.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Mobile Engineer Interview Questions: iOS vs Android, Paired">
+  <meta name="twitter:description" content="Five themes every mobile loop asks on both platforms, in parallel columns: lifecycle, memory leaks, queues against dispatchers, feed image caching, and MVVM against MVC.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-mobile-engineer-interview-ios-vs-android.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Mobile Engineer Interview Questions: iOS vs Android, Paired","description":"Five themes every mobile loop asks on both platforms, in parallel columns: lifecycle, memory leaks, queues against dispatchers, feed image caching, and MVVM against MVC.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/mobile-engineer-interview-ios-vs-android/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Mobile Engineer Interview Questions: iOS vs Android, Paired","url":"https://offerpilotai.ink/guides/mobile-engineer-interview-ios-vs-android/","mainEntity":[{"@type":"Question","name":"What is the difference between iOS and Android interview questions for mobile engineers?","acceptedAnswer":{"@type":"Answer","text":"The themes are nearly identical and the mechanisms are not. Both loops ask about screen lifecycle, memory leaks, concurrency, image loading in a scrolling feed, and architecture. On iOS the answers run through ARC, GCD or Swift concurrency, and a view controller the system never recreates. On Android they run through a tracing garbage collector, coroutine dispatchers, and an Activity the system destroys and rebuilds on rotation."}},{"@type":"Question","name":"What is the Android equivalent of the view controller lifecycle question?","acceptedAnswer":{"@type":"Answer","text":"The Activity lifecycle, and for anything modern the Fragment lifecycle, which is the harder version because a Fragment has two lifecycles running at once. The Fragment instance can outlive its view when it goes onto the back stack, so observers registered against the Fragment rather than viewLifecycleOwner survive onDestroyView and fire twice when the view returns. UIViewController has no equivalent split."}},{"@type":"Question","name":"How do memory leak questions differ between iOS and Android?","acceptedAnswer":{"@type":"Answer","text":"The diagnostic question is the same, which is what still holds a strong reference after the screen is gone, but the shape of the bug differs. ARC is reference counting with no cycle collector, so the classic iOS leak is a retain cycle. Android runs a tracing collector that reclaims cycles happily, so an Android leak is always a reference from something longer lived, a static field, a singleton, a running thread, or a posted Runnable."}},{"@type":"Question","name":"Do serial and concurrent dispatch queues map onto Kotlin coroutine dispatchers?","acceptedAnswer":{"@type":"Answer","text":"Partly, and interviewers probe the gap. Dispatchers.Default matches a concurrent queue for CPU work and Dispatchers.IO matches one sized for blocking calls, but coroutines suspend rather than block, so a dispatcher is not one thread. The serial queue equivalent is limitedParallelism(1), a Mutex, or an actor on the Swift side. Structured concurrency and automatic cancellation have no GCD counterpart at all."}},{"@type":"Question","name":"Is MVVM the same on iOS and Android?","acceptedAnswer":{"@type":"Answer","text":"The diagram is the same and the guarantees are not. On Android, ViewModel is a concrete Jetpack class scoped to a lifecycle owner, and its whole reason for existing is surviving configuration change, which is why it must never hold a View or Activity reference. On iOS a view model is a naming convention with no framework backing, because the view controller is not destroyed on rotation and has nothing to survive."}},{"@type":"Question","name":"Can an AI interview copilot help in a mobile engineering interview?","acceptedAnswer":{"@type":"Answer","text":"It helps in the spoken breadth rounds, where a prompt restores a callback order or a definition you already knew. It helps far less in a live coding round inside Xcode or Android Studio with your screen shared. OfferPilot AI also runs on Windows 10 and 11 only, so an iOS engineer working from a Mac cannot use it at all, and its capture exclusion hides the overlay from screen sharing, not from a webcam or a proctor."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Mobile interview questions iOS vs Android","item":"https://offerpilotai.ink/guides/mobile-engineer-interview-ios-vs-android/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">Mobile engineer interview questions: iOS and Android, side by side</h1>
+      <p class="meta">2026 &middot; ~10 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Cross-platform candidates get asked the same five things in both loops: screen lifecycle, memory leak diagnosis, serial against concurrent execution, image loading in a scrolling feed, and MVVM against MVC. The framing survives the platform swap. The mechanism underneath does not, because ARC is not a tracing collector, a dispatch queue is not a coroutine dispatcher, and a UIViewController is not destroyed on rotation while an Activity is. Below, each theme is split into the half of your answer that carries over and the half you have to replace before Thursday.</p>
+
+      <h2>The five themes and what actually swaps</h2>
+      <p>Keep the structure of every answer and rewrite one clause. That clause is different each time, and knowing which one it is stops you saying "the ViewModel survives rotation" in an iOS interview, which is the most common tell that a candidate learned the concept on the other platform.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Theme</th><th>The half that carries over</th><th>The half you swap</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Lifecycle</strong></td><td>Set up cheaply on create, start work when visible, release it when not.</td><td>Android recreates the screen on configuration change and can kill the process. iOS does neither.</td></tr>
+            <tr><td><strong>Memory leaks</strong></td><td>Find what still holds a strong reference to a screen that should be gone.</td><td>Retain cycles on iOS, long-lived GC roots on Android. Memory Graph against LeakCanary.</td></tr>
+            <tr><td><strong>Concurrency</strong></td><td>UI on the main thread, never block it, know your exclusivity primitive.</td><td>GCD queues and actors against dispatchers, suspension, and structured cancellation.</td></tr>
+            <tr><td><strong>Feed images</strong></td><td>Three tiers of cache, downsample at decode, cancel on reuse, decode off the main thread.</td><td>You hand-roll cancellation on iOS. Glide or Coil does it for you, so the probing moves to bitmap memory.</td></tr>
+            <tr><td><strong>Architecture</strong></td><td>Keep UI framework types out of the layer you unit test.</td><td>ViewModel is a framework class with a survival guarantee on Android and a naming convention on iOS.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>1. View controller lifecycle against Activity and Fragment lifecycle</h2>
+      <p>Shared core: describe the callbacks as a contract about visibility, then say what you attach and release at each edge. Location updates, timers, sensor listeners and video playback belong to the visible window, not the created window.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Probe</th><th>iOS</th><th>Android</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Callback order</td><td><code>loadView</code>, <code>viewDidLoad</code>, <code>viewWillAppear</code>, layout passes, <code>viewDidAppear</code>, then <code>viewWillDisappear</code> and <code>viewDidDisappear</code>.</td><td><code>onCreate</code>, <code>onStart</code>, <code>onResume</code>, then <code>onPause</code>, <code>onStop</code>, <code>onDestroy</code>, with <code>onRestart</code> before a second <code>onStart</code>.</td></tr>
+            <tr><td>Runs once against runs many times</td><td><code>viewDidLoad</code> runs once per view load, appearance callbacks run every time.</td><td><code>onCreate</code> runs once per instance, but a rotation makes a new instance, so once is not once per screen.</td></tr>
+            <tr><td>Rotation</td><td>No recreation. You get <code>viewWillTransition(to:with:)</code> and a layout pass on the same object.</td><td>Default behaviour destroys and recreates the Activity. Half of Android lifecycle lore exists to handle this.</td></tr>
+            <tr><td>Saving state</td><td>Instance properties are simply still there.</td><td><code>onSaveInstanceState</code> into a Bundle, or a <code>SavedStateHandle</code>. Small values only.</td></tr>
+            <tr><td>Second lifecycle</td><td>None. A view controller owns one view.</td><td>A Fragment has an instance lifecycle and a view lifecycle. This is the real question.</td></tr>
+            <tr><td>Teardown signal</td><td><code>deinit</code>, which fires when the last strong reference goes.</td><td><code>onDestroy</code>, which is not a destructor and is not guaranteed if the process is killed.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The Fragment split is where senior candidates separate from mid. When a Fragment is replaced and added to the back stack, its view is destroyed at <code>onDestroyView</code> while the Fragment object stays alive. Registering an observer with <code>this</code> instead of <code>viewLifecycleOwner</code> means the old observer is never removed, so when the user navigates back and a new view is created you now have two observers writing to a view that only one of them still owns. Say that out loud and the follow-ups get friendlier.</p>
+
+      <h2>The rotation trace, callback by callback</h2>
+      <p>This is the checkable one. Interviewers ask you to narrate a device rotation while a network call is in flight, and the two traces do not resemble each other.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Android, default configuration</h3>
+            <p><code>onPause</code>, <code>onStop</code>, then <code>onSaveInstanceState</code> on API 28 and above, where older releases ran it before <code>onStop</code> instead, then <code>onDestroy</code> with <code>isChangingConfigurations</code> true, then a new instance running <code>onCreate</code> with the saved Bundle, <code>onStart</code>, <code>onRestoreInstanceState</code>, <code>onResume</code>. The Jetpack ViewModel is not recreated, which is precisely why the in-flight call belongs in <code>viewModelScope</code> and not in the Activity.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>iOS, same rotation</h3>
+            <p>One object throughout. <code>viewWillTransition(to:with:)</code> fires with a coordinator, then <code>viewWillLayoutSubviews</code> and <code>viewDidLayoutSubviews</code> run against the new size. No appearance callbacks, no state saving, no recreation. The in-flight call is untouched because nothing was torn down. Candidates coached on Android often invent a restoration step here, and the invention is audible.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The Android follow-up that has no iOS twin</h3>
+            <p>"Now the user backgrounds the app for twenty minutes and the system reclaims the process." Everything in memory is gone, including the ViewModel. Only what you wrote into saved state comes back, and the Bundle travels through a Binder transaction with roughly a one megabyte budget shared across the process, so putting a bitmap or a list of a thousand items in there earns a <code>TransactionTooLargeException</code>. Store an identifier, re-fetch the rest.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>2. Memory leak diagnosis</h2>
+      <p>Shared core: name the tool, describe the reference path, then name the fix. Both platforms are really asking whether you have ever read a retention path rather than guessed at one.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Probe</th><th>iOS</th><th>Android</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Why a leak happens</td><td>ARC counts references and has no cycle collector, so two objects holding each other are immortal.</td><td>A tracing collector reclaims cycles fine. A leak needs a path from a GC root: a static field, a singleton, a live thread, a pending message.</td></tr>
+            <tr><td>The textbook example</td><td>A closure capturing <code>self</code> strongly, a <code>delegate</code> declared strong, a target-based <code>Timer</code> never invalidated.</td><td>An inner class or a delayed <code>Runnable</code> holding the implicit outer Activity, a singleton handed an Activity context, a listener never unregistered.</td></tr>
+            <tr><td>The fix vocabulary</td><td><code>[weak self]</code> in the capture list, <code>weak var delegate</code>, <code>unowned</code> only when the lifetime is genuinely guaranteed.</td><td>Application context for anything long-lived, <code>viewLifecycleOwner</code> for observers, cancel in <code>onDestroyView</code>, scope coroutines to a lifecycle.</td></tr>
+            <tr><td>Tooling answer</td><td>Xcode Memory Graph Debugger for the cycle itself, Instruments Allocations and Leaks for growth over time.</td><td>LeakCanary watches destroyed Activities, Fragments, views and ViewModels, then reports the shortest strong path to a root. Android Studio profiler for heap dumps.</td></tr>
+            <tr><td>Trap follow-up</td><td>"When is <code>unowned</code> a crash?" After the referenced object is deallocated, unlike <code>weak</code>, which simply becomes nil.</td><td>"Does a leaked Fragment show up as a leaked Activity?" Often yes, because the Fragment holds the host, so read the whole path, not the first line.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>3. Serial and concurrent queues against coroutine dispatchers</h2>
+      <p>Shared core: two rules that never change platform. Touch UI only on the main thread, and know the primitive that gives you mutual exclusion. Everything after that swaps.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Concept</th><th>iOS</th><th>Android and Kotlin</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Concurrent work pool</td><td>A global concurrent <code>DispatchQueue</code> with a QoS, or an unstructured <code>Task</code>.</td><td><code>Dispatchers.Default</code>, parallelism tied to core count, for CPU-bound work.</td></tr>
+            <tr><td>Blocking calls</td><td>No separate pool. Blocking a global queue spawns more threads, which is how thread explosion happens.</td><td><code>Dispatchers.IO</code>, elastic up to 64 threads or the core count if that is larger, precisely so blocking is survivable.</td></tr>
+            <tr><td>Serial execution</td><td>A serial queue, or an <code>actor</code>, or <code>@MainActor</code> for UI state.</td><td><code>limitedParallelism(1)</code> on a dispatcher, or a <code>Mutex</code>, which is not reentrant.</td></tr>
+            <tr><td>Reader and writer</td><td>Concurrent queue with writes dispatched using the barrier flag.</td><td>Usually a <code>Mutex</code>, or an immutable snapshot in a <code>StateFlow</code>, rather than a barrier idiom.</td></tr>
+            <tr><td>The deadlock question</td><td><code>DispatchQueue.main.sync</code> called from the main thread deadlocks. Say why: the queue is waiting for itself.</td><td>A blocking call or <code>runBlocking</code> on <code>Dispatchers.Main</code> freezes frames and can trip an ANR at the five second input dispatch limit.</td></tr>
+            <tr><td>Cancellation</td><td>GCD work items are awkward to cancel. Swift concurrency gives a task tree and cooperative cancellation checks.</td><td>Structured by default. A cancelled scope cancels its children, and <code>viewModelScope</code> cancels when the ViewModel clears.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The distinction worth stating unprompted: a coroutine suspends without owning a thread, so "how many threads does this create" is the wrong mental model on the Kotlin side and exactly the right one on the GCD side. If your Swift answer is already built on async, await and actors rather than queues, the two answers converge, and saying so is better than pretending they were always the same.</p>
+
+      <h2>4. Image loading and caching in a feed</h2>
+      <p>Shared core, four clauses worth memorising: three tiers of cache, downsample at decode time, decode off the main thread, cancel the request when the cell is recycled. Then the arithmetic, which interviewers like because it is checkable. A 1080 by 1080 image decoded at four bytes per pixel occupies roughly 4.4 MB in memory, so ten visible cells cost about 44 MB no matter that the JPEG was 200 KB on the wire. Downsampled to a 300 point cell it is around 350 KB, better than a tenfold reduction, and that one sentence answers most of the round.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Step</th><th>iOS</th><th>Android</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Memory cache</td><td><code>NSCache</code>, thread safe and evicting under memory pressure, keyed by URL.</td><td><code>LruCache</code> sized in bytes, usually a fraction of the per-app heap, or the library's own equivalent.</td></tr>
+            <tr><td>Disk and network</td><td><code>URLCache</code> honouring HTTP cache headers, plus your own directory if you persist decoded output.</td><td>The image library's disk cache keyed on the request, plus the OkHttp cache underneath it.</td></tr>
+            <tr><td>Downsampling</td><td><code>CGImageSourceCreateThumbnailAtIndex</code> with a max pixel size, so the full image never enters memory.</td><td><code>inJustDecodeBounds</code> to read dimensions, then <code>inSampleSize</code>, and hardware bitmaps on API 26 and above to keep pixels off the Java heap.</td></tr>
+            <tr><td>Cell reuse</td><td>Your job. Cancel in <code>prepareForReuse</code> and re-check the index path before assigning the decoded image.</td><td>Handled for you when Glide or Coil is used idiomatically, because the request is bound to the view and cancelled on detach or rebind.</td></tr>
+            <tr><td>Main thread hazard</td><td>UIImage decodes lazily at draw time, so the hitch shows up during scrolling rather than during the download.</td><td>Decoding a large bitmap on the main thread, or churning the collector with full-size allocations.</td></tr>
+            <tr><td>Prefetch</td><td><code>UITableViewDataSourcePrefetching</code> and the collection view equivalent.</td><td>RecyclerView prefetch plus the library's own preloading helpers.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Because Android hands you the library, the interviewer usually asks what it is doing rather than whether you could do it. Expect "what happens if the same ImageView is bound twice in quick succession" and "how would you size the memory cache". On iOS the same minute is spent on the cancellation and index path check you had to write yourself. Banks that separate prompts by platform, like the sets in the <a href="/interview-questions/">interview question library</a>, are useful here mainly because they stop you rehearsing the wrong half.</p>
+
+      <h2>5. MVVM against MVC</h2>
+      <p>Shared core: name the boundary and give the test for it. Nothing in the layer you unit test should import UIKit, SwiftUI, or the Android framework. If you cannot instantiate it in a plain JVM or Swift unit test without a device or a shim, the boundary is decorative.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Probe</th><th>iOS</th><th>Android</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>What MVC meant here</td><td>Apple's MVC, where the view controller owns the view and slowly absorbs everything else, hence the Massive View Controller complaint.</td><td>Never really MVC. The Activity was a god object, then MVP with a view interface, then Jetpack MVVM.</td></tr>
+            <tr><td>What ViewModel is</td><td>A convention. A plain class, often an <code>ObservableObject</code> publishing state.</td><td>A concrete framework class scoped to a lifecycle owner and retained across configuration change.</td></tr>
+            <tr><td>The hard rule</td><td>No UIKit imports and no view controller reference, so it stays testable.</td><td>Never hold a View, Activity or Fragment reference. That is the exact leak the class exists to prevent.</td></tr>
+            <tr><td>State transport</td><td>Combine publishers, <code>@Published</code>, or the newer observation support in SwiftUI.</td><td><code>StateFlow</code> collected with the lifecycle, or LiveData in older codebases.</td></tr>
+            <tr><td>Declarative shift</td><td>SwiftUI makes the view a value type, so state hoisting replaces a lot of controller code.</td><td>Compose does the same, with <code>remember</code> and <code>rememberSaveable</code> drawing the configuration change line.</td></tr>
+            <tr><td>Next step up</td><td>Unidirectional flow and reducer-style composition.</td><td>MVI with a single immutable UiState plus one-shot events.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The sentence to get right: on Android the ViewModel survives configuration change and dies with the lifecycle owner it was scoped to, while on iOS nothing needs to survive, because the view controller was never destroyed. Deliver the correct one and the architecture round is essentially over.</p>
+
+      <h2>Where the parallel stops helping</h2>
+      <p>Three places, and each is a question you cannot answer by translating from the other platform.</p>
+      <ul>
+        <li><strong>Process death.</strong> A first-class Android topic with no real iOS twin. Rehearse the saved state answer on its own rather than mapping it across.</li>
+        <li><strong>Fragmentation and API levels.</strong> Android loops ask about minSdk decisions, behaviour changes across releases, and device variation. iOS loops ask about deployment target and availability checks, which is a much shorter conversation.</li>
+        <li><strong>Review and release.</strong> App Store review, entitlements and provisioning against staged rollouts, Play policy, and the ability to ship a fix quickly. Both come up in the design round and neither translates.</li>
+      </ul>
+
+      <h2>Where a copilot is the wrong tool for this loop</h2>
+      <p>Be blunt about the fit, because mobile loops are a poor match in several specific ways.</p>
+      <ul>
+        <li><strong>Windows only, which matters more here than in most roles.</strong> OfferPilot AI runs on Windows 10 and 11. There is no macOS build, no Linux build, no mobile app and no browser extension. iOS engineers overwhelmingly work from a Mac, so unless you happen to interview from a Windows machine, none of this is available to you.</li>
+        <li><strong>Live coding in an IDE is the wrong shape.</strong> Much of a mobile loop is building a screen in Xcode or Android Studio while the interviewer watches, or debugging a project they hand you. Reading a suggestion mid-build breaks the narration those rounds are graded on.</li>
+        <li><strong>Capture exclusion is narrower than people assume.</strong> The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots, while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, a second-device camera, eye tracking, or a person watching in the room. Follow whatever rules the process you were sent actually sets.</li>
+        <li><strong>Device-specific follow-ups.</strong> "Open the layout inspector" or "profile this and tell me what you see" cannot be prompted usefully. Those come from hours in the tool.</li>
+      </ul>
+      <p>What it is genuinely useful for in a two-platform week is narrower: the spoken breadth rounds where a prompt restores a callback order or a definition you already knew, and building a company and role specific question bank beforehand so you rehearse the Android half and the iOS half separately instead of blurring them together.</p>
+
+      <h2>How to spend the week you have</h2>
+      <p>Take the five themes above and write both columns out by hand, one page per theme. Then rehearse them aloud in the order the interviews fall, naming the platform at the start of each answer as a deliberate cue. Most cross-platform candidates do not fail on knowledge. They fail by answering the Android question with the iOS mechanism thirty seconds after a context switch. Naming the platform first fixes almost all of it.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/data-scientist-product-sense-interview/">Data Scientist Product Sense Interview Questions: 4-Move Answer</a></li>
+        <li><a href="/guides/data-engineer-sql-interview-round/">Data Engineer SQL Interview Round: What to Expect in 45 Minutes</a></li>
+        <li><a href="/guides/devops-interview-vs-sre-interview/">DevOps Interview vs SRE Interview: Two Different Question Sets</a></li>
+        <li><a href="/guides/sdet-test-case-design-interview/">SDET Interview Test Case Design: Writing Cases for File Upload</a></li>
+        <li><a href="/guides/sre-linux-troubleshooting-interview/">SRE Interview Linux Troubleshooting: Triage Order to Narrate</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Rehearse both columns before the week starts.</h2>
+      <p class="lede" style="margin:0 auto 8px">Generate a question bank for the specific company and role from your own resume, once for the iOS loop and once for the Android one. The free tier is 5 minutes a day, no card required.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

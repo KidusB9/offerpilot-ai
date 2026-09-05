@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank</title>
+  <meta name="description" content="Yes. CoderPad raises focus loss live to the interviewer and HackerRank files it in the report. Feature by feature, here is what each one records and what it never has.">
+  <meta name="keywords" content="can coderpad see if you switch tabs, what interviewers see on coderpad, does hackerrank detect tab switching, coderpad paste detection, hackerrank webcam proctoring, coderpad playback keystrokes, does hackerrank record your screen, coderpad vs hackerrank monitoring, is coderpad proctored">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/what-interviewers-see-on-coderpad/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank">
+  <meta property="og:description" content="Yes. CoderPad raises focus loss live to the interviewer and HackerRank files it in the report. Feature by feature, here is what each one records and what it never has.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/what-interviewers-see-on-coderpad/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-what-interviewers-see-on-coderpad.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank">
+  <meta name="twitter:description" content="Yes. CoderPad raises focus loss live to the interviewer and HackerRank files it in the report. Feature by feature, here is what each one records and what it never has.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-what-interviewers-see-on-coderpad.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank","description":"Yes. CoderPad raises focus loss live to the interviewer and HackerRank files it in the report. Feature by feature, here is what each one records and what it never has.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/what-interviewers-see-on-coderpad/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank","url":"https://offerpilotai.ink/guides/what-interviewers-see-on-coderpad/","mainEntity":[{"@type":"Question","name":"Can CoderPad see if you switch tabs?","acceptedAnswer":{"@type":"Answer","text":"It can see that the pad stopped being the focused, visible page, which is what a tab switch looks like from inside a browser. In a live pad that surfaces to the interviewer while you are still away, and it lands on the playback timeline afterwards. What it cannot see is the destination, because the browser event carries no URL, no window title and no screenshot."}},{"@type":"Question","name":"Does HackerRank detect tab switching the same way?","acceptedAnswer":{"@type":"Answer","text":"The detection is the same browser signal, but the delivery is different. HackerRank is usually asynchronous, so focus loss becomes a timestamped row in the candidate report that somebody reads hours or days later, often alongside a count of full screen exits. Nobody nudges you during the test, and you may never see the log that was built."}},{"@type":"Question","name":"Do CoderPad or HackerRank record my webcam or my screen?","acceptedAnswer":{"@type":"Answer","text":"Only where the employer switched that option on for that specific assessment, and only after your browser asked you. Camera access shows a permission dialog and usually lights the indicator on your laptop. Screen capture goes through the browser's own picker listing Entire Screen, Window and Tab. Neither can start quietly, so if no prompt appeared, no pixels were captured."}},{"@type":"Question","name":"Does either platform flag pasted code?","acceptedAnswer":{"@type":"Answer","text":"Both treat text arriving from outside the editor as different from ordinary typing. CoderPad marks it in the shared document, so an interviewer watching sees the block land highlighted in real time. HackerRank counts paste events into the activity log and commonly quotes the pasted content back in the report. Copying inside the same editor is normal editing."}},{"@type":"Question","name":"Can they see my second monitor or my other applications?","acceptedAnswer":{"@type":"Answer","text":"No. Both run as web pages in your browser, so neither can enumerate running applications, read other windows, list open tabs or see a second display. The exception is a screen share or a screen recording you granted through the browser picker, which shows exactly the surface you selected and nothing outside it."}},{"@type":"Question","name":"Does keystroke playback mean the interviewer sees everything I typed?","acceptedAnswer":{"@type":"Answer","text":"Everything you typed inside the editor, yes, including work you deleted before submitting. Playback rebuilds the file at the speed it was written, showing pauses, rewrites and blocks that appeared in a single frame. It has no record of keystrokes in any other window, because it is a recording of a document rather than of your keyboard."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"What interviewers see on CoderPad and HackerRank","item":"https://offerpilotai.ink/guides/what-interviewers-see-on-coderpad/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Can CoderPad see if you switch tabs, and what can HackerRank see?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Both can see that the editor stopped being the focused page, which is what a tab switch looks like from inside a browser. The difference is delivery. CoderPad surfaces it to a human watching the same document while you are still away, and keeps it on the playback timeline. HackerRank turns it into a timestamped row in a report somebody opens later. Neither learns where you went, and neither records your camera or your screen unless the employer enabled that option and your browser asked your permission first.</p>
+
+      <p>Most answers online mix four different products together. A live CoderPad pad, a CoderPad Screen take home, a standard HackerRank test and a HackerRank test with proctoring switched on collect different things and hand them to different people. This page separates them by capability, so you can match the round you are actually sitting.</p>
+
+      <h2>Capability by capability, across both platforms</h2>
+      <p>Read the middle two columns as what the platform is able to collect, and the last column as whether it is on by default or a per assessment choice made by the hiring team.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Capability</th><th>CoderPad</th><th>HackerRank</th><th>On by default?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Keystroke level playback of the editor</td>
+              <td>Yes. Playback replays the pad as a scrubbable timeline at the speed you typed, including deleted work and long pauses</td>
+              <td>Yes. Code playback replays the editor, and the report separately lists every submission attempt with its timestamp and score</td>
+              <td>Yes, this is the core recording on both</td>
+            </tr>
+            <tr>
+              <td>Paste from outside the editor</td>
+              <td>Marked inline in the shared document, visible to the interviewer at the moment it lands</td>
+              <td>Counted in the activity log, commonly with the pasted content quoted back in the report</td>
+              <td>Yes on both. Copying within the same editor is ordinary editing</td>
+            </tr>
+            <tr>
+              <td>Tab switch or focus change</td>
+              <td>A live notice to the interviewer, plus focus loss markers on the playback timeline with a start time and a duration</td>
+              <td>A timestamped focus loss log in the candidate report, usually with a count</td>
+              <td>Present on both. The full screen requirement that often goes with it is an employer setting</td>
+            </tr>
+            <tr>
+              <td>Full screen exit</td>
+              <td>Alerted on Screen assessments after a short grace period, so a stray Esc does not count</td>
+              <td>Warned during the test where full screen is required, and recorded against the attempt</td>
+              <td>Employer setting, chosen per assessment</td>
+            </tr>
+            <tr>
+              <td>Webcam snapshots or video</td>
+              <td>Only through the video call, which is a separate tool, not the pad</td>
+              <td>Yes where enabled, delivered as snapshots or a stream attached to the report</td>
+              <td>No. Employer enabled, and your browser prompts for the camera</td>
+            </tr>
+            <tr>
+              <td>Screen recording</td>
+              <td>Only what you chose to share on the call, and only if the team records the call</td>
+              <td>Yes where enabled, through the browser's own share picker</td>
+              <td>No. Employer enabled, and impossible to start silently</td>
+            </tr>
+            <tr>
+              <td>Similarity or plagiarism scoring</td>
+              <td>Not the headline feature. A reviewer reads the replay instead</td>
+              <td>Yes, flag categories attached to the report where the team uses them</td>
+              <td>Employer setting</td>
+            </tr>
+            <tr>
+              <td>Which tab, app or window you moved to</td>
+              <td>Nothing. The browser event carries no destination</td>
+              <td>Nothing, for the same reason</td>
+              <td>Never available to either</td>
+            </tr>
+            <tr>
+              <td>Other windows, a second monitor, clipboard history</td>
+              <td>Nothing. It is a web page in a tab</td>
+              <td>Nothing beyond a share you granted through the picker</td>
+              <td>Never available to either</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Exact labels, colours and grace periods move between versions and plans, so treat the wording as the current shape of the feature rather than a fixed contract. The two sources underneath do not change: standard browser visibility and focus events, and the editor's own record of how text arrived in it.</p>
+
+      <h2>Work out which mode you are in before you type a line</h2>
+      <p>Nearly every setting in that table is identifiable from what your own screen does in the first two minutes. The sequence below takes about ninety seconds.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Read the instructions page, not the problem</h3>
+            <p>Proctored HackerRank tests state it before the timer starts, and the wording tells you which options are live. Full screen required, camera required and screen share required are three separate sentences, and a test can carry any combination of them.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Count the browser permission prompts</h3>
+            <p>Camera access draws a dialog your browser owns, and on most laptops the indicator light comes on and stays on. Screen capture draws the picker listing Entire Screen, Window and Tab, then leaves a sharing indicator up. A website cannot restyle, suppress or auto accept either one. No prompt means no pixels.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Watch what happens the moment the test starts</h3>
+            <p>If the tab pushes itself into full screen, exits are being counted. Leave full screen deliberately once at the very start, while nothing is at stake, and read the warning it gives you. Now you know the exact behaviour before it matters.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Test the paste behaviour with something harmless</h3>
+            <p>Paste one comment line from outside, your own name will do, and see whether the editor marks it. On a live pad, say what you are doing first. You then know whether your language template will arrive flagged, which is worth knowing before you paste it under time pressure.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Ask the recruiter, in writing</h3>
+            <p>Is the assessment proctored, and is a camera required, is a fair question with a short answer. Asking it early also settles any accommodation you need, which is far simpler before the link is issued than after a flag exists.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The same ninety second absence, in four rounds</h2>
+      <p>One behaviour, four different artefacts. This is why a single answer to the tab switching question never fits every case.</p>
+
+      <ol>
+        <li><strong>Live CoderPad pad.</strong> The interviewer gets a notice while you are gone and often asks whether everything is alright when you come back. It also leaves a marker on the replay, sitting beside whatever code appeared afterwards.</li>
+        <li><strong>CoderPad Screen take home.</strong> Nobody is watching in the moment. The gap sits on the timeline, and a reviewer scrubs to it only if the finished code already looked unusual for the time taken.</li>
+        <li><strong>Standard HackerRank test, no proctoring options.</strong> A focus event and the timing pattern across your submissions. No camera, no screen capture, no live nudge, and nothing you will be told about.</li>
+        <li><strong>Proctored HackerRank test.</strong> A row in the activity log, a full screen exit if you left it, and, where the employer enabled the camera, snapshots covering the same minutes.</li>
+      </ol>
+
+      <p>In all four, duration matters less than adjacency. Twelve short losses spread across an hour reads as notifications left switched on. One long gap immediately before forty finished lines that pass first time reads as a story, even though the record itself never says where you were.</p>
+
+      <blockquote>Every flag either platform produces has the same shape. Focus left, then this appeared. Never: you were here.</blockquote>
+
+      <h2>Where OfferPilot AI is the wrong tool</h2>
+      <p>Worth stating plainly on a page published by a company that sells an interview assistant. Our overlay is excluded from screen capture at the operating system level, so it does not show up in a Zoom, Teams or Meet share, in a recording or in a screenshot. That property does nothing for anything in the table above. Focus detection never looks at pixels, it reads which window the operating system considers focused, so clicking any overlay, or firing the <a href="/code-copilot/">Code Copilot</a> capture shortcut, moves focus off the editor and produces exactly the marker anything else would. Capture exclusion is also no answer to webcam monitoring, a lockdown browser, eye tracking, a second device camera or a person sitting in the room with you.</p>
+      <p>There is a second reason to leave it closed here. Both platforms record how the answer was built, and a live pad adds an interviewer who will ask you to change that code in front of them. A solution you cannot rebuild, defend and extend under questioning reads worse than an honest partial one in your own hand. The useful place for an assistant is the preparation beforehand, and the conversational rounds where you are talking rather than typing into a monitored editor.</p>
+
+      <h2>A short checklist for either platform</h2>
+      <ul>
+        <li><strong>Keep the editor on one screen</strong> and put nothing you will click on the other, because clicking a second monitor blurs the page while it stays fully visible to you.</li>
+        <li><strong>Narrate anything that moves focus</strong> on a live pad, the developer console included. Opening dev tools registers as leaving, docked or undocked.</li>
+        <li><strong>Type your scaffolding rather than pasting it.</strong> Typed text replays as typing, while the same text pasted from a notes app arrives in one frame and gets marked.</li>
+        <li><strong>Run your code early and often.</strong> Failing runs followed by passing ones are the clearest evidence on the timeline that real debugging happened.</li>
+        <li><strong>Silence notifications before you start,</strong> since every toast that steals focus becomes an event someone may scrub to later.</li>
+      </ul>
+
+      <p>If your next round is a conversation rather than a monitored editor, that is what <a href="/interview-copilot/">Interview Copilot</a> is built for, on Windows 10 and 11, free for five minutes a day with no card required. Limits are listed on the <a href="/pricing/">pricing page</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/coderpad-what-the-interviewer-sees/">Does CoderPad Detect Tab Switching? What the Interviewer Sees</a></li>
+        <li><a href="/guides/codility-tab-switching-and-paste-detection/">Does Codility Track Tab Switching and Paste? What It Logs</a></li>
+        <li><a href="/guides/does-hackerrank-record-your-screen/">Does HackerRank Record Your Screen? What Each Test Mode Captures</a></li>
+        <li><a href="/guides/is-codesignal-proctored/">Is CodeSignal Proctored? Camera, ID, Screen and Tab Rules</a></li>
+        <li><a href="/guides/hackerrank-tab-switching-detection/">Does HackerRank Detect Tab Switching? What the Flag Records</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

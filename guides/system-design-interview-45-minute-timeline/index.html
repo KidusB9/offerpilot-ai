@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System Design Interview in 45 Minutes: A Minute-by-Minute Plan</title>
+  <meta name="description" content="A clock-driven system design framework: 0-6 requirements, 6-10 estimation, 10-18 API, 18-30 diagram, 30-42 deep dive, 42-45 trade-offs, worked on a news feed.">
+  <meta name="keywords" content="system design interview 45 minute framework, system design interview timeline, how to structure a system design interview, system design interview framework, design a news feed interview, system design interview time management, system design deep dive, running out of time system design interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/system-design-interview-45-minute-timeline/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="System Design Interview in 45 Minutes: A Minute-by-Minute Plan">
+  <meta property="og:description" content="A clock-driven system design framework: 0-6 requirements, 6-10 estimation, 10-18 API, 18-30 diagram, 30-42 deep dive, 42-45 trade-offs, worked on a news feed.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/system-design-interview-45-minute-timeline/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-system-design-interview-45-minute-timeline.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="System Design Interview in 45 Minutes: A Minute-by-Minute Plan">
+  <meta name="twitter:description" content="A clock-driven system design framework: 0-6 requirements, 6-10 estimation, 10-18 API, 18-30 diagram, 30-42 deep dive, 42-45 trade-offs, worked on a news feed.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-system-design-interview-45-minute-timeline.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"System Design Interview in 45 Minutes: A Minute-by-Minute Plan","description":"A clock-driven system design framework: 0-6 requirements, 6-10 estimation, 10-18 API, 18-30 diagram, 30-42 deep dive, 42-45 trade-offs, worked on a news feed.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/system-design-interview-45-minute-timeline/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"System Design Interview in 45 Minutes: A Minute-by-Minute Plan","url":"https://offerpilotai.ink/guides/system-design-interview-45-minute-timeline/","mainEntity":[{"@type":"Question","name":"How should I split 45 minutes in a system design interview?","acceptedAnswer":{"@type":"Answer","text":"Six minutes on requirements and scope cuts, four on estimation, eight on the API and data model, twelve on the high level diagram, twelve on a single deep dive, three on trade-offs. The exact split matters less than announcing it. Say the budget out loud in the first minute so the interviewer can redirect you at minute two rather than minute thirty."}},{"@type":"Question","name":"What should I say before I start drawing in a system design interview?","acceptedAnswer":{"@type":"Answer","text":"Say the budget and the reason behind it: I am going to spend five minutes on requirements before I draw anything, because what we cut changes the diagram. That single sentence gives the interviewer a cheap moment to redirect you, and it stops the awkward silence of a candidate sketching boxes nobody has agreed on yet."}},{"@type":"Question","name":"What should I drop if I am ten minutes behind in a system design interview?","acceptedAnswer":{"@type":"Answer","text":"Compress the data model to one spoken sentence, drop every estimate except the one that drives the architecture, and narrow the diagram to the path the question is actually about. Never drop the deep dive or the trade-offs. One component taken apart properly scores higher than eight boxes with no depth, because the rubric rewards depth on one thing."}},{"@type":"Question","name":"Should I name the bottleneck myself or wait to be asked?","acceptedAnswer":{"@type":"Answer","text":"Name it yourself, at around minute thirty, before the interviewer gets there. Say which part of your design breaks first, why it breaks, and ask whether that is where they want the remaining time. Naming your own weakest joint is the strongest seniority signal available in the round, and it also lets you choose the ground you are examined on."}},{"@type":"Question","name":"How much capacity estimation is enough in a system design interview?","acceptedAnswer":{"@type":"Answer","text":"One number that changes a decision, not a page of arithmetic. For a news feed that number is timeline writes per second caused by fanout, roughly twelve billion writes a day at three hundred million daily users averaging two hundred followers. Round hard, state your assumptions aloud, and move on. Estimation that changes nothing is theatre."}},{"@type":"Question","name":"What do I do when the interviewer interrupts my plan?","acceptedAnswer":{"@type":"Answer","text":"Follow them, then reprice the rest of the clock out loud: that takes us into the deep dive early, so I will skip the data model and cover consistency inside it instead. An interruption is the rubric talking. The timeline exists so you can adapt it visibly, not so you can defend it against the person grading you."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"System design in 45 minutes","item":"https://offerpilotai.ink/guides/system-design-interview-45-minute-timeline/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Interview formats and question types</p>
+      <h1 class="balance">System design in 45 minutes: a minute-by-minute timeline</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Run the clock like this: 0 to 6 requirements and scope cuts, 6 to 10 estimation, 10 to 18 API and data model, 18 to 30 the high-level diagram, 30 to 42 one deep dive on a bottleneck you name yourself, 42 to 45 trade-offs. The blocks matter less than the hand-offs. Say the budget out loud before each one, because a candidate who announces "I'm going to spend five minutes on requirements before I draw anything" gets corrected at minute two instead of failing quietly at minute thirty. Below: the whole script worked on a news feed, and what to cut when you are ten minutes behind.</p>
+
+      <h2>The clock, and the sentence that opens each block</h2>
+      <p>Almost every failed round is a timing failure rather than a knowledge failure: twenty-two minutes of requirements, a rushed diagram, no deep dive, no trade-offs. Each sentence below hands the interviewer a cheap two-second window to redirect you.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Minutes</th><th>What you produce</th><th>Say this to open it</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>0-6</strong></td>
+              <td>A functional list, an explicit out-of-scope list, one non-functional target with a number on it.</td>
+              <td>"I'm going to spend five minutes on requirements before I draw anything, because what we cut changes the diagram. Stop me if you want a different slice."</td>
+            </tr>
+            <tr>
+              <td><strong>6-10</strong></td>
+              <td>Two or three numbers, rounded hard, one of which visibly forces an architectural choice.</td>
+              <td>"Requirements are locked. Four minutes on numbers, and I'm really after one figure, because that is the one that decides the shape."</td>
+            </tr>
+            <tr>
+              <td><strong>10-18</strong></td>
+              <td>Two endpoints written out, three tables, a named shard key for each.</td>
+              <td>"Before the boxes, let me pin the contract. Two endpoints and three tables, about eight minutes, then I'll draw."</td>
+            </tr>
+            <tr>
+              <td><strong>18-30</strong></td>
+              <td>Write path, then read path, in that order. Six to eight boxes, no more.</td>
+              <td>"I'll draw the write path first, then the read path. I'm deliberately leaving one gap in it that I'll come back to."</td>
+            </tr>
+            <tr>
+              <td><strong>30-42</strong></td>
+              <td>One component taken apart: failure mode, mitigation, cost of that mitigation.</td>
+              <td>"This holds until a ten-million-follower account posts. That is the bottleneck, and I'd like twelve minutes on it. Does that work, or is there something you'd rather see?"</td>
+            </tr>
+            <tr>
+              <td><strong>42-45</strong></td>
+              <td>Three trade-offs where you name the side you gave up, plus one open question.</td>
+              <td>"Three minutes left. Let me name what I traded away and what I'd revisit first."</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Glance at the clock at 10, 18, 30 and 42 only. Checking more often reads as anxiety and costs you the thread.</p>
+
+      <h2>Worked end to end: design a news feed</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>0-6: requirements, and the cuts said out loud</h3>
+            <p>In scope: create a post with text and one optional image, follow and unfollow, load a home timeline of the people you follow. Out of scope, said explicitly because unstated scope gets assumed against you: ranking, ads, stories, direct messages, comment threads, notifications. Non-functional, with numbers on them: feed loads under 200ms at p99, the feed may be seconds stale, posts must never be lost. Say that last pair aloud. "I'll trade freshness for availability on the read path, but not durability on the write path" sets up every decision that follows.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>6-10: estimation, one number that matters</h3>
+            <p>300M daily users opening the feed 10 times a day is 3B reads a day, roughly 35k per second, call it 100k at peak. One user in ten posts twice: 60M posts a day, under 1k writes per second. That 50 to 1 ratio is a hint, not the answer. The figure that decides everything is fanout: 60M posts times an average 200 followers is 12 billion timeline writes a day, about 140k per second sustained. Say it slowly. It is why fanout has to be asynchronous, why timelines live in a cache rather than behind a join, and why the design collapses on celebrity accounts.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>10-18: API and data model</h3>
+            <p>Two endpoints. <code>POST /v1/posts</code>, text plus an optional media id, with an <code>Idempotency-Key</code> header so a client retry does not double-post, returning 201 and a Snowflake id. <code>GET /v1/feed?limit=20&amp;cursor=</code> returning items plus an opaque cursor, never offset pagination, because posts landing mid-scroll shift the window and hand the user duplicates. Three tables: <code>posts</code> sharded by post id, <code>follows</code> stored in both directions so neither lookup is a scan, <code>timeline</code> as a per-user capped list of about 400 post ids in Redis, a sorted set keyed on the Snowflake id. Timelines hold ids only and hydrate from a post cache, so a deleted post is not 200,000 rewrites.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>18-30: the high-level diagram</h3>
+            <p>Write path first: client, edge, post service, post store plus object storage for images, an event onto a durable log, then fanout workers that read the author's follower list and push the post id into each follower's timeline cache. Read path second, and deliberately dull: 20 ids from the timeline cache, hydrate from the post cache, fall back to the post store on a miss. Six or seven boxes total. Say what happens when one dies: if fanout workers lag, feeds go stale and nothing is lost, because the log still holds the events. Skip the search service and the recommender nobody asked for. Every extra box is surface area for a question you cannot answer.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>30-42: the deep dive you choose yourself</h3>
+            <p>Name it before they do. One post from a 10 million follower account is 10 million cache writes, which at 140k per second of fanout throughput backs the queue up for over a minute, and a few such accounts starve everyone else's feed. The fix is hybrid fanout: above a threshold, say 100k followers, skip fanout and write nothing. At read time take 20 ids from the user's own timeline, then for each celebrity they follow read recent posts from a small per-author cache and merge. Snowflake ids sort by time, so it is a k-way merge over integers. Then price the fix. Read work is now bounded by celebrities followed, usually under 50, but the threshold has to be dynamic, accounts crossing it in either direction need handling, and someone following 500 celebrities is a slow read you would cap. Handle unfollow with a read-time filter rather than a scan across millions of timelines, and an evicted timeline by rebuilding from per-author caches.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>42-45: trade-offs, with the losing side named</h3>
+            <p>Three, one sentence each. Fanout on write buys a fast read and costs enormous write amplification plus a feed that is seconds stale. Storing ids rather than bodies makes edits and deletes trivial and adds a hydration hop to every read. The hybrid threshold removes the celebrity spike and adds an operational knob that will be tuned wrong at some point. Then one open question: "with more time I'd look at losing a timeline cache shard, because at 12 billion writes a day, rebuilding cold is not free."</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>When you are ten minutes behind</h2>
+      <p>You are behind if you hit minute 25 with no diagram, or minute 35 with no deep dive. Cut in this order, and narrate the cut so it reads as a decision rather than a collapse: "I'll compress the data model to a sentence so we still get a proper deep dive."</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Behind by</th><th>Cut this</th><th>Protect this</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>About 5 minutes</td><td>Two of your three estimates. Keep the fanout figure, drop storage per year.</td><td>The full diagram and a shortened deep dive.</td></tr>
+            <tr><td>About 10 minutes</td><td>The written data model. Say it instead: "posts sharded by post id, follows stored both directions, timelines as capped id lists in Redis." Fifteen seconds, no typing.</td><td>The deep dive, at full length.</td></tr>
+            <tr><td>About 15 minutes</td><td>Diagram breadth. Draw the write path and the timeline cache only, narrate the read path over it, skip the API beyond naming two endpoints.</td><td>One bottleneck dismantled, and 90 seconds of trade-offs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The deep dive and the trade-offs never get cut. Three boxes with one bottleneck taken apart properly scores above nine boxes with no depth, because the rubric has a row for depth and it is usually the row that separates a hire from a no-hire. If time runs out mid-dive, finish the sentence you are on and spend the last 30 seconds listing trade-offs. Never let the interviewer be the one who says time is up.</p>
+
+      <h2>Where a copilot is the wrong tool for this round</h2>
+      <p>A design round is not a sequence of questions with answers, it is 45 minutes of you steering a conversation while drawing, and live assistance fits it badly. <a href="/interview-copilot/">Interview Copilot</a> transcribes the interviewer on-device and drafts a speakable answer in about a second, which suits behavioural rounds and rapid-fire technical questions. Here the interviewer might speak for four minutes out of forty-five, so there is little for it to work with, and pausing to read a screen while you are meant to be narrating a diagram is conspicuous in a way a two-second thinking pause is not. Other limits, stated plainly:</p>
+      <ul>
+        <li><strong>Windows 10 and 11 only.</strong> No macOS, no Linux, no mobile, no browser extension.</li>
+        <li><strong>Capture exclusion covers screen sharing and screen recording, nothing else.</strong> The overlay is excluded from screen capture at the operating system level, so it is absent from Zoom, Teams, Meet, OBS and screenshots while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a second-device camera, or someone in the room.</li>
+        <li><strong>Depth is graded on the follow-ups.</strong> A hybrid fanout answer you did not reason your way to falls apart at the second question, and here the second question always comes.</li>
+        <li><strong>The rules belong to the company.</strong> Some interviews permit documentation and AI assistance, some do not. Read the instructions and ask when they are ambiguous.</li>
+      </ul>
+      <p>The honest use of a tool here is before the round, not during it: rehearse the six hand-off sentences until they are automatic, then run the news feed once against a stopwatch. Everyone overruns somewhere, and it is almost always requirements.</p>
+
+      <h2>Practise the clock, not the answer</h2>
+      <p>Take four prompts, a news feed, a URL shortener, a rate limiter and a notification service, and run each to the same six blocks with a timer in view. The same fifteen sentences carry all four, which is the point: the framework travels even when the content does not. The <a href="/interview-questions/">question banks</a> give you prompts to run against the clock, and the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank for a specific company and role from your resume, which matters because a payments team and a social team run this round very differently. OfferPilot AI's free tier is 5 minutes a day with no card, and paid <a href="/pricing/">plans</a> start at $39 a month, metered on listening time only.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/free-ai-interview-copilot-no-credit-card/">Free AI Interview Copilot, No Credit Card: Trials vs Daily</a></li>
+        <li><a href="/guides/technical-phone-screen-30-minutes/">Technical Phone Screen: What to Expect in a 30-Minute Call</a></li>
+        <li><a href="/guides/back-of-the-envelope-estimation-cheat-sheet/">Back-of-the-Envelope Estimation for System Design Interviews</a></li>
+        <li><a href="/guides/l4-vs-l5-interview-difference/">L4 vs L5 Software Engineer Interview: What Actually Changes</a></li>
+        <li><a href="/guides/how-much-prep-time-to-ask-recruiter-for/">How Much Prep Time to Ask a Recruiter For (and How to Ask)</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Finish the round with time left for trade-offs.</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company-specific question bank from your own resume, then run the 45 minute clock against it until the hand-offs are automatic.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

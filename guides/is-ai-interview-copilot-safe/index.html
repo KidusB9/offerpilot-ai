@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is an AI Interview Copilot Safe? What Leaves Your Machine</title>
+  <meta name="description" content="Partly, and it depends on the architecture. Audio transcribed on-device with Whisper never leaves your computer. Text, resume context and screenshots for OCR do.">
+  <meta name="keywords" content="is ai interview copilot safe, ai interview copilot privacy, does interview copilot record audio, on-device whisper transcription, interview copilot data privacy, ai interview assistant security, does ai copilot upload audio, interview copilot screen share safe">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/is-ai-interview-copilot-safe/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Is an AI Interview Copilot Safe? What Leaves Your Machine">
+  <meta property="og:description" content="Partly, and it depends on the architecture. Audio transcribed on-device with Whisper never leaves your computer. Text, resume context and screenshots for OCR do.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/is-ai-interview-copilot-safe/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-is-ai-interview-copilot-safe.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Is an AI Interview Copilot Safe? What Leaves Your Machine">
+  <meta name="twitter:description" content="Partly, and it depends on the architecture. Audio transcribed on-device with Whisper never leaves your computer. Text, resume context and screenshots for OCR do.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-is-ai-interview-copilot-safe.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Is an AI Interview Copilot Safe? What Leaves Your Machine","description":"Partly, and it depends on the architecture. Audio transcribed on-device with Whisper never leaves your computer. Text, resume context and screenshots for OCR do.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/is-ai-interview-copilot-safe/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Is an AI Interview Copilot Safe? What Leaves Your Machine","url":"https://offerpilotai.ink/guides/is-ai-interview-copilot-safe/","mainEntity":[{"@type":"Question","name":"Is an AI interview copilot safe to use?","acceptedAnswer":{"@type":"Answer","text":"Partly, and it depends entirely on the architecture. Three separate things hide inside the word safe: what data leaves your machine, whether the overlay appears in a screen share, and whether assistance is permitted where you are. With on-device transcription the interviewer's raw audio never leaves your computer, but transcript text and prompt context still reach a remote model, so nothing that drafts answers is fully offline."}},{"@type":"Question","name":"Does an AI interview copilot upload my interviewer's audio?","acceptedAnswer":{"@type":"Answer","text":"It captures the audio either way, but capturing and uploading are different questions. A copilot using cloud transcription streams that audio to a vendor server for speech recognition. A copilot running Whisper locally decodes the same audio on your own CPU or GPU and sends only the resulting text onward. Ask which one you installed, because that difference is the whole privacy story."}},{"@type":"Question","name":"What does on-device Whisper transcription actually mean?","acceptedAnswer":{"@type":"Answer","text":"Whisper is an open speech recognition model that runs on ordinary consumer hardware. On-device means a copy of that model sits on your own disk and converts audio into text inside your machine, so the raw waveform never crosses the network. You pay for that in CPU, in memory, and in a model file that is typically hundreds of megabytes on disk."}},{"@type":"Question","name":"Do screenshots of a coding problem leave my computer?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. Screenshot features exist so that a text-only language model can read a coding problem, and turning pixels into characters is optical character recognition. OfferPilot AI runs that OCR server-side, so the captured image does leave your machine. If a problem is confidential or covered by an NDA, that is a solid reason not to capture it at all."}},{"@type":"Question","name":"Can the interviewer see the copilot during a screen share?","acceptedAnswer":{"@type":"Answer","text":"Not if the overlay is excluded from screen capture at the operating system level, which keeps it out of Zoom, Teams, Meet, OBS and screenshots while it stays visible on your own monitor. That exclusion covers pixels only. It does nothing about a webcam, a lockdown browser, eye tracking, an in-person proctor, or a phone filming your desk."}},{"@type":"Question","name":"Is it safe to install an interview copilot on a work laptop?","acceptedAnswer":{"@type":"Answer","text":"Treat that as a policy question rather than a technical one. A managed corporate device normally forbids unapproved installs, and endpoint management software can inventory what is installed regardless of what any overlay hides on screen. Install interview tooling on a personal machine you control, and keep employer-confidential material out of any feature that uploads images."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Is an AI Interview Copilot Safe?","item":"https://offerpilotai.ink/guides/is-ai-interview-copilot-safe/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Is an AI interview copilot safe? What actually leaves your machine</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Partly, and the honest answer turns on one design decision: where the speech recognition runs. If a copilot transcribes with Whisper on your own hardware, your interviewer's voice never crosses the network. If it transcribes in the cloud, a continuous stream of both voices is arriving on someone else's servers for the length of the call. Either way, text leaves. So do screenshots, on any product that reads a coding problem off your screen, because the character recognition happens server-side.</p>
+
+      <h2>Three unrelated risks are wearing one word</h2>
+      <p>People type this query meaning at least three different things, and the answers have nothing to do with each other.</p>
+      <ul>
+        <li><strong>Data safety.</strong> What gets sent, to whom, and how long they keep it. This one is verifiable from your side of the connection, and it is what this page is about.</li>
+        <li><strong>Visibility safety.</strong> Whether the thing shows up in a screen share or a recording. That is an operating system question, answered further down.</li>
+        <li><strong>Policy safety.</strong> Whether assistance is permitted in the round you are sitting. No software setting changes that answer, and no vendor can hand it to you.</li>
+      </ul>
+      <p>Conflating them is how people end up reassured about the wrong thing. A tool can be perfectly invisible on a screen share and still be shipping every word of your interview to a transcription API.</p>
+
+      <h2>The data path, hop by hop, for both architectures</h2>
+      <p>Every live copilot performs the same four steps: capture audio, turn it into text, send text plus context to a language model, display the answer. Only step two moves between designs. Here is what that relocation costs you.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th>What the tool touches</th><th>Cloud transcription build</th><th>On-device Whisper build</th></tr>
+          <tr><td>Interviewer's voice, raw audio</td><td>Leaves. Encoded and streamed to the vendor's speech service continuously while anyone is talking</td><td>Stays. Decoded into text by a model file sitting on your own disk, using your CPU or GPU</td></tr>
+          <tr><td>Your own microphone</td><td>Leaves, whenever the mic channel is enabled</td><td>Stays, same local path</td></tr>
+          <tr><td>Transcript text</td><td>Leaves</td><td>Leaves. This is the row people miss</td></tr>
+          <tr><td>Your resume and question bank</td><td>Leaves, as prompt context</td><td>Leaves, as prompt context</td></tr>
+          <tr><td>Screenshots of a coding problem</td><td>Leaves, as an image, so OCR can read it</td><td>Leaves. Local audio does not imply local vision</td></tr>
+          <tr><td>The drafted answer</td><td>Arrives from a remote model</td><td>Arrives from a remote model</td></tr>
+          <tr><td>Keystrokes outside the app</td><td>Not captured</td><td>Not captured</td></tr>
+          <tr><td>Webcam frames</td><td>Not captured</td><td>Not captured</td></tr>
+          <tr><td>A list of your open windows</td><td>Not captured</td><td>Not captured</td></tr>
+        </table>
+      </div>
+
+      <p>Read the middle rows before the top ones. The marketing fight in this category is about audio, because audio is the emotive part, but the row that never changes is transcript text. A copilot that drafts a speakable answer in about a second is calling a hosted model, and a hosted model needs the question in writing. Any product promising both a frontier-quality answer and zero egress is describing something that does not currently exist on a laptop.</p>
+
+      <p>To be specific about our own build, since a vendor writing this owes you that: <strong>OfferPilot AI</strong> transcribes on-device with Whisper, so the interviewer's audio stays on your Windows machine, and it answers every question with Grok, DeepSeek and Gemini in parallel, which are remote services, so the text goes out. The <a href="/code-copilot/">screenshot capture</a> that reads a LeetCode problem runs its OCR server-side so that text-only models can read the image. That picture of your screen leaves. Better you read that sentence here than find it in a packet capture.</p>
+
+      <h2>How to tell which build you installed, in about ten minutes</h2>
+      <p>You do not have to take anyone's word for this, ours included. Run these with a podcast or a recorded talk playing as the audio source.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Cut the network mid-sentence</h3>
+            <p>Start a transcript, then disable Wi-Fi while the speaker keeps talking. If words continue appearing for several more seconds, recognition is happening locally. If the transcript freezes on the exact syllable the connection dropped, it was never yours to begin with.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Watch the upstream, not the downstream</h3>
+            <p>Open Task Manager, go to Performance, click your network adapter, and read the Send figure with nothing else running. Continuous speech pushed to a cloud recognizer holds a sustained upstream floor. A local build shows near-silence between sentences, then a short burst once a finished sentence is sent to the model.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Look for the work</h3>
+            <p>Transcription costs something somewhere. If the process sits near zero CPU through forty minutes of dense speech, the arithmetic is being done on a server. Local Whisper shows up in Task Manager as steady, unglamorous CPU or GPU load for as long as someone is talking.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Find the model file</h3>
+            <p>A local model is a file. Search the install directory and the app data folder for something in the hundreds of megabytes with an extension like .bin, .onnx or .pt. A thin installer with no large weights on disk anywhere cannot be running Whisper on your machine.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Make them answer in writing</h3>
+            <p>Search the privacy policy for audio, retention, subprocessor and training. Then email support and ask three questions: is raw audio transmitted, how long is any transcript retained, and is my data used to train models. Keep the reply. A vendor that will not answer those plainly has answered.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>What you give up by keeping audio local</h2>
+      <p>On-device is not free, and pretending otherwise would be its own kind of dishonesty.</p>
+      <ul>
+        <li>A model small enough to run in real time on a laptop is not the largest model in existence. Expect more trouble with heavy accents, crosstalk and unusual technical vocabulary than a large server-side recognizer would have.</li>
+        <li>It taxes the same machine already running your video call, your editor and twenty browser tabs. Older hardware feels this immediately.</li>
+        <li>Local inference is generally the reason tools like this ship platform by platform rather than everywhere at once. Ours is Windows 10 and 11 only.</li>
+      </ul>
+      <p>What you buy is narrow, and worth it. The one artifact capable of reproducing an entire confidential conversation, the audio itself, is never in a position to be logged, breached or subpoenaed, because it was never sent anywhere.</p>
+
+      <h2>The visibility question, answered honestly</h2>
+      <p>Different mechanism, different limits. An overlay excluded from screen capture at the operating system level is absent from Zoom, Teams, Meet, OBS and screenshots while remaining visible on your own monitor. That is enforced by the compositor rather than by a vendor promise, and it applies on every plan including the free tier.</p>
+      <p>It is also strictly about pixels on a shared display. It does nothing about a webcam watching your eyes, a lockdown browser, a proctor in the room, eye tracking, or a second phone camera pointed at your desk. On a monitored assessment none of this is the right tool, and we are not going to pretend otherwise. What we build for is live conversational help and preparation, not getting past an exam.</p>
+
+      <h2>When the answer is no, do not install it</h2>
+      <p>Cases where closing the installer is the correct decision.</p>
+      <ul>
+        <li><strong>A managed work laptop.</strong> Endpoint software inventories installed applications whatever an overlay hides on screen, and an unapproved install is a policy problem before it is anything else.</li>
+        <li><strong>Confidential problem text.</strong> Because screenshot OCR is server-side, capturing an NDA-covered take-home, or anything containing your current employer's internal material, sends it somewhere you do not control. Retype the part you need, or skip the feature entirely.</li>
+        <li><strong>A proctored or lockdown-browser exam.</strong> Wrong tool, for the reasons stated above.</li>
+        <li><strong>A hard zero-egress requirement.</strong> If nothing at all may leave the machine, no cloud-model copilot qualifies. Prepare offline and go in unaided.</li>
+        <li><strong>Anything other than Windows 10 or 11.</strong> No macOS build, no Linux build, no mobile app, no browser extension, so the question is moot.</li>
+      </ul>
+
+      <h2>The short version</h2>
+      <p>Ask one question of any product in this category: where does the speech recognition run. On-device with Whisper means the raw audio of your interview stays on your machine, which is the win that actually matters. Text still leaves, prompt context still leaves, and any screenshot read by OCR still leaves. Verify it yourself by pulling the network mid-transcript and watching your upstream, then get the retention answer in writing. Safe is not a badge a vendor hands you, it is a data path you checked.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/does-hirevue-record-your-screen/">Does HireVue Record Your Screen or Just Your Camera and Mic?</a></li>
+        <li><a href="/guides/is-karat-interview-recorded/">Is a Karat Interview Recorded? Who Watches the Video and When</a></li>
+        <li><a href="/guides/proctored-coding-assessment-platforms-compared/">Which Coding Assessment Platforms Are Proctored? 7 Compared</a></li>
+        <li><a href="/guides/what-lockdown-browser-can-see/">What Respondus LockDown Browser Can Actually See, and Cannot</a></li>
+        <li><a href="/guides/can-interviewer-see-alt-tab/">Can a Zoom Host See If You Switch Tabs? The Three Signals</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Audio stays local. See the rest of the path.</h2>
+      <p class="lede" style="margin:0 auto 8px">On-device Whisper transcription, an overlay excluded from screen capture, and 5 free minutes a day with no card required.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

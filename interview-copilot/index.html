@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interview Copilot: Real-Time AI Interview Answers</title>
+  <meta name="description" content="Hears the question, grounds the answer in your résumé and company Q&A, and streams real-time interview answers to a screen-share-safe overlay only you can see.">
+  <meta name="keywords" content="AI interview copilot, real-time interview answers, company interview questions, live interview assistant, on-device transcription, company Q&A generator, screen-share safe overlay">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/interview-copilot/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Interview Copilot: Real-Time AI Interview Answers">
+  <meta property="og:description" content="Hears the question, grounds the answer in your résumé and company Q&A, and streams real-time interview answers to a screen-share-safe overlay only you can see.">
+  <meta property="og:url" content="https://offerpilotai.ink/interview-copilot/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/interview-copilot.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Interview Copilot: Real-Time AI Interview Answers">
+  <meta name="twitter:description" content="Hears the question, grounds the answer in your résumé and company Q&A, and streams real-time interview answers to a screen-share-safe overlay only you can see.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/interview-copilot.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Interview Copilot","item":"https://offerpilotai.ink/interview-copilot/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OfferPilot AI Interview Copilot","url":"https://offerpilotai.ink/interview-copilot/","applicationCategory":"BusinessApplication","operatingSystem":"Windows","description":"A real-time AI interview copilot that transcribes the interviewer on-device, grounds every answer in your résumé and a company-specific Q&A database, and streams a speakable answer to a screen-share-safe overlay only you can see.","featureList":["On-device Whisper speech-to-text (Vosk fallback)","RAG grounding in your résumé and company Q&A","Auto-scroll to your prepared answer","Multi-model answers across Grok, DeepSeek and Gemini","Screen-share invisibility (OS-level capture exclusion)","Pause and ghost hotkeys"],"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","description":"5 minutes per day"},{"@type":"Offer","name":"Pro","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"Ultimate","price":"69","priceCurrency":"USD","description":"6 hours a day"},{"@type":"Offer","name":"6-Month Pass","price":"249","priceCurrency":"USD"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the interview copilot answer in real time?","acceptedAnswer":{"@type":"Answer","text":"A fully on-device Whisper recognizer transcribes the interviewer as they speak. The moment they stop, your résumé and the company Q&A database are retrieved and fed to the model, and a tight, speakable answer streams into the overlay in about a second. No clip uploads and no round-trip latency."}},{"@type":"Question","name":"Can the interviewer see the copilot on screen share?","acceptedAnswer":{"@type":"Answer","text":"No. On Windows the overlay uses an OS-level screen-capture exclusion built into Windows, so it renders on your monitor but is composited out of the frame Zoom, Teams, Google Meet, Discord, OBS, and PrintScreen capture. It also stays out of the taskbar and Alt-Tab, and a live shield badge shows the current protection state."}},{"@type":"Question","name":"What are the interview questions grounded in?","acceptedAnswer":{"@type":"Answer","text":"Every live answer is retrieved from your résumé plus a company-specific Q&A database of behavioral, fundamentals, and coding questions with model answers in your voice. You build that database in seconds with the Company Q&A Generator on this page."}},{"@type":"Question","name":"Which AI models does the interview copilot use?","acceptedAnswer":{"@type":"Answer","text":"It queries Grok, DeepSeek, and Gemini, and can also run against a local model for a fully offline path. You choose which models to use, and only the models you pick are called."}},{"@type":"Question","name":"What do the hotkeys do?","acceptedAnswer":{"@type":"Answer","text":"M pauses the copilot instantly so it stops listening and answering, and P toggles ghost mode to dim the overlay. Both are global hotkeys, so you never touch the window during the call."}}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+<section class="section hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow"><span class="dot dot--live"></span> Interview Copilot · live &amp; screen-share safe</p>
+        <h1 class="balance">Real-time interview answers,<br>grounded in <span class="grad-text">your</span> prep.</h1>
+        <p class="hero__sub">Interview Copilot hears the question on-device, retrieves from your résumé and the company's Q&amp;A database, and streams a speakable answer to an overlay only you can see. Behavioral, system design, or domain: the answer sounds like you and fits the role.</p>
+        <div class="hero__cta">
+          <a class="btn btn--solid btn--lg" data-plan="free" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="/interview-copilot/#generator">Build a company Q&amp;A set</a>
+        </div>
+        <p class="hero__note"><span class="dot dot--live"></span> 5 min/day free · no card · Windows</p>
+      </div>
+
+      <!-- SIGNATURE: the invisible overlay demo -->
+      <div class="hero__hud">
+        <div class="hud" id="heroHud">
+          <div class="hud__bar">
+            <div class="hud__dots"><i></i><i></i><i></i></div>
+            <span class="hud__title">Zoom · Final Round · Payments Team</span>
+            <span class="hud__meet"><span class="dot dot--live"></span> REC 12:04</span>
+          </div>
+          <div class="hud__stage">
+            <div class="hud__toggle" role="tablist" aria-label="Whose view">
+              <button data-view="you" class="is-active" role="tab">Your view</button>
+              <button data-view="interviewer" role="tab">Interviewer's view</button>
+            </div>
+            <div class="hud__call" aria-hidden="true">
+              <div class="hud__tile"><div class="hud__avatar"></div><span>Interviewer</span></div>
+              <div class="hud__tile"><div class="hud__avatar"></div><span>You</span></div>
+            </div>
+            <div class="hud__overlay" aria-label="OfferPilot overlay (only you see this)">
+              <div class="hud__overlay-head">
+                <span class="dot dot--live"></span><b>OfferPilot</b>
+                <span class="hud__shield">🛡 hidden from capture</span>
+              </div>
+              <div class="hud__q"><span class="lab">HEARD</span><div class="txt"></div></div>
+              <div class="hud__a"><span class="lab">SAY THIS</span><div class="txt"></div></div>
+            </div>
+            <div class="hud__watermark">↑ what the interviewer records: the overlay is gone</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HOW IT WORKS ============================ -->
+<section class="section section--tight" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow--num" data-num="/ 03">The pipeline</p>
+      <h2>It hears, it grounds, it says. In about a second.</h2>
+      <p class="lede">The whole loop runs the moment the interviewer stops talking. No clip uploads, no round-trip latency, nothing to catch up on.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Hears</h3><p>A fully on-device Whisper recognizer transcribes the interviewer live. Audio never leaves your machine, so there is no upload lag and nothing to intercept.</p></div></div>
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Grounds</h3><p>Your résumé and the company's Q&amp;A database are retrieved and fed to the model, so the answer draws on your real experience and the role, not a generic script.</p></div></div>
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Says</h3><p>A tight, first-person answer streams into the overlay, ready to speak. The prepared answer auto-scrolls into view as the question lands.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LIVE FEATURES ============================ -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Inside the copilot</p>
+      <h2 class="balance">Everything that makes the live answer land.</h2>
+      <p class="lede">Six systems working together, from the microphone to the words on your screen.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11a7 7 0 0 1-14 0M12 18v3"/></svg>
+        </div>
+        <h3>On-device Vosk STT</h3>
+        <p>A streaming Vosk recognizer transcribes the interviewer locally in real time. No clip uploads, no cloud speech API, just audio that stays on your machine.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2M8 4v16M6 20h4M4 12h16M14 16h6M14 12v8"/></svg>
+        </div>
+        <h3>RAG grounding</h3>
+        <p>Retrieval pulls from your résumé and the company Q&amp;A set before the model answers, so every response cites your real experience and the company's domain.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12l7 7 7-7"/><path d="M5 4h14"/></svg>
+        </div>
+        <h3>Auto-scroll to your answer</h3>
+        <p>When a question matches your prepared bank, the copilot scrolls straight to that model answer, so you glance down and it is already there.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="7" r="2.4"/><circle cx="18" cy="7" r="2.4"/><circle cx="12" cy="17" r="2.4"/><path d="M6 9.4v3a2 2 0 0 0 2 2h2M18 9.4v3a2 2 0 0 1-2 2h-2"/></svg>
+        </div>
+        <h3>Multi-model, in parallel</h3>
+        <p>Answers run across Grok, DeepSeek, and Gemini at once, with a local model option for a fully offline path. You pick which models get called.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><path d="M4 4l16 16"/></svg>
+        </div>
+        <h3>Screen-share invisibility</h3>
+        <p>The overlay opts out of capture at the operating-system level, so Zoom, Teams, Meet, OBS, and PrintScreen never record it.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="6" width="19" height="12" rx="2.2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h6"/></svg>
+        </div>
+        <h3>Global hotkeys</h3>
+        <p><span class="mono" style="color:var(--cyan)">M</span> pauses the copilot instantly; <span class="mono" style="color:var(--cyan)">P</span> toggles ghost mode to dim the overlay. Both are global, so you never touch the window mid-call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ COMPANY Q&A GENERATOR ============================ -->
+<section class="section" id="generator">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow" style="justify-content:center">Company-specific prep</p>
+      <h2>Pick a company. Get a Q&amp;A database built for it.</h2>
+      <p class="lede" style="margin-inline:auto">Behavioral, fundamentals, and coding questions with model answers in your voice. The copilot grounds every live answer in this set.</p>
+    </div>
+    <div class="gen" id="qaGen">
+      <div class="gen__top">
+        <div class="field"><label for="genCompany">Company</label>
+          <input id="genCompany" list="genCompanies" placeholder="e.g. Stripe" autocomplete="off">
+          <datalist id="genCompanies"></datalist>
+        </div>
+        <div class="field"><label for="genRole">Role (optional)</label>
+          <input id="genRole" placeholder="e.g. Software Engineer" autocomplete="off">
+        </div>
+        <button class="btn btn--solid" id="genRun">Generate<span class="btn__arr" aria-hidden="true">→</span></button>
+      </div>
+      <div class="gen__chips" id="genChips"></div>
+      <div class="gen__body">
+        <div class="gen__list" id="genList"></div>
+        <div class="gen__detail" id="genDetail"></div>
+      </div>
+      <div class="gen__foot">
+        <span class="note" id="genTitle">…</span>
+        <a class="btn btn--ghost" id="genDownload" download>Download JSON</a>
+        <a class="btn btn--ghost" href="/download/">Get the app</a>
+      </div>
+    </div>
+  </div>
+  <script src="/scripts/qa-generator.js" defer></script>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section section--tight" id="faq">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow" style="justify-content:center">Questions</p>
+      <h2>How the live copilot works.</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>How does it answer in real time?</summary><p>An on-device Vosk recognizer transcribes the interviewer as they speak. The moment they stop, your résumé and the company Q&amp;A database are retrieved and fed to the model, and a speakable answer streams into the overlay in about a second. No clip uploads and no round-trip latency.</p></details>
+      <details><summary>Can the interviewer see the overlay on screen share?</summary><p>No. On Windows the overlay uses an OS-level screen-capture exclusion, so it renders on your monitor but is composited out of the frame Zoom, Teams, Meet, Discord, OBS, and PrintScreen capture. It also stays out of the taskbar and Alt-Tab, and a live shield badge shows the current protection state.</p></details>
+      <details><summary>What are the answers grounded in?</summary><p>Every live answer is retrieved from your résumé plus a company-specific Q&amp;A database of behavioral, fundamentals, and coding questions with model answers in your voice. You build that set in seconds with the Company Q&amp;A Generator above.</p></details>
+      <details><summary>Which AI models does it use?</summary><p>It queries Grok, DeepSeek, and Gemini, and can also run against a local model for a fully offline path. You choose which models to use, and only the ones you pick are called.</p></details>
+      <details><summary>What do the hotkeys do?</summary><p><span class="mono">M</span> pauses the copilot instantly so it stops listening and answering; <span class="mono">P</span> toggles ghost mode to dim the overlay. Both are global hotkeys, so you never touch the window during the call.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <p class="eyebrow" style="justify-content:center"><span class="dot dot--live"></span> Walk in with the answers ready</p>
+      <h2 class="balance">Bring the copilot only you can see.</h2>
+      <p class="lede" style="margin:0 auto 8px">Start free in a minute. Build your company's Q&amp;A set today.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="https://github.com/KidusB9/offerpilot-download/releases/download/v1.0.0/OfferPilot-Windows.zip" download>Download OfferPilot<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/scripts/checkout.js" defer></script>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

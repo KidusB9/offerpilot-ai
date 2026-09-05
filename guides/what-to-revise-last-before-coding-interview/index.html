@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What to Revise Last Before a Coding Interview: 90-Minute Plan</title>
+  <meta name="description" content="What to revise last before a coding interview: a ranked 90-minute order covering five complexity lines, binary search bounds and tree base cases, plus what to skip.">
+  <meta name="keywords" content="what should i revise last before a coding interview, what to review before a technical interview, last minute coding interview revision, big o complexity to memorise for interviews, binary search off by one rules, tree recursion base case, last hour before a coding interview, should i study a weak topic before an interview, coding interview cheat sheet one page">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/what-to-revise-last-before-coding-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="What to Revise Last Before a Coding Interview: 90-Minute Plan">
+  <meta property="og:description" content="What to revise last before a coding interview: a ranked 90-minute order covering five complexity lines, binary search bounds and tree base cases, plus what to skip.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/what-to-revise-last-before-coding-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-what-to-revise-last-before-coding-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="What to Revise Last Before a Coding Interview: 90-Minute Plan">
+  <meta name="twitter:description" content="What to revise last before a coding interview: a ranked 90-minute order covering five complexity lines, binary search bounds and tree base cases, plus what to skip.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-what-to-revise-last-before-coding-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What to Revise Last Before a Coding Interview: 90-Minute Plan","description":"What to revise last before a coding interview: a ranked 90-minute order covering five complexity lines, binary search bounds and tree base cases, plus what to skip.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/what-to-revise-last-before-coding-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"What to Revise Last Before a Coding Interview: 90-Minute Plan","url":"https://offerpilotai.ink/guides/what-to-revise-last-before-coding-interview/","mainEntity":[{"@type":"Question","name":"What should I revise last before a coding interview?","acceptedAnswer":{"@type":"Answer","text":"Three things, in this order, inside about 90 minutes. First, the time and space complexity of the five structures you will name out loud: hash map, dynamic array, heap, deque and a sorted structure. Second, the two binary search templates and which bound pairs with which loop condition. Third, the base case pattern for tree recursion. Then stop."}},{"@type":"Question","name":"What should I not revise before a coding interview?","acceptedAnswer":{"@type":"Answer","text":"Anything you have never implemented unaided. Segment trees, tries, Dijkstra, string matching and dynamic programming on trees all belong on the skip list if today is the first time you meet them. Also skip unseen problems, company tagged question lists, editorials for problems you failed last week, and video content. An hour of reading builds recognition, not retrieval."}},{"@type":"Question","name":"Should I study a weak topic in the last hour before a coding interview?","acceptedAnswer":{"@type":"Answer","text":"No. A topic is weak precisely because one hour was never enough, so the hour moves you from cannot do it to cannot do it. Worse, it primes you to reach for the elaborate solution on a problem a hash map would have solved, and it occupies the working memory you need for talking while you type."}},{"@type":"Question","name":"Which complexities should I memorise before a coding interview?","acceptedAnswer":{"@type":"Answer","text":"Five rows. Hash map: average constant lookup, linear worst case. Dynamic array: constant index, amortised constant append, linear insert at the front. Heap: logarithmic push and pop, constant peek, linear heapify. Deque: constant at both ends, linear in the middle. Sorted structure: logarithmic insert, search and delete. Add the recursion stack, which costs space equal to the tree height."}},{"@type":"Question","name":"How do I stop making off-by-one errors in binary search?","acceptedAnswer":{"@type":"Answer","text":"Pick one of two templates and never mix them. The closed interval uses hi equal to n minus 1 with a less than or equal loop. The half open version uses hi equal to n with a strictly less than loop. Check that every branch shrinks the range, then hand test on an empty array, one element and two elements before you trust it."}},{"@type":"Question","name":"What is the base case for tree recursion questions?","acceptedAnswer":{"@type":"Answer","text":"Return an identity value when the node is null, and recurse into both children unconditionally instead of null checking them first. The identity is whatever keeps the parent correct: zero for depth, sum and count, true for validity checks, null for lowest common ancestor. Minimum depth is the exception, because zero makes a one child node report the wrong answer."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"What to Revise Last","item":"https://offerpilotai.ink/guides/what-to-revise-last-before-coding-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Prep timelines and study plans</p>
+      <h1 class="balance">What to revise in the last 90 minutes before a coding interview</h1>
+      <p class="meta">2026 &middot; ~9 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Three things, in this order. The complexity of the five structures you will actually say out loud, the off-by-one rules for binary search bounds, and the base case pattern for tree recursion. Then stop. Everything else available to you at this hour, especially the topic you are worried about, has a lower expected return than reading your own three recurring mistakes twice, and quite a lot of it has a negative one.</p>
+
+      <h2>The order, and where it stops</h2>
+      <p>Time boxes, because the failure mode at this hour is not choosing badly. It is choosing five things and finishing none of them.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Minutes 0 to 15: your own three recurring mistakes</h3>
+            <p>Not a topic list. Open your last ten solved problems and write down the reason you were stuck or wrong each time, in process terms. These go at the top of the page because they are the only revision item nobody else could have written for you.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Minutes 15 to 35: five complexity lines</h3>
+            <p>Write them from memory first, then check. You will be asked for a complexity on every single question regardless of topic, which makes this the highest frequency item on the page.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Minutes 35 to 60: binary search bounds</h3>
+            <p>Two templates written out by hand, then the three bound questions, then the six case hand test. Binary search is the most common place where a candidate who had the right idea still ships a wrong answer.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Minutes 60 to 80: the tree recursion base case</h3>
+            <p>One five line skeleton and a table of identity values. Trees show up constantly and the whole family collapses into one shape once the base case is automatic.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Minutes 80 to 90: stop</h3>
+            <p>Read your three mistakes twice, close every tab, test your microphone and your editor, drink water. Opening one more problem here is the single most common way people lose a round they were ready for.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Block one: the five complexity lines you will say out loud</h2>
+      <p>Not every structure. Only the five whose names come out of your mouth in a real 45 minute round. Say the numbers as full sentences while you check them, because saying them is the actual skill being graded.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Structure</th><th>What you say out loud</th><th>The numbers</th><th>The line that catches people</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hash map and hash set</strong></td>
+              <td>"I will keep a map from value to index"</td>
+              <td>Insert, lookup and delete average O(1). Worst case O(n). Full iteration O(n).</td>
+              <td>Say "average O(1)". Dropping the word average invites the collision follow up, and answering that cold goes badly.</td>
+            </tr>
+            <tr>
+              <td><strong>Dynamic array</strong> (list, vector)</td>
+              <td>"I will append to a list and index into it"</td>
+              <td>Index O(1). Append amortised O(1). Insert or delete at the front O(n). Membership test O(n). Sort O(n log n).</td>
+              <td>A <code>pop(0)</code> or a shift inside a loop turns an O(n) algorithm into O(n&sup2;). Slicing copies, so a sliding window built from slices is quadratic.</td>
+            </tr>
+            <tr>
+              <td><strong>Heap</strong> (priority queue)</td>
+              <td>"I will hold a min heap of size k"</td>
+              <td>Push O(log n). Pop O(log n). Peek O(1). Heapify an existing array O(n).</td>
+              <td>Heapify is linear, not n log n. Top k with a size k heap is O(n log k), not O(n log n). Both are free marks if you volunteer them.</td>
+            </tr>
+            <tr>
+              <td><strong>Deque</strong></td>
+              <td>"I will use a deque as the BFS queue"</td>
+              <td>Append and pop at both ends O(1). Index into the middle O(n).</td>
+              <td>A monotonic deque is amortised O(1) per element because each element is pushed once and popped once. Say amortised, and say why.</td>
+            </tr>
+            <tr>
+              <td><strong>Sorted structure</strong> (balanced BST, TreeMap)</td>
+              <td>"I need the smallest key above x, so I want a sorted structure"</td>
+              <td>Insert, delete, search, predecessor and successor all O(log n). In order traversal O(n).</td>
+              <td>Python has no built in one. Say that, then offer the fallback you would actually write, two heaps or a sorted list with binary insertion, instead of bluffing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>One extra line worth memorising: recursion costs stack space equal to the depth, so a tree recursion is O(h) space, where h is log n on a balanced tree and n on a skewed one. Interviewers ask for space more often than candidates expect, and "constant extra space" is wrong the moment you recurse.</p>
+
+      <h2>Block two: the binary search bounds rules</h2>
+      <p>The rule that fixes most off-by-one bugs is to own exactly two templates and never blend them mid problem.</p>
+
+      <p><strong>Template A, exact match, closed interval.</strong> Use it when you want the index of a specific value.</p>
+      <ul>
+        <li><code>lo = 0</code> and <code>hi = n - 1</code></li>
+        <li>Loop while <code>lo &lt;= hi</code></li>
+        <li><code>mid = lo + (hi - lo) // 2</code></li>
+        <li>Too small, <code>lo = mid + 1</code>. Too big, <code>hi = mid - 1</code>. Equal, return <code>mid</code></li>
+        <li>Falling out of the loop means not found</li>
+      </ul>
+
+      <p><strong>Template B, first index where a predicate is true, half open interval.</strong> Use it for leftmost, rightmost, insertion point, and every minimum feasible value question.</p>
+      <ul>
+        <li><code>lo = 0</code> and <code>hi = n</code></li>
+        <li>Loop while <code>lo &lt; hi</code></li>
+        <li><code>mid = lo + (hi - lo) // 2</code></li>
+        <li>If <code>ok(mid)</code> then <code>hi = mid</code>, else <code>lo = mid + 1</code></li>
+        <li>Exit with <code>lo == hi</code>, the first true index, or <code>n</code> if the predicate is never true</li>
+      </ul>
+
+      <p>Then three questions, asked in order, every time you write one:</p>
+      <ol>
+        <li><strong>Does the upper bound match the loop condition?</strong> <code>hi = n - 1</code> pairs with <code>&lt;=</code>. <code>hi = n</code> pairs with <code>&lt;</code>. Pairing <code>n - 1</code> with <code>&lt;</code> silently drops the last element. Pairing <code>n</code> with <code>&lt;=</code> reads off the end of the array.</li>
+        <li><strong>Does every branch shrink the range?</strong> Writing <code>lo = mid</code> with a rounded down mid loops forever the moment <code>hi</code> equals <code>lo + 1</code>. If your logic genuinely needs <code>lo = mid</code>, switch to the upper mid, <code>mid = lo + (hi - lo + 1) // 2</code>.</li>
+        <li><strong>What does <code>lo</code> mean when the loop ends?</strong> In template B it is the count of elements that fail the predicate, which is also the insertion point. If you cannot say that sentence, you cannot trust the return value.</li>
+      </ol>
+
+      <p>Two more, both cheap. Write <code>lo + (hi - lo) // 2</code> rather than <code>(lo + hi) // 2</code> and say "avoids overflow in a fixed width language" as you type it. And when you binary search on the answer rather than on an array, the search space is the answer range, not the input, so state explicitly that the predicate is monotone before you commit to it. If feasibility can flip back and forth, binary search is simply the wrong tool, and noticing that has just saved you twenty minutes.</p>
+
+      <p><strong>The six case hand test.</strong> Run your template on paper against an empty array, a one element array with the target below, equal to and above that element, and a two element array with the target sitting between the two values. Those six cases catch essentially every bounds bug you are capable of writing, and the exercise takes four minutes.</p>
+
+      <h2>Block three: the tree recursion base case</h2>
+      <p>Almost every tree question is the same five lines. Check for null, recurse left, recurse right, combine, return.</p>
+      <ul>
+        <li><code>if node is None: return IDENTITY</code></li>
+        <li><code>left = f(node.left)</code></li>
+        <li><code>right = f(node.right)</code></li>
+        <li><code>return combine(left, right, node.val)</code></li>
+      </ul>
+
+      <p>Two habits carry the whole family. Recurse into both children unconditionally and let the null base case absorb them, rather than null checking children before you call. Checking in both places is where duplicated logic and wrong depths come from. And decide before you type whether the answer travels up as a return value or down as a parameter, because mixing the two directions inside one function is the other reliable bug.</p>
+
+      <p>The only thing to actually memorise is which identity value keeps the parent correct:</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Question</th><th>Return on null</th><th>Combine</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Maximum depth</td><td><code>0</code></td><td><code>1 + max(left, right)</code></td></tr>
+            <tr><td>Count of nodes</td><td><code>0</code></td><td><code>1 + left + right</code></td></tr>
+            <tr><td>Sum of values</td><td><code>0</code></td><td><code>node.val + left + right</code></td></tr>
+            <tr><td>Valid BST, balanced, same tree</td><td><code>True</code></td><td><code>left and right and</code> the local check</td></tr>
+            <tr><td>Lowest common ancestor</td><td><code>None</code></td><td>Both sides non null, return this node. Otherwise return whichever side is non null</td></tr>
+            <tr><td>Diameter, max path sum</td><td><code>0</code></td><td>Return the height upward, update a separate best variable inside the call</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Now the worked exception, because it is the one that gets written wrong under pressure. <strong>Minimum depth is not the mirror of maximum depth.</strong> Take a root whose left child is a leaf and whose right child is null. With <code>if node is None: return 0</code> and <code>return 1 + min(left, right)</code>, the recursion computes <code>1 + min(1, 0)</code> and returns 1. The correct answer is 2, because minimum depth is measured to a leaf and a node with one child is not a leaf. The fix is either an identity of infinity for null, or an explicit branch: when one child is missing, recurse only into the other. Say that difference out loud if the question comes up. Noticing it is worth more than solving the problem quickly and wrongly.</p>
+
+      <h2>The skip list, stated explicitly</h2>
+      <p>Everything below is a legitimate use of study time on a normal Tuesday and a bad use of it now.</p>
+      <ul>
+        <li><strong>Any topic you have never implemented unaided.</strong> Segment trees, Fenwick trees, tries, Dijkstra, string matching, dynamic programming on trees, union find with path compression. If today is the first meeting, today is not the day.</li>
+        <li><strong>New problems.</strong> Do not open an unseen question. A fail here has no time left to be converted into a fix, and it walks into the round with you.</li>
+        <li><strong>The company tagged question list.</strong> At this hour it is a fear generator with no study value attached to it.</li>
+        <li><strong>Editorials for problems you failed last week.</strong> Reading a solution you could not produce feels like progress and leaves nothing retrievable behind.</li>
+        <li><strong>Obscure standard library corners.</strong> You will not recall them, and reaching for a half remembered API mid round costs a minute plus your composure.</li>
+        <li><strong>System design</strong>, if this round is coding. Different memory, different day.</li>
+        <li><strong>Video content of any kind.</strong> Passive input at the highest arousal moment of the week.</li>
+      </ul>
+      <p>Sleep, food and water are not on the skip list. They outrank every item in this guide.</p>
+
+      <h2>Why revising a weak topic in the last hour lowers your score</h2>
+      <p>This is the part people resist, so here is the mechanism rather than the slogan.</p>
+      <p>A topic is weak precisely because the hours you already gave it were not enough. One more hour moves you from cannot do it to cannot do it, and it does so while producing a strong feeling of having learned something, because reading generates recognition and recognition feels like knowledge. The interview does not test recognition. It tests retrieval, out loud, on a clock, while a stranger watches.</p>
+      <p>Worse, the hour changes what you attempt. Having just read about a technique, you are primed to reach for it, and priming steers the first five minutes of the round, which is the part that decides the rest. Candidates who cram dynamic programming at noon try dynamic programming at two, on a problem a hash map would have closed in eight lines. Then there is load. Coding while narrating is a genuine dual task, and material loaded in the last hour sits in exactly the working memory that narration needs.</p>
+      <p>The asymmetry is the whole argument. A weak topic shows up in maybe one question in six, and an hour will not fix it. The complexity line, the bounds check and the base case are graded on every question you are asked, whatever the topic turns out to be. Revise what is graded every time, not what is graded once.</p>
+
+      <h2>The one page you fill in</h2>
+      <p>One side of one sheet. If it does not fit, cut something rather than shrinking the font. Copy this structure out by hand, because writing it is part of the revision.</p>
+      <ol>
+        <li><strong>My three recurring mistakes</strong>, at the very top, each with a one sentence fix. Derive them from your own last ten problems. Good entries look like "I start coding before I have stated the approach", "I forget the empty input", "I say O(n) when the sort makes it O(n log n)", "I go silent for two minutes when I am stuck". Bad entries look like "graphs" or "DP". A topic is not a mistake.</li>
+        <li><strong>Five complexity rows</strong>, structure and numbers only, no prose.</li>
+        <li><strong>Two binary search templates</strong>, five lines each, plus the three bound questions.</li>
+        <li><strong>The tree skeleton</strong> and six identity values.</li>
+        <li><strong>Three sentences written out verbatim.</strong> The restate sentence: "Input is X, output is Y, can I assume Z?" The approach sentence: "My plan is A, that is O(b) time and O(c) space, does that sound reasonable to start with?" The stuck sentence: "Let me state a brute force first so we have something correct, then optimise."</li>
+        <li><strong>Nothing else.</strong> The blank space is doing work.</li>
+      </ol>
+      <p>Those three verbatim sentences are the highest leverage lines on the page. They fire in the first ninety seconds and again when you freeze, and both are moments when improvisation is least available to you.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool right now</h2>
+      <p>A vendor publishes this page, so here is the honest version. At T minus 90 minutes, installing and learning any new tool breaks the same rule as revising a weak topic, so today the answer is the paper page and nothing else. OfferPilot AI is Windows 10 and 11 only, with no macOS, Linux, mobile or browser extension, which settles it for a fair number of readers regardless. <a href="/code-copilot/">Code Copilot</a> earns its place in the weeks before, where a captured problem comes back with the intuition, a dry run and the Big-O rather than a bare accepted solution, and that is the shape of thing you can still re-derive a fortnight later. Its overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet or a screen recording. That claim covers screen sharing and screen recording only. It does nothing about a webcam, a lockdown browser, a proctor in the room or a second device camera, and where an assessment forbids outside help the honest window is the preparation, not the hour of it. The free tier is five minutes a day with no card, and the paid tiers sit on the <a href="/pricing/">pricing page</a>.</p>
+
+      <h2>The short version</h2>
+      <p>Fifteen minutes on your own three recurring mistakes. Twenty on the five complexity lines. Twenty five on the two binary search templates and the six case hand test. Twenty on the tree base case table. Ten to read the page back and shut everything down. Nothing new, nothing weak, nothing unseen. A candidate who says average O(1) correctly, gets the bounds right first time, and names the null identity before typing it reads as strong, and not one of those three things needed the topic you were worried about.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/coding-interview-prep-1-week/">How to Prepare for a Coding Interview in 1 Week: 7-Day Plan</a></li>
+        <li><a href="/guides/coding-interview-prep-3-days/">3-Day Coding Interview Prep Plan: Hour-by-Hour Schedule</a></li>
+        <li><a href="/guides/night-before-coding-interview/">The Night Before a Coding Interview: A 6pm to Lights-Out Plan</a></li>
+        <li><a href="/guides/morning-of-interview-warm-up/">How to Warm Up Before a Coding Interview: A 40-Minute Plan</a></li>
+        <li><a href="/guides/coding-interview-prep-2-weeks/">2-Week Coding Interview Prep Plan: Build Week, Simulate Week</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Do the real work in the weeks before, not in the last hour</h2>
+      <p class="lede" style="margin:0 auto 8px">Capture a problem, get the intuition, a dry run and the Big-O, and keep the final 90 minutes for your own one page.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">See Code Copilot<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can a Proctored Exam Detect a Virtual Machine or Remote Desktop?</title>
+  <meta name="description" content="Yes, and usually without much effort. The three signal families a proctoring client reads: hypervisor CPU strings, virtual device names, and the Windows remote-session flag.">
+  <meta name="keywords" content="can proctored exam detect virtual machine, does proctoring detect vm, can a proctored test detect remote desktop, lockdown browser virtual machine blocked, vm detection cpuid hypervisor bit, how software detects a virtual machine, does rdp get detected during an assessment, corporate vdi proctored exam, virtual display adapter detection">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/proctoring-virtual-machine-remote-desktop-detection/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Can a Proctored Exam Detect a Virtual Machine or Remote Desktop?">
+  <meta property="og:description" content="Yes, and usually without much effort. The three signal families a proctoring client reads: hypervisor CPU strings, virtual device names, and the Windows remote-session flag.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/proctoring-virtual-machine-remote-desktop-detection/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-proctoring-virtual-machine-remote-desktop-detection.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Can a Proctored Exam Detect a Virtual Machine or Remote Desktop?">
+  <meta name="twitter:description" content="Yes, and usually without much effort. The three signal families a proctoring client reads: hypervisor CPU strings, virtual device names, and the Windows remote-session flag.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-proctoring-virtual-machine-remote-desktop-detection.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Can a Proctored Exam Detect a Virtual Machine or Remote Desktop?","description":"Yes, and usually without much effort. The three signal families a proctoring client reads: hypervisor CPU strings, virtual device names, and the Windows remote-session flag.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/proctoring-virtual-machine-remote-desktop-detection/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Can a Proctored Exam Detect a Virtual Machine or Remote Desktop?","url":"https://offerpilotai.ink/guides/proctoring-virtual-machine-remote-desktop-detection/","mainEntity":[{"@type":"Question","name":"Can a proctored exam detect a virtual machine?","acceptedAnswer":{"@type":"Answer","text":"An installed proctoring client or lockdown browser detects one easily, because a virtual machine identifies itself. The CPU returns a hypervisor vendor string, the display adapter and disk carry the hypervisor vendor's name, and the network card's address prefix is registered to that vendor. This is reading a few fields, not forensic analysis. A proctoring tool that runs only as a web page has a much weaker view."}},{"@type":"Question","name":"How does software know it is running under a hypervisor?","acceptedAnswer":{"@type":"Answer","text":"The processor answers. A CPUID query sets a hypervisor-present bit, and a further query returns a twelve-character vendor string such as VMwareVMware, VBoxVBoxVBox, KVMKVMKVM, XenVMMXenVMM or Microsoft Hv. The bit alone is weak evidence now, because Windows security features run a hypervisor on ordinary laptops, so careful tools read the vendor string and the device names too."}},{"@type":"Question","name":"Can a proctored test detect Remote Desktop?","acceptedAnswer":{"@type":"Answer","text":"Windows publishes it. Any application, with no administrator rights, can call GetSystemMetrics with SM_REMOTESESSION and get a non-zero answer when it is running inside a Remote Desktop session, and the SESSIONNAME environment variable reads RDP-Tcp rather than Console. Remote desktop is the easiest of these situations to detect, and it is the one candidates most often assume is invisible."}},{"@type":"Question","name":"What about TeamViewer, AnyDesk or Chrome Remote Desktop?","acceptedAnswer":{"@type":"Answer","text":"Those do not create a terminal-services session, so the Windows remote-session flag stays at zero. They are found another way: a running process with a known name, an installed background service, and a mirror or virtual display driver sitting in the device list. Any client that refuses to start until you close remote-control software is performing exactly that check."}},{"@type":"Question","name":"Can browser-only proctoring detect a virtual machine without installing anything?","acceptedAnswer":{"@type":"Answer","text":"Only by inference. A page can read the WebGL renderer string, which often reports a virtual adapter or a software rasteriser, plus core count, memory hint, screen dimensions and timing behaviour. None of that is conclusive, so a browser-only check produces a suspicion score rather than a verdict. That gap is precisely why strict exams ship an installed client instead."}},{"@type":"Question","name":"Does hiding a window from screen capture hide a virtual machine?","acceptedAnswer":{"@type":"Answer","text":"No, and the two are unrelated. Capture exclusion changes what appears inside a screen-sharing or recording stream. Virtual machine and remote-session detection reads processor registers, firmware strings, device names and an operating system flag, none of which travel through a video stream. A display privacy setting cannot alter what the CPU reports about itself."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"VM and Remote Desktop Detection","item":"https://offerpilotai.ink/guides/proctoring-virtual-machine-remote-desktop-detection/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Can a proctored exam detect a virtual machine or remote desktop?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">If the exam ships an installed client, yes, and it is barely an effort. A virtual machine announces itself: the processor hands back a hypervisor vendor string when asked, the display adapter and the disk are named after the hypervisor vendor, and the network card's address prefix is registered to that same vendor. Remote desktop is easier still, because Windows has a documented flag that tells any program, with no special privileges, that it is being viewed over a remote session. The only real variable is which layer the proctoring code runs in.</p>
+
+      <p>That last point decides everything else on this page, so take it first. A proctoring feature living inside an ordinary browser tab is sealed inside a sandbox designed to hide exactly these details. An installed lockdown client is a native Windows program with the same view of the machine as any other native Windows program. Between them sits a browser extension, which sees more of the browser and no more of the hardware. Same question, three very different answers.</p>
+
+      <h2>Which layer can read what</h2>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th>Where the proctoring code runs</th><th>Can it read CPU, firmware and device names?</th><th>Can it read the Windows remote-session flag?</th><th>What it relies on instead</th></tr>
+          <tr>
+            <td><strong>A page in a normal browser tab</strong></td>
+            <td><strong>No.</strong> There is no web API for CPUID, firmware strings, disk models or MAC addresses. The sandbox exists to prevent this.</td>
+            <td><strong>No.</strong> A web page cannot call operating-system functions at all.</td>
+            <td>Inference from what the browser does expose: the WebGL renderer name, core count, memory hint, screen size, timing behaviour.</td>
+          </tr>
+          <tr>
+            <td><strong>A browser extension</strong></td>
+            <td><strong>Mostly no.</strong> It gains browser privileges, not hardware privileges. Display enumeration and tab awareness widen, the hardware view does not.</td>
+            <td><strong>No.</strong> Still no path to a native system call.</td>
+            <td>The same inference, plus tab, window and display information the page alone cannot reach. Capabilities differ by vendor and version.</td>
+          </tr>
+          <tr>
+            <td><strong>An installed client or lockdown browser</strong></td>
+            <td><strong>Yes, completely.</strong> Ordinary documented calls return the CPU vendor leaf, the firmware manufacturer and model, every device name and the running process list.</td>
+            <td><strong>Yes.</strong> One function call, no administrator rights, an unambiguous answer.</td>
+            <td>Nothing. It does not need to infer, so it can refuse to start rather than merely record a suspicion.</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>Respondus LockDown Browser is the familiar example of that third row, and its stated behaviour is a flat refusal to run inside a virtual machine or a remote desktop session. Exact wording and edge cases move between versions and institution settings, so treat the category as reliable and the specific message as not worth predicting.</p>
+
+      <h2>Signal one: the processor says "hypervisor"</h2>
+      <p>The x86 instruction set has an information query called CPUID. One of its results carries a hypervisor-present bit, and where that bit is set, a further query returns a twelve-character vendor string that the hypervisor itself fills in. The strings are not obfuscated in the slightest:</p>
+
+      <ul>
+        <li><code>VMwareVMware</code> for VMware products</li>
+        <li><code>VBoxVBoxVBox</code> for VirtualBox</li>
+        <li><code>KVMKVMKVM</code> for Linux KVM</li>
+        <li><code>Microsoft Hv</code> for Hyper-V</li>
+        <li><code>XenVMMXenVMM</code> for Xen</li>
+        <li><code>prl hyperv</code> for Parallels</li>
+        <li><code>TCGTCGTCGTCG</code> for QEMU running without hardware acceleration</li>
+      </ul>
+
+      <p>Here is the part most explanations leave out. The hypervisor bit on its own is now weak evidence, because modern Windows runs a hypervisor on plenty of perfectly ordinary physical laptops. Turn on Virtualization-Based Security, Memory Integrity, Credential Guard, WSL2, Windows Sandbox or Hyper-V itself, and your physical machine reports the bit set with a Microsoft vendor string, from a desk, on real hardware. A tool that flagged on that bit alone would flag a large share of its honest candidates. So the bit opens the question and the next signal answers it.</p>
+
+      <h2>Signal two: the virtual hardware is named after its vendor</h2>
+      <p>Emulated devices are not disguised. Nobody building a hypervisor was trying to hide it, so the names went in plainly and stayed there:</p>
+
+      <ul>
+        <li><strong>Display adapter.</strong> <code>VMware SVGA 3D</code>, <code>VirtualBox Graphics Adapter</code>, <code>Microsoft Hyper-V Video</code>, <code>Red Hat QXL controller</code>, <code>Parallels Display Adapter</code>. A physical laptop names an Intel, AMD or NVIDIA part instead.</li>
+        <li><strong>Disk model.</strong> <code>VMware Virtual S</code>, <code>VBOX HARDDISK</code>, <code>QEMU HARDDISK</code>, <code>Msft Virtual Disk</code>, where real hardware carries a manufacturer part number.</li>
+        <li><strong>Firmware manufacturer and model.</strong> The system information tables report <code>VMware, Inc.</code>, <code>innotek GmbH</code>, <code>QEMU</code>, or <code>Microsoft Corporation</code> paired with the model <code>Virtual Machine</code>.</li>
+        <li><strong>Network address prefix.</strong> The first three bytes of a MAC address identify the organisation that was allocated it. <code>00:50:56</code> and <code>00:0C:29</code> belong to VMware, <code>08:00:27</code> to VirtualBox, <code>00:15:5D</code> to Hyper-V, <code>00:1C:42</code> to Parallels.</li>
+        <li><strong>Guest tooling.</strong> Processes and services such as <code>vmtoolsd.exe</code>, <code>VBoxService.exe</code> and <code>VBoxTray.exe</code>, plus their drivers, sit in the process list where anything can see them.</li>
+      </ul>
+
+      <p>Absences count too. A virtual machine frequently has no battery device, a blank or templated firmware serial number, one generic audio endpoint, a small core count, and a screen size nobody ships in a laptop. None of those alone means anything. Four of them together, with a vendor string above them, is not ambiguous.</p>
+
+      <h2>Read your own machine the way a client would, in five commands</h2>
+      <p>Open Windows PowerShell and run these. It is the same information an installed client collects in its first second, and it takes about a minute.</p>
+
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Firmware manufacturer and model</h3><p><code>Get-CimInstance Win32_ComputerSystem | Select-Object Manufacturer, Model</code>. A physical machine returns something like Dell Inc. and Latitude 5540. A guest returns VMware, Inc. and VMware Virtual Platform, or Microsoft Corporation and Virtual Machine.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Display adapter</h3><p><code>Get-CimInstance Win32_VideoController | Select-Object Name</code>. Look for a real GPU part name. Anything containing SVGA, QXL, Hyper-V Video or Graphics Adapter is the emulated device, and the mirror drivers installed by remote-control software appear in this same list.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Disk model</h3><p><code>Get-CimInstance Win32_DiskDrive | Select-Object Model</code>. A manufacturer part number is normal. VBOX HARDDISK, QEMU HARDDISK or VMware Virtual S is not.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Network address prefix</h3><p><code>getmac /v</code>. Compare the first three bytes against the prefixes listed above. A hypervisor allocates from its own registered block by default, which is why this check is so quietly effective.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Session type</h3><p><code>$env:SESSIONNAME</code>, then <code>query session</code>. Sitting at the machine gives you <code>Console</code>. Connected over Remote Desktop gives you <code>RDP-Tcp#3</code> or similar, and the session list names the protocol outright.</p></div></div>
+      </div>
+
+      <p>Whatever those five return is roughly what the exam client sees. If you were expecting a machine to look anonymous, this is the fastest way to find out that it does not.</p>
+
+      <h2>Signal three: Windows hands out the remote session for free</h2>
+      <p>This is the one worth internalising. Windows exposes a system metric named SM_REMOTESESSION. A program calls GetSystemMetrics with it and receives a non-zero value whenever that program is running inside a Remote Desktop or terminal-services session. No administrator rights. No heuristics. No timing tricks. One call, one answer, and the operating system is the party volunteering it. The SESSIONNAME environment variable tells the same story in plain text, which is why the fifth command above works from a prompt.</p>
+
+      <p>Third-party remote-control tools behave differently, and the difference matters. TeamViewer, AnyDesk, Chrome Remote Desktop and Splashtop typically drive the existing console session rather than creating a terminal-services session, so that flag stays at zero. They are found by another route: a process with a known executable name, a background service that installs alongside it, a mirror or virtual display driver added to the device list, and input arriving from a software driver rather than physical keyboard and mouse hardware. When a lockdown client refuses to start until you close screen-sharing and remote-control applications, that is this check running. Which names any given vendor watches for is a list that changes release to release, so the sound conclusion is that the category is detected, not that a particular tool is quiet.</p>
+
+      <h2>What a plain browser tab can only guess at</h2>
+      <p>Where no client is installed, the strongest hint available is the WebGL renderer string. It frequently spells out the adapter, so a page reads <code>VMware SVGA 3D</code>, or a software rasteriser name such as <code>llvmpipe</code>, <code>SwiftShader</code> or <code>Microsoft Basic Render Driver</code>, all of which say no real GPU is present. Around it sit weaker hints: a low reported core count, a memory value at the bottom of the scale, a screen exactly 1024 by 768 or some size no shipping laptop uses, a device pixel ratio of one, and rendering slower than the claimed specification suggests. Browsers also differ in how much of this they reveal, and privacy settings can reduce some of it, so treat any single value as soft. A browser-only tool that decides you are in a virtual machine has produced a suspicion score, not a verdict. That gap is the whole reason strict exams ship an installed client.</p>
+
+      <h2>This flags honest people constantly</h2>
+      <p>Plenty of legitimate candidates fail these checks, and that deserves saying plainly rather than treating the subject as suspicious by default. Large employers hand out virtual desktops as the only machine an employee has. A locked corporate laptop with Memory Integrity enabled reports a hypervisor from a real desk. Anyone on macOS or Linux facing a Windows-only exam client has no option except a virtual machine. And some accessibility setups genuinely live over a remote session, because the assistive software, the configured input hardware or the screen-reader profile sits on one machine and the person needs to reach it from wherever they are.</p>
+
+      <p>The practical move is boring and it works. Raise it in writing with the coordinator before the exam, describe the setup in one sentence, and ask what they support. A blocked start with the clock already running is a far worse morning than an email a week earlier. If the platform truly requires a physical Windows machine, borrow one and complete the entire launch sequence days ahead, including whatever identity step comes first, rather than discovering the requirement at the point of no return. Our other <a href="/guides/">proctoring guides</a> cover what individual platforms record once you are past that launch check.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool</h2>
+      <p>A vendor publishes this page, so the limits belong on it. <a href="/code-copilot/">Code Copilot</a> is a Windows 10 and 11 desktop application. It is not a virtual machine, it is not a remote desktop, and it is not built to get a candidate through exam software. Its overlay is excluded from screen capture at the operating-system level, so it does not appear in Zoom, Teams, Meet, OBS or a screenshot, while staying visible on your own monitor. Read that against everything above and the boundary is obvious:</p>
+
+      <ul>
+        <li><strong>Capture exclusion and virtual machine detection are unrelated mechanisms.</strong> One changes what a video stream contains. The other reads processor registers, firmware strings, device names and a system flag, none of which travel through a video stream.</li>
+        <li><strong>It does nothing about the checks a lockdown client actually runs.</strong> A refusal to start beside remote-control software, a process-list scan, a CPUID read: none of those are screen capture, and no display setting reaches them.</li>
+        <li><strong>It does nothing about a webcam, an invigilator in the room, eye tracking, or a phone propped up as a second camera.</strong> A proctored exam is the case to leave it out of entirely.</li>
+        <li><strong>Running it inside a virtual machine to keep it out of sight is self-defeating</strong>, because the virtual machine is the thing being detected. It is Windows only in any case, with no macOS, Linux, mobile or browser build.</li>
+      </ul>
+
+      <p>The use that stands up is live conversational interviewing and your own timed practice, where nobody has asked you to sit a locked environment. The free tier listed on the <a href="/pricing/">plans page</a> is enough to see whether that fits how you work.</p>
+
+      <p>The summary is short. Virtual machine detection is a handful of string comparisons, remote desktop detection is a single documented function call, and the layer the code runs in decides which of the two is even available. Nothing about a screen, a monitor arrangement or a window setting takes part in either.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/can-proctoring-detect-second-monitor/">Can Proctoring Software Detect a Second Monitor? How It Knows</a></li>
+        <li><a href="/guides/second-monitor-online-assessment/">Can You Use Two Monitors During an Online Assessment or Test?</a></li>
+        <li><a href="/guides/hackerrank-tab-switching-detection/">Does HackerRank Detect Tab Switching? What the Flag Records</a></li>
+        <li><a href="/guides/what-lockdown-browser-can-see/">What Respondus LockDown Browser Can Actually See, and Cannot</a></li>
+        <li><a href="/guides/does-hackerrank-record-your-screen/">Does HackerRank Record Your Screen? What Each Test Mode Captures</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Prepare on the machine you actually have.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, five minutes a day, no card. Windows 10 and 11.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

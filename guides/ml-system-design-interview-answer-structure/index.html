@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ML System Design Interview: The Answer Spine Candidates Skip</title>
+  <meta name="description" content="How to answer an ML system design question: a five-part spine walked end to end on a recommendation prompt, plus the two moments candidates jump to architecture.">
+  <meta name="keywords" content="ml system design interview how to answer, machine learning system design interview structure, ml system design framework, recommendation system interview question, ml design interview offline vs online metric, how to structure ml system design answer, ml system design interview rubric, machine learning design round preparation">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/ml-system-design-interview-answer-structure/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="ML System Design Interview: The Answer Spine Candidates Skip">
+  <meta property="og:description" content="How to answer an ML system design question: a five-part spine walked end to end on a recommendation prompt, plus the two moments candidates jump to architecture.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/ml-system-design-interview-answer-structure/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-ml-system-design-interview-answer-structure.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="ML System Design Interview: The Answer Spine Candidates Skip">
+  <meta name="twitter:description" content="How to answer an ML system design question: a five-part spine walked end to end on a recommendation prompt, plus the two moments candidates jump to architecture.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-ml-system-design-interview-answer-structure.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ML System Design Interview: The Answer Spine Candidates Skip","description":"How to answer an ML system design question: a five-part spine walked end to end on a recommendation prompt, plus the two moments candidates jump to architecture.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/ml-system-design-interview-answer-structure/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"ML System Design Interview: The Answer Spine Candidates Skip","url":"https://offerpilotai.ink/guides/ml-system-design-interview-answer-structure/","mainEntity":[{"@type":"Question","name":"How should I structure an ML system design interview answer?","acceptedAnswer":{"@type":"Answer","text":"Use five moves in order. Frame the ML problem and the decision it serves. Define the label and how the data gets collected. Build features entity by entity and say where each one comes from at request time. Pair one offline metric with one online metric. Then cover serving, monitoring and drift. Model architecture is a single sentence inside the third move, not the answer itself."}},{"@type":"Question","name":"Why do interviewers mark you down for starting with the model architecture?","acceptedAnswer":{"@type":"Answer","text":"Because architecture cannot be judged without an objective. If you say two-tower retrieval plus a gradient-boosted ranker before defining what the system is ranking for, the interviewer asks ranked by what, and there is no grounded answer. It scores against the problem-framing row of the rubric, and it makes a strong candidate indistinguishable from someone reciting a blog post."}},{"@type":"Question","name":"What is the difference between an offline metric and an online metric?","acceptedAnswer":{"@type":"Answer","text":"An offline metric is computed on logged historical data before launch, such as NDCG at 15, recall at 15 or calibration error. An online metric is measured on live traffic in an experiment, such as orders per session, with guardrails like cancellation rate. Naming both, and naming a specific reason they might disagree, is what the metric section of the rubric is actually testing."}},{"@type":"Question","name":"How much detail should I give on features in an ML design round?","acceptedAnswer":{"@type":"Answer","text":"Group them by entity, user, item, context and interaction, then for each group say where the value comes from when the request arrives and how stale it is. A precomputed nightly aggregate, a live service call, a cached counter. Also state that training rows must use values as of the impression, not as of today, or the design leaks future information into the past."}},{"@type":"Question","name":"Do I need to know model architectures for an ML system design interview?","acceptedAnswer":{"@type":"Answer","text":"Yes, but as one justified choice rather than the centrepiece. You should be able to say why a two-stage retrieval and ranking split fits the candidate volume, why a gradient-boosted tree suits tabular features, and what you would lose by choosing otherwise. What fails a round is architecture arriving before the objective, the label and the serving constraints exist."}},{"@type":"Question","name":"Can an AI interview copilot help during an ML system design round?","acceptedAnswer":{"@type":"Answer","text":"Less than in most rounds. This one is graded on follow-up questions and on you narrating a diagram, so the interviewer may speak for only a few minutes in an hour and there is little audio to work from. OfferPilot AI runs on Windows 10 and 11 only, and its capture exclusion hides the overlay from screen sharing, not from a webcam, a proctor or a lockdown browser."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"ML system design answer structure","item":"https://offerpilotai.ink/guides/ml-system-design-interview-answer-structure/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">How to answer an ML system design interview question</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Answer along a five-part spine, in this order: frame the ML problem and the decision it serves, define the label and how the data gets collected, build features and say where each one comes from at request time, pair an offline metric with an online metric, then serve, monitor and handle drift. Model architecture is one justified sentence inside part three, not the answer. Almost every no-hire in this round is the same mistake made twice, and both times it is reaching for architecture too early. Below: the spine walked end to end on a recommendation prompt, and exactly what the interviewer writes down when you skip ahead.</p>
+
+      <h2>The five parts, and what each one has to produce</h2>
+      <p>The spine is not a script to recite. Each part has an artefact the interviewer can tick, and a follow-up question that arrives within thirty seconds if the artefact is missing.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Part</th><th>What you must produce</th><th>The question that comes if you skip it</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Frame</strong></td>
+              <td>The decision the model serves, who consumes the output, the action that follows, and the non-ML baseline you have to beat.</td>
+              <td>"Ranked by what?" or "What would you do without a model at all?"</td>
+            </tr>
+            <tr>
+              <td><strong>2. Labels and data</strong></td>
+              <td>What counts as a positive, what counts as a negative, how long the label takes to arrive, and how the logging works.</td>
+              <td>"Where does that training row come from, and did you show that item to the user?"</td>
+            </tr>
+            <tr>
+              <td><strong>3. Features</strong></td>
+              <td>Groups by entity, plus the serving path and freshness of each group. Then one sentence on the model.</td>
+              <td>"The request arrives. Where does that feature come from, and how old is the value?"</td>
+            </tr>
+            <tr>
+              <td><strong>4. Metrics</strong></td>
+              <td>One offline metric, one online metric, one guardrail, and a named reason the two might disagree.</td>
+              <td>"AUC went up and the business metric did not move. What happened?"</td>
+            </tr>
+            <tr>
+              <td><strong>5. Serving and monitoring</strong></td>
+              <td>A latency budget with a number on it, a rollout plan, what you alert on, and the retraining cadence.</td>
+              <td>"It is three in the morning and this model is behaving oddly. What paged you?"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Walked end to end: recommendations on a food delivery home screen</h2>
+      <p>Prompt: "Design the recommendation system for the home screen of a food delivery app." Here is the whole spine, at roughly the depth an hour allows.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Frame the problem and the decision it serves</h3>
+            <p>The decision is narrow: which restaurants appear in roughly the top fifteen tiles, in what order, for one user in one delivery zone at one moment. The action that follows a good decision is a completed order, not a tap, so the objective is P(order | shown) rather than click-through rate. Say the tension out loud now, because it pays off twice later. "Clicks are the label I can collect in volume, orders are the label I actually want, and that gap is going to show up in my metrics section." Then name the baseline: most-ordered restaurants in the zone, filtered to open and in range. That baseline is genuinely hard to beat, and saying so is a seniority signal.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Labels and how the data gets collected</h3>
+            <p>Log every impression with its slot position, then taps, basket adds, orders placed and, hours later, cancellations and refunds. A positive is an order placed within the session. A negative is an item shown and not tapped, which is where the trouble starts: position drives clicks, so an untapped tile in slot fourteen is weak evidence of dislike. Log position, train with it as a feature, then hold it at a constant value when serving. Note that label delay is asymmetric, minutes for an order and hours for a cancellation, so you train on order-placed at a thirty minute horizon and run a correction job for orders that later fall through. Finish with the uncomfortable part: you only observe outcomes for items your current model chose to show, so your training set is a photograph of your old ranker. Reserve one or two percent of impressions for randomised exploration so the next model has something less biased to learn from.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Features, with a serving path attached to each group</h3>
+            <p>User: cuisine affinity over thirty and ninety days, price band, order frequency, time-of-day pattern. Restaurant: historical conversion given an impression, rating, prep time distribution. Context: hour, day, weather, current delivery ETA, distance, and whether the kitchen is open and accepting orders right now. Interaction: has this user ordered here before, days since, cuisine match. For each group, state the path. User aggregates are precomputed nightly into a feature store and read as one key lookup, restaurant statistics refresh hourly, ETA and open status come live from services that have to answer in single-digit milliseconds. Then add the constraint interviewers are waiting for: training rows must carry feature values as of the impression, not as of today, or a restaurant that got popular in March leaks backwards into a January row. Only now the model, in one sentence with a reason attached. The delivery radius already bounds the candidate set to a few hundred restaurants, so retrieval is cheap and the interesting work sits in the ranker: a gradient-boosted tree over these largely tabular features, with a neural ranker as the upgrade once learned embeddings and traffic volume justify it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Offline metric versus online metric</h3>
+            <p>Offline: NDCG at 15 and recall at 15 on a time-based split, never a random split, plus a calibration check, because the score feeds business rules that assume a probability means something. Online: orders per session as the primary metric, with guardrails on cancellation rate, ETA breach rate and exposure for newly onboarded restaurants. Give the experiment design in one line, shadow first, then interleaving or a small A/B sized on the metric you actually intend to move. Then name a specific way the two can disagree, which is the part most candidates never reach.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Serving, monitoring and drift</h3>
+            <p>The home screen wants to render in about 300ms at p95, so the ranker gets roughly 100ms for a few hundred candidates, which forces features to be lookups rather than joins and pushes anything expensive into precomputation. Monitor three layers, not one: input features, the prediction distribution, and label arrival lag. A null rate spike on the live ETA service is the most common real incident of the three, and it degrades quality quietly instead of erroring. Drift here has two sources, ordinary seasonality and a feedback loop in which the model shapes the data it will later be trained on. Retrain weekly with daily incremental updates, keep the previous model version and the popularity baseline behind a single config flag, and define the rollback trigger before launch rather than during the incident.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The two places candidates jump straight to architecture</h2>
+      <p>Both jumps happen inside the first fifteen minutes, and both are recoverable if you catch yourself.</p>
+      <p><strong>Jump one, in the opening minute.</strong> The prompt is read out and the candidate says "I would do two-tower retrieval, then a gradient-boosted ranker on top." The interviewer replies "ranked by what?" and the only honest answer available is relevance, which means nothing. That scores against the problem-framing row, because you have not shown you can turn a business goal into an ML objective, and everything downstream is now unanchored: you cannot defend a label, a metric or a trade-off without an objective to defend it against. There is a second cost that rarely gets said aloud. A memorised architecture is exactly what someone who has only read blog posts produces, so a strong candidate who opens this way has thrown away their own differentiator in the first sixty seconds.</p>
+      <p><strong>Jump two, the moment features come up.</strong> Asked "what features would you use", the candidate answers with representation learning: "I would embed the session history with a transformer and learn user and item embeddings jointly." That may well be a good model, but it is not an answer to the question, and it is marked on the production judgement row. The follow-ups land immediately. Where does that embedding come from when the request arrives, how stale is it, and was that value knowable at the time of the impression? A design whose features have no serving path is the clearest available signal of someone who has read papers and not shipped a model. One blunt rule catches both jumps: if you have said the word "model" before you have said the word "label", back up.</p>
+
+      <h2>Offline number up, online number flat: causes worth having ready</h2>
+      <p>Interviewers ask this as a follow-up in almost every ML design round. Two or three specific causes are worth more here than any architecture detail you could offer instead.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Cause</th><th>What you observe</th><th>What you say you would do</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Position bias untreated</td><td>Offline ranking metrics improve, orders per session do not move.</td><td>Log slot position, train with it, hold it constant at serving so the model cannot lean on it.</td></tr>
+            <tr><td>Random split instead of a time split</td><td>Large offline gains that evaporate in the experiment.</td><td>Split by time, and check whether any feature was backfilled with values from after the label.</td></tr>
+            <tr><td>Optimising the proxy label</td><td>Click-through rate rises, orders stay flat, appealing photography outranks good food.</td><td>Weight the label towards completed orders, or train a multi-objective ranker with the trade-off stated.</td></tr>
+            <tr><td>The bottleneck is retrieval, not ranking</td><td>The ranker improves and nothing changes, because the right restaurant was never a candidate.</td><td>Measure recall of the candidate set separately from ranking quality, and fix the stage that is actually limiting.</td></tr>
+            <tr><td>A guardrail is absorbing the gain</td><td>Orders up slightly, cancellations and ETA breaches up more.</td><td>Treat late delivery as a constraint on the ranker, not as an afterthought in the readout.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Where a copilot is the wrong tool for this round</h2>
+      <p>An ML design hour suits live assistance badly, and it is worth being straight about why. The hour is mostly you talking and drawing. The interviewer may speak for four or five minutes in total, which gives a listening tool very little to work with. <a href="/interview-copilot/">Interview Copilot</a> transcribes the interviewer on-device and drafts a speakable answer in about a second, which fits behavioural rounds and rapid technical questions far better than a design conversation. The specific limits:</p>
+      <ul>
+        <li><strong>Windows 10 and 11 only.</strong> No macOS, no Linux, no mobile, no browser extension.</li>
+        <li><strong>Capture exclusion covers screen sharing and screen recording, and nothing beyond that.</strong> The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots, while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a second-device camera, or a person in the room with you.</li>
+        <li><strong>The grade is in the follow-ups.</strong> A label definition you did not reason your way to falls apart at the second question, and in this round the second question always comes. Reading a suggestion mid-diagram also breaks the narration the interviewer is scoring.</li>
+        <li><strong>The rules belong to the company.</strong> Some interviews permit documentation and AI assistance, some do not. Read the instructions, and ask when they are ambiguous.</li>
+      </ul>
+      <p>The useful work for this round happens before it, not during it.</p>
+
+      <h2>Rehearse the spine on prompts you will actually get</h2>
+      <p>Take four prompts, home screen recommendations, search ranking, fraud detection on transactions, and a content moderation queue, then run each through the same five parts aloud with a timer. The spine holds for all four. Only the labels change, and the label section is where each prompt becomes interesting: fraud brings extreme class imbalance and adversarial drift, moderation brings annotator disagreement and an explicit precision-recall trade-off you have to price. The <a href="/interview-questions/">question banks</a> supply prompts to run this against, and the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank for a specific company and role from your resume, which matters because a marketplace team and an ads team will push on completely different parts of the spine. OfferPilot AI is free for 5 minutes a day with no card, and paid <a href="/pricing/">plans</a> start at $39 a month, metered on listening time only.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/ml-engineer-vs-data-scientist-interview/">ML Engineer vs Data Scientist Interview: Every Round Compared</a></li>
+        <li><a href="/guides/api-design-vs-system-design-interview/">API Design Interview vs System Design Interview: The Tells</a></li>
+        <li><a href="/guides/data-scientist-product-sense-interview/">Data Scientist Product Sense Interview Questions: 4-Move Answer</a></li>
+        <li><a href="/guides/product-manager-case-interview-copilot/">AI Copilot for Product Manager Case Interviews: 5 Case Types</a></li>
+        <li><a href="/guides/react-live-coding-interview-help/">React Live Coding Interview Help: One Multi-Scroll Capture</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Say "label" before you say "model".</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company-specific question bank from your own resume, then walk the five-part spine against it until the order is automatic.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

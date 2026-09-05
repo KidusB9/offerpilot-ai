@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SDET Interview Test Case Design: Writing Cases for File Upload</title>
+  <meta name="description" content="The SDET test case design question worked end to end on one file upload feature: equivalence classes, boundaries, state transitions, races, failure injection, cross-browser cases.">
+  <meta name="keywords" content="sdet interview test case design question, how to write test cases in an sdet interview, test cases for file upload interview, equivalence partitioning and boundary value interview, sdet interview questions test design, write test cases for a login page interview, qa interview test case design, ai generated test cases trust">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/sdet-test-case-design-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="SDET Interview Test Case Design: Writing Cases for File Upload">
+  <meta property="og:description" content="The SDET test case design question worked end to end on one file upload feature: equivalence classes, boundaries, state transitions, races, failure injection, cross-browser cases.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/sdet-test-case-design-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-sdet-test-case-design-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="SDET Interview Test Case Design: Writing Cases for File Upload">
+  <meta name="twitter:description" content="The SDET test case design question worked end to end on one file upload feature: equivalence classes, boundaries, state transitions, races, failure injection, cross-browser cases.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-sdet-test-case-design-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SDET Interview Test Case Design: Writing Cases for File Upload","description":"The SDET test case design question worked end to end on one file upload feature: equivalence classes, boundaries, state transitions, races, failure injection, cross-browser cases.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/sdet-test-case-design-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"SDET Interview Test Case Design: Writing Cases for File Upload","url":"https://offerpilotai.ink/guides/sdet-test-case-design-interview/","mainEntity":[{"@type":"Question","name":"How do you answer an SDET test case design question?","acceptedAnswer":{"@type":"Answer","text":"Cover dimensions, not volume. Clarify the spec, then go in order: equivalence classes, boundary values, state transitions, concurrency and ordering, failure injection, security and abuse, cross-browser divergence, accessibility, and non-functional checks. Finish by naming what you would deliberately not automate and why. Say the ten headings in about four minutes, then go deep wherever the interviewer points."}},{"@type":"Question","name":"What test cases would you write for a file upload feature?","acceptedAnswer":{"@type":"Answer","text":"Start with partitions across file content, count, source and session state. Then boundaries: zero bytes, one byte, exactly 5,000,000 and exactly 5,242,880 to expose the megabyte ambiguity, and filename length measured in bytes and in characters. Then cancel and retry transitions, two tabs uploading at once, a network cut at 90 percent, a mismatched extension and MIME type, and keyboard-only operation of the drop zone."}},{"@type":"Question","name":"What is the difference between equivalence partitioning and boundary value analysis?","acceptedAnswer":{"@type":"Answer","text":"Equivalence partitioning splits an input range into groups the system should treat identically, so you test one representative from each group instead of every value. Boundary value analysis then tests the edges between those groups, where off-by-one errors live. Partitions come first, because a boundary is only meaningful once you know which two partitions it divides."}},{"@type":"Question","name":"When should you trust an AI-generated test case?","acceptedAnswer":{"@type":"Answer","text":"Trust it for the enumeration, never for the oracle. Generation is good at widening the list of partitions, boundaries and failure modes you would forget. It cannot know your product's intended behaviour, so a generated assertion usually just restates what the code does today, passes on a broken build, and pins the bug in place. Require a spec source for every expected value, and make each test fail once against deliberately broken code before you keep it."}},{"@type":"Question","name":"Which file upload bugs only appear in one browser?","acceptedAnswer":{"@type":"Answer","text":"Common divergences include dropping a folder rather than a file, opening the picker programmatically after awaited work where user activation rules are stricter in Safari, HEIC versus converted JPEG from iOS depending on version and source, multipart encoding of non-ASCII filenames, upload progress events falling back to a path that shows only 0 and 100 percent, and resume tokens vanishing under stricter browser storage policies."}},{"@type":"Question","name":"Is an AI interview copilot useful in an SDET test design round?","acceptedAnswer":{"@type":"Answer","text":"Not especially. Test design is a structured monologue with interruptions, often typed into a shared document while the interviewer watches, so a read-aloud answer collapses on the first follow-up. Live assistance fits short factual questions and the coding portion of the loop far better. OfferPilot AI runs on Windows 10 and 11 only, and its capture exclusion hides the overlay from screen sharing and recording, not from a webcam or an in-person interviewer."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"SDET test case design interview","item":"https://offerpilotai.ink/guides/sdet-test-case-design-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">SDET interview: writing test cases for a file upload, done properly</h1>
+      <p class="meta">2026 &middot; ~10 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">The SDET test case design question is scored on how many <em>dimensions</em> you cover, not how many cases you list. Ten cases across ten dimensions beats forty that are all input validation. Below is one feature, a profile photo upload, taken through the full enumeration in the order a strong candidate says it out loud: equivalence classes, boundaries, state transitions, races, failure injection, security, cross-browser divergence, accessibility, and what you would deliberately not automate. Then the follow-up interviewers have started adding at the end, answered straight: when would you trust a test case an AI wrote.</p>
+
+      <h2>What the interviewer is listening for</h2>
+      <p>Three tells separate a rehearsed list from a working method. The first is <strong>order</strong>. Partitions come before boundaries, because a boundary is only meaningful once you know which partition it divides. Candidates who open with "what if the file is corrupt" are free-associating, and it shows by minute four.</p>
+      <p>The second is the <strong>oracle</strong>. For every case, say what the expected result is and where that expectation comes from. "Upload a 6 MB file" is not a test case. "Upload a 6 MB file, expect a rejection before any bytes leave the browser, with the limit stated in the message" is one.</p>
+      <p>The third is <strong>cost</strong>. Saying what you would not test, and why, is the senior signal. Nobody gets credit for a plan that would take three weeks to automate.</p>
+      <p>Before enumerating anything, ask about the spec. Every one of these is a real fork in the test plan:</p>
+      <ul>
+        <li>Does the 5 MB limit mean 5,000,000 bytes or 5,242,880 bytes? Different tests, and the answer decides two of your boundary values.</li>
+        <li>Is the type check on the file extension, on the MIME type the browser reports, or on the file's actual leading bytes? Three different bug classes.</li>
+        <li>Does "replaces the old photo everywhere" mean immediately, or eventually once a cache expires? That single word decides whether stale-image reports are bugs.</li>
+        <li>Does the old object get deleted, or orphaned in storage forever?</li>
+      </ul>
+
+      <h2>The feature, then the ten passes</h2>
+      <blockquote>Users can set a profile photo. Drag and drop onto the avatar, or click to browse. JPEG and PNG only, one file, 5 MB maximum. A progress bar shows while it uploads. The new photo replaces the old one everywhere it appears in the product.</blockquote>
+      <p>Copy the ten headings below. They are the template. Swap the feature and the passes still hold.</p>
+      <ol>
+        <li><strong>Requirements and oracles.</strong> Say the ambiguities above out loud first. If nobody can tell you the expected value for a case, that is a defect in the specification, and naming it earns more than another case would.</li>
+        <li><strong>Equivalence classes.</strong> Partition every input dimension, then pick one representative from each. File content: a real JPEG, a real PNG, a GIF, a PDF renamed to <code>.png</code>, an SVG, a file with a valid header and a truncated body. Count: zero files, one, several selected at once in the picker. Source: picker, drag, clipboard paste, mobile camera. Session: signed in, signed out, session expiring mid-upload, a user without permission. Prior state: has a photo already, has none.</li>
+        <li><strong>Boundaries.</strong> Now get numeric. Zero bytes. One byte. Exactly 5,000,000 and exactly 5,242,880, which smokes out the megabyte ambiguity in a single pair of tests. One byte either side of whichever the spec meant. A 1 by 1 pixel image. The largest pixel dimensions the resizer accepts, and one pixel past. Filename at 254, 255 and 256 bytes, then the same three lengths counted in characters using a name full of multibyte characters, because those are not the same limit.</li>
+        <li><strong>State transitions.</strong> Sketch the machine, idle to selected to uploading to processing to done, then test only the edges nobody drew. Cancel from each state. Navigate away mid-upload and come back. Pick a second file while the first is still uploading. Drop a file on the zone while a modal is open. Fail, retry, succeed. Upload and then immediately delete. Press browser back after success. Pick the same file twice in a row, the classic case where nothing happens at all because the input value never changed.</li>
+        <li><strong>Concurrency and ordering.</strong> Two tabs signed in as the same user upload different photos at the same moment: last write wins, or a lost update? Cancel at 99% while the server completes anyway: is the photo set? Two uploads where the first response arrives after the second: does the UI settle on the older image? Double-click Save. Upload the identical file twice, deduplicated by hash or stored twice? Delete the old object while a request for it is still in flight.</li>
+        <li><strong>Failure injection.</strong> Cut the network at 90%, then restore it: does it resume, restart, or hang forever behind a bar that never moves? Force a 500 from storage. Expire the presigned URL so the PUT returns 403. Make the resize worker time out <em>after</em> the upload returned 200, so the UI says done and the image never appears, which is the failure users actually report. Throttle to slow 3G and check the progress bar is measuring bytes rather than animating. Exceed the storage quota. Have the malware scanner quarantine the object asynchronously.</li>
+        <li><strong>Security and abuse.</strong> Make extension, reported MIME type and actual leading bytes disagree in all three directions. An SVG containing a script tag, served from an origin that shares cookies. A decompression bomb. Path traversal in the filename. EXIF GPS coordinates surviving into the stored file. Then the access check: user B changes an id in the request and tries to overwrite user A's photo. Confirm the served image comes back with a content type you set, not one you echoed from the request.</li>
+        <li><strong>Cross-browser and device.</strong> The cases in the table below, the ones that pass in one engine and fail in another.</li>
+        <li><strong>Accessibility and input method.</strong> The drop zone has to be reachable and operable with the keyboard alone, because dragging is not an input method available to everyone. Progress must be announced, not only drawn. Focus must land somewhere sensible when the dialog closes. Error text must be programmatically associated with the control rather than floating in red nearby. Check at 200% zoom and at a 320 pixel viewport.</li>
+        <li><strong>Non-functional, and what you skip.</strong> Name a p95 target for a 4 MB upload on a connection your users really have. Confirm the failure path emits a log line carrying the request id. Confirm the failure-rate metric exists before launch, not after the first incident. Then say the quiet part: you would not automate the drag gesture in a real browser, because it is the flakiest and most expensive test in the set. Validation goes in unit tests, the upload contract goes in API tests, and exactly one end-to-end test goes through the file picker.</li>
+      </ol>
+      <p>Written out in full that is roughly sixty to eighty cases. In a 45-minute round you say the ten headings in about four minutes, then go deep on the two or three the interviewer points at. Offering the map and letting them choose the territory is the behaviour being graded.</p>
+
+      <h2>The cross-browser cases that pass in one engine and fail in another</h2>
+      <p>Engine behaviour here has shifted over the years, so treat this as a list of places to look rather than a list of guarantees, and verify against the browser versions in your actual support matrix.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Case</th><th>How to trigger it</th><th>What you assert</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Folder dropped on the zone</td><td>Drag a directory, not a file, onto the avatar</td><td>Directory entries are exposed through a non-standard API in some engines and not others, so the same drop can yield zero files, one unusable entry, or silence. Assert an explicit message, never a no-op.</td></tr>
+            <tr><td>Picker opened after an await</td><td>Click a custom button that does async work, then calls click() on the hidden input</td><td>User activation rules differ and Safari is stricter. The picker opens in Chrome and does nothing in Safari. Assert it opens from a direct handler with no awaited work in front of it.</td></tr>
+            <tr><td>Photo from an iPhone</td><td>Upload from iOS Safari, once from Photos and once from Files</td><td>Whether a HEIC or a converted JPEG reaches your server depends on iOS version and how the file was chosen. Assert the server handles both, or rejects one with a message a human can act on.</td></tr>
+            <tr><td>Non-ASCII filename</td><td>Upload a file whose name carries accents and an emoji</td><td>Multipart filename encoding and what your framework decodes both vary. Assert the stored name round-trips, or is safely replaced, and never truncates mid-character.</td></tr>
+            <tr><td>Progress events</td><td>Upload a 4 MB file on a throttled connection in each engine</td><td>Upload progress is available through XHR, but request body streaming with fetch is not universal, so a fallback path shows 0% and then jumps to 100%. Assert monotonic intermediate values.</td></tr>
+            <tr><td>Private window or cleared storage</td><td>Start a resumable upload, then clear site data, then repeat in a private window</td><td>Resume tokens kept in browser storage can vanish under stricter storage policies. Assert a clean restart rather than a stuck bar.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The <code>accept</code> attribute belongs in this section too. On every engine it filters the picker, on most platforms the user can switch back to All Files, and dragging bypasses it entirely. It is a convenience, never a control.</p>
+
+      <h2>When would you trust an AI-generated test case?</h2>
+      <p>The one-sentence answer, and the one worth saying in the room: <strong>trust it for the enumeration, never for the oracle.</strong></p>
+      <p>Generation is genuinely good at the part humans do worst, producing the tenth partition after enthusiasm ran out at the fourth. Paste the spec, ask for boundary values, and 5,242,880 comes back without you having to remember whether the limit was decimal or binary. Ask for failure modes and you get the asynchronous quarantine case you would have skipped. Use it as a checklist you edit, and keep only the entries you can justify.</p>
+      <p>The expected result is a different thing entirely. A test case is a claim about intended behaviour, and a model does not know your product's intent. It knows what a system shaped like yours usually does. When the generator writes both the input and the assertion, what you get is a test that agrees with whatever the code does today, so it passes on a broken build and pins that bug in place permanently. That is worse than having no test, because it occupies a slot in the suite and buys confidence nobody earned.</p>
+      <p>Three checks turn a generated case into a real one:</p>
+      <ul>
+        <li><strong>Can you point at the source of the expected value?</strong> A spec line, a ticket, a decision a person made. If the only source is the generator, it is not a test yet.</li>
+        <li><strong>Has it ever gone red?</strong> Break the code deliberately and run it. A generated test that has never failed is a comment with a runtime cost.</li>
+        <li><strong>What does it actually assert?</strong> The three default shapes are "does not throw", "status is 2xx", and a snapshot of current output. All three pass on almost any behaviour, correct or not.</li>
+      </ul>
+      <p>State a policy, not an opinion about the tools. Something like: I use it for the enumeration pass, I review every expected value by hand, and I do not let it write assertions for anything touching money, permissions or deletion. That is a complete answer. Praising the tools is not, and dismissing them reads as someone who has not tried them.</p>
+
+      <h2>Where a live copilot is the wrong tool for this round</h2>
+      <p>Worth saying plainly, since this page is published by a vendor. Test case design is a four-minute structured monologue followed by interruptions, and it is often conducted in a shared document while the interviewer watches you type. OfferPilot AI listens to the interviewer's audio and drafts a speakable answer in roughly a second, which fits a rapid-fire factual question well and fits a ten-heading taxonomy badly. Reading an enumeration off a screen sounds exactly like reading an enumeration off a screen, and the first follow-up, why 5,242,880, lands on nothing. Learn the ten passes instead. Save live assistance for the short factual questions in the same loop, flaky test triage or why an API test is slow, and for the <a href="/code-copilot/">coding portion</a> of an SDET screen, where a discrete problem has a discrete answer.</p>
+      <p>The overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom, Teams, Meet or OBS share, or in a screenshot, while staying visible on your own monitor. That covers screen sharing and screen recording only. It does nothing about a webcam feed, a lockdown browser, or an interviewer sitting beside you at an onsite, which is common in SDET loops. Windows 10 and 11 only, with no macOS, Linux or mobile build.</p>
+      <p>The higher-leverage preparation sits upstream of the interview anyway. Build a question bank for the specific company and role with the <a href="/interview-copilot/#generator">company Q&amp;A generator</a>, feed it the job description, and rehearse the enumeration against whatever that company actually ships, an upload flow, a payments form, a scheduling grid, until the ten headings come out in order without effort.</p>
+
+      <p>Free tier is 5 minutes of listening time a day, no card required, and the clock advances only while the copilot is actually receiving interviewer audio. <a href="/download/">Download for Windows</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/data-scientist-product-sense-interview/">Data Scientist Product Sense Interview Questions: 4-Move Answer</a></li>
+        <li><a href="/guides/product-manager-case-interview-copilot/">AI Copilot for Product Manager Case Interviews: 5 Case Types</a></li>
+        <li><a href="/guides/devops-interview-vs-sre-interview/">DevOps Interview vs SRE Interview: Two Different Question Sets</a></li>
+        <li><a href="/guides/api-design-vs-system-design-interview/">API Design Interview vs System Design Interview: The Tells</a></li>
+        <li><a href="/guides/ml-system-design-interview-answer-structure/">ML System Design Interview: The Answer Spine Candidates Skip</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

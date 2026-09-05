@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Respondus LockDown Browser Can Actually See, and Cannot</title>
+  <meta name="description" content="LockDown Browser locks the machine: no copy-paste, no screen capture, no other apps, no VMs. It only sees or hears you when the instructor adds Respondus Monitor.">
+  <meta name="keywords" content="what can respondus lockdown browser see, does lockdown browser record you, does lockdown browser use your camera, lockdown browser virtual machine detection, respondus monitor review priority, can lockdown browser see other tabs, lockdown browser second monitor, does lockdown browser block screen recording">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/what-lockdown-browser-can-see/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="What Respondus LockDown Browser Can Actually See, and Cannot">
+  <meta property="og:description" content="LockDown Browser locks the machine: no copy-paste, no screen capture, no other apps, no VMs. It only sees or hears you when the instructor adds Respondus Monitor.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/what-lockdown-browser-can-see/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-what-lockdown-browser-can-see.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="What Respondus LockDown Browser Can Actually See, and Cannot">
+  <meta name="twitter:description" content="LockDown Browser locks the machine: no copy-paste, no screen capture, no other apps, no VMs. It only sees or hears you when the instructor adds Respondus Monitor.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-what-lockdown-browser-can-see.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Respondus LockDown Browser Can Actually See, and Cannot","description":"LockDown Browser locks the machine: no copy-paste, no screen capture, no other apps, no VMs. It only sees or hears you when the instructor adds Respondus Monitor.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/what-lockdown-browser-can-see/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"What Respondus LockDown Browser Can Actually See, and Cannot","url":"https://offerpilotai.ink/guides/what-lockdown-browser-can-see/","mainEntity":[{"@type":"Question","name":"What can Respondus LockDown Browser see on your computer?","acceptedAnswer":{"@type":"Answer","text":"It sees the state of your machine rather than the content of it. Before and during an exam it reads the list of running processes to find blocked applications, checks whether it is running inside a virtual machine or a remote desktop session, and checks how many displays are attached. It does not index your files, read your saved passwords, or browse your history."}},{"@type":"Question","name":"Does LockDown Browser record you through the webcam?","acceptedAnswer":{"@type":"Answer","text":"Not on its own. LockDown Browser has no camera or microphone role by itself, so a plain locked exam produces no video and no audio. Recording exists only when the instructor enables Respondus Monitor, the webcam add-on, on that specific exam. You can tell which one you have from the startup sequence, because Monitor runs a webcam check, a photo and often an ID and room scan first."}},{"@type":"Question","name":"Can LockDown Browser see other tabs or other applications?","acceptedAnswer":{"@type":"Answer","text":"It stops them rather than watching them. The exam runs full screen with no address bar, task switching is blocked, and other browsers are not reachable from inside the session. Applications it treats as screen capture, streaming or remote control tools must be closed before the exam will start, and launching one mid-exam can halt the attempt."}},{"@type":"Question","name":"Does LockDown Browser detect a virtual machine or a second monitor?","acceptedAnswer":{"@type":"Answer","text":"Yes to both, and the usual result is a block rather than a silent flag. Running the exam inside VMware, VirtualBox, Parallels or Hyper-V is refused unless the instructor has explicitly allowed virtual machines. Remote desktop sessions are refused the same way. Where multiple displays are detected, you are typically told to disconnect the extra screen before you can continue."}},{"@type":"Question","name":"Does hiding a window from screen capture do anything against LockDown Browser?","acceptedAnswer":{"@type":"Answer","text":"No. Screen capture exclusion is a screen sharing feature, and LockDown Browser is not receiving a screen share. It blocks other applications from running at all, blocks print and screen capture at the machine level, and where Monitor is on it is watching you through a camera pointed at your face rather than watching your display."}},{"@type":"Question","name":"What gets flagged in a Respondus Monitor recording?","acceptedAnswer":{"@type":"Answer","text":"Monitor marks a timeline with events such as the face leaving the frame, more than one face appearing, poor lighting, an internet interruption, or the exam being started outside the expected flow. Those marks produce a review priority for the instructor. A priority is a sorting order for human review, not a verdict, and instructors can and do open the video and disagree with it."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"What LockDown Browser Can See","item":"https://offerpilotai.ink/guides/what-lockdown-browser-can-see/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">What Respondus LockDown Browser can actually see</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">LockDown Browser does two jobs, and only one of them involves seeing anything. The first is locking the machine: full screen with no address bar, copy and paste cut off, printing and screen capture disabled, other applications unreachable, and a flat refusal to run inside a virtual machine or a remote desktop session. The second is recording you, and that half exists only when the instructor has switched on Respondus Monitor, the webcam add-on. A plain locked exam has no camera and no microphone attached to it, so there is nothing to record and nobody watching.</p>
+
+      <p>Almost every confused answer about this tool comes from collapsing those two halves into one. People describe a browser that watches everything they do, when what they sat was a locked exam with no camera anywhere in it. Other people assume there is no camera because nobody mentioned one, then meet a room scan on exam day. Same download, two very different sessions.</p>
+
+      <h2>The lock: what it stops, and what stopping it reveals</h2>
+      <p>Read this column by column as restrictions rather than surveillance. Every row is the browser preventing something on the machine it is running on, not a feed going anywhere.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th>What is locked</th><th>How it behaves in the session</th><th>What that means for "can it see"</th></tr>
+          <tr>
+            <td><strong>Copy and paste</strong></td>
+            <td>Copying out of the exam and pasting in from another application are blocked, and the right click menu is stripped back to almost nothing.</td>
+            <td>Nothing to see. The transfer never happens, so there is no paste event to log the way an ordinary web assessment would.</td>
+          </tr>
+          <tr>
+            <td><strong>Printing and screen capture</strong></td>
+            <td>Print is off unless the instructor enabled it, and the operating system screenshot path is disabled while the exam is open.</td>
+            <td>The exam pages are meant to leave no artefact. This is about stopping the question bank from walking out, not about watching you.</td>
+          </tr>
+          <tr>
+            <td><strong>Other applications</strong></td>
+            <td>Tools it classes as screen capture, screen sharing, streaming or remote control must be closed before the exam will start, and launching one part way through can halt the attempt.</td>
+            <td>This is the one place it genuinely reads your machine. It looks at what is running by name, matches against a blocklist, and tells you what to close.</td>
+          </tr>
+          <tr>
+            <td><strong>Task switching and navigation</strong></td>
+            <td>The exam is full screen and cannot be minimised, task switching is blocked, and you cannot type a different address because there is no address bar.</td>
+            <td>It has no need for tab switching detection, because there are no tabs to switch to. Contrast an ordinary browser based test, which logs that focus left and nothing more.</td>
+          </tr>
+          <tr>
+            <td><strong>Virtual machines</strong></td>
+            <td>Running inside VMware, VirtualBox, Parallels or Hyper-V is refused unless the instructor has explicitly allowed virtual machines for that exam.</td>
+            <td>It sees the markers of a guest operating system, not what is on the host. The usual outcome is a blunt error message before the exam ever opens.</td>
+          </tr>
+          <tr>
+            <td><strong>Remote desktop sessions</strong></td>
+            <td>Connecting in over RDP, VNC or a remote support tool is detected and refused on the same principle.</td>
+            <td>The check is whether the session is local. It cannot tell who is at the other end, only that somebody could be.</td>
+          </tr>
+          <tr>
+            <td><strong>Extra displays</strong></td>
+            <td>Where more than one display is attached, the standard behaviour is to stop and ask you to disconnect the extra screen before continuing.</td>
+            <td>It knows how many displays exist and how they are arranged. It does not receive an image of what a second monitor was showing.</td>
+          </tr>
+          <tr>
+            <td><strong>Leaving early</strong></td>
+            <td>The exam cannot be exited until it is submitted, unless the instructor supplies a password that breaks out of it.</td>
+            <td>An abandoned attempt shows up to the instructor as an attempt. That is a record of behaviour rather than a picture of anything.</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>Notice what the whole right hand column has in common. The lock knows the shape of your machine, running process names, display count, whether the session is virtual or remote, and it knows when the exam window lost its grip. None of that is content. It is not indexing your files, reading saved passwords, or pulling another browser's history, and it stops when the exam closes.</p>
+
+      <h2>The recording half, in the order you meet it</h2>
+      <p>Respondus Monitor is enabled per exam by the instructor, and it announces itself loudly before the timer starts. If you never saw this sequence, you were not recorded.</p>
+
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Webcam check</h3><p>A short clip records and plays back so you can confirm the camera and microphone work. Audio is part of that check, which is the first clear signal that the room, and not only the screen, is in scope.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Student photo</h3><p>A still of your face is captured and stored against the attempt, so the video can be tied to a person rather than to a login.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Photo ID</h3><p>Where the instructor requires it, you hold a student card or government ID up to the camera and it is captured as a second image.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Environment check</h3><p>You pan the webcam around the room and across the desk. This is the step people describe afterwards as invasive, and it is the one that captures the space rather than the machine.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Instructor steps and guidelines</h3><p>Custom instructions, a rules page to accept, sometimes an extra prompt written by the department. These vary course to course, so two exams at one university can differ here.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Continuous recording until submit</h3><p>Video and audio run for the length of the attempt and upload when you finish. The lock is still doing every single thing in the table above at the same time.</p></div></div>
+      </div>
+
+      <p>What the instructor receives is not raw footage they have to watch end to end. It is a timeline with marks on it. Events such as the face leaving the frame, a second face appearing, light dropping too low to make anything out, or an interruption in the connection get flagged, and those marks roll up into a review priority that sorts the class list. Treat that priority as triage. It decides which videos a human opens first, and a human opening yours can look at a flagged minute and see somebody who stretched, rubbed their eyes, or had a housemate walk behind them. Whether the exam screen itself is captured alongside the webcam varies by version and by how your institution has it configured, so read your course's own instructions rather than assuming either way.</p>
+
+      <h2>The blind spots that follow from the design</h2>
+      <p>Stating these plainly is not advice, it is the reason the tool is shaped the way it is. LockDown Browser controls exactly one machine, the one it is installed on. It has no view of a phone on your lap, a tablet on the next chair, a second computer, or a person standing behind the camera. Monitor closes part of that gap by pointing a lens at the room, which is precisely why the environment scan exists and why a missing face is a flag. A locked exam without Monitor is a deterrent and a controlled environment, not an observer, and institutions that need more than that still book invigilated halls.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool, and we should say so</h2>
+      <p>A vendor publishes this page, so here is the honest boundary. <a href="/code-copilot/">Code Copilot</a> is a Windows 10 and 11 desktop overlay built for job interviews and coding rounds. Its window is excluded from screen capture at the operating system level, so it is absent from Zoom, Teams, Meet, OBS and screenshots while staying visible on your own monitor. That is a screen sharing feature, and it is irrelevant to this page in three separate ways.</p>
+      <ul>
+        <li><strong>A locked exam is not a screen share.</strong> Nothing is being streamed to a viewer for an overlay to be missing from. LockDown Browser blocks other applications from running at all, which lands well before any question of what a capture would have contained.</li>
+        <li><strong>Monitor points a camera at your face.</strong> Capture exclusion does nothing about a webcam, room audio, an ID photo, an environment scan, an invigilator in the room, eye tracking, or a phone propped up as a second camera.</li>
+        <li><strong>The platforms do not even match.</strong> Our software is Windows only, with no macOS, Linux, mobile or browser extension build, while LockDown Browser exams routinely run on Macs, iPads and Chromebooks.</li>
+      </ul>
+      <p>We build for job interviews and interview preparation. A proctored academic exam under LockDown Browser is not a use we support or want, and the correct answer to one is to study for it. If an exam is what brought you to this query, the useful next click is your institution's own proctoring policy, not a product page.</p>
+
+      <h2>Working out in sixty seconds which version you are sitting</h2>
+      <ol>
+        <li>Did the exam ask you to close specific applications, or refuse to start until you did? That is the lock, and the lock is always on.</li>
+        <li>Did anything request camera permission, play back a webcam test, or take your photo? No such step means no recording on that attempt.</li>
+        <li>Were you asked to show an ID or pan the room? That is Monitor running the fuller startup flow.</li>
+        <li>Did it halt and tell you to unplug a second screen, or refuse to run in a virtual machine? Those are environment checks, and they happen with or without a camera.</li>
+        <li>Assume the attempt itself is logged either way. Start time, submit time and whether the session was broken out of need no permission prompt and produce no visible signal.</li>
+      </ol>
+
+      <p>The short version worth carrying away: the lock is about your machine and it is thorough, the recording is about you and it is optional. Collapsing the two is what makes this tool sound either harmless or omniscient, when it is neither. The <a href="/guides/">rest of the guides</a> cover how the same split plays out on the assessment platforms used in hiring, where the line between locking and recording gets drawn very differently.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/does-hirevue-record-your-screen/">Does HireVue Record Your Screen or Just Your Camera and Mic?</a></li>
+        <li><a href="/guides/what-interviewers-see-on-coderpad/">Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank</a></li>
+        <li><a href="/guides/can-zoom-see-my-whole-computer/">Can Zoom See Everything on My Computer? What It Really Holds</a></li>
+        <li><a href="/guides/can-interviewer-see-alt-tab/">Can a Zoom Host See If You Switch Tabs? The Three Signals</a></li>
+        <li><a href="/guides/can-proctoring-detect-second-monitor/">Can Proctoring Software Detect a Second Monitor? How It Knows</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Preparing for interviews, not exams.</h2>
+      <p class="lede" style="margin:0 auto 8px">OfferPilot AI is a Windows interview and coding copilot. Free tier, five minutes a day, no card required.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

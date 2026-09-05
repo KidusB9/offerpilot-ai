@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ML Engineer vs Data Scientist Interview: Every Round Compared</title>
+  <meta name="description" content="Round by round, what an ML engineer loop asks that a data scientist loop does not, plus one identical ML question graded twice against both bars.">
+  <meta name="keywords" content="ml engineer vs data scientist interview difference, machine learning engineer interview rounds, data scientist interview rounds, mle vs ds interview loop, do data scientists get leetcode, ml system design interview, applied ml coding round, machine learning breadth interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/ml-engineer-vs-data-scientist-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="ML Engineer vs Data Scientist Interview: Every Round Compared">
+  <meta property="og:description" content="Round by round, what an ML engineer loop asks that a data scientist loop does not, plus one identical ML question graded twice against both bars.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/ml-engineer-vs-data-scientist-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-ml-engineer-vs-data-scientist-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="ML Engineer vs Data Scientist Interview: Every Round Compared">
+  <meta name="twitter:description" content="Round by round, what an ML engineer loop asks that a data scientist loop does not, plus one identical ML question graded twice against both bars.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-ml-engineer-vs-data-scientist-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ML Engineer vs Data Scientist Interview: Every Round Compared","description":"Round by round, what an ML engineer loop asks that a data scientist loop does not, plus one identical ML question graded twice against both bars.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/ml-engineer-vs-data-scientist-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"ML Engineer vs Data Scientist Interview: Every Round Compared","url":"https://offerpilotai.ink/guides/ml-engineer-vs-data-scientist-interview/","mainEntity":[{"@type":"Question","name":"What is the difference between an ML engineer and a data scientist interview?","acceptedAnswer":{"@type":"Answer","text":"A data scientist loop is built around inference. It leans on statistics and probability, product and metric interpretation, SQL, and machine learning breadth that stops where deployment begins. An ML engineer loop is built around systems: algorithmic coding, ML system design covering serving and retraining, and applied ML coding in a real editor. Only two rounds share a name across both loops, and those are where most candidates answer against the wrong bar."}},{"@type":"Question","name":"Do data scientist interviews include LeetCode questions?","acceptedAnswer":{"@type":"Answer","text":"Usually not in the classic form. A data scientist loop more often replaces the algorithmic round with SQL and with data manipulation in pandas, where the difficulty sits in joins, window functions and correct aggregation rather than in a graph traversal. ML engineer loops normally do include a standard algorithms and data structures round, frequently two, graded on the same bar as a software engineering loop."}},{"@type":"Question","name":"Do ML engineer interviews ask statistics and probability questions?","acceptedAnswer":{"@type":"Answer","text":"They ask far less of it, and at a different depth. An ML engineer is expected to know why a metric is misleading and why an experiment readout may be underpowered, but is rarely asked to derive a maximum likelihood estimator or reason about a conditional probability puzzle from scratch. In a data scientist loop that derivation is often a whole round with its own scorecard row."}},{"@type":"Question","name":"Which rounds appear in both ML engineer and data scientist loops?","acceptedAnswer":{"@type":"Answer","text":"Machine learning breadth appears in both, and some form of design round appears in both. The content diverges sharply. The data scientist version of breadth stops at model selection, evaluation and interpretation, while the ML engineer version continues into feature stores, training and serving parity, retraining cadence and rollback. Same question wording, different scorecard."}},{"@type":"Question","name":"How do I find out which loop I have been scheduled into?","acceptedAnswer":{"@type":"Answer","text":"Ask the recruiter three questions: which rounds are on the schedule and in what order, whether the coding round uses a shared editor with a test runner or a notebook, and which job family runs the debrief. Job titles are unreliable, since some machine learning engineer roles run an almost pure software engineering loop and some data scientist roles are effectively research positions. The schedule tells you more than the title does."}},{"@type":"Question","name":"Can an AI interview copilot help in an ML interview round?","acceptedAnswer":{"@type":"Answer","text":"It helps most in breadth and behavioural rounds, where the answer is spoken and a prompt about calibration or leakage restores a definition you already knew. It helps least in ML system design, which is graded on the follow-up questions rather than the first answer. OfferPilot AI runs on Windows 10 and 11 only, and its capture exclusion hides the overlay from screen sharing, not from a webcam or a proctor."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"ML engineer vs data scientist interview","item":"https://offerpilotai.ink/guides/ml-engineer-vs-data-scientist-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">ML engineer vs data scientist interviews: what actually differs, round by round</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A data scientist loop is built around inference and a machine learning engineer loop is built around systems, and the schedule shows it. The data scientist side gets statistics and probability, product and metric interpretation, and SQL. The engineer side gets algorithmic coding, applied ML coding in a real editor, and ML system design that continues past the model into serving, retraining and rollback. Only two rounds carry the same name in both loops, ML breadth and design, and those are where most rejections happen, because a correct answer aimed at the other bar still scores as a miss.</p>
+
+      <h2>The two loops, side by side</h2>
+      <p>Six rounds cover almost every onsite in either family. Which of them appear, and how many times, is the real difference between the roles.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Round</th><th>Data scientist loop</th><th>ML engineer loop</th><th>What it is really scoring</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Stats and probability</strong></td>
+              <td>Nearly always, often a dedicated round with its own scorecard.</td>
+              <td>Rare as a round. Shows up as one or two questions inside breadth.</td>
+              <td>Whether you can reason about uncertainty without a library. Estimators, power, confidence intervals, conditional probability, what a p-value does not mean.</td>
+            </tr>
+            <tr>
+              <td><strong>Product and metric interpretation</strong></td>
+              <td>Nearly always, sometimes twice at senior level.</td>
+              <td>Occasionally, usually folded into the design round as "how would you know it worked".</td>
+              <td>Whether you pick one north-star metric, name a guardrail, and can say which decision the number informs.</td>
+            </tr>
+            <tr>
+              <td><strong>ML breadth</strong></td>
+              <td>Yes. Stops at model choice, evaluation and interpretation.</td>
+              <td>Yes. Carries on into training and serving parity, drift and retraining.</td>
+              <td>Same words, two rubrics. See the worked example below.</td>
+            </tr>
+            <tr>
+              <td><strong>ML system design</strong></td>
+              <td>Sometimes, and often shallower: a pipeline sketch rather than a serving architecture.</td>
+              <td>Nearly always, and usually the round that decides the offer and the level.</td>
+              <td>Feature freshness, offline and online consistency, latency budget, retraining cadence, what happens when the model is wrong at 3am.</td>
+            </tr>
+            <tr>
+              <td><strong>Algorithmic coding</strong></td>
+              <td>Uncommon in the classic form. Usually replaced by SQL and dataframe work.</td>
+              <td>Nearly always, frequently two rounds, on the software engineering bar.</td>
+              <td>Complexity stated before you type, edge cases, working code inside the clock.</td>
+            </tr>
+            <tr>
+              <td><strong>Applied ML coding</strong></td>
+              <td>Sometimes, usually in a notebook: clean, join, aggregate, fit something simple.</td>
+              <td>Often, usually in an editor: implement a metric, a sampler, a batching layer or a training step by hand.</td>
+              <td>The data scientist version rewards the analysis you write around the code. The engineer version rewards code that would survive a review.</td>
+            </tr>
+            <tr>
+              <td><strong>SQL</strong>, the unlisted seventh</td>
+              <td>Very common and genuinely hard: window functions, self joins, correct grain.</td>
+              <td>Frequently absent. Where it appears it is short and easy.</td>
+              <td>The most reliable single signal about which loop you are in. Ask about it on the recruiter call.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two structural notes matter more than the table. Data scientist loops usually contain one round with no code in it at all, the product round, and candidates from an engineering background underrate it badly. ML engineer loops usually contain no such round, and candidates from an analytics background walk into two algorithm interviews they did not revise for.</p>
+
+      <h2>One question, two scorecards</h2>
+      <p>Here is a question asked almost word for word in both loops:</p>
+      <blockquote>"We shipped a new ranking model. Offline AUC went from 0.79 to 0.84, but the A/B test shows no lift in the online metric. What is going on?"</blockquote>
+      <p>Both interviewers take notes on the same answer. They are listening for entirely different things.</p>
+
+      <h3>Graded against the statistician bar</h3>
+      <p>The data scientist interviewer wants the gap between the measurement and the decision. Strong answers reach these within a couple of minutes:</p>
+      <ul>
+        <li><strong>AUC is rank based and threshold free, the product is neither.</strong> The system serves one operating point, usually a top-k slice. Improving the ordering deep in the tail moves AUC and changes nothing a user ever sees.</li>
+        <li><strong>The offline data was chosen by the old model.</strong> You evaluate on logged impressions, and the previous ranker decided what got logged, so the evaluation set is a biased sample of what the new model would have shown. Naming that feedback loop, then proposing propensity weighting or a small random exploration bucket to break it, is close to a pass on its own.</li>
+        <li><strong>The test may simply be underpowered.</strong> What was the minimum detectable effect, what is the variance of the metric, how many users, how long did it run. A null result with a wide interval is not evidence of no effect.</li>
+        <li><strong>Metric grain and interference.</strong> Per-session against per-user, novelty effects in the first days, and whether treatment and control draw on the same supply pool, which quietly cancels the lift.</li>
+      </ul>
+      <p>What loses points here: going straight to infrastructure. Answer "probably training and serving skew" to a statistician and you have skipped every row they were holding a pen for.</p>
+
+      <h3>Graded against the engineer bar</h3>
+      <p>The ML engineer interviewer treats the same sentence as an incident report, and expects the first hypothesis to be that the online model is not the model you evaluated:</p>
+      <ul>
+        <li><strong>Training and serving skew, named first.</strong> One feature, two code paths. Computed offline over a full day of warehouse data, computed online from whatever arrived before the request. A seven-day average that is complete offline and truncated online is a silent regression.</li>
+        <li><strong>Point-in-time correctness in the training join.</strong> If the feature table was joined on the label date rather than as of the request timestamp, the offline model saw information from after the decision, and 0.84 was never real.</li>
+        <li><strong>What is actually serving.</strong> Which model version is deployed, the fallback that returns the old ranker on timeout, feature fetches dropped under the latency budget. If a share of traffic never reached your model, the experiment measured a blend.</li>
+        <li><strong>How you would prove it, concretely.</strong> Log the exact feature vector used at serving time, replay those vectors through the offline pipeline, diff them feature by feature, and compare per-feature distributions online against training. That is the sentence the engineer is waiting for, and it usually ends the round.</li>
+      </ul>
+      <p>What loses points here: several minutes on experiment power without ever asking whether the deployed artefact matched the evaluated one.</p>
+
+      <h3>The same sentences, scored twice</h3>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>What you say</th><th>The statistician hears</th><th>The engineer hears</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"I would check for leakage."</td><td>Good. Now name which variable leaked and how you would detect it in the data.</td><td>Good. The leak is usually a join key or a timestamp, so show me the pipeline.</td></tr>
+            <tr><td>"AUC is the wrong metric here."</td><td>Strong, if you follow it with the metric you would use at the real operating point.</td><td>Fine, but tell me what we alert on in production, not only what we report.</td></tr>
+            <tr><td>"The test was probably underpowered."</td><td>Strong, if you attach numbers: variance, effect size, duration.</td><td>Neutral. It reads as a way of avoiding the deployment question.</td></tr>
+            <tr><td>"The features are probably stale online."</td><td>Neutral. Plausible, but you skipped the measurement question entirely.</td><td>Strong. This is the first thing I check in a real incident.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The practical move is one sentence signalling that you can see both, then commit to the lane the round is in. Something like: "the two families of cause are measurement and deployment, I will rule out deployment first because it is cheaper to check." Interviewers on both sides mark that up.</p>
+
+      <h2>Reading the schedule before you revise</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Ask which rounds exist, in order</h3>
+            <p>Recruiters answer this readily. Two algorithm rounds plus an ML design round is an engineering loop wearing whatever title the posting used. One SQL round plus one product round is an analytics loop, whatever the words "machine learning" are doing in the job description.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Ask what the coding round runs in</h3>
+            <p>A shared editor with a hidden test suite means algorithms on the software bar. A notebook with a dataset attached means applied work graded on your reasoning as much as your code. That one answer changes what you revise for a week.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Ask which job family runs the debrief</h3>
+            <p>Titles drift between companies, and the same title can mean a research role in one place and a platform role in another. The team that writes the levelling decision owns the bar, and knowing which one it is beats inferring it from the posting.</p>
+          </div>
+        </div>
+      </div>
+      <p>If you are genuinely applying to both, the overlap is smaller than people expect and worth knowing precisely: evaluation metrics beyond accuracy, leakage, class imbalance, regularisation and cross-validation carry across. Almost everything else diverges, so pick a primary lane rather than half preparing for seven rounds. The <a href="/interview-questions/">question banks</a> are a reasonable place to sort prompts by the loop they belong to, and the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank from your own resume for a specific company and role, which often reveals the loop shape faster than the job description does.</p>
+
+      <h2>Where a copilot earns nothing in these rounds</h2>
+      <p>ML system design is the worst round in either loop for live assistance, and it is the round the engineer side weighs most heavily. It is graded on the follow-ups rather than the first answer: why a feature store instead of recomputing, what breaks if the retrain job fails for four days, how you roll back a model that is only wrong for one segment. An architecture you did not reason your way to collapses at the second question, in front of someone who has debugged that exact failure.</p>
+      <ul>
+        <li><strong>Windows only.</strong> OfferPilot AI runs on Windows 10 and 11. There is no macOS build, no Linux build, no mobile app and no browser extension. Plenty of ML interviews happen on a Mac, and for those none of this applies.</li>
+        <li><strong>Capture exclusion covers screen sharing and screen recording, nothing more.</strong> The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a second-device camera, or a person in the room.</li>
+        <li><strong>The rules belong to the company.</strong> Some processes permit documentation and AI assistance openly, some do not. Read the instructions you were sent, and ask when they are ambiguous.</li>
+        <li><strong>Statistics derivations are not a reading task.</strong> Working an estimator through on a whiteboard while narrating is a skill you either rehearsed or did not.</li>
+      </ul>
+      <p>The rounds where live help genuinely pays are narrower: breadth questions where a prompt restores a definition you already know, and behavioural rounds where you need the structure rather than the content. For the algorithm rounds in an engineer loop, <a href="/code-copilot/">Code Copilot</a> covers the screenshot-to-solution path with a dry run and complexity attached, which is closer to how those rounds are scored.</p>
+
+      <h2>Pick the bar before you rehearse</h2>
+      <p>Write your five strongest project stories twice. One version ends at the evaluation and the decision it drove. The other ends at the deployment and what broke afterwards. Those are the two things the two loops are asking for, and having both ready is the difference between a strong answer and a strong answer aimed at the wrong interviewer. The free tier is 5 minutes a day with no card if you want to test the workflow against a mock first, and paid <a href="/pricing/">plans</a> meter listening time only, so the clock advances while the interviewer is speaking rather than for the whole session.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/ml-system-design-interview-answer-structure/">ML System Design Interview: The Answer Spine Candidates Skip</a></li>
+        <li><a href="/guides/api-design-vs-system-design-interview/">API Design Interview vs System Design Interview: The Tells</a></li>
+        <li><a href="/guides/new-grad-software-engineer-interview-copilot/">AI Interview Copilot for New Grad SWE: Which Rounds It Helps</a></li>
+        <li><a href="/guides/data-engineer-sql-interview-round/">Data Engineer SQL Interview Round: What to Expect in 45 Minutes</a></li>
+        <li><a href="/guides/data-scientist-product-sense-interview/">Data Scientist Product Sense Interview Questions: 4-Move Answer</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Prepare for the loop you actually have.</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company and role specific question bank from your resume, then rehearse the rounds that loop really runs.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What to Do When You Get Stuck in a Coding Interview: 5 Rungs</title>
+  <meta name="description" content="Stuck or blank in a coding interview? Climb a five-rung ladder with one fixed sentence per rung: restate, hand-run a tiny case, state the brute force, name the bottleneck, ask.">
+  <meta name="keywords" content="what to do when you get stuck in a coding interview, what to say when you go blank in a coding interview, stuck on a leetcode problem in an interview, how to ask for a hint in a coding interview, is a brute force solution ok in an interview, how long can you be silent in a coding interview, coding interview freeze recovery, thinking out loud in a technical interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/stuck-in-a-coding-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="What to Do When You Get Stuck in a Coding Interview: 5 Rungs">
+  <meta property="og:description" content="Stuck or blank in a coding interview? Climb a five-rung ladder with one fixed sentence per rung: restate, hand-run a tiny case, state the brute force, name the bottleneck, ask.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/stuck-in-a-coding-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-stuck-in-a-coding-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="What to Do When You Get Stuck in a Coding Interview: 5 Rungs">
+  <meta name="twitter:description" content="Stuck or blank in a coding interview? Climb a five-rung ladder with one fixed sentence per rung: restate, hand-run a tiny case, state the brute force, name the bottleneck, ask.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-stuck-in-a-coding-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What to Do When You Get Stuck in a Coding Interview: 5 Rungs","description":"Stuck or blank in a coding interview? Climb a five-rung ladder with one fixed sentence per rung: restate, hand-run a tiny case, state the brute force, name the bottleneck, ask.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/stuck-in-a-coding-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"What to Do When You Get Stuck in a Coding Interview: 5 Rungs","url":"https://offerpilotai.ink/guides/stuck-in-a-coding-interview/","mainEntity":[{"@type":"Question","name":"What should I do when I get stuck in a coding interview?","acceptedAnswer":{"@type":"Answer","text":"Climb five rungs in order, out loud. Restate the problem in one line. Run a four or five element input by hand and narrate what your hand is doing. State the brute force with its Big-O. Name the single expensive step. Then ask one scoped question that offers two candidate approaches and your reasoning. The whole ladder takes about ninety seconds and every rung is speakable before you know the answer."}},{"@type":"Question","name":"What do you say when you go blank in a coding interview?","acceptedAnswer":{"@type":"Answer","text":"Say the restatement first, because it needs no ideas: \"So in one line, given this input, return this output, and I am assuming this constraint.\" Then move to a tiny worked example: \"Let me take a small case and do it by hand, and I will say what my hand is actually doing.\" Both sentences are sayable with an empty head, and narrating a hand-run is usually what unblocks the approach."}},{"@type":"Question","name":"Is it okay to give a brute force solution in a coding interview?","acceptedAnswer":{"@type":"Answer","text":"Yes, and stating it early is a scoring move rather than an admission. Say the approach and its complexity together, for example quadratic time and constant extra space, then call it your floor and try to beat it. An unstated brute force earns nothing. A stated one gives the interviewer something to grade, and it often exposes the bottleneck that leads to the optimal answer."}},{"@type":"Question","name":"How do you ask for a hint in a coding interview without looking bad?","acceptedAnswer":{"@type":"Answer","text":"Scope the question so the interviewer answers yes or no instead of solving it for you. Name two candidate approaches, say which one you lean towards and why, then ask whether that is the direction they would take. Asking \"can I have a hint\" hands the whole problem back and usually returns the smallest safe nudge. A scoped question returns a real answer because you did the work that makes it cheap to give."}},{"@type":"Question","name":"How long can you stay silent in a coding interview?","acceptedAnswer":{"@type":"Answer","text":"There is no measured threshold, but a workable convention is that about four seconds reads as thinking, ten seconds is the edge, and past roughly twenty seconds the interviewer will step in and start driving. Silence is not scored, so the aim is not speed. The aim is to be saying something true about the problem while you search for the approach."}},{"@type":"Question","name":"Does getting stuck mean you failed the coding interview?","acceptedAnswer":{"@type":"Answer","text":"No. Interviewers grade the process as well as the result, so a candidate who states a brute force, names the bottleneck and asks one sharp question often outscores a candidate who produces a half-remembered optimal solution and cannot explain it. What reads badly is a long silence followed by a jump to code with no reasoning attached to it."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Stuck in a Coding Interview","item":"https://offerpilotai.ink/guides/stuck-in-a-coding-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Interview formats and rounds</p>
+      <h1 class="balance">What to do when you get stuck in a coding interview</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Being stuck is not what fails you. Going quiet is. The way out is a five-rung ladder climbed in order, where every rung has a sentence you can say before you know the answer: restate the problem in one line, run a tiny input by hand, state the brute force and its Big-O out loud, name the bottleneck, then ask one scoped question. Ninety seconds, start to finish. It works because each rung hands you the cue for the next one, and because nobody can score silence.</p>
+
+      <h2>The five-rung ladder</h2>
+      <p>Climb in order. The temptation is to jump straight to rung five and ask for help, but a question asked before you have said a brute force out loud reads as surrender rather than progress. The sentences below are the actual words. Swap the nouns, keep the shape.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true">1</div>
+          <div>
+            <h3>Restate the problem in one line (about 10 seconds)</h3>
+            <p>Compress it, do not parrot it. <strong>"So in one line: given [input], return [output], and I am assuming [constraint]."</strong> For a sliding window question that becomes: "So in one line, given an array and a window size k, return the maximum inside each window as it slides, and I am assuming k is never bigger than the array." If your reading is wrong you find out ten seconds in rather than eight minutes in. Either way you are speaking, and the panic loop needs silence to keep running.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true">2</div>
+          <div>
+            <h3>Run a smaller input by hand (about 20 seconds)</h3>
+            <p><strong>"Let me take a tiny case and do it by hand, and I will say what my hand is actually doing."</strong> Use four or five elements. Two is degenerate and teaches you nothing. The second clause is the entire trick: you are not checking an answer, you are watching your own procedure, because your hand is already running an algorithm you have not written down. Narrate what your eye tracks, what you keep, and what you find yourself ignoring. Most of the time the optimal approach is hiding inside that commentary in plain English.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true">3</div>
+          <div>
+            <h3>State the brute force and its Big-O out loud (about 15 seconds)</h3>
+            <p><strong>"The obvious version is [X]. That is O(...) time and O(...) extra space. It is correct, so that is my floor, and now I will try to beat it."</strong> Say the complexity even when it is ugly, especially when it is ugly. A brute force you never said out loud scores nothing. The same one with a cost attached is a graded data point and a fallback you can code if the clock runs out. It also flips your internal state from having nothing to having something, which changes how the next sixty seconds go.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true">4</div>
+          <div>
+            <h3>Name the bottleneck (about 15 seconds)</h3>
+            <p><strong>"The expensive part is [Y]. Everything else is linear. So the real question is whether I can do [Y] in less than [its current cost]."</strong> This rung ends most stuck periods and it is the one people skip. Naming the bottleneck swaps a large open problem for a small closed one, and small closed problems have catalogue answers. Can I test membership faster than a scan? A hash set. Can I get the minimum faster than a scan? A heap. Can I stop recomputing an overlapping range? Prefix sums, a monotonic deque, or memoisation. You are no longer solving the interview question, you are looking up a data structure.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true">5</div>
+          <div>
+            <h3>Ask a scoped question (about 10 seconds)</h3>
+            <p><strong>"I am between [A] and [B]. I lean [A] because [reason]. Before I spend ten minutes on it, is that the direction you would take?"</strong> A scoped question names two candidates plus your reasoning and asks for a yes or a no. An unscoped one hands the problem back. Interviewers answer scoped questions generously, because you have already done the work that makes the answer cheap to give, and because confirming a direction gives away far less than they fear.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Ninety seconds, transcribed</h2>
+      <p>Here is the ladder run against a question people genuinely freeze on. Given an array and a window size <code>k</code>, return the maximum of every window as it slides. At second zero the candidate has nothing.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Clock</th><th>Spoken</th><th>Rung, and what it produced</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0:00</td><td><em>Interviewer finishes reading the problem.</em></td><td>Blank. No pattern recognised, no idea where to start.</td></tr>
+            <tr><td>0:00 to 0:04</td><td><em>Silence.</em></td><td>Four seconds is free. Do not spend a tenth.</td></tr>
+            <tr><td>0:04 to 0:14</td><td>"So in one line, given an array and a window size k, return the max inside each window as it slides. I am assuming k is at least 1 and never bigger than the array."</td><td>Rung 1. The interviewer confirms. Nothing is solved, but the room is no longer silent and the constraints are pinned down.</td></tr>
+            <tr><td>0:14 to 0:35</td><td>"Let me do a tiny case by hand and say what my hand is doing. Array 3, 1, 4, 1, 5, and k is 3. First window is 3, 1, 4, so 4. Slide, 1, 4, 1, so still 4. Slide, 4, 1, 5, so 5. Watching myself do that, I am only really tracking the biggest thing still inside the window, and I only go looking again when the biggest one falls off the left."</td><td>Rung 2. That last sentence is the monotonic deque invariant, said in English by someone who has not yet thought of a deque.</td></tr>
+            <tr><td>0:35 to 0:50</td><td>"The obvious version is, for each of the n minus k plus 1 windows, scan all k elements and take the max. That is O(n * k) time, O(1) extra space, and it is correct. That is my floor."</td><td>Rung 3. A gradeable answer now exists, plus a fallback to code if the clock wins.</td></tr>
+            <tr><td>0:50 to 1:05</td><td>"The expensive part is rescanning k elements per window. But consecutive windows share k minus 1 elements, so I am recomputing a maximum I already knew. The real question is whether I can keep something that reports the max in O(1) and updates in about O(1) as one element enters and one leaves."</td><td>Rung 4. The problem just shrank from an algorithm to a data structure requirement.</td></tr>
+            <tr><td>1:05 to 1:20</td><td>"Two candidates. A size-k heap with lazy deletion, which is O(n log k), or a deque holding indices in decreasing order of value, which I think is O(n) because each index enters and leaves once. I lean deque, and it matches what my hand was doing. Worth going for it, or would you rather see the heap coded?"</td><td>Rung 5. Two named options, a complexity for each, a stated preference, and a yes or no question.</td></tr>
+            <tr><td>1:20</td><td><em>Interviewer:</em> "Go with the deque."</td><td>Unstuck, with a confirmed direction, ninety seconds spent.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>At 1:05 that candidate still had no solution. What they had was a stated complexity, a named redundancy and two candidate structures, which on most rubrics beats a silent candidate who blurts out "monotonic deque" at 0:30 and then cannot explain why it works. Notice too that rung 4 was not invented at 0:50. It was already sitting in the sentence spoken at 0:30 about the biggest thing still inside the window. That is the ladder doing its actual job: the hand-run produces the bottleneck, and the bottleneck produces the question.</p>
+
+      <h2>Scoped questions and unscoped ones</h2>
+      <p>Rung 5 fails when the question is lazy. Here is what different asks actually return.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>What you say</th><th>How it reads</th><th>What comes back</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"I am stuck. Can I get a hint?"</td><td>The problem is handed back whole, and the interviewer has to decide what to give.</td><td>Usually the smallest safe nudge, plus a note that you needed one.</td></tr>
+            <tr><td>"Can I sort the input, or does the original order matter?"</td><td>A constraint question. Costs nothing at any point in the round.</td><td>A straight answer, and sometimes it is the whole unlock.</td></tr>
+            <tr><td>"Am I allowed O(n) extra space, or are you looking for in place?"</td><td>Scoping the solution space rather than asking for the solution.</td><td>A direct answer that frequently rules out half the search.</td></tr>
+            <tr><td>"I have an O(n * k) that works. Is it worth coding, or should I push for the optimal first?"</td><td>A time-allocation question, which interviewers answer honestly because it is their clock too.</td><td>A real steer, and it can save ten wasted minutes.</td></tr>
+            <tr><td>"I am between a heap and a deque, leaning deque because each index enters and leaves once. Same direction as you?"</td><td>Two candidates, a reason, a yes or no. The strongest form on this table.</td><td>Almost always a genuine confirmation or a redirection.</td></tr>
+            <tr><td>"Have you seen this one before? Is it from LeetCode?"</td><td>Off task. It asks about the problem's provenance instead of the problem.</td><td>Nothing useful, and a small credibility cost.</td></tr>
+            <tr><td>"Could I look up the deque API syntax?"</td><td>Depends entirely on the round. Ask, do not assume it either way.</td><td>Often yes in a pairing round. Ask before you open a tab, always.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>How much silence you actually have</h2>
+      <p>No measured threshold exists here, so treat this as convention rather than fact: about four seconds reads as thinking, ten is the edge, and past roughly twenty the interviewer steps in and starts driving, which is the moment you lose the chance to show your own process. The ladder is not built for speed. It is built so that whatever you say while searching is true, relevant and gradeable. Two of the ninety seconds above were silence. The other eighty-eight were speech, which is the only reason none of it sounds like a stall.</p>
+
+      <h2>Where an on-screen solver fits, and where it does not</h2>
+      <p>Practice is the honest use case. Run the ladder yourself on a problem you cannot solve, out loud, on a timer, then check your rungs against a worked solution. OfferPilot AI includes a Code Copilot for that step: <code>Ctrl+Alt+S</code> starts a screenshot capture, you drag a box, you get about three seconds to scroll, then drag again for a problem spanning several screens. <code>Enter</code> sends every shot together and <code>Esc</code> cancels. OCR runs server side, so text-only models can read the problem. What comes back is an optimal solution with the intuition, a dry run and the Big-O. Gemini is the recommended model for coding and LeetCode-style problems. The overlay is excluded from screen capture at the operating system level, so it is absent from Zoom, Teams, Meet, OBS and screenshots while staying visible on your own monitor. The <a href="/code-copilot/">Code Copilot page</a> covers the capture flow.</p>
+      <p>The part worth taking from any worked solution is rung 4, not the code. Read the intuition and the complexity, close it, then try to rebuild the bottleneck sentence from memory. If you can still say "the expensive part is rescanning the overlap" a week later, you own the pattern. If all you can reproduce is the deque code, you own nothing.</p>
+
+      <h2>When neither the ladder nor a tool will save the round</h2>
+      <p>Four limits, stated plainly.</p>
+      <ul>
+        <li><strong>The ladder converts a zero into a partial, not always into a pass.</strong> If you have never met the pattern, rung 3 may be your ceiling for that round. A stated brute force with correct complexity, clean code and a named bottleneck is a respectable partial, and on a demanding loop it can still be a no. Prepare so that the ladder is a recovery move rather than your primary strategy.</li>
+        <li><strong>Capture exclusion is not invisibility.</strong> It hides the overlay from screen sharing and screen recording. It does nothing about a webcam, a lockdown browser, a proctor watching you in person, eye tracking, or a second-device camera. If the round says no assistance, that setting is the answer, and the five sentences above are the only tool you should bring.</li>
+        <li><strong>A read-out solution has a tell.</strong> Correct code with no reasoning attached invites a follow-up question, and the follow-up is where it comes apart, because interviewers probe the parts you skipped. In a live human round, the ladder outperforms a pasted optimum.</li>
+        <li><strong>Platform and format limits.</strong> Windows 10 and 11 only. No macOS, no Linux, no mobile, no browser extension. In a whiteboard or in-person round there is nothing to screenshot and nothing to display, so the ladder is all you have. Metering counts listening time only, so the clock advances just while the copilot is receiving interviewer audio.</li>
+      </ul>
+
+      <h2>Drill the first ninety seconds, not the problems</h2>
+      <p>Under adrenaline you get motor memory, not judgement, so the sequence has to sit closer to a reflex than to a technique you recall. Take a problem you know you cannot solve, start a timer, and practise only the first ninety seconds: restate, hand-run, brute force with its Big-O, bottleneck, scoped question. Then stop. Do not solve it. You are training the recovery, not the solve. Somewhere around twenty repetitions the sentences start arriving on their own, which is exactly when you need them, because on the day the part of you that plans will be busy panicking. The <a href="/pricing/">free tier</a> is five minutes a day with no card, which is enough to check your rungs against a worked answer after each rep.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/how-much-prep-time-to-ask-recruiter-for/">How Much Prep Time to Ask a Recruiter For (and How to Ask)</a></li>
+        <li><a href="/guides/technical-phone-screen-30-minutes/">Technical Phone Screen: What to Expect in a 30-Minute Call</a></li>
+        <li><a href="/guides/pair-programming-interview/">Pair Programming Interview Tips: What to Expect in a Real Repo</a></li>
+        <li><a href="/guides/take-home-coding-assignment-time-limit/">How Long Should a Take-Home Coding Assignment Take? Time-Box It</a></li>
+        <li><a href="/guides/best-ai-model-for-leetcode-help/">Best AI Model for LeetCode Problems: Grok, DeepSeek, Gemini</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Stuck should cost you ninety seconds, not the round.</h2>
+      <p class="lede" style="margin:0 auto 8px">Practise the five rungs, then check your bottleneck against a worked solution.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/code-copilot/">See Code Copilot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

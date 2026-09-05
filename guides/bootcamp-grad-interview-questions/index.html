@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootcamp Grad Interview Questions: The 4 CS Grads Never Get</title>
+  <meta name="description" content="The four questions bootcamp grads get that CS grads do not, the full Big-O answer script for the hardest one, and a spoken drill that fits in five minutes a day.">
+  <meta name="keywords" content="bootcamp grad software engineer interview questions, bootcamp grad interview questions, why did you do a bootcamp interview answer, what have you built since bootcamp, explain time complexity in an interview, big o explanation interview answer, bootcamp vs cs degree interview, career changer software engineer interview, amortized vs average time complexity">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/bootcamp-grad-interview-questions/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Bootcamp Grad Interview Questions: The 4 CS Grads Never Get">
+  <meta property="og:description" content="The four questions bootcamp grads get that CS grads do not, the full Big-O answer script for the hardest one, and a spoken drill that fits in five minutes a day.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/bootcamp-grad-interview-questions/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-bootcamp-grad-interview-questions.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Bootcamp Grad Interview Questions: The 4 CS Grads Never Get">
+  <meta name="twitter:description" content="The four questions bootcamp grads get that CS grads do not, the full Big-O answer script for the hardest one, and a spoken drill that fits in five minutes a day.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-bootcamp-grad-interview-questions.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Bootcamp Grad Interview Questions: The 4 CS Grads Never Get","description":"The four questions bootcamp grads get that CS grads do not, the full Big-O answer script for the hardest one, and a spoken drill that fits in five minutes a day.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/bootcamp-grad-interview-questions/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Bootcamp Grad Interview Questions: The 4 CS Grads Never Get","url":"https://offerpilotai.ink/guides/bootcamp-grad-interview-questions/","mainEntity":[{"@type":"Question","name":"What interview questions do bootcamp grads get that CS grads do not?","acceptedAnswer":{"@type":"Answer","text":"Four recur. Why did you do the bootcamp, what have you built since it ended, explain a fundamental nobody formally taught you, and how do you learn something hard. A CS transcript answers the first, second and third by default, so those minutes get reallocated. The third is the one that ends loops, and it usually arrives as a complexity question about the code still on the screen."}},{"@type":"Question","name":"How do I explain time complexity at the depth a CS-degree interviewer expects?","acceptedAnswer":{"@type":"Answer","text":"Five moves, in order. Name the input variables before naming the bound, separate the dominant term from any amortized inner loop, say explicitly which case you are quoting, give space including the call stack and the output, and state the lower bound so the interviewer knows you checked whether a better answer exists. Saying only O of n scores about half the available points."}},{"@type":"Question","name":"What is the difference between amortized, average, worst case and expected complexity?","acceptedAnswer":{"@type":"Answer","text":"They average over different things. Worst case averages over nothing, no input beats it. Average case averages over a distribution of inputs. Amortized averages over a sequence of operations on one data structure, so a single call can still be slow. Expected averages over randomness inside your own algorithm, such as a randomized pivot or a randomized hash seed. Interviewers notice when you swap them."}},{"@type":"Question","name":"How should I answer why did you do a bootcamp?","acceptedAnswer":{"@type":"Answer","text":"Frame it as a decision with rejected alternatives, not as an escape. One sentence on what you did before and which part of it was already engineering adjacent, one on the trigger, one naming the options you weighed and why you rejected them, and one on what you would do differently. Never open with what you were tired of. The interviewer is sampling how you explain decisions."}},{"@type":"Question","name":"What should I say I have built since my bootcamp?","acceptedAnswer":{"@type":"Answer","text":"Not the capstone. The interviewer has seen many versions of it from the same cohort with the same stack. Talk about something built after the curriculum stopped assigning work: one project with a real user who is not you, one thing that broke in production and what you changed, and honest small numbers. Forty users and one database beats a vague claim about scale."}},{"@type":"Question","name":"Can I really practice complexity explanations in five minutes a day?","acceptedAnswer":{"@type":"Answer","text":"Yes, because the drill is not solving. Take a problem you already solved, name its variables aloud, say which case you are quoting, record one unbroken take of the five move answer, then mark the single move you skipped. That is five minutes. Rotate problem types across the week so you exercise amortized, expected, call stack space and two variable graph bounds."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Bootcamp Grad Interview Questions","item":"https://offerpilotai.ink/guides/bootcamp-grad-interview-questions/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Career changers and non-traditional backgrounds</p>
+      <h1 class="balance">The four software engineer interview questions bootcamp grads get that CS grads do not</h1>
+      <p class="meta">2026 &middot; ~9 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Four questions show up in bootcamp grad loops that CS grad loops mostly skip: why the bootcamp, what have you built since it ended, explain a fundamental nobody formally taught you, and how do you learn something hard. The third one ends the most interviews, and it almost never arrives with the word "fundamental" in it. It arrives as "nice, what's the time complexity?" about the code still on the screen. Below: what each question is really sampling, the full complexity answer written out at the depth a CS-degree interviewer expects, and a spoken drill sized to five minutes a day.</p>
+
+      <h2>Why these four exist at all</h2>
+      <p>A transcript is a set of assumptions an interviewer gets to make for free. Three or four years of coursework is an unstated claim that this person sat an algorithms course, a systems course and an operating systems course, and was graded on each by somebody who was not being paid by them. Nobody extends that credit to a fourteen week program. So the loop reallocates its minutes. Same forty five, different distribution: less time on culture fit, more time on prove the floor.</p>
+      <p>That is not a judgement about bootcamps. It is an information problem with a deadline. The interviewer has a gap and one conversation to close it. Your advantage is that the gap is predictable, which means these four should be the easiest part of your loop rather than the ambush they usually are.</p>
+
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>The question</th><th>What it is actually sampling</th><th>The answer that fails</th></tr></thead><tbody>
+        <tr><td>Why the bootcamp?</td><td>How you explain a decision, because your next career decision will be explained the same way</td><td>A grievance about the old job, or an apology for the new path</td></tr>
+        <tr><td>What have you built since?</td><td>Whether you write code when nobody assigns it</td><td>The capstone, which they have already seen from your cohort</td></tr>
+        <tr><td>Explain a fundamental nobody taught you</td><td>Whether the floor is real or memorised</td><td>"O of n, O of n space", four words, then silence</td></tr>
+        <tr><td>How do you learn something hard?</td><td>Whether you can onboard without a curriculum</td><td>"Tutorials, and then I build a project"</td></tr>
+      </tbody></table></div>
+
+      <h2>Question one: why the bootcamp?</h2>
+      <p>Answer it as a decision with rejected alternatives. Four sentences. One on what you did before and which part of it was already engineering adjacent, because there almost always is one: the spreadsheet you automated, the reports you scripted, the lab data you cleaned. One on the trigger, specific and dated. One naming the options you weighed and why you dropped them, part-time masters, self-teaching, staying and moving internally. One on what you would do differently, which is the sentence that proves you evaluated the choice afterwards instead of defending it.</p>
+      <p>Do not open with what you were tired of. The interviewer is not scoring your old employer, and a candidate who narrates a past job as a villain is forecasting how they will narrate this one. Say it once, past tense, then move to the decision.</p>
+
+      <h2>Question two: what have you built since?</h2>
+      <p>The trap is answering with the capstone. Capstones are a known quantity, and if the interviewer has hired from your program before, they have seen four of them with the same stack and the same seeded database. The interesting signal starts the day the curriculum stopped telling you what to build.</p>
+      <p>Bring one project with a real user who is not you, one thing that broke after it went live, and what you changed so it stopped breaking. Small honest numbers beat vague large ones: forty users, three thousand requests a day, one Postgres box, one incident where the free tier database went to sleep and you found out from a user rather than from an alert. That last detail is worth more than the feature list, because it is the only part of the story that could not have come from a tutorial. A merged open source pull request works too, especially if you can quote the review comment you got and what you changed because of it. Someone else's standards applied to your code is exactly the evidence this question is fishing for.</p>
+
+      <h2>Question three: the complexity of the code you just wrote</h2>
+      <p>This is the hard one, so here it is in full. It looks like a one line question and it is a five part question, and the CS grad answers all five parts unprompted because that is how their algorithms course graded them.</p>
+      <p>Take longest substring without repeating characters, solved with a sliding window and a map from character to last seen index. You have just typed it. The interviewer says: what is the complexity?</p>
+      <p>The bootcamp answer, which is not wrong, is "O(n) time, O(n) space." It is correct, and it scores about half the points on offer. Here is the same answer at the depth the question was asking for. Spoken, it runs about seventy seconds.</p>
+      <blockquote>Two variables matter here, n for the length of the string and k for the size of the alphabet. The right pointer advances n times. The left pointer also advances at most n times, but across the whole run rather than once per iteration, so that inner loop is amortised, not nested. Every character enters the window once and leaves at most once, so total pointer movement is bounded by 2n and the time is linear, O(n). The map operations are expected constant time rather than guaranteed constant, because a hash map degrades under collisions, so strictly this is O(n) expected. Space is O(min(n, k)), since the map never holds more entries than there are distinct characters. If we assume ASCII input, that is bounded at 128 and constant in n. And O(n) is optimal here, because you have to look at every character to know whether it repeats, so there is no sublinear solution worth hunting for.</blockquote>
+      <p>Five moves are doing the work in that paragraph, and they transfer to every problem you will ever be asked.</p>
+
+      <div class="steps" style="margin:22px 0">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Name the variables before you name the bound</h3><p>n is rarely the only one. Strings have an alphabet size, graphs have V and E, matrices have rows and columns, and a graph solution quoted as O(n) is marked wrong even when the code is right. This move alone separates two thirds of candidates.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Separate the dominant term from the amortised one</h3><p>A while loop inside a for loop is not automatically quadratic. Say why: the left pointer is monotone, it never moves backwards, so its total travel across the entire run is bounded by n. That one sentence tells the interviewer you derived the bound rather than recalled it.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Say which case you are quoting</h3><p>Worst, average, amortised or expected. Out loud, by name. Quoting a hash based solution as O(n) without the word expected is the most common half-point loss in the round, because it is the exact thing a data structures course drills.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Give space, including the call stack and the output</h3><p>A recursive in-place traversal is not O(1) space. It costs O(h) for the stack, where h is the height, so O(log n) on a balanced tree and O(n) on a degenerate skewed one. Name the height, then name what makes it degenerate. If you allocate the answer, say whether you are counting the output.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>State the lower bound</h3><p>Finish with whether a better answer could exist. "You must read every character, so linear is optimal", or "comparison sorting cannot beat n log n, so this is as good as it gets without exploiting the value range." Almost nobody volunteers this, and it reads as coursework in the best way.</p></div></div>
+      </div>
+
+      <h3>The four words people use interchangeably, and interviewers do not</h3>
+      <p>This is the vocabulary gap in one table. Learn the fourth column as literal sentences.</p>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Term</th><th>What it averages over</th><th>Canonical example</th><th>The sentence that proves you know it</th></tr></thead><tbody>
+        <tr><td><code>Worst case</code></td><td>Nothing. No input does worse.</td><td>Quicksort with an adversarial pivot is O(n^2)</td><td>"This bound holds whatever input you hand me."</td></tr>
+        <tr><td><code>Average case</code></td><td>A distribution over inputs</td><td>Quicksort on uniformly random input is O(n log n)</td><td>"That assumes an input distribution, and I am assuming random order."</td></tr>
+        <tr><td><code>Amortised</code></td><td>A sequence of operations on one structure</td><td>Dynamic array append: amortised O(1), worst case O(n) on the resize</td><td>"Any single call can be slow, but n calls together still cost O(n)."</td></tr>
+        <tr><td><code>Expected</code></td><td>Randomness inside your algorithm, not in the input</td><td>Randomised quicksort, or a map with a randomised hash seed</td><td>"The randomness is mine, so an adversary cannot pick a bad input."</td></tr>
+      </tbody></table></div>
+
+      <h3>The same problem three ways, and what each line earns</h3>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Approach</th><th>Time</th><th>Space</th><th>The line that earns the point</th></tr></thead><tbody>
+        <tr><td>Every substring, rescan each one for duplicates</td><td>O(n^3)</td><td>O(min(n, k))</td><td>"Three costs stacked: two for the substring bounds, one for the duplicate check."</td></tr>
+        <tr><td>Every substring, build a set incrementally</td><td>O(n^2)</td><td>O(min(n, k))</td><td>"The set removes the inner scan, but both bounds still move independently."</td></tr>
+        <tr><td>Sliding window, map of last seen index</td><td>O(n) expected</td><td>O(min(n, k))</td><td>"The left pointer is monotone, which is where the extra factor of n goes."</td></tr>
+      </tbody></table></div>
+
+      <p>Then come the probes, and they are predictable. If the alphabet were arbitrary Unicode rather than ASCII, k stops being a constant and the space really is O(n). If every key collided, map operations degrade, to O(n) per operation in a simple chained implementation, and to O(log n) per bucket in implementations that convert oversized buckets into a tree, which is why "expected" was the correct word. Yes, you can do it in O(1) space for a fixed alphabet using a 128 element array, and you should add that this is the same bound restated rather than a new result. If they ask why the array version benchmarks faster than the map version when both are linear, the answer is constant factors and cache locality, which complexity classes deliberately discard and profilers do not. To mark your own spoken walk against a reference, <a href="/code-copilot/">Code Copilot</a> returns an optimal solution with the intuition, a dry run and the Big-O for a problem you screenshot, which is useful as an answer key while you drill.</p>
+
+      <h2>Question four: how do you learn something hard?</h2>
+      <p>"Tutorials, then I build a project" is a description of a bootcamp, which is the thing they are already worried about. The shape that works names one specific hard thing, your entry point into it (the docs, the source, a failing test you wrote purely to find out what happens), the exact place you got stuck, how you got unstuck, and how you knew you had it. That last part is the whole answer. The strongest version anyone gives is some form of "I knew I understood it when I could predict what the code would do before running it, and I was right." Prediction is the test. Say the test out loud, because it is the part that cannot be faked.</p>
+
+      <h2>The five minute daily drill</h2>
+      <p>Five minutes buys exactly one repetition of one thing, so the plan below is one thing a day and it is not solving. Solving is a separate hour. This is the spoken layer, which is the layer being graded in question three and the layer nobody practises, because saying an answer you already know feels like it does not count.</p>
+      <div class="steps" style="margin:22px 0">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>0:00 to 1:00, name the variables</h3><p>Open a problem you already solved this week and re-derive nothing. Read your own solution once, then say aloud what every input variable is and what it measures. This is the minute where you find the second variable you had not noticed.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>1:00 to 2:00, name the case</h3><p>Say "worst", "average", "amortised" or "expected" out loud, and justify the pick in one sentence. If you cannot choose confidently, you have found today's gap and the drill has already paid for itself.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>2:00 to 3:30, one unbroken take</h3><p>Record the full five move answer on your phone in a single take. No restarts, no notes. One take matters because a live interview is one take, and the usual failure is not ignorance, it is starting the same sentence three times.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>3:30 to 4:30, mark the missing move</h3><p>Play it back and find the one move you skipped. It is almost always the lower bound or the call stack. Do not re-record. Just identify the omission.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>4:30 to 5:00, write the missing sentence</h3><p>One line in a note. Tomorrow, on a different problem, you say that sentence first. Five days of this and the missing move becomes a reflex instead of a checklist item.</p></div></div>
+      </div>
+      <p>Rotate the problem type across the week so you exercise the vocabulary instead of reciting one bound. Monday a sliding window or two pointer, for amortised. Tuesday something sort based, so you have to explain why the n log n swallows the linear pass. Wednesday a recursive tree traversal, for call stack space. Thursday anything hash based, for expected. Friday a graph traversal, where O(V + E) is the answer and O(n) is a wrong answer. Twenty five minutes for the week. It also happens to fit the free plan of <a href="/interview-copilot/#generator">OfferPilot AI</a>, which is five minutes a day with no card required and meters only while audio is actually being received.</p>
+
+      <h2>Where this stops working, honestly</h2>
+      <p>A script does not close a real gap. If you have never written code that manages its own memory, no phrasing survives a question about what happens when a slice outgrows its capacity, and the interviewer will find that edge within two follow-ups. The drill above makes you fluent about what you already know. It does not manufacture knowledge. If question three keeps ending your loops even when you deliver all five moves, the fix is three weeks with an actual algorithms textbook chapter and a pencil, not three more weeks of polishing delivery.</p>
+      <p>Some interviewers ask question one in bad faith, having already decided what a bootcamp means. You cannot script your way through that one. Answer once, cleanly, and do not defend it a second time.</p>
+      <p>And a plain word on tooling, since this page is published by a vendor. OfferPilot AI runs on Windows 10 and 11 only, with no macOS, Linux, mobile or browser version. The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet or a recording, but that does nothing about a webcam watching your face, a lockdown browser, an interviewer sitting across the table, or a phone camera pointed at your desk. More to the point for this page: question three is the wrong question to answer live. A complexity walk read off a screen sounds read, and the interviewer's "why?" lands within ten seconds, which is where the real question always was. Use it while you drill and while you build the answer. Do not plan to lean on it for the sentence that decides the round.</p>
+
+      <p>Four questions, and only one of them is hard. Write the decision for question one, find the post-curriculum project for question two, drill the five moves for question three, and name your prediction test for question four. That is a week of preparation covering the part of the loop that exists specifically because of your background.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/explain-career-change-software-interview/">Answering Why Are You Switching to Software: Three Scripts</a></li>
+        <li><a href="/guides/conflict-with-a-coworker-interview-answer/">Tell Me About a Time You Had a Conflict With a Coworker</a></li>
+        <li><a href="/guides/hirevue-interview-format/">HireVue Interview Format: What to Expect, Question by Question</a></li>
+        <li><a href="/guides/technical-phone-screen-30-minutes/">Technical Phone Screen: What to Expect in a 30-Minute Call</a></li>
+        <li><a href="/guides/threat-modeling-interview-question/">Threat Modeling Interview Question: STRIDE on a Real System</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Drill against the questions your target company actually asks.</h2>
+      <p class="lede" style="margin:0 auto 8px">Generate a question bank for a specific company and role from your own resume, then rehearse the complexity walk until it is one take.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate your question bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

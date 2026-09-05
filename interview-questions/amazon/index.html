@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amazon Software Development Engineer (SDE I/II) Interview Questions and Answers (2026)</title>
+  <meta name="description" content="11 real Amazon Software Development Engineer (SDE I/II) interview questions with model answers, covering opening, lp, customer obsession, lp, ownership, lp, dive deep.">
+  <meta name="keywords" content="Amazon interview questions, Amazon Software Development Engineer (SDE I/II) interview, Amazon interview questions and answers, Amazon behavioral interview questions, Amazon technical interview prep">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/interview-questions/amazon/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Amazon Software Development Engineer (SDE I/II) Interview Questions and Answers (2026)">
+  <meta property="og:description" content="11 real Amazon Software Development Engineer (SDE I/II) interview questions with model answers, covering opening, lp, customer obsession, lp, ownership, lp, dive deep.">
+  <meta property="og:url" content="https://offerpilotai.ink/interview-questions/amazon/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/interview-questions-amazon.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Amazon Software Development Engineer (SDE I/II) Interview Questions and Answers (2026)">
+  <meta name="twitter:description" content="11 real Amazon Software Development Engineer (SDE I/II) interview questions with model answers, covering opening, lp, customer obsession, lp, ownership, lp, dive deep.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/interview-questions-amazon.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Amazon Software Development Engineer (SDE I/II) Interview Questions and Answers","url":"https://offerpilotai.ink/interview-questions/amazon/","mainEntity":[{"@type":"Question","name":"Tell me about yourself.","acceptedAnswer":{"@type":"Answer","text":"Give a tight 60-second arc: your background, the kind of systems you have owned, and one flagship project you drove end to end with a measurable outcome. Remember Amazon runs a dual bar, the coding screen and the Leadership Principles, so frame yourself around ownership and customer impact and come armed with STAR stories whose numbers you can defend. Close with a specific reason this team excites you, ideally the ownership culture of diving deep into your own systems rather than throwing work over the wall."}},{"@type":"Question","name":"Tell me about a time you went above and beyond for a customer.","acceptedAnswer":{"@type":"Answer","text":"Use STAR and pick a story where you chose the customer's actual experience over a green dashboard. Set the situation, state that you owned the fix, then describe the concrete action, reproducing the real conditions, tracing sessions, moving a slow dependency off the critical path, and land a measurable result like a p99 or completion-rate improvement. End on the principle that the customer lives at the tail, not the average, which signals genuine Customer Obsession."}},{"@type":"Question","name":"Tell me about a time you took on something outside your job responsibilities.","acceptedAnswer":{"@type":"Answer","text":"Choose an example of work nobody assigned you that improved the long-term health of the system, like fixing a stale runbook, adding dashboards, or automating a painful remediation. Walk STAR: the recurring pain, your decision to own it because you felt the impact, the actions you took, and a result such as faster mean-time-to-recovery or new teammates onboarding smoothly. Define ownership as caring about the system beyond your ticket, which is exactly what Amazon means by the principle."}},{"@type":"Question","name":"Tell me about a time you had to dig deep to find the root cause of a problem.","acceptedAnswer":{"@type":"Answer","text":"Pick a bug that only appeared under real conditions and where you refused to paper over it with a retry. Show the mechanism you uncovered, add structured logging, correlate with metrics like connection-pool exhaustion, trace it to a concrete cause such as a missing index, and give the measured result. Close by saying you are not satisfied until you can explain the mechanism, not just the symptom, which is the heart of Dive Deep."}},{"@type":"Question","name":"Tell me about a time you made a decision quickly with incomplete information.","acceptedAnswer":{"@type":"Answer","text":"Frame it around reversible versus irreversible decisions. Describe a live incident where you made the cheap, safe, reversible call first, like a rollback to stop customer impact, then investigated calmly once things were stable. Give the result in minutes-of-impact avoided and close with your rule: reversible decisions you make fast and correct later, only one-way doors deserve heavy deliberation."}},{"@type":"Question","name":"Tell me about a time you delivered a project under a tight deadline.","acceptedAnswer":{"@type":"Answer","text":"Choose a hard, immovable deadline and show how you protected the critical path. Separate must-have from nice-to-have, negotiate the nice-to-haves into a fast-follow, set clear checkpoints, and flag risk to stakeholders early and honestly rather than promising everything and slipping. Land the result, hitting the date with the essential scope, and close on ruthlessly protecting the critical path and being honest about trade-offs."}},{"@type":"Question","name":"Two Sum, return indices of two numbers that add to a target.","acceptedAnswer":{"@type":"Answer","text":"Start by confirming constraints out loud, exactly one solution and no reusing an element, then state the brute-force O(n^2) baseline before optimizing. Reach for a single-pass hash map from value to index, checking for the complement as you go, and state that it is O(n) time and O(n) space. Dry-run a small example like [2,7,11,15] target 9 to show the complement lookup returning the right indices."}},{"@type":"Question","name":"Merge two sorted linked lists into one sorted list.","acceptedAnswer":{"@type":"Answer","text":"Explain the dummy-head and tail-pointer pattern up front, since it removes the special cases around an empty result. Walk both lists attaching the smaller current node and advancing that list, then attach the remainder once one runs out because it is already sorted. State the complexity, O(n + m) time and O(1) extra space, and mention you splice existing nodes rather than allocating new ones."}},{"@type":"Question","name":"Find the length of the longest substring without repeating characters.","acceptedAnswer":{"@type":"Answer","text":"Identify it as a sliding window and describe expanding the right edge while tracking each character's last index. When you hit a repeat inside the window, jump the left edge just past the previous position instead of shrinking one step at a time, and track the max length as you go. Close with the complexity, O(n) time since each character is processed at most twice, and O(k) space bounded by the alphabet."}},{"@type":"Question","name":"Tell me about a time you disagreed with your manager or a decision.","acceptedAnswer":{"@type":"Answer","text":"This maps directly to Have Backbone; Disagree and Commit, so structure it that way. Show that you raised the concern with evidence, a one-pager or a concrete failure scenario plus a modest alternative, made the case once clearly, then committed fully once the decision went another way. Land a result that vindicates the process, like scheduling the refactor as a smooth fast-follow, and state the principle: voice the concern with data, then commit wholeheartedly."}},{"@type":"Question","name":"Do you have any questions for us?","acceptedAnswer":{"@type":"Answer","text":"Ask questions that probe the real operating culture rather than the poster. Good ones: which Leadership Principle this team leans on most and where the principles tension against each other, how they apply the two-way versus one-way door framing to real decisions, and what a successful first six months looks like for an SDE here. This signals you care about how the team actually works, not just the slogans."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Interview questions","item":"https://offerpilotai.ink/interview-questions/"},{"@type":"ListItem","position":3,"name":"Amazon","item":"https://offerpilotai.ink/interview-questions/amazon/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/interview-questions/" style="color:var(--muted-2)">Interview questions</a> · Big Tech / Cloud</p>
+      <h1 class="balance">Amazon Software Development Engineer (SDE I/II) Interview Questions and Answers</h1>
+      <p class="meta">11 questions with model answers · Stack: Java,Python,AWS,Distributed Systems,Data Structures,Algorithms</p>
+    </div>
+    <article class="prose reveal">
+      <p class="lede">These are the questions a Amazon loop for a Software Development Engineer (SDE I/II) actually asks, each with an answer you can adapt and say out loud. Rehearse them first, then run <a href="/download/">OfferPilot AI</a> live in the interview so the copilot hears the question and drafts your answer in real time.</p>
+      <h2>Opening</h2>
+      <h3>Tell me about yourself.</h3>
+      <p>Give a tight 60-second arc: your background, the kind of systems you have owned, and one flagship project you drove end to end with a measurable outcome. Remember Amazon runs a dual bar, the coding screen and the Leadership Principles, so frame yourself around ownership and customer impact and come armed with STAR stories whose numbers you can defend. Close with a specific reason this team excites you, ideally the ownership culture of diving deep into your own systems rather than throwing work over the wall.</p>
+      <h2>LP, Customer Obsession</h2>
+      <h3>Tell me about a time you went above and beyond for a customer.</h3>
+      <p>Use STAR and pick a story where you chose the customer's actual experience over a green dashboard. Set the situation, state that you owned the fix, then describe the concrete action, reproducing the real conditions, tracing sessions, moving a slow dependency off the critical path, and land a measurable result like a p99 or completion-rate improvement. End on the principle that the customer lives at the tail, not the average, which signals genuine Customer Obsession.</p>
+      <h2>LP, Ownership</h2>
+      <h3>Tell me about a time you took on something outside your job responsibilities.</h3>
+      <p>Choose an example of work nobody assigned you that improved the long-term health of the system, like fixing a stale runbook, adding dashboards, or automating a painful remediation. Walk STAR: the recurring pain, your decision to own it because you felt the impact, the actions you took, and a result such as faster mean-time-to-recovery or new teammates onboarding smoothly. Define ownership as caring about the system beyond your ticket, which is exactly what Amazon means by the principle.</p>
+      <h2>LP, Dive Deep</h2>
+      <h3>Tell me about a time you had to dig deep to find the root cause of a problem.</h3>
+      <p>Pick a bug that only appeared under real conditions and where you refused to paper over it with a retry. Show the mechanism you uncovered, add structured logging, correlate with metrics like connection-pool exhaustion, trace it to a concrete cause such as a missing index, and give the measured result. Close by saying you are not satisfied until you can explain the mechanism, not just the symptom, which is the heart of Dive Deep.</p>
+      <h2>LP, Bias for Action</h2>
+      <h3>Tell me about a time you made a decision quickly with incomplete information.</h3>
+      <p>Frame it around reversible versus irreversible decisions. Describe a live incident where you made the cheap, safe, reversible call first, like a rollback to stop customer impact, then investigated calmly once things were stable. Give the result in minutes-of-impact avoided and close with your rule: reversible decisions you make fast and correct later, only one-way doors deserve heavy deliberation.</p>
+      <h2>LP, Deliver Results</h2>
+      <h3>Tell me about a time you delivered a project under a tight deadline.</h3>
+      <p>Choose a hard, immovable deadline and show how you protected the critical path. Separate must-have from nice-to-have, negotiate the nice-to-haves into a fast-follow, set clear checkpoints, and flag risk to stakeholders early and honestly rather than promising everything and slipping. Land the result, hitting the date with the essential scope, and close on ruthlessly protecting the critical path and being honest about trade-offs.</p>
+      <h2>Coding</h2>
+      <h3>Two Sum, return indices of two numbers that add to a target.</h3>
+      <p>Start by confirming constraints out loud, exactly one solution and no reusing an element, then state the brute-force O(n^2) baseline before optimizing. Reach for a single-pass hash map from value to index, checking for the complement as you go, and state that it is O(n) time and O(n) space. Dry-run a small example like [2,7,11,15] target 9 to show the complement lookup returning the right indices.</p>
+      <h3>Merge two sorted linked lists into one sorted list.</h3>
+      <p>Explain the dummy-head and tail-pointer pattern up front, since it removes the special cases around an empty result. Walk both lists attaching the smaller current node and advancing that list, then attach the remainder once one runs out because it is already sorted. State the complexity, O(n + m) time and O(1) extra space, and mention you splice existing nodes rather than allocating new ones.</p>
+      <h3>Find the length of the longest substring without repeating characters.</h3>
+      <p>Identify it as a sliding window and describe expanding the right edge while tracking each character's last index. When you hit a repeat inside the window, jump the left edge just past the previous position instead of shrinking one step at a time, and track the max length as you go. Close with the complexity, O(n) time since each character is processed at most twice, and O(k) space bounded by the alphabet.</p>
+      <h2>Behavioral</h2>
+      <h3>Tell me about a time you disagreed with your manager or a decision.</h3>
+      <p>This maps directly to Have Backbone; Disagree and Commit, so structure it that way. Show that you raised the concern with evidence, a one-pager or a concrete failure scenario plus a modest alternative, made the case once clearly, then committed fully once the decision went another way. Land a result that vindicates the process, like scheduling the refactor as a smooth fast-follow, and state the principle: voice the concern with data, then commit wholeheartedly.</p>
+      <h2>Closing</h2>
+      <h3>Do you have any questions for us?</h3>
+      <p>Ask questions that probe the real operating culture rather than the poster. Good ones: which Leadership Principle this team leans on most and where the principles tension against each other, how they apply the two-way versus one-way door framing to real decisions, and what a successful first six months looks like for an SDE here. This signals you care about how the team actually works, not just the slogans.</p>
+      <h2>Answer these live, not just in practice</h2>
+      <p>Preparation gets you the shape of an answer. In the room, the follow-up you did not rehearse is what decides the loop. OfferPilot AI listens to the interviewer, transcribes on-device, and drafts a speakable answer grounded in your own résumé, while staying off the screen-share stream. <a href="/download/">Download it free</a> and get 5 minutes a day, or see <a href="/pricing/">plans</a>.</p>
+    </article>
+  </div>
+</section>
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

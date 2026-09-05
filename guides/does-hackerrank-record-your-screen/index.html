@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does HackerRank Record Your Screen? What Each Test Mode Captures</title>
+  <meta name="description" content="HackerRank records your screen only when the employer turns it on, and your browser must ask first. Here is what each test mode sends to the recruiter.">
+  <meta name="keywords" content="does hackerrank record your screen, is hackerrank proctored, hackerrank webcam, hackerrank screen recording, hackerrank tab switch detection, hackerrank code playback, hackerrank codepair recording, hackerrank proctoring settings">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/does-hackerrank-record-your-screen/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does HackerRank Record Your Screen? What Each Test Mode Captures">
+  <meta property="og:description" content="HackerRank records your screen only when the employer turns it on, and your browser must ask first. Here is what each test mode sends to the recruiter.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/does-hackerrank-record-your-screen/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-does-hackerrank-record-your-screen.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does HackerRank Record Your Screen? What Each Test Mode Captures">
+  <meta name="twitter:description" content="HackerRank records your screen only when the employer turns it on, and your browser must ask first. Here is what each test mode sends to the recruiter.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-does-hackerrank-record-your-screen.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does HackerRank Record Your Screen? What Each Test Mode Captures","description":"HackerRank records your screen only when the employer turns it on, and your browser must ask first. Here is what each test mode sends to the recruiter.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/does-hackerrank-record-your-screen/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does HackerRank Record Your Screen? What Each Test Mode Captures","url":"https://offerpilotai.ink/guides/does-hackerrank-record-your-screen/","mainEntity":[{"@type":"Question","name":"Does HackerRank record your screen?","acceptedAnswer":{"@type":"Answer","text":"Only when the employer enables screen capture for that specific test. A HackerRank assessment runs in a normal browser tab, so any screen recording has to go through the browser's own share picker, which asks you to choose a screen or window and then shows a sharing indicator. If you were never shown that picker, no pixels of your screen were captured, though other signals still were."}},{"@type":"Question","name":"Can HackerRank see my other browser tabs?","acceptedAnswer":{"@type":"Answer","text":"No. HackerRank cannot read the contents of your other tabs. What many tests do record is that you left the test window: focus tracking logs each time the tab loses focus or you exit full screen, and the recruiter's report shows a count and a timeline of those events. It knows you switched away, not what you switched to."}},{"@type":"Question","name":"Does HackerRank take webcam photos during a test?","acceptedAnswer":{"@type":"Answer","text":"It does when the employer has switched on image proctoring. You will get a browser camera permission prompt before the test starts and your camera indicator light stays on. The report then carries a strip of still images of you taken at intervals during the test, plus a flag if the camera was blocked or no face was visible in a snapshot."}},{"@type":"Question","name":"How do I know whether my HackerRank test is proctored?","acceptedAnswer":{"@type":"Answer","text":"Open the link early and read the instructions page before pressing Start. It states the duration, the question count and any camera or full-screen requirement. Then count the permission prompts: a camera dialog means webcam stills, a share picker means screen capture, neither means neither. You can also click the padlock in the address bar mid-test to see which permissions the page currently holds."}},{"@type":"Question","name":"What is code playback on HackerRank?","acceptedAnswer":{"@type":"Answer","text":"Code playback is a timeline of how your code arrived in the editor, which the reviewer can scrub through after the test. Code typed line by line, with fixes and renames, looks different from forty lines appearing in one event. It needs no camera and no screen recording, and on most coding assessments it is the most revealing artifact in the report."}},{"@type":"Question","name":"Is a HackerRank CodePair session recorded?","acceptedAnswer":{"@type":"Answer","text":"CodePair is a live interview in a shared editor, so a human is watching in real time and the session itself can be played back afterwards, including what was typed and when. If the interviewer also runs a video call, whether that call is recorded depends on the meeting tool and their choice. Nothing needs to be inferred from proctoring signals in this mode."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Does HackerRank Record Your Screen?","item":"https://offerpilotai.ink/guides/does-hackerrank-record-your-screen/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Does HackerRank record your screen, and what reaches the recruiter?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Usually not. A standard HackerRank coding test runs in an ordinary browser tab and captures no pixels of your screen at all. Screen recording happens only when the employer switches it on for that specific test, and when it is on, your browser has to ask you first with its own "Choose what to share" dialog, which is impossible to miss. Webcam snapshots work the same way and need a camera permission you actively grant. What almost every test does record, with no permission needed, is how your code arrived in the editor and how often you left the window.</p>
+
+      <h2>Why a browser tab cannot record you quietly</h2>
+      <p>A HackerRank assessment is a web page. In the standard product there is no installed agent, no kernel driver and no lockdown browser, so everything the platform observes arrives through APIs your browser controls. Two of those APIs are gated behind prompts the browser draws itself, and a website cannot suppress, restyle or auto-accept them.</p>
+      <ul>
+        <li><strong>Camera.</strong> Requesting it shows a permission dialog, and on virtually every laptop the indicator light stays on while the stream is open.</li>
+        <li><strong>Screen capture.</strong> This goes through the browser's own picker, the one listing Entire Screen, Window and Tab. Chrome and Edge then keep a visible sharing indicator up while the stream runs.</li>
+        <li><strong>Everything else.</strong> Tab switches, full-screen exits, paste events, keystrokes inside the editor and time per question need no permission whatsoever. This is the part candidates consistently underestimate.</li>
+      </ul>
+      <p>So the accurate answer is: not unless a share picker appeared and you clicked through it. A test with no camera and no capture is still building a detailed record of how you worked.</p>
+
+      <h2>Mode by mode: the exact artifact that lands in the report</h2>
+      <p>These are per-test settings the employer chooses in HackerRank for Work, and some depend on their plan. No single answer covers every HackerRank link you are sent, so the table below is a decoder rather than a verdict. Match your test to a row using the prompts you saw.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Test mode</th><th>What you see before or during the test</th><th>Artifact the recruiter gets</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard coding test, no proctoring options enabled</td>
+              <td>No camera dialog, no share picker. Just the instructions page and a Start button.</td>
+              <td>Score and per test case results, your submitted code, compile and submission history, time spent per question, and code playback. No image of your screen or your face.</td>
+            </tr>
+            <tr>
+              <td>Employer-enabled focus proctoring, the most common add-on</td>
+              <td>No permission prompt at all. The test may push the tab into full screen and warn you when you leave it.</td>
+              <td>A count and timeline of tab-outs and full-screen exits, plus copy-paste flags and plagiarism or similarity checks where those are switched on. Events and counters, not pictures.</td>
+            </tr>
+            <tr>
+              <td>Webcam snapshot proctoring</td>
+              <td>A browser camera permission dialog before the test begins, then the camera indicator light stays on throughout.</td>
+              <td>A strip of still images of your face captured at intervals through the test, attached to the report, plus a flag where the camera was blocked or no face was detected.</td>
+            </tr>
+            <tr>
+              <td>Screen capture proctoring, where the employer's plan offers it and they turn it on</td>
+              <td>The browser's "Choose what to share" picker, usually requiring you to select the whole screen, then a persistent sharing indicator.</td>
+              <td>Periodic screenshots of the surface you shared, or a recording of it, depending on the setting. This is the only mode that literally records your screen.</td>
+            </tr>
+            <tr>
+              <td>CodePair, the live interview mode</td>
+              <td>A shared editor with a real person in it, usually alongside a video call from whichever meeting tool they use.</td>
+              <td>Playback of the shared editor session including what was typed and when, plus the call recording if the interviewer chose to record. Nothing has to be inferred, someone watched it happen.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>If two answers you found online flatly contradict each other, this table is why. One person had rows one and two, another had row four, and both called it "a HackerRank test".</p>
+
+      <h2>How to work out which mode you were sent</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Read the invite email for requirements, not for reassurance</h3>
+            <p>Look for a line about a working webcam, a stable connection or a recent version of Chrome. Its presence is a strong hint that proctoring is on. Its absence proves very little, because invite text is templated and the recruiter may never have edited it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Open the link early and read the instructions page</h3>
+            <p>The pre-test page is the honest inventory: duration, question count, whether full screen is enforced, whether a camera is required. Check whether the timer starts on opening the link or on Start, and do not press Start until you have read it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Count the permission prompts</h3>
+            <p>One camera dialog means stills of you. A share picker means screen capture. Neither means neither. This is enforced by the browser rather than promised by the platform, so it is the most reliable signal available to you.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Click the padlock mid-test</h3>
+            <p>The site information icon in the address bar lists every permission the page currently holds: camera, microphone, screen. It reports the live state rather than what you think you agreed to earlier, and it costs two seconds to check.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Ask the recruiter in writing</h3>
+            <p>"Is this assessment proctored, and is anything recorded?" is a normal question recruiters field constantly. Having the answer in writing also helps if an automated flag is raised later and you have to explain a false positive.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The artifact nobody worries about: code playback</h2>
+      <p>If you take one thing from this page, take this. On most coding assessments the most revealing item in the report is not a webcam still or a screen recording, it is playback. HackerRank keeps a timeline of how code entered the editor and lets the reviewer scrub through it.</p>
+      <p>Code written line by line, with a typo corrected here and a variable renamed there, looks like a person thinking. Forty lines that appear in a single event look like a paste, and no camera was needed to establish that. Copy-paste counters and similarity checks against previously submitted solutions sit in the same report, a couple of clicks away.</p>
+      <p>Candidates who fret about the webcam and then paste a block of code have the threat model backwards. If you work from notes during an assessment that permits it, retyping is not cosmetic. It is what the record shows.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool for this</h2>
+      <p>Our overlay is excluded from screen capture at the operating system level, so it does not appear in a browser screen-share stream, a Zoom or Teams share, a recording, or a screenshot. That is a real property, and a narrow one. It settles exactly one row of the table above and none of the others.</p>
+      <ul>
+        <li><strong>It is not hidden from a webcam.</strong> A snapshot captures your face and your eyeline, and someone reading from another part of the screen looks like someone reading.</li>
+        <li><strong>It does nothing about code playback.</strong> If a solution lands in the editor faster than a human types, the timeline shows that whether or not anything was recorded.</li>
+        <li><strong>It does not defeat a lockdown browser, a live proctor, eye tracking, or a phone camera pointed at your desk.</strong> Those are separate systems, and capture exclusion has no bearing on any of them.</li>
+        <li><strong>It is Windows 10 and 11 only.</strong> On a Mac the question does not even arise.</li>
+      </ul>
+      <p>The plain version: if an employer has told you an assessment is proctored and unassisted, that is a round to sit unassisted. Where these tools genuinely earn their keep is before the invite lands. <a href="/code-copilot/">Code Copilot</a> is built for working through problems on your own machine, Ctrl+Alt+S captures a problem that spans several scrolls and returns an optimal solution with the intuition, a dry run and the Big-O, which is practice rather than assistance during someone else's exam. The <a href="/interview-copilot/#generator">company Q&amp;A generator</a> does the same job for the conversation that follows the test. The <a href="/pricing/">free tier</a> is enough to see how the capture behaviour works on your own machine before you form a view about it.</p>
+
+      <h2>The short version</h2>
+      <p>HackerRank has no single recording policy, it has a settings panel each employer fills in differently. Screen recording and webcam stills are opt-in, and both are announced by your browser. Focus tracking, timing data and code playback are effectively always on and announced by nobody. Two minutes on the instructions page will tell you more about your link than any article can.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/what-interviewers-see-on-coderpad/">Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank</a></li>
+        <li><a href="/guides/codility-tab-switching-and-paste-detection/">Does Codility Track Tab Switching and Paste? What It Logs</a></li>
+        <li><a href="/guides/is-codesignal-proctored/">Is CodeSignal Proctored? Camera, ID, Screen and Tab Rules</a></li>
+        <li><a href="/guides/hackerrank-tab-switching-detection/">Does HackerRank Detect Tab Switching? What the Flag Records</a></li>
+        <li><a href="/guides/coderpad-what-the-interviewer-sees/">Does CoderPad Detect Tab Switching? What the Interviewer Sees</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Do the practice before the invite arrives.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card. Work through real problems on your own machine so the assessment is the easy part.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/code-copilot/">How Code Copilot works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

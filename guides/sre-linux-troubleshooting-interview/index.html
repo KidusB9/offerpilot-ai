@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SRE Interview Linux Troubleshooting: Triage Order to Narrate</title>
+  <meta name="description" content="The shared-terminal SRE debug round in order: load, memory, disk I/O, network, logs, the exact command at each step, and the sentence to say out loud.">
+  <meta name="keywords" content="sre interview linux troubleshooting questions, sre live debug round, broken box interview linux, linux troubleshooting interview commands, sre interview high load average, iostat iotop interview, proc filesystem troubleshooting, site reliability engineer interview questions linux">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/sre-linux-troubleshooting-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="SRE Interview Linux Troubleshooting: Triage Order to Narrate">
+  <meta property="og:description" content="The shared-terminal SRE debug round in order: load, memory, disk I/O, network, logs, the exact command at each step, and the sentence to say out loud.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/sre-linux-troubleshooting-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-sre-linux-troubleshooting-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="SRE Interview Linux Troubleshooting: Triage Order to Narrate">
+  <meta name="twitter:description" content="The shared-terminal SRE debug round in order: load, memory, disk I/O, network, logs, the exact command at each step, and the sentence to say out loud.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-sre-linux-troubleshooting-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SRE Interview Linux Troubleshooting: Triage Order to Narrate","description":"The shared-terminal SRE debug round in order: load, memory, disk I/O, network, logs, the exact command at each step, and the sentence to say out loud.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/sre-linux-troubleshooting-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"SRE Interview Linux Troubleshooting: Triage Order to Narrate","url":"https://offerpilotai.ink/guides/sre-linux-troubleshooting-interview/","mainEntity":[{"@type":"Question","name":"In what order should you troubleshoot a Linux box in an SRE interview?","acceptedAnswer":{"@type":"Answer","text":"Work a fixed order and say it out loud before you start: orientation, then load, memory, disk I/O, network, and logs last. Orientation is uptime, uname and dmesg. Each later step either accuses a subsystem or clears it. Logs come last because they confirm a timeline you have already narrowed, and opening them first is the most common way candidates lose forty minutes."}},{"@type":"Question","name":"What do you do if the interview box has no iostat, iotop or sar installed?","acceptedAnswer":{"@type":"Answer","text":"Read /proc directly and say that is what you are doing. /proc/loadavg replaces uptime, /proc/meminfo gives MemAvailable, and /proc/diskstats gives per-device counters where the twelfth and thirteenth columns are I/Os in flight and milliseconds spent doing I/O. On kernel 4.20 and later, /proc/pressure/cpu, memory and io give stall percentages directly. Per process, /proc/PID/io, /proc/PID/limits and /proc/PID/wchan cover most of what pidstat would tell you."}},{"@type":"Question","name":"Why is Linux load average high when the CPU is idle?","acceptedAnswer":{"@type":"Answer","text":"Linux load average counts processes in uninterruptible sleep, state D, as well as runnable ones. A box waiting on a slow disk or a hung NFS mount can show a load of 40 with 95 percent idle CPU. Confirm it with the b column in vmstat, or with ps -eo state,pid,wchan,cmd filtered to D state, where the wchan value names the kernel function each process is stuck in."}},{"@type":"Question","name":"df says the disk is full but du does not. What is going on?","acceptedAnswer":{"@type":"Answer","text":"Almost always a deleted file still held open by a running process. Unlinking a log does not free the blocks until the last file descriptor closes, so du cannot see it and df still counts it. Find it with lsof +L1, or with ls -l /proc/*/fd filtered for deleted. Truncate the descriptor with a redirect into /proc/PID/fd/N, or restart the process. The other candidate is inode exhaustion, which df -i shows in one line."}},{"@type":"Question","name":"How much of an SRE debug round is scored on explaining rather than fixing?","acceptedAnswer":{"@type":"Answer","text":"Enough that a candidate who narrates a wrong hypothesis cleanly often outscores one who fixes the box in silence. Interviewers listen for a hypothesis before each command, a stated expectation of what would confirm or rule it out, awareness of blast radius, and a clear split between mitigating now and root-causing after. Saying you would preserve evidence before restarting a service is one of the strongest single signals in the round."}},{"@type":"Question","name":"Can you use an AI interview copilot during a shared-terminal SRE debug round?","acceptedAnswer":{"@type":"Answer","text":"It is the weakest format for one. The round is a conversation with the interviewer watching your terminal, and the useful output is a command you should already know. OfferPilot AI's overlay is excluded from screen capture, so it does not appear in a Zoom or Teams share, but that covers screen sharing and recording only, not a webcam, a lockdown browser or a proctor in the room. Rehearsal is the better use."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"SRE Linux troubleshooting interview","item":"https://offerpilotai.ink/guides/sre-linux-troubleshooting-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">The SRE Linux troubleshooting round: triage order and what to narrate</h1>
+      <p class="meta">2026 &middot; ~9 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">You get a shell on a deliberately broken box, a vague complaint like "it feels slow", and about forty minutes. Run a fixed order and say it out loud: orient, then load, memory, disk I/O, network, and logs last. Each step either accuses a subsystem or clears it, and the sentence you say before each command is scored as heavily as the fix, because the interviewer is testing whether you form hypotheses or just type commands you memorised. Below: that order, the command at each step, the fallback when the box has no tooling, and the line to say.</p>
+
+      <h2>What the broken-box format actually is</h2>
+      <p>This round is not a quiz. Someone has broken a throwaway VM or container, handed you a shared terminal over tmux, SSH or a screen share, and is watching your keystrokes. Four things follow from that shape:</p>
+      <ul>
+        <li><strong>There are usually one to three planted faults</strong>, chosen to be findable in the time given. Nobody plants a kernel bug. They plant a full disk, a runaway process, a wrong file descriptor limit, a broken resolver.</li>
+        <li><strong>The interviewer is playing the box.</strong> Ask whether the host is taking live traffic, or what deployed in the last hour, and you will usually get a real answer. Candidates who never ask are marked down for it.</li>
+        <li><strong>The box is often stripped.</strong> No <code>sar</code>, no <code>iotop</code>, sometimes no package manager and no network to install one. That is deliberate.</li>
+        <li><strong>A restart clears the symptom and destroys the evidence.</strong> Say what it would cost before you reach for it, and say it before the silence gets long, because quiet stretches read as guessing even when you are right.</li>
+      </ul>
+      <p>The reference most interviewers carry in their heads is Brendan Gregg's first sixty seconds checklist from the Netflix performance engineering team: <code>uptime</code>, <code>dmesg | tail</code>, <code>vmstat 1</code>, <code>mpstat -P ALL 1</code>, <code>pidstat 1</code>, <code>iostat -xz 1</code>, <code>free -m</code>, <code>sar -n DEV 1</code>, <code>sar -n TCP,ETCP 1</code>, <code>top</code>. Knowing the list is table stakes. Knowing what each line would have to say to move you to the next subsystem is the interview.</p>
+
+      <h2>The triage order, the command, and the sentence</h2>
+      <p>Work top to bottom. Do not skip ahead because a hunch pulled you there, and if you do skip, say why.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Step</th><th>The question it answers</th><th>First command</th><th>If the tooling is missing</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0. Orient</td><td>What is this host, and what changed</td><td><code>uptime</code>, <code>uname -a</code>, <code>dmesg -T | tail -40</code>, <code>systemctl --failed</code></td><td>Always available</td></tr>
+            <tr><td>1. Load</td><td>Is anything running, or is everything waiting</td><td><code>top</code>, then <code>pidstat -u 1 5</code> and <code>mpstat -P ALL 1</code></td><td><code>/proc/loadavg</code>, <code>/proc/pressure/cpu</code></td></tr>
+            <tr><td>2. Memory</td><td>Reclaimable, or genuinely gone</td><td><code>free -m</code>, <code>vmstat 1 5</code>, <code>dmesg -T | grep -i "killed process"</code></td><td><code>/proc/meminfo</code>, <code>/proc/pressure/memory</code></td></tr>
+            <tr><td>3. Disk I/O</td><td>Saturated, or simply full</td><td><code>iostat -xz 1</code>, <code>iotop -oPa</code>, <code>df -h</code>, <code>df -i</code></td><td><code>/proc/diskstats</code>, <code>/proc/PID/io</code>, <code>/proc/pressure/io</code></td></tr>
+            <tr><td>4. Network</td><td>Reaching the dependency at all, and how fast</td><td><code>ss -s</code>, <code>ss -ltn</code>, <code>ss -ti</code>, <code>curl -w</code> timing split</td><td><code>/proc/net/dev</code>, <code>/proc/net/netstat</code>, <code>/proc/PID/limits</code></td></tr>
+            <tr><td>5. Logs</td><td>Does the timeline match the story</td><td><code>journalctl -u svc --since "15 min ago"</code>, <code>journalctl -p err -b</code></td><td><code>/var/log/</code>, the <code>dmesg</code> ring buffer</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>What to say at each step</h3>
+      <p>These lines are not filler. Each one names a hypothesis and the observation that would kill it, which is the thing being graded.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Orient</h3>
+            <p>"Before I change anything: what does this host serve, is it taking live traffic, and when did the symptom start? I am going to read state before I touch state." Then <code>uptime</code>, for how long the box has been up and how load has trended across one, five and fifteen minutes. Falling across those three columns is a different problem from climbing.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Load</h3>
+            <p>"Load is 38 on 8 cores. Before I blame CPU I want to know how much of that is runnable and how much is uninterruptible sleep, because Linux counts D state in the load average." In <code>vmstat 1 5</code> the <code>r</code> column is runnable and <code>b</code> is blocked. High <code>r</code> with high user time is real CPU work, and <code>mpstat -P ALL 1</code> says whether one core is saturated, which usually means a single-threaded process. High <code>b</code> with high <code>wa</code> is a storage problem, so say that and jump to step three.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Memory</h3>
+            <p>"I am reading the available column, not free, because a small free number is usually page cache doing its job." Then <code>si</code> and <code>so</code> in <code>vmstat</code>: sustained swap traffic is the difference between tight memory and thrashing. If <code>dmesg -T</code> shows an OOM kill, read the whole line rather than the process name. It carries the RSS and the cgroup, and the cgroup tells you whether this was a container limit rather than the host running dry.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Disk I/O</h3>
+            <p>"<code>w_await</code> is 400 milliseconds on one device while the others sit idle, so this is one disk and not the whole box." In <code>iostat -xz 1</code>, discard the first sample: it averages since boot. Read <code>r_await</code> and <code>w_await</code> for latency and <code>aqu-sz</code> for queue depth, and distrust <code>%util</code> on SSD and NVMe, where parallel queues make 100 percent mean busy rather than saturated. Then <code>df -h</code> and, in the same breath, <code>df -i</code>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Network</h3>
+            <p>"The listen queue is sitting at its backlog limit, so we are dropping connections at accept rather than failing to route." For a listening socket, <code>ss -ltn</code> shows the current backlog in Recv-Q and the limit in Send-Q. Confirm the drops with <code>nstat -az TcpExtListenOverflows TcpExtListenDrops</code>. To split latency, run <code>curl -o /dev/null -s -w 'dns %{time_namelookup} conn %{time_connect} tls %{time_appconnect} ttfb %{time_starttransfer}\n' https://dependency/</code> and let the four numbers say whether the cost is DNS, TCP, TLS or the application.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Logs</h3>
+            <p>"Everything so far points at storage from about 14:02, so I am opening the logs to confirm that timeline, not to go hunting." Logs read first are an unbounded search; logs read last are a one-minute confirmation. Use <code>--since</code> with the time your evidence turned, and read <code>journalctl -k</code> separately, because kernel messages about device resets, OOM and conntrack rarely reach the service unit's own journal.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>When the box has no tooling: reading /proc instead</h2>
+      <p>This is the part that separates candidates. If <code>iostat</code> is missing, do not stall and do not try to install anything. Say "sysstat is not here, so I will read the counters it would have read" and go to <code>/proc</code>. All of these exist on a stock kernel with nothing installed.</p>
+      <pre class="code"><span class="cm"># load, plus pressure stall info on kernel 4.20+ (absent if PSI is disabled)</span>
+cat /proc/loadavg
+cat /proc/pressure/cpu /proc/pressure/io /proc/pressure/memory
+
+<span class="cm"># memory: MemAvailable is the number that matters, not MemFree</span>
+grep -E <span class="st">'MemTotal|MemAvailable|SwapTotal|SwapFree|Dirty|Writeback'</span> /proc/meminfo
+
+<span class="cm"># per-device I/O. cols 12 and 13 are I/Os in flight and ms spent doing I/O.</span>
+<span class="cm"># sample twice, one second apart: a delta near 1000 means busy the whole second</span>
+grep -E <span class="st">' (sd[a-z]|nvme[0-9]n[0-9]|vd[a-z]) '</span> /proc/diskstats
+
+<span class="cm"># who is blocked, and in which kernel function</span>
+ps -eo state,pid,ppid,wchan:32,comm | awk <span class="st">'$1 ~ /D/'</span>
+
+<span class="cm"># per-process I/O and file descriptor pressure, no lsof required</span>
+cat /proc/&lt;pid&gt;/io
+grep <span class="st">'Max open files'</span> /proc/&lt;pid&gt;/limits
+ls /proc/&lt;pid&gt;/fd | wc -l
+
+<span class="cm"># interface errors and TCP drops when sar and ip -s are unavailable</span>
+cat /proc/net/dev
+grep -E <span class="st">'ListenOverflows|ListenDrops|TCPSynRetrans'</span> /proc/net/netstat</pre>
+      <p>Two of these carry disproportionate weight. <code>/proc/pressure/io</code> answers "is anything actually waiting on storage" in one line, which no amount of squinting at <code>%util</code> does. And <code>wchan</code> names the kernel function each D-state process is parked in, so a screen full of processes stuck in an NFS or device-mapper function tells the story before you open a single log.</p>
+
+      <h2>Five faults that get planted, and the tell for each</h2>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Symptom</th><th>What was planted</th><th>The command that confirms it</th><th>The wrong turn</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>df</code> says 100 percent, <code>du</code> says half that</td><td>A deleted file still held open by a running process</td><td><code>lsof +L1</code>, or <code>ls -l /proc/*/fd 2&gt;/dev/null | grep deleted</code></td><td>Deleting more logs, which frees nothing, because the blocks are already unlinked</td></tr>
+            <tr><td>"No space left on device" with free space in <code>df -h</code></td><td>Inode exhaustion, usually millions of small files under one directory</td><td><code>df -i</code>, then <code>find /var -xdev -printf '%h\n' | sort | uniq -c | sort -rn | head</code></td><td>Hunting for large files for ten minutes</td></tr>
+            <tr><td>Load of 40, CPU 95 percent idle</td><td>Processes blocked on slow storage or a hung mount</td><td>The <code>b</code> column in <code>vmstat 1</code>, then <code>ps -eo state,pid,wchan:32,comm</code> filtered to D</td><td>Blaming CPU and living inside <code>top</code> sorted by CPU</td></tr>
+            <tr><td>The port is listening, clients time out</td><td>Accept backlog full, or a low file descriptor limit on the unit</td><td><code>ss -ltn</code> Recv-Q against Send-Q, <code>nstat -az TcpExtListenOverflows</code>, <code>/proc/PID/limits</code></td><td>Restarting the service, which clears the queue and deletes the evidence</td></tr>
+            <tr><td>Intermittent latency to one dependency</td><td>Conntrack table full, or a resolver timing out to its first nameserver</td><td><code>dmesg</code> for "nf_conntrack: table full", <code>/proc/sys/net/netfilter/nf_conntrack_count</code> against <code>_max</code>, and <code>getent hosts</code> against <code>dig +short</code></td><td>Testing with an IP address, which silently skips the broken step</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two follow-ups are near certain. "How would you mitigate this in five minutes without root-causing it" wants a reversible action with an explicit cost, for example rotating and truncating to buy disk headroom while you find the writer. "How would you stop it recurring" wants an alert on the leading indicator rather than the symptom: inode usage rather than bytes free, listen overflows rather than error rate.</p>
+
+      <h2>Where a copilot is the wrong tool for this round</h2>
+      <p>Worth saying plainly on a page published by a company that sells one: a live debug round is the weakest case for AI assistance of any kind. The output you need is a five-character command, not a paragraph, and if you did not already know the command you cannot interpret what it prints. The interviewer is watching a terminal you are driving, so every pause belongs to you, and a silent gap while you read something is more conspicuous here than in a behavioural round where thinking time is expected. Terminal output scrolling under a cursor is also poor material to capture, and much of what matters is a number that changed between two samples rather than anything sitting on screen.</p>
+      <p>The reasonable use is before the round. <a href="/interview-copilot/">OfferPilot AI</a> runs on Windows 10 and 11 only, so it is a preparation tool on your own machine, not something you carry onto a bastion host. Its overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom, Teams, Meet or OBS share or in a screenshot, but that covers screen sharing and screen recording only. It does nothing about a webcam feed, a lockdown browser, eye tracking, or a person watching you in the room. Where it earns a place in an SRE loop is the architecture and incident-review conversations either side of the debug round.</p>
+
+      <h2>How to rehearse until the order is automatic</h2>
+      <p>Break a machine on purpose and fix it against a timer. A local VM is enough. Fill a filesystem with <code>fallocate</code>, then unlink the file while a process still holds it open and watch <code>df</code> and <code>du</code> disagree. Exhaust inodes with a loop that creates empty files. Pin one core with a spin loop and confirm <code>mpstat -P ALL 1</code> shows a single core hot rather than all of them. Set <code>LimitNOFILE</code> low on a systemd unit and drive it until it refuses connections. Each takes minutes to build and shows you what the output looks like when it is genuinely broken.</p>
+      <p>Then rehearse the talking, the half most people skip. Run the whole order on a healthy box and narrate every step aloud to a machine that is not broken. If you can narrate a clean run in three minutes, you can narrate a dirty one under pressure. For the rounds either side, the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank around the stack named in the job description, and the <a href="/interview-questions/">question banks</a> cover the incident-review and behavioural sides. The free tier is 5 minutes a day with no card, and <a href="/pricing/">paid plans</a> meter listening time only rather than wall-clock session length.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/data-engineer-sql-interview-round/">Data Engineer SQL Interview Round: What to Expect in 45 Minutes</a></li>
+        <li><a href="/guides/api-design-vs-system-design-interview/">API Design Interview vs System Design Interview: The Tells</a></li>
+        <li><a href="/guides/react-live-coding-interview-help/">React Live Coding Interview Help: One Multi-Scroll Capture</a></li>
+        <li><a href="/guides/devops-interview-vs-sre-interview/">DevOps Interview vs SRE Interview: Two Different Question Sets</a></li>
+        <li><a href="/guides/full-stack-take-home-vs-live-coding/">Full Stack Take-Home vs Live Coding: What Each Format Grades</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Prepare for the rounds either side of the terminal.</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company-specific bank for the architecture, incident-review and behavioural rounds in an SRE loop.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a question bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

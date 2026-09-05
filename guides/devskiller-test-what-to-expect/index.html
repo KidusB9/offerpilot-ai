@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevSkiller Test: What to Expect, Real Code Not LeetCode</title>
+  <meta name="description" content="A DevSkiller test hands you a real project: clone the repo or use the browser IDE, implement the stated spec, and make automated unit tests pass. The format, step by step.">
+  <meta name="keywords" content="devskiller test what to expect, devskiller coding test, devskiller hidden tests, devskiller clone repository, how does devskiller work, devskiller test time limit, devskiller vs leetcode, devskiller programming task, devskiller code review task">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/devskiller-test-what-to-expect/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="DevSkiller Test: What to Expect, Real Code Not LeetCode">
+  <meta property="og:description" content="A DevSkiller test hands you a real project: clone the repo or use the browser IDE, implement the stated spec, and make automated unit tests pass. The format, step by step.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/devskiller-test-what-to-expect/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-devskiller-test-what-to-expect.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="DevSkiller Test: What to Expect, Real Code Not LeetCode">
+  <meta name="twitter:description" content="A DevSkiller test hands you a real project: clone the repo or use the browser IDE, implement the stated spec, and make automated unit tests pass. The format, step by step.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-devskiller-test-what-to-expect.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"DevSkiller Test: What to Expect, Real Code Not LeetCode","description":"A DevSkiller test hands you a real project: clone the repo or use the browser IDE, implement the stated spec, and make automated unit tests pass. The format, step by step.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/devskiller-test-what-to-expect/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"DevSkiller Test: What to Expect, Real Code Not LeetCode","url":"https://offerpilotai.ink/guides/devskiller-test-what-to-expect/","mainEntity":[{"@type":"Question","name":"What should I expect from a DevSkiller test?","acceptedAnswer":{"@type":"Answer","text":"Expect an existing project rather than a blank editor. A typical DevSkiller programming task gives you a repository with a build file, dependencies and a partly finished feature, plus a written list of requirements. You implement those requirements and an automated test suite decides your score. You can work in the browser IDE or clone the repository into your own editor."}},{"@type":"Question","name":"Can I use my own IDE for a DevSkiller test?","acceptedAnswer":{"@type":"Answer","text":"Usually yes. The task screen offers a Git URL with per-candidate credentials, so you clone the project, work in IntelliJ, VS Code, Visual Studio or whatever you normally use, then commit and push back. The trade-off is setup time: the correct language runtime and the first dependency download come out of your test clock, not the platform's."}},{"@type":"Question","name":"Can you see the tests in a DevSkiller task?","acceptedAnswer":{"@type":"Answer","text":"Partly. Projects usually ship with a runnable test suite you can execute locally or in the browser IDE, but tasks commonly warn that additional hidden tests are used for grading. Treat the written requirements as the real test list: each numbered acceptance criterion tends to map onto assertions you cannot read, so implement the spec exactly as worded."}},{"@type":"Question","name":"Is a DevSkiller test like LeetCode?","acceptedAnswer":{"@type":"Answer","text":"No. A puzzle round asks you to derive one algorithm inside one function under a complexity constraint. A DevSkiller project task asks you to read unfamiliar code, find the right files, use a framework correctly and satisfy a written spec. Nobody grades your Big-O; the tests grade whether the endpoint, the mapper or the validation behaves as described."}},{"@type":"Question","name":"Can you use Google during a DevSkiller test?","acceptedAnswer":{"@type":"Answer","text":"The platform's methodology is built around normal working conditions, including documentation and search, which is why the tasks look like real tickets. Rules on outside help are set by the employer, not by the format, so read the instructions on the invitation screen before you start and follow those rather than any general assumption."}},{"@type":"Question","name":"What happens if I do not finish a DevSkiller task in time?","acceptedAnswer":{"@type":"Answer","text":"You are graded on whatever code the platform has when the clock stops, so partial work still scores if it is committed and pushed. Local changes you never pushed score nothing. A project that does not compile is the worst outcome, because a failed build can take every test with it, including the ones you had already passed."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"DevSkiller test","item":"https://offerpilotai.ink/guides/devskiller-test-what-to-expect/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Coding assessment platforms</p>
+      <h1 class="balance">DevSkiller test: what to expect from a clone-the-repo round</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A DevSkiller test usually hands you an existing project instead of a blank editor. You get a repository with a build file, real dependencies and a half-finished feature, plus a written list of requirements, and your score comes from an automated test suite. You can work in the platform's browser IDE or clone the project into your own editor using the credentials on the task screen. Nobody is asking you to invent a clever algorithm. They are asking whether you can finish a ticket inside somebody else's codebase.</p>
+
+      <h2>What the invitation actually contains</h2>
+      <p>The email carries a link rather than an account signup in most cases. Behind it sits a landing page listing the tasks in this test, the technologies each one covers, and the time allowed. Two clocks matter and candidates confuse them constantly. The invitation has an expiry date set by the recruiter, which is the deadline to begin. The task timer is separate, starts when you press start, and runs on the server, so closing the tab does not stop it. If the wording about pausing is ambiguous, assume it does not pause and plan around one uninterrupted block.</p>
+      <p>Most of these tests are unsupervised: no lockdown browser, no proctor watching a webcam, no interviewer on a call. That is the format's whole premise, that a realistic work sample beats a supervised puzzle. It does not mean nothing is recorded. Employers can see time spent, when you started and stopped, and a similarity check across submissions, and configuration varies by company, so read the instructions on the start screen rather than assuming.</p>
+
+      <h2>The clone-the-repo run, step by step</h2>
+      <p>This is the part that surprises people who trained on algorithm sites. The sequence below is the whole game.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Read the entire task description first</h3>
+            <p>The description tab is a spec, not flavour text. Requirements are typically numbered, and each numbered item tends to correspond to assertions in the grading suite. Method names, endpoint paths, exception types and edge cases named in that text are named for a reason. Two minutes here saves twenty later.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Choose the browser IDE or a local clone in the first three minutes</h3>
+            <p>The browser IDE arrives with the toolchain and dependencies already resolved, which removes every setup risk, at the cost of weaker refactoring, weaker debugging and unfamiliar keybindings. A local clone gives you your own editor and a real debugger, but you pay for the correct language runtime and the first dependency fetch out of your own clock. Decide once and commit to the decision.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Clone with the credentials on the task screen</h3>
+            <p>The task screen shows a Git URL plus per-candidate credentials. It is an ordinary repository: clone it, open it in IntelliJ, VS Code or Visual Studio, and work normally. Do not reinitialise the repo, do not create a fresh project and paste files across, and do not switch away from the branch you were told to push to.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Build and run the test suite before writing a line</h3>
+            <p>Run the provided tests immediately to establish a baseline. You learn that the environment works, which tests already fail by design, and how long a full run takes. Discovering a wrong JDK version or a missing local package at minute three is survivable. Discovering it at minute fifty is not.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Implement the spec, not your preferred design</h3>
+            <p>Provided interfaces, method signatures, field names and existing test files are load-bearing. Renaming a method because you prefer a better name, or deleting a failing test instead of making it pass, breaks assertions you cannot read. Add code, extend classes, fill the gaps, and leave the given shape alone.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Commit and push while you work, then submit</h3>
+            <p>Grading runs on what the platform holds, so uncommitted work in a local editor is worth zero. Push after each requirement you complete rather than once at the end, then finish the task explicitly. A push at ninety-five percent beats a perfect working tree sitting on your laptop.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Hidden tests, and how points disappear quietly</h2>
+      <p>Projects normally ship with a runnable suite, and tasks commonly note that additional hidden tests are used for grading. The practical translation: passing everything you can see is necessary and not sufficient. Where the visible tests cover the happy path, the hidden ones tend to probe what the description mentioned in passing, an empty collection, a null argument, a duplicate identifier, a rejected input that should raise a specific error rather than a generic one.</p>
+      <p>Scoring is per test, so partial credit is real and worth chasing. One requirement finished properly scores more than four half-written ones. The exception is the build. If the project does not compile, tests cannot run, and a task you had mostly solved can collapse to nothing. Keep the tree green: implement one requirement, run the suite, push, repeat. If you are mid-refactor with five minutes left, revert to your last passing commit instead of gambling on a compile.</p>
+      <p>Automated results are not always the end of it. Employers can open your code and read the diff, and many bring it into the follow-up call. Code that passes tests but that you cannot explain becomes an awkward conversation, which is the same reason a rushed take-home tends to unravel during the walkthrough.</p>
+
+      <h2>How this differs from a puzzle-style round</h2>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th></th><th>DevSkiller project task</th><th>LeetCode-style screen</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>What you start with</strong></td><td>A repository: build file, dependencies, existing classes, a partial feature</td><td>An empty function body and a problem statement</td></tr>
+            <tr><td><strong>Where you work</strong></td><td>Browser IDE, or your own editor after a git clone</td><td>A locked web editor, one file</td></tr>
+            <tr><td><strong>What passing means</strong></td><td>Automated tests, several of them hidden, mapped to written requirements</td><td>Sample and hidden cases against one expected output, often with a per-case time limit</td></tr>
+            <tr><td><strong>Skill measured</strong></td><td>Reading unfamiliar code, framework fluency, following a spec exactly</td><td>Deriving an algorithm and its complexity under pressure</td></tr>
+            <tr><td><strong>Resources</strong></td><td>Built around normal working conditions including docs and search, subject to the employer's rules</td><td>Usually closed book by default</td></tr>
+            <tr><td><strong>Typical failure</strong></td><td>Setup burns the clock, the build breaks, or the spec was skimmed</td><td>Wrong approach chosen early, or a brute force that times out</td></tr>
+            <tr><td><strong>Partial credit</strong></td><td>Yes, per passing test, so scope deliberately</td><td>Limited, a wrong answer on hidden cases usually scores near zero</td></tr>
+            <tr><td><strong>Useful preparation</strong></td><td>Build small features in the target framework, practise navigating a strange repo</td><td>Patterns, data structures, timed repetition</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>One consequence is worth stating plainly. Strong competitive programmers fail these tests, and steady product engineers who have never touched a contest site pass them, because the bottleneck is orientation rather than insight. If the stack listed on the invitation is Spring, Django, React or .NET, revising graph traversal is the wrong revision.</p>
+
+      <h2>Where the clock actually goes</h2>
+      <ol>
+        <li><strong>Toolchain mismatch.</strong> Wrong Java or Node version, a missing SDK, a corporate proxy blocking the package registry. Check the readme for required versions before you clone, and fall back to the browser IDE if setup drags past ten minutes.</li>
+        <li><strong>Exploring the whole repository.</strong> You do not need to understand every file. Find the entry point named in the requirements, follow it, ignore the rest.</li>
+        <li><strong>Rewriting given code.</strong> Tempting when the existing style is ugly. It is unscored and it risks the assertions you cannot see.</li>
+        <li><strong>Silent spec drift.</strong> Returning a list where the description said a set, or a 200 where it said 404. Re-read the numbered requirements once you believe you are done.</li>
+        <li><strong>The last five minutes.</strong> Reserve them for a final build, a final test run and a final push. Nothing else.</li>
+      </ol>
+
+      <h2>The other task types you may be sent</h2>
+      <p>Not every test is a project. A code review task shows you a diff or a pull request and asks what is wrong with it, which rewards naming a concrete defect, an injection risk, a race condition, an N plus one query, rather than general commentary about style. A code gap task blanks out fragments of a working file and asks you to fill them, testing recall of a specific framework's syntax. Multiple choice questions cover language and platform detail. A single invitation often mixes two or three of these, and the landing page tells you which before you start.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool for this</h2>
+      <p>Being straight about it: an unsupervised repository assessment is not what live interview assistance is designed for, and treating it as one is a poor fit on several counts.</p>
+      <ul>
+        <li><strong>There is no interviewer to listen to.</strong> The copilot works from the interviewer's audio and meters listening time only. On a silent take-home style assessment there is no audio, so the core feature has nothing to do.</li>
+        <li><strong>The work is spread across files, not held in one prompt.</strong> Screenshot capture is built for a problem statement you can frame on screen. A repository with a config file, three service classes and a test folder does not fit that shape, and an answer written without the surrounding code will not match the given interfaces.</li>
+        <li><strong>Capture exclusion is beside the point here, and limited anyway.</strong> The overlay is excluded from screen sharing and screen recording at the operating system level. It does nothing about a webcam, a lockdown browser, a person in the room, or a second-device camera, and none of that matters when nobody is watching in the first place.</li>
+        <li><strong>The rules belong to the employer.</strong> Instructions on the invitation govern what help is acceptable, and submissions can be compared against one another. If the brief forbids outside assistance, that settles it.</li>
+        <li><strong>Windows 10 and 11 only.</strong> There is no macOS, Linux, mobile or browser extension build, so a large share of candidates cannot run it regardless.</li>
+      </ul>
+      <p>The round where live help genuinely fits is the human one that follows: the call where an engineer opens your submission, asks why you validated in the controller rather than the service, then asks you to extend the code while they watch. That conversation is what <a href="/code-copilot/">Code Copilot</a> is built for.</p>
+
+      <h2>A realistic week of preparation</h2>
+      <p>Build one small feature end to end in the framework named on the invitation, starting from an unfamiliar starter project rather than your own. Practise the boring mechanics until they are automatic: clone, install, run the tests, find the class that owns a behaviour, add a method, run the tests again. Read one open source pull request in that stack and write down three concrete criticisms, which is precisely the code review task. Then write your own checklist for minute one, because knowing what you will do before the timer starts is most of the advantage.</p>
+
+      <blockquote>The test is not asking whether you can invent something clever. It is asking whether you can be dropped into a strange codebase on a Tuesday and ship the ticket.</blockquote>
+
+      <p>For the rounds that come after the assessment, the rest of the <a href="/guides/">guide library</a> covers platform behaviour and interview formats, and the free tier is 5 minutes a day with no card if you want to try the live side before looking at <a href="/pricing/">plans</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/hackerrank-codepair-interview/">HackerRank CodePair Interview: What to Expect in the Pad</a></li>
+        <li><a href="/guides/codility-performance-score-zero/">Codility Performance Score 0%, Correctness 100%: Why It Happens</a></li>
+        <li><a href="/guides/leetcode-vs-hackerrank-vs-codesignal/">LeetCode vs HackerRank vs CodeSignal: Which Matches Your OA</a></li>
+        <li><a href="/guides/hackerrank-candidate-report/">What Recruiters See in Your HackerRank Report: Field by Field</a></li>
+        <li><a href="/guides/karat-interview-format/">Karat Interview: What to Expect, Timing and What Is Scored</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">The assessment is automated. The next round is not.</h2>
+      <p class="lede" style="margin:0 auto 8px">Rehearse the follow-up call where somebody opens your submission and asks you to extend it live, with intuition, a dry run and complexity on your own monitor only.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">See how capture works<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

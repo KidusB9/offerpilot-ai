@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zoom Share Screen vs Share Window: What They Actually See</title>
+  <meta name="description" content="Entire Screen streams your notifications, taskbar and Alt-Tab. Window streams one app and nothing else. A row-by-row table of eight behaviours in each Zoom mode.">
+  <meta name="keywords" content="zoom share screen vs share window, what can people see when i share my screen on zoom, does zoom show notifications when sharing screen, zoom share window alt tab, zoom portion of screen, can they see my second monitor on zoom, zoom screen share taskbar, zoom share window drag another window on top">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/zoom-share-screen-vs-window/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Zoom Share Screen vs Share Window: What They Actually See">
+  <meta property="og:description" content="Entire Screen streams your notifications, taskbar and Alt-Tab. Window streams one app and nothing else. A row-by-row table of eight behaviours in each Zoom mode.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/zoom-share-screen-vs-window/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-zoom-share-screen-vs-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Zoom Share Screen vs Share Window: What They Actually See">
+  <meta name="twitter:description" content="Entire Screen streams your notifications, taskbar and Alt-Tab. Window streams one app and nothing else. A row-by-row table of eight behaviours in each Zoom mode.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-zoom-share-screen-vs-window.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Zoom Share Screen vs Share Window: What They Actually See","description":"Entire Screen streams your notifications, taskbar and Alt-Tab. Window streams one app and nothing else. A row-by-row table of eight behaviours in each Zoom mode.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/zoom-share-screen-vs-window/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Zoom Share Screen vs Share Window: What They Actually See","url":"https://offerpilotai.ink/guides/zoom-share-screen-vs-window/","mainEntity":[{"@type":"Question","name":"Can people see my notifications when I share my screen on Zoom?","acceptedAnswer":{"@type":"Answer","text":"If you share Entire Screen, yes. A Windows toast from Slack, Outlook or Teams is drawn on the display Zoom is capturing, so the viewer sees the sender name and the message preview. If you share a single Window instead, the toast is a separate window and never enters the stream. Zoom's Share Screen settings also include an option to silence system notifications while sharing your desktop."}},{"@type":"Question","name":"If I share one window on Zoom, can the other person see me Alt-Tab away?","acceptedAnswer":{"@type":"Answer","text":"No. In Window mode Zoom captures that window's own output, so the Alt-Tab switcher, the app you switch to and the taskbar are all absent from the stream. The viewer keeps seeing the shared window updating live. The one exception is minimising it: a minimised window usually stops producing frames, so the viewer sees a frozen last frame or a blank area."}},{"@type":"Question","name":"Does Zoom share my second monitor when I share my entire screen?","acceptedAnswer":{"@type":"Answer","text":"No. Zoom asks you to pick one display, listed as Screen 1, Screen 2 and so on, and only that display is captured. The other monitor stays private, and your mouse pointer disappears from the viewer's stream the moment it crosses onto the unshared display. That pointer vanishing is often the first clue a viewer gets that you have a second screen."}},{"@type":"Question","name":"If I drag another window on top of the window I am sharing, does the viewer see it?","acceptedAnswer":{"@type":"Answer","text":"On a current Windows Zoom client, no. Per-window capture reads the shared window's own pixels, so the covering window is composited out and the viewer keeps seeing the shared app underneath, even though your screen shows it obscured. Older or fallback capture paths can behave the opposite way and stream the covering window, so test your own machine before relying on it."}},{"@type":"Question","name":"Do Zoom viewers see the Zoom toolbar or the green sharing border?","acceptedAnswer":{"@type":"Answer","text":"No. Zoom keeps its own meeting interface out of the stream, so the floating controls, the You Are Screen Sharing bar and the green outline around the shared area exist only on your monitor. That is why sharing Entire Screen does not produce an infinite mirror of the meeting window. Those elements are cues for you, not content for the viewer."}},{"@type":"Question","name":"What does Zoom's Portion of Screen option capture?","acceptedAnswer":{"@type":"Answer","text":"Portion of Screen streams a fixed rectangle of one display, not an application. Anything drawn inside that rectangle is sent, whichever app owns it, and anything outside it is not. So a notification, the taskbar or a dragged window appears to the viewer only if it lands inside the frame. Dragging the frame's handles changes the delivered resolution live, mid-share."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Zoom Share Screen vs Share Window","item":"https://offerpilotai.ink/guides/zoom-share-screen-vs-window/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">Zoom share screen vs share window: what the other side actually sees</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Share <strong>Entire Screen</strong> and the viewer gets everything drawn on that display: notification toasts with the sender's name, the taskbar, the Alt-Tab switcher, any window you drag over. Share a <strong>Window</strong> and they get that one app's pixels and nothing else, so you can Alt-Tab, take a Slack toast, or bury it under three other apps and their stream never changes. <strong>Portion of Screen</strong> streams a fixed rectangle of your desktop, whatever sits inside it. Eight behaviours, side by side, below.</p>
+
+      <h2>Eight behaviours, three share modes</h2>
+      <p>Every cell describes what the <em>viewer's stream renders</em>, not what your own desktop shows. Those two diverge more than people expect.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>What happens on your machine</th>
+              <th>Entire Screen</th>
+              <th>Window</th>
+              <th>Portion of Screen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A notification toast</strong> (Slack, Outlook, Teams)</td>
+              <td>Rendered in full, sender name and preview included, unless you silenced them first.</td>
+              <td>Not rendered. The toast is a separate window, so it never enters the stream.</td>
+              <td>Only if the toast lands inside the rectangle. Windows draws toasts bottom right, so a bottom-right region is the risky one.</td>
+            </tr>
+            <tr>
+              <td><strong>The taskbar and system tray</strong></td>
+              <td>Rendered, including unread badges, pinned app names and hover previews.</td>
+              <td>Not rendered at all.</td>
+              <td>Only if the rectangle overlaps that strip of the display.</td>
+            </tr>
+            <tr>
+              <td><strong>Alt-Tab or Task View</strong></td>
+              <td>Rendered: the switcher plus a thumbnail of every open window, a bigger disclosure than the app itself.</td>
+              <td>Not rendered. The shared window keeps streaming live while you work elsewhere. Minimise it and the stream usually freezes on the last frame.</td>
+              <td>Rendered if the switcher overlaps the rectangle. Windows draws it near the centre, so a centred region shows it.</td>
+            </tr>
+            <tr>
+              <td><strong>A window dragged on top of the shared one</strong></td>
+              <td>Rendered in full. Occlusion is the point of a display capture.</td>
+              <td>Not rendered on a current Windows client: the shared window's own pixels keep streaming, the covering window is composited out. Older fallback paths invert this.</td>
+              <td>Rendered. Region capture sends whatever is drawn there, whichever app owns it.</td>
+            </tr>
+            <tr>
+              <td><strong>A second monitor</strong></td>
+              <td>Not rendered. You pick one display, the other stays private, but your pointer vanishes from the stream when it crosses over.</td>
+              <td>Not applicable. Capture follows the window, so dragging it to the other monitor never breaks the stream.</td>
+              <td>Not rendered. The frame lives on one display. Move it across if you like, it never spans both.</td>
+            </tr>
+            <tr>
+              <td><strong>Resizing</strong></td>
+              <td>Nothing changes for the viewer. The display is captured whole and scaled into their meeting window. Changing your screen resolution mid-share does change it.</td>
+              <td>The delivered frame changes shape live. Shrink the window and the viewer gets fewer pixels, so your code goes soft for them, not merely small for you.</td>
+              <td>Same effect. Dragging the capture frame's handles renegotiates the stream dimensions mid-share.</td>
+            </tr>
+            <tr>
+              <td><strong>Zoom's own toolbar and green border</strong></td>
+              <td>Not rendered. Zoom keeps its meeting interface out of its own capture, so no floating controls and no mirror-of-a-mirror.</td>
+              <td>Not rendered, it is a different window.</td>
+              <td>Not rendered. The green outline is drawn around the region, not inside it.</td>
+            </tr>
+            <tr>
+              <td><strong>An overlay excluded from capture at OS level</strong></td>
+              <td>Absent from the stream.</td>
+              <td>Absent from the stream.</td>
+              <td>Absent from the stream.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>One clean summary: <strong>Entire Screen captures a display, Window captures a window, Portion captures a rectangle.</strong> Almost every unpleasant surprise comes from assuming the middle one behaves like the other two.</p>
+
+      <h2>Why sharing a single window leaks far less than people assume</h2>
+      <p>The modern Windows capture path hands an app a window's own composited output, not a cropped photograph of the screen. The compositor draws each window into its own surface, so notifications, the taskbar and the app on top never reach the buffer Zoom reads. Hence row four: your screen shows the window buried, the viewer's stream shows it clean.</p>
+      <p>Three caveats worth knowing.</p>
+      <ul>
+        <li><strong>Minimising is not the same as covering.</strong> A covered window keeps producing frames. A minimised one generally stops, leaving the viewer on a frozen frame that looks exactly like your machine has hung.</li>
+        <li><strong>Child windows can go missing.</strong> Drop-down menus, combo boxes and autocomplete popups are often separate top-level windows spilling outside the shared window's bounds. You see the menu open, the viewer sees nothing, then a value changes out of nowhere. It is the usual source of "wait, what did you just click?" in a shared IDE.</li>
+        <li><strong>A browser window is not a browser tab.</strong> Zoom lists each Chrome or Edge window separately, never each tab. Sharing a browser window shares every tab in it, and switching tabs is fully visible. A tab you want private must live in a different window.</li>
+      </ul>
+      <p>In a shared-editor round that is the difference between a clean share and an accidental tour of your inbox, and it keeps the stream steady while you work the problem elsewhere with <a href="/code-copilot/">Code Copilot</a>.</p>
+
+      <h2>A 60 second test that settles it on your machine</h2>
+      <p>Behaviour varies with client version, driver and capture path. Do not trust an article, this one included, over your own eyes.</p>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Start a meeting with nobody in it</h3><p>New Meeting in the Zoom desktop app. A solo meeting streams exactly like a real one.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Add an honest second pair of eyes</h3><p>Join from your phone, mic and camera off, or press Record and check the file after. The phone is better: it shows the stream as it happens.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Share exactly what you will share on the day</h3><p>Same mode, same window, same monitor layout. Testing on Screen 1 then sharing Screen 2 is how people learn their second monitor is not where they thought.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Run the eight rows</h3><p>Fire a toast by messaging yourself on Slack, press Alt-Tab, drag a window over the shared one, walk the pointer onto the other monitor, resize, open a drop-down menu.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Watch the phone, not your desktop</h3><p>Your own monitor is the least reliable source of truth in the room.</p></div></div>
+      </div>
+
+      <h2>Notifications are the row that actually catches people out</h2>
+      <p>Every other row is recoverable with an apology. A toast reading "Recruiter at the other company: still free Thursday?" is not. Two settings, before the call rather than during it.</p>
+      <ul>
+        <li><strong>Zoom's own switch.</strong> The desktop client's Share Screen settings include an option to silence system notifications while you share your desktop. Turn it on. Wording shifts between releases, so look for the notification line in that pane, not one exact label.</li>
+        <li><strong>Windows Do Not Disturb, set by hand.</strong> Windows has an automatic focus rule for duplicating your display, and it does not fire for Zoom sharing, because sharing is not duplication. Toggle Do Not Disturb yourself from the notification centre before you join.</li>
+      </ul>
+
+      <h2>Where a capture-excluded overlay fits, and what it cannot do</h2>
+      <p>The last row works differently. Windows lets a window be marked so the compositor strips it from any capture before an application receives the frame. <a href="/interview-copilot/">OfferPilot AI</a> uses that, so its overlay is absent from all three Zoom modes, and from Teams, Meet, OBS and a plain PrintScreen, while staying visible on your own monitor. Not a blur, not a black box: the pixels are not in the frame that gets encoded and sent. It is on every plan, <a href="/pricing/">free tier included</a>, so the 60 second routine tests it before you rely on it.</p>
+      <p>The boundary matters as much as the capability. Capture exclusion covers screen sharing, recording and screenshots. It does nothing about a webcam, a lockdown browser that owns the machine, a proctor in the room, eye tracking, or a phone propped up as a second camera. Eyes reading something off to the side are visible on video, and a four second pause before every answer reads as a pause whatever caused it.</p>
+
+      <h2>Where this guide runs out</h2>
+      <ul>
+        <li><strong>It describes the Windows desktop client.</strong> A browser, macOS, a virtual machine or remote desktop routes capture through a different pipeline, and the Window column especially can differ there.</li>
+        <li><strong>Clients change.</strong> Occlusion behaviour for window sharing has flipped before as capture APIs moved on. Re-run the test after a major update.</li>
+        <li><strong>Some rounds make all of this irrelevant.</strong> In a proctored assessment inside a lockdown browser, the environment controls the machine and share-mode nuance is beside the point. OfferPilot AI is the wrong tool there, and we would rather say so than sell you something that does not apply. It is Windows 10 and 11 only, built for live calls and preparation, not exams.</li>
+      </ul>
+      <p>For an ordinary Zoom interview the takeaway is small. Share a window rather than a screen whenever the interviewer does not actually need your whole desktop, silence notifications anyway, and spend one minute proving it on your phone.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/does-screen-share-show-second-monitor/">Does Screen Sharing Show My Second Monitor? What Each App Sends</a></li>
+        <li><a href="/guides/teams-share-window-vs-screen/">Microsoft Teams Share Window vs Share Screen: What Others See</a></li>
+        <li><a href="/guides/webex-share-application-vs-screen/">Webex Share Application vs Share Screen (and Share a Portion)</a></li>
+        <li><a href="/guides/google-meet-tab-vs-window-share/">Google Meet: Share a Tab, a Window, or Your Entire Screen?</a></li>
+        <li><a href="/guides/browser-based-screen-share-whereby-ringcentral/">Whereby Screen Share: What Others Can See in Each Picker Tab</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">See what your share actually sends.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free, no card. Start a solo Zoom meeting, share your screen, and watch the overlay stay off the frame from your phone.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

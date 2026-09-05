@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does Google Meet Detect Tab Switching? What the Host Sees</title>
+  <meta name="description" content="Google Meet has no tab-focus signal, no blur log and no host panel for it. What exposes a switch is entire-screen sharing, the share preview, auto picture-in-picture and your camera.">
+  <meta name="keywords" content="does google meet detect tab switching, can google meet see if i switch tabs, google meet tab switch detection, does google meet track focus, can interviewer tell if i switch tabs on google meet, google meet attendance report what it shows, google meet screen share tab switch visible, does google meet notify host when you leave the tab">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/does-google-meet-detect-tab-switching/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does Google Meet Detect Tab Switching? What the Host Sees">
+  <meta property="og:description" content="Google Meet has no tab-focus signal, no blur log and no host panel for it. What exposes a switch is entire-screen sharing, the share preview, auto picture-in-picture and your camera.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/does-google-meet-detect-tab-switching/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-does-google-meet-detect-tab-switching.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does Google Meet Detect Tab Switching? What the Host Sees">
+  <meta name="twitter:description" content="Google Meet has no tab-focus signal, no blur log and no host panel for it. What exposes a switch is entire-screen sharing, the share preview, auto picture-in-picture and your camera.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-does-google-meet-detect-tab-switching.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does Google Meet Detect Tab Switching? What the Host Sees","description":"Google Meet has no tab-focus signal, no blur log and no host panel for it. What exposes a switch is entire-screen sharing, the share preview, auto picture-in-picture and your camera.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/does-google-meet-detect-tab-switching/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does Google Meet Detect Tab Switching? What the Host Sees","url":"https://offerpilotai.ink/guides/does-google-meet-detect-tab-switching/","mainEntity":[{"@type":"Question","name":"Does Google Meet detect tab switching?","acceptedAnswer":{"@type":"Answer","text":"No. Google Meet exposes no focus-tracking signal to the host. There is no tab-switch counter in the host controls, no blur event log, and no such field in the attendance report, which records join time, leave time and duration only. The browser knows the Meet tab went to the background, but Meet keeps that to itself rather than reporting it to anyone in the call."}},{"@type":"Question","name":"Why can HackerRank see tab switches when Google Meet cannot?","acceptedAnswer":{"@type":"Answer","text":"Because an assessment platform renders the editor you are typing in, so it can attach listeners to its own page, timestamp every moment that page loses visibility, and write those counts into a candidate report a recruiter opens afterwards. Meet is a meeting product with no report surface for focus, so the same browser events have nowhere to go."}},{"@type":"Question","name":"Can the interviewer see me switch tabs if I am sharing my screen in Google Meet?","acceptedAnswer":{"@type":"Answer","text":"If you share your entire screen, yes, plainly, because they are watching that display live and the new tab simply appears. If you present a single Chrome tab, no, since the share is bound to the tab you picked and keeps streaming it while you look elsewhere. Sharing a window shows the whole tab strip, so switching is visible there too."}},{"@type":"Question","name":"Does Google Meet notify the host when you leave the meeting tab?","acceptedAnswer":{"@type":"Answer","text":"No notification is sent. Nobody gets a banner, a chat message or a flag when you move to another tab. Your camera and microphone keep transmitting normally in the background, so from the other side nothing changes at all. The only automatic reaction is on your own machine, where Chrome may open a small floating picture-in-picture window."}},{"@type":"Question","name":"What is the picture-in-picture window that appears when I switch away from Google Meet?","acceptedAnswer":{"@type":"Answer","text":"Chrome can open a small always-on-top video window automatically when you leave a tab that is running a call, so you keep seeing participants while you work elsewhere. It is a convenience for you and it is not reported to the host. It does matter if you are sharing your entire screen, because that floating window sits inside the captured display."}},{"@type":"Question","name":"Can an interviewer tell I am reading something else just from my webcam?","acceptedAnswer":{"@type":"Answer","text":"They can infer, not detect. Sustained left to right eye sweeps with regular return movements read differently from the loose, drifting gaze of someone thinking, and a bright off-axis surface changes the light on one side of a face. None of that reveals what you were reading, and everybody looks away sometimes, so it is a noisy signal."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Google Meet Tab Switching","item":"https://offerpilotai.ink/guides/does-google-meet-detect-tab-switching/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and monitoring</p>
+      <h1 class="balance">Does Google Meet detect tab switching?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">No. Meet hands the host no focus-tracking signal at all: there is no tab-switch counter in the host controls, no blur event log, and no such column in the attendance report. The browser does know when the Meet tab drops into the background, but that event belongs to the page that lost focus, and Meet keeps it rather than publishing it. What can still give a switch away is far more ordinary, and it is worth naming exactly: the share mode you picked, the preview of that share, Chrome's automatic picture-in-picture window, and where your eyes go on camera.</p>
+
+      <h2>The mechanism, and why an assessment platform is different</h2>
+      <p>A web page can observe one thing about focus: whether <em>it</em> is visible. The browser fires a visibility change event at a tab when that tab goes to the background, and a blur event at the window when the window stops being frontmost. Both are scoped to the page receiving them. A page cannot enumerate your other tabs, read their titles, see that you alt-tabbed to a desktop app, or notice a second monitor. The only fact available is that it is no longer on screen.</p>
+      <p>That single fact is enough for a proctored assessment, because of who owns the page. HackerRank, Codility and CodeSignal render the code editor you are typing in. Their script is running inside the thing you are working on, so it can timestamp every visibility change, count them, and write the total into a candidate report a recruiter opens later. The detection itself is unremarkable. The plumbing that carries it to a human is the whole product.</p>
+      <p>Google Meet has the same browser event available and nowhere to send it. Meet is a meeting product. There is no candidate report, no proctoring dashboard, no host panel listing per-participant attention, and no post-call artefact with a focus field in it. The attendance report some Workspace editions generate for larger meetings records participant names, join and leave times, and total duration. It is a register, not a monitor. Nobody receives a banner, a chat line or a badge when you move to another tab, and your camera and microphone carry on transmitting exactly as before, so from the other side of the call nothing changes.</p>
+      <p>Two honest caveats. First, this describes Meet itself. A managed Chrome profile, an admin-installed extension holding tab permissions, or corporate device management on a company laptop are separate systems that genuinely can log browser activity, and none of that is Meet reporting on you. Second, Google ships changes to Meet regularly. The absence of a focus surface has held for a long time, but if a future release adds one it will show up in the host controls, so check rather than assume.</p>
+
+      <h2>Where a tab switch becomes visible anyway</h2>
+      <p>Detection is not the interesting question. Visibility is. Every row below describes what the other participants actually receive when you leave the Meet tab, not what your own monitor shows.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Your situation</th>
+              <th>What a tab switch looks like to them</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Not sharing anything</strong></td>
+              <td>Nothing at all in the stream. Your camera tile keeps rendering as normal. The only cue is your face and your eyes.</td>
+            </tr>
+            <tr>
+              <td><strong>Presenting one Chrome tab</strong></td>
+              <td>Nothing. The share is bound to the tab you selected, not the tab you are looking at, so it keeps streaming while you read elsewhere. Watch Chrome's sharing bar, which carries a button offering to share the tab you are currently viewing instead. One stray click swaps your presentation.</td>
+            </tr>
+            <tr>
+              <td><strong>Presenting a browser window</strong></td>
+              <td>Fully visible. A window share includes the tab strip, so every tab title is legible and the highlight moving between tabs is obvious.</td>
+            </tr>
+            <tr>
+              <td><strong>Presenting your entire screen</strong></td>
+              <td>Fully visible, immediately. They are watching that display live, so the new page simply appears. This mode also carries notification toasts, the taskbar and any window you open.</td>
+            </tr>
+            <tr>
+              <td><strong>Your own share preview</strong></td>
+              <td>A private mirror rather than a leak. Meet shows you a thumbnail of what you are presenting so you can confirm it. On an entire-screen share that preview sits inside the captured display and produces the receding tunnel effect.</td>
+            </tr>
+            <tr>
+              <td><strong>Automatic picture-in-picture</strong></td>
+              <td>Invisible on its own, but it appears the instant you leave the Meet tab, so during an entire-screen share the audience sees a small floating video window pop into a corner. The timing is the tell, not the window.</td>
+            </tr>
+            <tr>
+              <td><strong>An overlay excluded from capture at OS level</strong></td>
+              <td>Absent from the stream in every mode above, because the compositor strips it before the frame ever reaches Meet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Automatic picture-in-picture, the row people miss</h2>
+      <p>Chrome can open a small always-on-top video window by itself when you navigate away from a tab running a call, so participants stay on screen while you work in front of them. It is a convenience feature aimed at you, and it reports nothing to the host. It still deserves its own section, for two reasons.</p>
+      <ul>
+        <li><strong>Its arrival is synchronised with your switch.</strong> If you are sharing your entire screen, that floating window materialises in the corner of the captured display at the exact moment you leave Meet. An observer does not need a focus log when the software announces the change on your behalf.</li>
+        <li><strong>It can start a second mirror loop.</strong> The picture-in-picture window contains the meeting, the meeting contains your presentation, and your presentation contains the picture-in-picture window. On an entire-screen share this stacks on top of the tunnel the main preview already causes.</li>
+      </ul>
+      <p>Behaviour here varies by Chrome version and by whether the feature has been permitted for the site, so treat the specifics as generally true and confirm on your own build. The fix is the same either way: present a tab rather than a display, or move Meet to a second monitor.</p>
+
+      <h2>Prove it on your own machine in five minutes</h2>
+      <p>Do this once and you will never have to take a page's word for it again, including this one.</p>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Start a solo meeting and join it twice</h3><p>Open Meet on your laptop, then join the same code from your phone with the microphone muted and the speaker off. The phone is now an honest audience of one.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Switch tabs while sharing nothing</h3><p>Move to another tab for ten seconds and watch the phone. Your camera tile keeps updating, no indicator changes, no message arrives. That is your baseline.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Present a single tab, then switch away</h3><p>The phone keeps showing the tab you chose, because it is still live. Now find Chrome's sharing bar on your laptop and read the button offering to share the current tab instead. That button, not Meet, is the actual risk in this mode.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Present your entire screen, then switch away</h3><p>The phone shows the new page the moment you arrive on it, and usually a picture-in-picture window sliding into a corner a beat later. Time that delay. It is shorter than you expect.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Check the host side afterwards</h3><p>End the call and look at everything Meet gives you: the chat log, any attendance report your account generates, the Calendar event. Names, join and leave times, duration. No focus data anywhere in it.</p></div></div>
+      </div>
+
+      <h2>What an interviewer can genuinely infer from your camera</h2>
+      <p>This is where the real signal lives, and it is inference rather than detection. A webcam gives an interviewer direction and rhythm, never content.</p>
+      <ul>
+        <li><strong>Reading looks different from thinking.</strong> Reading is a repeating pattern: a run of short left to right movements, then a longer sweep back to start the next line, at a fairly steady cadence. Thinking is a loose gaze that drifts off, settles nowhere in particular and comes back. Several seconds of the first pattern while you are silent is the most legible cue there is.</li>
+        <li><strong>Gaze angle is stable and comparable.</strong> If your eyes go to the same off-axis point every time a hard question lands, and somewhere else entirely when you are talking freely, that consistency registers in a way any single glance does not.</li>
+        <li><strong>Light changes on your face.</strong> A bright surface off to one side alters the colour and level on that cheek. If the content you are presenting has not changed but the light on your face has, something else on your desk did.</li>
+        <li><strong>Timing.</strong> A long pause, then a fluent and unusually complete answer, then another long pause on the follow-up, reads as a rhythm rather than as a conversation.</li>
+        <li><strong>What they cannot tell.</strong> Whether you looked at a spec, a second monitor, handwritten notes, an IDE, a person, or a window. The camera reports where your head went and nothing about what was there.</li>
+      </ul>
+      <p>Keep this in proportion. Everyone looks away to think, glances at a second display and pauses before answering, and interviewers know it because they do the same thing. It becomes a problem when it hardens into a repeated pattern, not when it happens once. The practical lesson is about eye lines rather than about software: whatever you need to read should sit as close to the camera axis as you can get it, which is why an on-screen overlay near the video tile behaves better on camera than a phone in your lap or a monitor off to your right. That constraint is the one <a href="/interview-copilot/">OfferPilot AI</a> is built around, and it is also why a browser-based coding round is easier to handle from an overlay beside the editor than from anything you have to physically turn towards, which is the job <a href="/code-copilot/">Code Copilot</a> does.</p>
+
+      <h2>Where this stops being useful</h2>
+      <p>An overlay excluded from screen capture at the operating system level is absent from Meet, Zoom, Teams, OBS and plain screenshots, because Windows strips that window out of the frame before the capturing application ever receives it. That is a real property, and it is on every plan including the free tier, so the phone test above can confirm it at no cost. It is also narrow, and the boundary matters more than the feature does.</p>
+      <ul>
+        <li><strong>It does nothing about a webcam.</strong> Capture exclusion hides pixels from a screen share. It cannot change where your eyes go, and this page has just spent a section explaining that your eyes are the actual signal in a Meet call.</li>
+        <li><strong>It does nothing inside a lockdown browser</strong>, against a proctor watching you in person or over video, against eye tracking, or against a phone propped up as a second camera. If your round is a proctored assessment rather than a conversation, this is the wrong tool and the honest answer is to prepare instead.</li>
+        <li><strong>Windows 10 and 11 only.</strong> No macOS, no Linux, no mobile, no browser extension. If you interview from a Mac, none of the above applies to you.</li>
+        <li><strong>Meet can change.</strong> Everything here describes Chrome on Windows in 2026. If your picker, your sharing bar or your host controls disagree with this page, trust what is in front of you.</li>
+      </ul>
+      <p>The short version: Meet is not watching your tabs, and it has no channel to tell anyone if it were. Pick your share mode deliberately, present a tab rather than a display when the work lives in the browser, and put anything you need to read where your face does not have to move to reach it.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/google-meet-tab-vs-window-share/">Google Meet: Share a Tab, a Window, or Your Entire Screen?</a></li>
+        <li><a href="/guides/black-window-screen-share/">Window Shows Black When Screen Sharing: Causes and Fixes</a></li>
+        <li><a href="/guides/chrome-extension-vs-desktop-interview-copilot/">Chrome Extension vs Desktop Interview Copilot: What Shows</a></li>
+        <li><a href="/guides/does-screen-share-show-second-monitor/">Does Screen Sharing Show My Second Monitor? What Each App Sends</a></li>
+        <li><a href="/guides/what-meeting-recordings-capture/">Does a Zoom, Teams or Meet Recording Capture My Whole Screen?</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Check what your Meet call actually sends.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free, no card. Start a solo meeting, share your screen, and watch the result from your phone.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

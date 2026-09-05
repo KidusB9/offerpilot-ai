@@ -1,0 +1,81 @@
+{
+  "company": "Meta",
+  "role": "Software Engineer (E3/E4), Product / Infra",
+  "stack": ["Python", "C++", "React", "PHP/Hack", "Data Structures", "Algorithms"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "Give a tight arc that emphasizes a bias toward shipping, getting something in front of users, measuring it, and iterating rather than polishing in a vacuum. Note that Meta's coding rounds are fast and expect clean, working code with tight complexity, so signal you can talk and code at once. Close on what draws you to Meta, a move-fast culture backed by infrastructure that lets you ship safely at scale.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "Coding",
+      "question": "Valid anagram, determine if two strings are anagrams of each other.",
+      "answer": "Start with the quick length check, differing lengths cannot be anagrams, then count character frequencies from the first string and decrement for the second, failing if any count goes negative or anything remains. Note that a single count array or dict avoids the O(n log n) of sorting. State O(n) time and O(k) space bounded by the alphabet.",
+      "code": "def is_anagram(s, t):\n    if len(s) != len(t):\n        return False\n    counts = {}\n    for c in s:\n        counts[c] = counts.get(c, 0) + 1\n    for c in t:\n        if counts.get(c, 0) == 0:\n            return False\n        counts[c] -= 1\n    return True\n# O(n) time, O(k) space where k is the alphabet size.",
+      "lang": "python",
+      "keywords": ["valid anagram", "string", "hash map", "frequency count", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Move all zeroes in an array to the end while keeping the order of non-zeros.",
+      "answer": "Describe the two-pointer in-place approach: keep a write index for the next non-zero slot, scan with a read index, write each non-zero at the write index and advance it, then zero-fill from the write index to the end. State O(n) time, O(1) extra space, and that it preserves the relative order of non-zeros. Mention the one-pass swap variant but note the two-phase version is clearer to reason about.",
+      "code": "def move_zeroes(nums):\n    write = 0\n    for read in range(len(nums)):\n        if nums[read] != 0:\n            nums[write] = nums[read]\n            write += 1\n    for i in range(write, len(nums)):\n        nums[i] = 0\n    return nums\n# O(n) time, O(1) extra space, stable order of non-zeros.",
+      "lang": "python",
+      "keywords": ["move zeroes", "two pointers", "array", "in place", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Clone a graph, return a deep copy of a connected undirected graph.",
+      "answer": "Explain that you traverse the graph building copies as you go, keyed by a hash map from original node to clone so you never duplicate a node and can wire up neighbors. Note BFS or DFS both work, and that the map both prevents infinite loops on cycles and gives O(1) lookup. State O(V + E) time and O(V) space for the map and stack.",
+      "code": "def clone_graph(node):\n    if not node:\n        return None\n    clones = {}\n\n    def dfs(n):\n        if n in clones:\n            return clones[n]\n        copy = Node(n.val)\n        clones[n] = copy\n        for nb in n.neighbors:\n            copy.neighbors.append(dfs(nb))\n        return copy\n\n    return dfs(node)\n# O(V + E) time, O(V) space for the map and recursion stack.",
+      "lang": "python",
+      "keywords": ["clone graph", "graph", "dfs", "hash map", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Given an array, return an array where each element is the product of all others, without using division.",
+      "answer": "Since division is banned, describe the prefix-and-suffix product approach. First pass left to right fills each output slot with the running product of everything to its left, then a second pass right to left multiplies by the running product to its right, tracked in a single variable. State O(n) time and O(1) extra space beyond the output, and note it handles zeros correctly, which the naive division approach does not.",
+      "code": "def product_except_self(nums):\n    n = len(nums)\n    out = [1] * n\n    for i in range(1, n):\n        out[i] = out[i-1] * nums[i-1]\n    right = 1\n    for i in range(n-1, -1, -1):\n        out[i] *= right\n        right *= nums[i]\n    return out\n# O(n) time, O(1) extra space (output not counted).",
+      "lang": "python",
+      "keywords": ["product of array except self", "prefix product", "array", "coding"]
+    },
+    {
+      "section": "Algorithms",
+      "question": "How do you approach a problem you don't immediately recognize in a fast coding round?",
+      "answer": "Show a disciplined process rather than jumping to code. Restate the problem and confirm constraints and edge cases out loud, state a brute force to establish correctness and a baseline, then look for the standard levers, a hash map that collapses a nested loop, sorting or two pointers, a sliding window, or overlapping subproblems suggesting DP. Say your plan before coding, write clean code, and dry-run a small example, and stress that in a fast round the goal is a correct, optimal, running solution with clear communication, not cleverness.",
+      "keywords": ["problem solving", "approach", "brute force", "optimization", "fast round"]
+    },
+    {
+      "section": "Product / System Sense",
+      "question": "How would you design the backend for a news feed?",
+      "answer": "Center the answer on the fan-out trade-off. Fan-out on write pushes a post into followers' feeds for fast reads but explodes for accounts with millions of followers, while fan-out on read assembles at request time with cheap writes but expensive reads, so the right answer is hybrid, fan-out on write for normal users and on read for high-follower accounts, merged at request time. Add caching, ranking rather than pure reverse-chronological, and paging, and close by asking about the read-to-write ratio and whether ranking is in scope since those drive the design.",
+      "keywords": ["system design", "news feed", "fan-out", "caching", "product sense"]
+    },
+    {
+      "section": "Product / System Sense",
+      "question": "If you shipped a feature and engagement dropped, how would you investigate?",
+      "answer": "Show a measure-first instinct. Confirm the drop is real rather than noise or a logging bug, then segment by user cohort, platform, and timing, and walk the funnel to find which step regressed instead of treating engagement as one number. Decide whether it is a bug, a latency regression, or a genuine product signal, and because it is reversible, be quick to roll back or ramp down if impact is bad, then run a clean experiment and let the data decide rather than defending the feature.",
+      "keywords": ["metrics", "engagement", "product sense", "experimentation", "funnel"]
+    },
+    {
+      "section": "Behavioral",
+      "question": "Tell me about a time you moved fast and shipped something quickly.",
+      "answer": "Use STAR and pick a story where speed was contained by safety, not by skipping it. Describe scoping to a thin but complete slice, shipping it dark behind a feature flag, ramping gradually on a small percentage of traffic, fixing what the ramp surfaced, then rolling out. Land the result, hitting the date with contained risk, and close that moving fast responsibly means shipping small, safe increments behind flags.",
+      "keywords": ["move fast", "ship", "feature flag", "star", "behavioral"]
+    },
+    {
+      "section": "Behavioral",
+      "question": "Tell me about a time you worked cross-functionally with non-engineers.",
+      "answer": "Choose a story where you were the engineer between design and data or another function with competing goals. Show that you translated both sides into concrete trade-offs, richer interaction versus clean measurability, and proposed an instrumented middle version you could ship and measure, keeping everyone anchored on the shared goal of provable user value. Land the result and close that cross-functional work is mostly translating between languages and anchoring on a shared metric.",
+      "keywords": ["cross-functional", "collaboration", "design", "data science", "behavioral"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that show you want the messy version, not the recruiting pitch. Strong ones: how the team keeps move-fast from turning into tech debt that slows them later, what the path from shipping code to influencing product direction looks like, and what hard problem the team is wrestling with right now.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

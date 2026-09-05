@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What Recruiters See in Your HackerRank Report: Field by Field</title>
+  <meta name="description" content="A field-by-field walkthrough of the HackerRank candidate report: per-test-case results, time per question, paste logs, tab-switch timestamps and both flag types.">
+  <meta name="keywords" content="what do recruiters see on hackerrank report, hackerrank candidate report, hackerrank test report, hackerrank plagiarism flag, hackerrank code similarity, hackerrank coding patterns, hackerrank tab switch detection, hackerrank copy paste detection">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/hackerrank-candidate-report/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="What Recruiters See in Your HackerRank Report: Field by Field">
+  <meta property="og:description" content="A field-by-field walkthrough of the HackerRank candidate report: per-test-case results, time per question, paste logs, tab-switch timestamps and both flag types.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/hackerrank-candidate-report/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-hackerrank-candidate-report.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="What Recruiters See in Your HackerRank Report: Field by Field">
+  <meta name="twitter:description" content="A field-by-field walkthrough of the HackerRank candidate report: per-test-case results, time per question, paste logs, tab-switch timestamps and both flag types.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-hackerrank-candidate-report.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Recruiters See in Your HackerRank Report: Field by Field","description":"A field-by-field walkthrough of the HackerRank candidate report: per-test-case results, time per question, paste logs, tab-switch timestamps and both flag types.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/hackerrank-candidate-report/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"What Recruiters See in Your HackerRank Report: Field by Field","url":"https://offerpilotai.ink/guides/hackerrank-candidate-report/","mainEntity":[{"@type":"Question","name":"What do recruiters see on a HackerRank report?","acceptedAnswer":{"@type":"Answer","text":"Recruiters open a candidate report showing the total score, the score and time spent on every question, the exact code submitted with its language, and a per-test-case table marking each hidden case pass or fail with runtime and memory. If proctoring was enabled they also see focus-loss timestamps, total time spent outside the test window, logged paste events with the pasted text, and any plagiarism flags."}},{"@type":"Question","name":"Can recruiters see if you copy and paste on HackerRank?","acceptedAnswer":{"@type":"Answer","text":"Yes, when copy-paste tracking is enabled for the test. The report logs each paste into the code editor with a timestamp and, in most configurations, quotes the pasted text back to the reviewer. A recruiter therefore sees not just that you pasted, but how many lines arrived at once. Pasting your own boilerplate reads very differently from pasting a complete working solution seconds before submitting."}},{"@type":"Question","name":"Does HackerRank show how long you spent on each question?","acceptedAnswer":{"@type":"Answer","text":"Yes. The scorecard lists time taken per question alongside the score for that question, plus total time used against the time allotted. Reviewers use it to spot mismatches. A hard problem solved in three minutes with a perfect score reads differently from the same score reached over twenty-five minutes with several failed submissions along the way."}},{"@type":"Question","name":"What is the difference between Code Similarity and Coding Patterns on HackerRank?","acceptedAnswer":{"@type":"Answer","text":"Code Similarity compares your submission against other candidates' answers and known public solutions, so it measures resemblance to existing code. Coding Patterns looks at how the code arrived in the editor, such as a complete solution appearing in one insertion with no iterative debugging. One flags what you wrote, the other flags how you wrote it, and neither proves copying on its own."}},{"@type":"Question","name":"Does a HackerRank plagiarism flag mean automatic rejection?","acceptedAnswer":{"@type":"Answer","text":"No. The flags are presented to reviewers as signals to investigate rather than as verdicts, and textbook solutions to classic problems legitimately look alike. Teams that act on a flag usually do so by asking the candidate to walk through the solution live. Policies differ by employer, so the same flag can matter a great deal at one company and be ignored at another."}},{"@type":"Question","name":"Can recruiters see if you switched tabs during a HackerRank test?","acceptedAnswer":{"@type":"Answer","text":"If tab or focus proctoring was switched on for that test, yes. The report records each time the assessment window lost focus, with a timestamp for each event and a total time spent away. It does not record what you looked at, only that the test window stopped being the active window and for how long it stayed inactive."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"HackerRank Candidate Report","item":"https://offerpilotai.ink/guides/hackerrank-candidate-report/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Coding assessment platforms</p>
+      <h1 class="balance">What recruiters actually see in your HackerRank report</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A reviewer opening your HackerRank candidate report sees far more than a score. They get your total against the time allotted, a per-question breakdown with the minutes you spent on each, your full source code in the language you chose, and a row for every hidden test case marked pass or fail with its runtime and memory. If proctoring was switched on, they also get a timestamped log of every time the test window lost focus, a count of paste events with the pasted lines quoted back, and up to two plagiarism flag categories. Almost none of that is visible to you while you take the test.</p>
+
+      <h2>The order a reviewer clicks through it</h2>
+      <p>The report is one page per candidate per test, shareable by link with hiring managers. Few reviewers read it top to bottom. The usual path is a triage pass, then a deep dive on whatever looked odd.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The header band</h3>
+            <p>Name, email, test name, total score as points earned over points available, time taken against time allotted, submission timestamp, and completion status. Many configurations also show how the score sits against other candidates who took the same assessment.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The question scorecard</h3>
+            <p>Every question in order with its type (coding, multiple choice, approximate solution, subjective), its score, and the time spent on it. Questions opened but never attempted are marked as such, which is its own signal.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The per-question deep dive</h3>
+            <p>Expanding a coding question reveals the submitted source, the language, each submission attempt with its timestamp and score, compiler output for failed runs, and the full test-case grid including the hidden cases you never saw results for.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The activity and proctoring panel</h3>
+            <p>Focus-loss events, copy-paste events, and, where enabled, webcam snapshots and full-screen exit records. Most reviewers open this only when something above it already looked strange.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Inside one coding question, field by field</h2>
+      <p>Candidates underestimate this part. During the test, a failed hidden case tells you almost nothing. In the report, the reviewer sees the whole grid.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th>Field</th><th>What it literally contains</th><th>What a reviewer reads into it</th></tr>
+          <tr><td>Test case rows</td><td>One row per case, sample and hidden, each marked Success, Wrong Answer, Terminated due to timeout, or Runtime Error, with points awarded, execution time and memory used</td><td>Whether you failed on logic or on complexity. Passing everything except the large cases is a Big-O story, not a correctness story, and that difference often decides reject versus follow-up</td></tr>
+          <tr><td>Submitted source</td><td>The final code exactly as it stood, plus the language you selected</td><td>Naming, structure, comments, dead code, leftover debug prints. Reviewers form an opinion here faster than from the score</td></tr>
+          <tr><td>Submission attempts</td><td>Each submission with a timestamp and the score it earned</td><td>The shape of your debugging. Three failed submissions then a pass looks like work. One submission at full marks looks like either fluency or a prepared answer</td></tr>
+          <tr><td>Compiler output</td><td>Build errors and stderr from failing runs</td><td>Whether a zero means the approach was wrong or a semicolon was missed under time pressure. Those are treated very differently</td></tr>
+          <tr><td>Time spent</td><td>Minutes attributed to that question</td><td>Read against the score. A perfect score in three minutes on a hard problem is the single most common trigger for opening the proctoring panel</td></tr>
+        </table>
+      </div>
+
+      <h2>The activity log: pastes and focus loss</h2>
+      <p>Two logs sit under the proctoring panel, and they behave differently from how most candidates imagine.</p>
+      <p><strong>Paste events.</strong> When copy-paste tracking is enabled, the editor records each paste into the code area with a timestamp. In most configurations the report does not merely count them, it quotes the pasted content back to the reviewer. So a recruiter sees that at 14:22:07 you pasted eleven lines, and reads those eleven lines. Content matters more than count here. Pasting a helper you wrote earlier in the same editor is unremarkable. Pasting a complete, correct, stylistically foreign solution ninety seconds before you submit is what gets escalated.</p>
+      <p><strong>Focus loss.</strong> The focus log records each time the assessment window stopped being the active window, with a timestamp per event and a total time away. Be precise about the boundary: it captures that the window lost focus and for how long, not what you switched to. HackerRank cannot see your other tabs, your second monitor, or your phone. Fourteen events totalling six minutes is a behaviour pattern, and the innocent explanations are real ones, a notification, a break, the statement open in a second window. What reads badly is one long absence immediately before a clean submission.</p>
+
+      <h2>The two flag categories, and what each one proves</h2>
+      <p>Plagiarism detection surfaces flags in two different families. They get confused constantly, including by the people reading the report, and they carry very different weight.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th></th><th>Code Similarity</th><th>Coding Patterns</th></tr>
+          <tr><td>What it compares</td><td>Your submission against other candidates' submissions and against known public solutions</td><td>How the code arrived in the editor: insertion size, editing rhythm, whether the solution grew or landed whole</td></tr>
+          <tr><td>What it actually proves</td><td>That your code resembles other code</td><td>That your code was not composed incrementally inside that editor</td></tr>
+          <tr><td>What it does not prove</td><td>Copying. Standard solutions converge. Two candidates writing the canonical two-pointer answer look alike because there is one good answer</td><td>Cheating. Drafting in your own IDE and pasting it in triggers it. So does having genuinely memorised a classic problem</td></tr>
+          <tr><td>Strongest against</td><td>Verbatim lifts, especially with preserved variable names, unusual formatting, or comments carried over from the source</td><td>A full solution appearing in a single event with no failed compile, no refactor, no exploratory print statement</td></tr>
+          <tr><td>Weakest against</td><td>Easy and medium problems where the optimal answer is short and standard</td><td>Fast, confident, experienced candidates, who look identical to prepared ones</td></tr>
+        </table>
+      </div>
+
+      <p>Both are presented as signals to investigate rather than verdicts. The usual consequence is not a silent reject but a request to walk through your solution live, a conversation you win comfortably if the code is genuinely yours. If it is not, that is exactly where it comes apart.</p>
+
+      <blockquote>The report is evidence about process, not only about outcome. A reviewer who trusts the process stops reading after the scorecard. That is the outcome worth engineering for.</blockquote>
+
+      <h2>Where OfferPilot is the wrong tool for this</h2>
+      <p><a href="/code-copilot/">Code Copilot</a> is a Windows 10 and 11 desktop overlay that reads a problem off your screen and returns an optimal solution with intuition, a dry run and Big-O complexity. Its overlay is excluded from screen capture at the operating-system level, so it stays out of Zoom, Teams, Meet, OBS and screenshots. That is a narrow guarantee, and here is where it stops.</p>
+      <ul>
+        <li><strong>It does not touch any field described above.</strong> Capture exclusion hides pixels from a screen-share stream. It has no effect on the paste log, the focus log, submission timestamps, or either flag category. If text arrives in the editor by paste, the report records that paste and quotes it, wherever the text came from.</li>
+        <li><strong>It does not address proctoring that is not screen capture.</strong> Webcam monitoring, a lockdown browser, an invigilator in the room, eye tracking, or a second-device camera all sit outside what capture exclusion does. If your assessment is webcam-proctored or locked down, treat the tool as unavailable and prepare instead.</li>
+        <li><strong>It is Windows only.</strong> No macOS, no Linux, no mobile, no browser extension. If you assess on a Mac, this is not a decision you need to make.</li>
+      </ul>
+      <p>The honest use is before the test window opens. Working timed problems with something that shows the intuition and the complexity analysis, rather than just an answer, is how the report ends up reading like fluency instead of retrieval. Rehearsing against the <a href="/interview-questions/">company question banks</a> and building a role-specific set with the <a href="/interview-copilot/#generator">Q&amp;A generator</a> serves the same end for the interview that follows.</p>
+
+      <h2>What follows from all this</h2>
+      <p>Type your solution in the editor rather than composing elsewhere and pasting it across, because the paste log is quoted verbatim. Submit early and often, since a visible progression from failing to passing is the strongest evidence of authorship in the whole report. Read the constraints first, because the hidden grid is where an O(n squared) answer that cleared every sample falls over. And leave the tab alone, not because switching is forbidden, but so the reviewer never has to weigh it. None of this is about avoiding detection. It is about making the report an accurate record of work you did, which is the only version that survives the follow-up conversation.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/hackerrank-copy-paste-detection/">Can HackerRank Detect Copy and Paste? What the Report Shows</a></li>
+        <li><a href="/guides/codility-similarity-check-flag/">Codility Similarity Check Flagged: What Triggers It and Why</a></li>
+        <li><a href="/guides/hackerrank-proctoring-settings/">Does HackerRank Record Your Screen? Proctoring Tiers Explained</a></li>
+        <li><a href="/guides/google-during-coding-assessment/">Can You Google During a HackerRank or Coding Assessment?</a></li>
+        <li><a href="/guides/hackerrank-codepair-interview/">HackerRank CodePair Interview: What to Expect in the Pad</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Practise until the report reads like fluency.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card. Work timed problems with the intuition, dry run and Big-O spelled out.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/code-copilot/">How Code Copilot works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

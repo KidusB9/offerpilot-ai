@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neuberger Berman Application Developer II, Private Markets Technology (Front Office) Interview Questions and Answers (2026)</title>
+  <meta name="description" content="9 real Neuberger Berman Application Developer II, Private Markets Technology (Front Office) interview questions with model answers, covering opening, domain (private markets), sql / coding, python / coding.">
+  <meta name="keywords" content="Neuberger Berman interview questions, Neuberger Berman Application Developer II, Private Markets Technology (Front Office) interview, Neuberger Berman interview questions and answers, Neuberger Berman behavioral interview questions, Neuberger Berman technical interview prep">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/interview-questions/neuberger-berman/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Neuberger Berman Application Developer II, Private Markets Technology (Front Office) Interview Questions and Answers (2026)">
+  <meta property="og:description" content="9 real Neuberger Berman Application Developer II, Private Markets Technology (Front Office) interview questions with model answers, covering opening, domain (private markets), sql / coding, python / coding.">
+  <meta property="og:url" content="https://offerpilotai.ink/interview-questions/neuberger-berman/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/interview-questions-neuberger-berman.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Neuberger Berman Application Developer II, Private Markets Technology (Front Office) Interview Questions and Answers (2026)">
+  <meta name="twitter:description" content="9 real Neuberger Berman Application Developer II, Private Markets Technology (Front Office) interview questions with model answers, covering opening, domain (private markets), sql / coding, python / coding.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/interview-questions-neuberger-berman.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Neuberger Berman Application Developer II, Private Markets Technology (Front Office) Interview Questions and Answers","url":"https://offerpilotai.ink/interview-questions/neuberger-berman/","mainEntity":[{"@type":"Question","name":"Tell me about yourself and why Neuberger Berman.","acceptedAnswer":{"@type":"Answer","text":"Give a concise arc of your background in enterprise data systems, SQL Server, window functions, performance-tuned stored procedures, and Python/pandas pipelines, and lead with caring about correctness of the numbers first, then point-in-time storage, idempotent loads, and reconciliation. The framing that lands here is front-office private-markets technology where the data has to be right and engineers sit close to investment decisions. If you are ready to be on-site with the desk, say so plainly."}},{"@type":"Question","name":"Explain commitment vs. called vs. unfunded, and how exposure is computed.","acceptedAnswer":{"@type":"Answer","text":"Define the terms precisely: commitment is total capital pledged, called or contributed is what has actually been drawn via capital calls, and unfunded is the remainder, commitment minus called. Then compute exposure as NAV plus unfunded, because you are economically on the hook for capital that can still be drawn. Close on why it matters for risk: two positions with the same NAV but different unfunded have very different true exposure."}},{"@type":"Question","name":"What's the difference between IRR and TVPI, and what is the J-curve?","acceptedAnswer":{"@type":"Answer","text":"Distinguish them cleanly: IRR is the money-weighted annualized return that accounts for cash-flow timing, while TVPI is a multiple, total value to paid-in, equal to DPI (realized) plus RVPI (unrealized). Explain you quote both because a high IRR on a quick flip can still be a small multiple. Then define the J-curve as the early-life dip where fees and early markdowns pull returns negative before investments mature and distributions arrive."}},{"@type":"Question","name":"Get the latest NAV per fund as of a report date.","acceptedAnswer":{"@type":"Answer","text":"Restate it as one row per fund, its most recent NAV on or before the report date, and surface the assumptions, possible same-date ties broken by a load sequence, and never letting one fund's data bleed into another. Describe the plan: partition by fund, order by nav_date descending with a tiebreaker, take row number 1. Mention verifying with a same-date restatement across two funds and naming the supporting index on (fund_id, nav_date)."}},{"@type":"Question","name":"Forward-fill a fund's NAV time series without leaking across funds.","acceptedAnswer":{"@type":"Answer","text":"Call out the two traps up front: filling across fund boundaries and backfilling a future value backward, which is lookahead bias. So group by fund first, sort by date, and forward-fill only, never backfill. Close by describing your test: a fund with a gap fills from the prior value, while a second fund's first row stays NaN rather than inheriting another fund's value."}},{"@type":"Question","name":"How do you make an ingestion load idempotent and safe to re-run?","acceptedAnswer":{"@type":"Answer","text":"Make replayability the theme: a load must re-run without duplicates or half-loaded state. Describe keying each row on a natural business key plus a load batch, using MERGE or insert-if-not-exists so a re-run updates rather than duplicates, and wrapping the batch in a transaction for all-or-nothing. Add quarantining bad rows to a reject table, recording row counts around every join to catch fan-out, and comparing money with a tolerance, so a job that dies mid-file lands in exactly the same state on re-run."}},{"@type":"Question","name":"Why shouldn't you compare two monetary amounts with '='?","acceptedAnswer":{"@type":"Answer","text":"Explain that floating-point money accumulates rounding error, so values that should be equal can differ by a fraction of a cent and fail equality, or worse pass when they should not. Say you compare with a tolerance, abs(a minus b) against a max of an absolute and relative tolerance, and for ledgers you use Decimal or integer cents so there is no float at all, rounding at the boundary for analytics. Frame it as a correctness reflex that matters more in front office than any clever algorithm."}},{"@type":"Question","name":"Tell me about a performance problem you diagnosed and fixed.","acceptedAnswer":{"@type":"Answer","text":"Pick a story where you reached for the execution plan and the numbers instead of guessing. Describe a stored procedure that degraded as data grew, finding a non-sargable predicate and a scan where a seek belonged, rewriting to keep the predicate index-friendly, adding a covering index, and switching a RANGE window to ROWS where the frame semantics allowed. Stress that you validated correctness by pinning output to known totals before and after, then measured the runtime drop."}},{"@type":"Question","name":"Do you have any questions for us?","acceptedAnswer":{"@type":"Answer","text":"Ask questions that show getting the numbers provably right is what you care about most. Strong ones: how the team handles point-in-time and restatements and whether the store is bitemporal or snapshot-based, what the reconciliation and data-quality process looks like before numbers reach the front office, and where the role sits relative to the investment team and how close the feedback loop is."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Interview questions","item":"https://offerpilotai.ink/interview-questions/"},{"@type":"ListItem","position":3,"name":"Neuberger Berman","item":"https://offerpilotai.ink/interview-questions/neuberger-berman/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/interview-questions/" style="color:var(--muted-2)">Interview questions</a> · Asset Management</p>
+      <h1 class="balance">Neuberger Berman Application Developer II, Private Markets Technology (Front Office) Interview Questions and Answers</h1>
+      <p class="meta">9 questions with model answers · Stack: SQL Server,T-SQL,Python,pandas,Front Office Analytics</p>
+    </div>
+    <article class="prose reveal">
+      <p class="lede">These are the questions a Neuberger Berman loop for a Application Developer II, Private Markets Technology (Front Office) actually asks, each with an answer you can adapt and say out loud. Rehearse them first, then run <a href="/download/">OfferPilot AI</a> live in the interview so the copilot hears the question and drafts your answer in real time.</p>
+      <h2>Opening</h2>
+      <h3>Tell me about yourself and why Neuberger Berman.</h3>
+      <p>Give a concise arc of your background in enterprise data systems, SQL Server, window functions, performance-tuned stored procedures, and Python/pandas pipelines, and lead with caring about correctness of the numbers first, then point-in-time storage, idempotent loads, and reconciliation. The framing that lands here is front-office private-markets technology where the data has to be right and engineers sit close to investment decisions. If you are ready to be on-site with the desk, say so plainly.</p>
+      <h2>Domain (Private Markets)</h2>
+      <h3>Explain commitment vs. called vs. unfunded, and how exposure is computed.</h3>
+      <p>Define the terms precisely: commitment is total capital pledged, called or contributed is what has actually been drawn via capital calls, and unfunded is the remainder, commitment minus called. Then compute exposure as NAV plus unfunded, because you are economically on the hook for capital that can still be drawn. Close on why it matters for risk: two positions with the same NAV but different unfunded have very different true exposure.</p>
+      <h3>What's the difference between IRR and TVPI, and what is the J-curve?</h3>
+      <p>Distinguish them cleanly: IRR is the money-weighted annualized return that accounts for cash-flow timing, while TVPI is a multiple, total value to paid-in, equal to DPI (realized) plus RVPI (unrealized). Explain you quote both because a high IRR on a quick flip can still be a small multiple. Then define the J-curve as the early-life dip where fees and early markdowns pull returns negative before investments mature and distributions arrive.</p>
+      <h2>SQL / Coding</h2>
+      <h3>Get the latest NAV per fund as of a report date.</h3>
+      <p>Restate it as one row per fund, its most recent NAV on or before the report date, and surface the assumptions, possible same-date ties broken by a load sequence, and never letting one fund's data bleed into another. Describe the plan: partition by fund, order by nav_date descending with a tiebreaker, take row number 1. Mention verifying with a same-date restatement across two funds and naming the supporting index on (fund_id, nav_date).</p>
+      <h2>Python / Coding</h2>
+      <h3>Forward-fill a fund's NAV time series without leaking across funds.</h3>
+      <p>Call out the two traps up front: filling across fund boundaries and backfilling a future value backward, which is lookahead bias. So group by fund first, sort by date, and forward-fill only, never backfill. Close by describing your test: a fund with a gap fills from the prior value, while a second fund's first row stays NaN rather than inheriting another fund's value.</p>
+      <h2>Data Engineering</h2>
+      <h3>How do you make an ingestion load idempotent and safe to re-run?</h3>
+      <p>Make replayability the theme: a load must re-run without duplicates or half-loaded state. Describe keying each row on a natural business key plus a load batch, using MERGE or insert-if-not-exists so a re-run updates rather than duplicates, and wrapping the batch in a transaction for all-or-nothing. Add quarantining bad rows to a reject table, recording row counts around every join to catch fan-out, and comparing money with a tolerance, so a job that dies mid-file lands in exactly the same state on re-run.</p>
+      <h2>Finance-correctness</h2>
+      <h3>Why shouldn't you compare two monetary amounts with '='?</h3>
+      <p>Explain that floating-point money accumulates rounding error, so values that should be equal can differ by a fraction of a cent and fail equality, or worse pass when they should not. Say you compare with a tolerance, abs(a minus b) against a max of an absolute and relative tolerance, and for ledgers you use Decimal or integer cents so there is no float at all, rounding at the boundary for analytics. Frame it as a correctness reflex that matters more in front office than any clever algorithm.</p>
+      <h2>Behavioral (STAR)</h2>
+      <h3>Tell me about a performance problem you diagnosed and fixed.</h3>
+      <p>Pick a story where you reached for the execution plan and the numbers instead of guessing. Describe a stored procedure that degraded as data grew, finding a non-sargable predicate and a scan where a seek belonged, rewriting to keep the predicate index-friendly, adding a covering index, and switching a RANGE window to ROWS where the frame semantics allowed. Stress that you validated correctness by pinning output to known totals before and after, then measured the runtime drop.</p>
+      <h2>Closing</h2>
+      <h3>Do you have any questions for us?</h3>
+      <p>Ask questions that show getting the numbers provably right is what you care about most. Strong ones: how the team handles point-in-time and restatements and whether the store is bitemporal or snapshot-based, what the reconciliation and data-quality process looks like before numbers reach the front office, and where the role sits relative to the investment team and how close the feedback loop is.</p>
+      <h2>Answer these live, not just in practice</h2>
+      <p>Preparation gets you the shape of an answer. In the room, the follow-up you did not rehearse is what decides the loop. OfferPilot AI listens to the interviewer, transcribes on-device, and drafts a speakable answer grounded in your own résumé, while staying off the screen-share stream. <a href="/download/">Download it free</a> and get 5 minutes a day, or see <a href="/pricing/">plans</a>.</p>
+    </article>
+  </div>
+</section>
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Back-of-the-Envelope Estimation for System Design Interviews</title>
+  <meta name="description" content="The numbers to memorise for system design estimation: 100k seconds/day, QPS from DAU, bytes per row, storage per year, latency ballparks, and three worked examples.">
+  <meta name="keywords" content="back of the envelope estimation system design interview, system design estimation cheat sheet, capacity estimation interview, how to estimate QPS from DAU, system design numbers to memorise, latency numbers every programmer should know, estimate storage system design interview, back of envelope calculation interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/back-of-the-envelope-estimation-cheat-sheet/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Back-of-the-Envelope Estimation for System Design Interviews">
+  <meta property="og:description" content="The numbers to memorise for system design estimation: 100k seconds/day, QPS from DAU, bytes per row, storage per year, latency ballparks, and three worked examples.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/back-of-the-envelope-estimation-cheat-sheet/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-back-of-the-envelope-estimation-cheat-sheet.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Back-of-the-Envelope Estimation for System Design Interviews">
+  <meta name="twitter:description" content="The numbers to memorise for system design estimation: 100k seconds/day, QPS from DAU, bytes per row, storage per year, latency ballparks, and three worked examples.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-back-of-the-envelope-estimation-cheat-sheet.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Back-of-the-Envelope Estimation for System Design Interviews","description":"The numbers to memorise for system design estimation: 100k seconds/day, QPS from DAU, bytes per row, storage per year, latency ballparks, and three worked examples.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/back-of-the-envelope-estimation-cheat-sheet/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Back-of-the-Envelope Estimation for System Design Interviews","url":"https://offerpilotai.ink/guides/back-of-the-envelope-estimation-cheat-sheet/","mainEntity":[{"@type":"Question","name":"What numbers should I memorise for back-of-the-envelope estimation?","acceptedAnswer":{"@type":"Answer","text":"Six things carry almost every round. There are 100,000 seconds in a day, which is 86,400 rounded up. One million requests a day is about 10 queries per second. A metadata row is about 100 bytes and a compressed web photo about 300 kilobytes. One kilobyte per second is about 30 gigabytes a year. Main memory is 100 nanoseconds while a same-datacentre round trip is 500 microseconds. Everything else derives from those."}},{"@type":"Question","name":"How do you convert DAU into QPS in a system design interview?","acceptedAnswer":{"@type":"Answer","text":"Multiply daily active users by actions per user per day, then divide by 100,000, the rounded number of seconds in a day. Five hundred million users opening a feed ten times a day gives five billion requests, which is 50,000 queries per second on average. Multiply by three for peak. Say the rounding out loud, because using 100,000 instead of 86,400 makes your answer about 15 percent low."}},{"@type":"Question","name":"How much storage does a photo-sharing app need per year?","acceptedAnswer":{"@type":"Answer","text":"At 50 million uploads a day and 2 megabytes stored per photo including thumbnails and web-size derivatives, that is 100 terabytes a day and roughly 40 petabytes a year before replication. The metadata is trivial by comparison, about 15 gigabytes a day at 300 bytes a row. The gap between those two figures is the whole reason photos live in object storage behind a CDN and never inside the database."}},{"@type":"Question","name":"How do I round aggressively in an interview without sounding sloppy?","acceptedAnswer":{"@type":"Answer","text":"Name the precision you need before you calculate. Say you only need to know whether this is one server or a thousand, so a factor of two either way does not change the answer. Then round to one significant figure, say which direction the error runs, and round the numerator and denominator in opposite directions so the errors partly cancel. Stating the error is what separates deliberate from careless."}},{"@type":"Question","name":"Does a URL shortener need sharding?","acceptedAnswer":{"@type":"Answer","text":"Not for capacity. One million new links a day at about 200 bytes a row is 200 megabytes a day, roughly 70 gigabytes a year, so ten years of links fits on a single disk. Base62 with seven characters gives about 3.5 trillion keys, thousands of years of supply at that rate. You shard a shortener for availability and geographic latency, not because the data is large."}},{"@type":"Question","name":"What limits how many chat connections one server can hold?","acceptedAnswer":{"@type":"Answer","text":"Memory per open socket, mostly, plus whatever per-connection state your application keeps. A tuned server holds somewhere between 100,000 and one million idle connections depending on buffer sizes, so quote a range rather than a single figure and say why it is a range. At 100 million concurrent users and 250,000 per box you need about 400 connection servers, which is why the connection layer is separated from business logic."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Back-of-the-envelope estimation","item":"https://offerpilotai.ink/guides/back-of-the-envelope-estimation-cheat-sheet/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Interview formats and question types</p>
+      <h1 class="balance">Back-of-the-envelope estimation: the numbers to have memorised</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Memorise six things and every estimation in a system design round becomes arithmetic you can do out loud. There are <strong>100,000 seconds in a day</strong> (86,400, rounded up). <strong>One million events a day is about 10 per second.</strong> A metadata row is <strong>100 bytes</strong>, a web-size photo <strong>300 KB</strong>, a chat message <strong>250 bytes</strong>. <strong>One KB per second is 30 GB a year.</strong> Memory is <strong>100 ns</strong>, an SSD read <strong>100 &micro;s</strong>, a same-datacentre round trip <strong>0.5 ms</strong>, a cross-continent one <strong>150 ms</strong>. Peak is <strong>3&times; average</strong> unless you have a reason to say otherwise. Below: the full table, three designs estimated longhand in under two minutes each, and how to round hard without sounding like you are guessing.</p>
+
+      <h2>The whole table, one screen</h2>
+      <p>You are not being tested on arithmetic. You are being tested on whether you can turn a product statement into a number that forces an architectural decision, in about ninety seconds, while talking. These are the inputs.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Quantity</th><th>Memorise as</th><th>Where it comes from</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Seconds in a day</td><td><strong>100,000</strong></td><td>86,400 rounded up. Makes every QPS figure about 15% low, which you say aloud.</td></tr>
+            <tr><td>Daily volume to QPS</td><td>Divide by 100,000. <strong>1M/day = 10 QPS. 1B/day = 10k QPS.</strong></td><td>The single most useful conversion in the round.</td></tr>
+            <tr><td>Peak multiplier</td><td><strong>3&times; average</strong>, or 10&times; for spiky products</td><td>Ticket sales and live events are 10&times;. A messaging app is nearer 2&times;.</td></tr>
+            <tr><td>Powers of two</td><td>2<sup>10</sup> = KB, 2<sup>20</sup> = MB, 2<sup>30</sup> = GB, 2<sup>40</sup> = TB, 2<sup>50</sup> = PB</td><td>Turns a bit count into a size without hesitation.</td></tr>
+            <tr><td>Metadata row</td><td><strong>100 bytes</strong> (a few int64 ids and a timestamp)</td><td>int64 = 8 B, UUID = 16 B binary, timestamp = 8 B.</td></tr>
+            <tr><td>Short text post</td><td><strong>300 bytes</strong> with metadata</td><td>280 characters plus author id, post id, created_at.</td></tr>
+            <tr><td>Chat message</td><td><strong>250 bytes</strong></td><td>About 100 B of text and 150 B of ids, timestamp and delivery status.</td></tr>
+            <tr><td>URL row</td><td><strong>200 bytes</strong></td><td>About 100 B of long URL, a 7 B code, owner, created_at, index overhead.</td></tr>
+            <tr><td>Photo</td><td>Thumbnail <strong>10 KB</strong>, web size <strong>300 KB</strong>, original <strong>2 MB</strong></td><td>All three get stored, so budget the original plus about 10%.</td></tr>
+            <tr><td>Storage per year</td><td><strong>1 KB/s = 30 GB/yr. 1 MB/s = 30 TB/yr. 1 GB/s = 30 PB/yr.</strong></td><td>86,400 &times; 365 is about 31.5 million, so rate &times; 30 million.</td></tr>
+            <tr><td>Replication</td><td>Multiply raw storage by <strong>3</strong></td><td>Then say whether you would use erasure coding instead for cold objects.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The second half is what one machine can actually do. Quote these as ranges, because they move with hardware and workload, and a candidate who says "somewhere between five and ten thousand, and here is what would push it to either end" reads as more experienced than one who states a single confident wrong number.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>One machine</th><th>Ballpark</th><th>Latency reference</th><th>Ballpark</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Stateless API server</td><td>1k to 10k QPS</td><td>L1 cache reference</td><td>~1 ns</td></tr>
+            <tr><td>Relational DB, indexed reads</td><td>5k to 10k QPS</td><td>Main memory read</td><td>~100 ns</td></tr>
+            <tr><td>Relational DB, writes</td><td>1k to 5k/s</td><td>Read 4 KB from SSD</td><td>~100 &micro;s</td></tr>
+            <tr><td>Redis or similar, in memory</td><td>~100k ops/s</td><td>Same-datacentre round trip</td><td>~0.5 ms</td></tr>
+            <tr><td>Kafka broker</td><td>~100k msg/s, hundreds of MB/s</td><td>Read 1 MB sequentially from SSD</td><td>~1 ms</td></tr>
+            <tr><td>Open sockets held</td><td>100k to 1M, memory bound</td><td>Spinning disk seek</td><td>~10 ms</td></tr>
+            <tr><td>NIC throughput</td><td>10 Gbps = 1.25 GB/s</td><td>Cross-continent round trip</td><td>~150 ms</td></tr>
+            <tr><td>RAM per box</td><td>64 to 256 GB</td><td>User-facing p99 target</td><td>100 to 200 ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two consequences are worth saying aloud when they come up. Memory is roughly a thousand times faster than an SSD, so a cache hit and a cache miss are different systems, not the same system slightly slower. And a cross-continent round trip at 150 ms already eats most of a 200 ms budget, so anything global has to be served near the user no matter how fast your code is.</p>
+
+      <h2>Three designs, estimated longhand</h2>
+      <p>Each of these is under two minutes spoken. Notice that each one produces a different <em>kind</em> of number, which is exactly why all three keep getting asked.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Photo-sharing feed: the bytes are the problem</h3>
+            <p>Assume 500M daily users, each opening the feed 10 times, each page showing 10 photos. Reads: 5 billion feed loads a day, divided by 100,000, is <strong>50k QPS average, 150k at peak</strong>. Uploads: one user in ten posts once a day, so 50M photos a day, which is <strong>500 uploads a second</strong>. Storage: 50M times 2 MB is <strong>100 TB a day, about 40 PB a year</strong>, and 120 PB once replicated three ways.</p>
+            <p>Now the number that decides the architecture. Egress is 50k feed loads a second, times 10 photos, times 300 KB, which comes to <strong>150 GB/s, or 1.2 Tbps</strong>. At 10 Gbps a box, that is 120 servers doing nothing but pushing bytes, before any application logic exists. A CDN here is not an optimisation, it is the design. Meanwhile the metadata is 50M rows at 300 bytes, about 15 GB a day and 5 TB a year, which fits comfortably in one ordinary database. Say both numbers next to each other. Four orders of magnitude apart is the entire justification for splitting blobs from metadata, and it lands far better as a comparison than as two separate facts.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>URL shortener: prove it is small, then move on</h3>
+            <p>Assume 1M new links a day and a 100:1 read to write ratio, so 100M redirects. Writes are <strong>10 a second</strong>. Reads are 100M over 100,000 seconds, so <strong>1,000 QPS, 3,000 at peak</strong>. Storage: 1M times 200 bytes is 200 MB a day, <strong>70 GB a year</strong>, so a decade of links is about 700 GB and fits on a single disk. Key space: base62 over 7 characters is 62<sup>7</sup>, roughly <strong>3.5 trillion</strong> codes. Even 6 characters gives 57 billion, which at a million a day is over 150 years of supply.</p>
+            <p>Bandwidth is a redirect response of a few hundred bytes, so 1,000 QPS is well under a megabyte a second. The honest conclusion, and interviewers like hearing it stated, is that one well-provisioned machine could serve this workload, and 30 days of links at 6 GB fits entirely in RAM. So you say it: capacity is not the interesting constraint here, and I would rather spend the remaining time on p99 latency for a globally distributed redirect, on generating keys without coordination or collisions, and on abuse and expiry. That reframing is what the question was fishing for all along.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Chat app: connections, not bytes</h3>
+            <p>Assume 500M daily users sending 40 messages each: 20 billion messages a day, which over 100,000 seconds is <strong>200k messages a second, 600k at peak</strong>. With a mix of one-to-one threads and small groups, call average fanout 2, so <strong>400k deliveries a second</strong>. Bytes are almost nothing: 200k times 250 B is <strong>50 MB/s of ingest</strong>, four orders of magnitude below the photo app at a similar user count.</p>
+            <p>Two numbers actually shape this design. First, concurrency. If 20% of users are online at peak that is <strong>100 million open connections</strong>, and at a defensible 250k sockets a box that is <strong>400 connection servers</strong>, plus a registry mapping each user to the box holding their socket. Second, retention. Keeping every message at 250 bytes is 5 TB a day and <strong>about 2 PB a year</strong> before replication, whereas deleting after delivery leaves only the undelivered backlog, perhaps a few hundred GB. One product decision moves storage by three orders of magnitude, and naming that trade rather than silently assuming it is what scores.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Rounding hard without sounding sloppy</h2>
+      <p>Aggressive rounding is a seniority signal when it is narrated and a red flag when it is silent. The difference sits almost entirely in the sentence wrapped around the number.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Sounds like guessing</th><th>Sounds deliberate</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"Let us say about a hundred thousand seconds in a day."</td><td>"86,400 seconds, I will use 100,000. That makes every QPS number I say roughly 15% low, and I will flag it if we get near a threshold."</td></tr>
+            <tr><td>"Photos are, I do not know, a couple of megabytes?"</td><td>"I will budget 2 MB a photo including the thumbnail and web-size derivatives. If it is really 5 MB the storage triples, but the CDN decision does not change."</td></tr>
+            <tr><td>"That comes to roughly 47,300 queries per second."</td><td>"Call it 50k. I need to know whether this is ten boxes or a thousand, and a factor of two does not change that answer."</td></tr>
+            <tr><td>"Assume 500 million daily users."</td><td>"I will assume 500M daily users and 10 opens each. If it is 50 opens my read path goes to 250k QPS, and I would want the CDN either way, so that input is not load bearing."</td></tr>
+            <tr><td>Silence, and then a number appears.</td><td>"20 billion a day, divided by 100,000 seconds, is 200,000 a second." Every intermediate said aloud, with the units attached to it.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Three habits carry the whole thing. Declare the precision you need <em>before</em> you calculate, because "one box or a thousand" licenses everything that follows. Round the numerator and the denominator in opposite directions where you can, and say that you did, so the errors partly cancel. And sanity check the output against something you already know: 500 photo uploads a second for a 500M-user product feels about right, and if you had produced 500,000 you would want to find the missing factor of a thousand before the interviewer does. Say "let me sanity check that" out loud. Nobody has ever lost points for it.</p>
+      <p>One more rule saves whole minutes. If a number does not change a decision, compute it, say it is small, and stop. "Metadata is a few TB a year, which is nothing, so I will not dwell on it" is a better use of ten seconds than a careful derivation of a figure that alters nothing downstream.</p>
+
+      <h2>Where a live copilot is the wrong tool for this bit</h2>
+      <p>This part of the interview is close to the worst case for live assistance, and it is worth being straight about that. Estimation is you talking for ninety seconds while the interviewer is silent, so a tool that listens to interviewer audio has almost nothing to work with. <a href="/interview-copilot/">Interview Copilot</a> transcribes the interviewer on-device and drafts a speakable answer in about a second, which fits behavioural rounds and rapid-fire technical questions well. It does not fit an arithmetic monologue you are meant to be narrating at a whiteboard, and glancing away mid-calculation is more visible than a thinking pause. The rest of the limits, plainly:</p>
+      <ul>
+        <li><strong>Windows 10 and 11 only.</strong> No macOS, no Linux, no mobile, no browser extension.</li>
+        <li><strong>Capture exclusion covers screen sharing and screen recording, and nothing else.</strong> The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a second-device camera, or a person sitting in the room.</li>
+        <li><strong>Numbers you did not derive collapse on the follow-up.</strong> "Why 3&times; for peak?" and "what happens if photos are 5 MB?" arrive immediately, and a recited figure has no answer to either.</li>
+        <li><strong>The rules belong to the company.</strong> Some interviews permit documentation and AI assistance and some do not. Read the instructions, and ask when they are ambiguous.</li>
+      </ul>
+      <p>The useful preparation here is not live at all. It is drilling the table above until the conversions are reflexive, then running each of the three designs against a two-minute timer until you stop reaching for a calculator.</p>
+
+      <h2>How to drill it</h2>
+      <p>Pick four prompts, say a photo feed, a shortener, a chat app and a rate limiter, and estimate each one aloud in two minutes with a timer in view. Then run the same four inside the <a href="/guides/system-design-interview-45-minute-timeline/">45-minute clock</a>, because estimation that overruns steals time from the deep dive where the marks actually sit. The <a href="/interview-questions/">question banks</a> give you prompts to work through, and the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank for a specific company and role from your resume, which matters because an infrastructure team and a consumer product team weight these numbers very differently. OfferPilot AI has a free tier of 5 minutes a day with no card, and paid <a href="/pricing/">plans</a> start at $39 a month, metered on listening time only.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/system-design-interview-45-minute-timeline/">System Design Interview in 45 Minutes: A Minute-by-Minute Plan</a></li>
+        <li><a href="/guides/l4-vs-l5-interview-difference/">L4 vs L5 Software Engineer Interview: What Actually Changes</a></li>
+        <li><a href="/guides/best-ai-model-for-leetcode-help/">Best AI Model for LeetCode Problems: Grok, DeepSeek, Gemini</a></li>
+        <li><a href="/guides/threat-modeling-interview-question/">Threat Modeling Interview Question: STRIDE on a Real System</a></li>
+        <li><a href="/guides/hiring-manager-interview-round/">Hiring Manager Interview Questions: The 3 Decisions Being Made</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Estimate out loud until it stops feeling like arithmetic.</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company-specific question bank from your own resume, then run each design against a two-minute timer.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does Codility Track Tab Switching and Paste? What It Logs</title>
+  <meta name="description" content="Yes. The test page listens for visibilitychange and blur, storing a timestamp, duration and count, but never where you went. Paste is caught by the editor instead.">
+  <meta name="keywords" content="does codility track tab switching, codility tab switch detection, codility copy paste detection, does codility detect cheating, codility proctoring, codility code playback, codility candidate report, can codility see my screen">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/codility-tab-switching-and-paste-detection/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does Codility Track Tab Switching and Paste? What It Logs">
+  <meta property="og:description" content="Yes. The test page listens for visibilitychange and blur, storing a timestamp, duration and count, but never where you went. Paste is caught by the editor instead.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/codility-tab-switching-and-paste-detection/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-codility-tab-switching-and-paste-detection.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does Codility Track Tab Switching and Paste? What It Logs">
+  <meta name="twitter:description" content="Yes. The test page listens for visibilitychange and blur, storing a timestamp, duration and count, but never where you went. Paste is caught by the editor instead.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-codility-tab-switching-and-paste-detection.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does Codility Track Tab Switching and Paste? What It Logs","description":"Yes. The test page listens for visibilitychange and blur, storing a timestamp, duration and count, but never where you went. Paste is caught by the editor instead.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/codility-tab-switching-and-paste-detection/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does Codility Track Tab Switching and Paste? What It Logs","url":"https://offerpilotai.ink/guides/codility-tab-switching-and-paste-detection/","mainEntity":[{"@type":"Question","name":"Does Codility know which tab or app I switched to?","acceptedAnswer":{"@type":"Answer","text":"No. The test page is an ordinary web page, and the browser events it listens to carry no destination. A visibilitychange or blur event says only that focus left the page. It does not include a URL, a page title, a window name or anything you typed elsewhere. Codility can record that you left and for how long, never where you went."}},{"@type":"Question","name":"Does Codility detect copy and paste in the code editor?","acceptedAnswer":{"@type":"Answer","text":"Yes, and by a different mechanism than tab tracking. The editor records the edit stream that drives Codility's code playback, so a block arriving in a single frame is stored differently from the same text typed character by character. Reviewers see the paste appear instantly when they scrub the timeline, regardless of any separate paste counter."}},{"@type":"Question","name":"Can Codility tell the difference between pasting my own notes and pasting an external solution?","acceptedAnswer":{"@type":"Answer","text":"Not from the paste event itself, which looks identical in both cases. The difference shows in the surrounding context: whether that text existed earlier in your own session, whether the naming and style match the code you typed by hand, how much editing followed, and whether a focus loss of meaningful length preceded it. A human reads that pattern."}},{"@type":"Question","name":"How many tab switches are allowed on a Codility test?","acceptedAnswer":{"@type":"Answer","text":"There is no published threshold, on Codility or any comparable platform, because a number would be gamed and because the count alone carries little meaning. Twelve two-second losses look like notification toasts. One five-minute loss starting just after the hardest task loads, followed by a large paste, reads very differently. Duration and timing dominate the raw count."}},{"@type":"Question","name":"Does a tab switch or a paste automatically fail a Codility test?","acceptedAnswer":{"@type":"Answer","text":"No. Your score comes from correctness and performance on the test cases, and the integrity signals sit beside that score rather than inside it. They change how much a reviewer trusts the result, which usually means a follow-up conversation about the code you submitted rather than a silent rejection. Explaining your own solution live settles most flags."}},{"@type":"Question","name":"Does a screen-capture-safe overlay hide tab switching on Codility?","acceptedAnswer":{"@type":"Answer","text":"No. Capture exclusion removes a window from screen sharing, recordings and screenshots. Focus detection never looks at pixels, it reads which window the operating system considers focused, so clicking any overlay logs the same event as any other app. Capture exclusion also does nothing against webcam monitoring, lockdown browsers, eye tracking or a person watching you."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Codility tab switching and paste detection","item":"https://offerpilotai.ink/guides/codility-tab-switching-and-paste-detection/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Does Codility track tab switching and paste?</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Yes to both, and they are two entirely different mechanisms. Tab switching is caught by the browser: the test page binds <code>visibilitychange</code> and <code>blur</code>, and each time focus leaves it stores a timestamp, a duration and a running count. It never learns your destination. Paste is caught by the editor, which records the edit stream behind Codility's code playback, so text that appears in one frame instead of arriving keystroke by keystroke is stored as exactly that. The first tells a reviewer you left. The second shows them what happened when you came back.</p>
+
+      <h2>What the browser is able to tell Codility</h2>
+      <p>Nothing about focus detection is proprietary. Any web page can do it in six lines, and a browser-delivered assessment is a web page, which sets the ceiling on what Codility can know.</p>
+      <ul>
+        <li><code>visibilitychange</code> on the document fires when the tab stops being visible. Switching browser tab, minimising, and the screen locking all flip <code>document.visibilityState</code> to <code>hidden</code>.</li>
+        <li><code>blur</code> on the window fires on any loss of keyboard focus, a much lower bar. Alt-Tab fires it. So does clicking a window on a second monitor while the test stays fully visible on the first.</li>
+        <li>Where a session runs in enforced full screen, <code>fullscreenchange</code> fires the moment you press Esc, whether or not you actually went anywhere.</li>
+      </ul>
+      <p>From those events three fields get written. The <strong>timestamp</strong> aligns the gap with the task that was open and with what the playback shows next. The <strong>duration</strong> is the interval between the blur and the matching focus event, and it carries almost all of the signal while getting almost none of the attention. The <strong>count</strong> is the session tally, the weakest of the three and the one most likely to be the only number a busy reviewer reads.</p>
+      <blockquote>The boundary is hard, and it is worth being precise about. Codility records that you left, never where you went. The events carry no URL, no window title, no page title, and no keystrokes from the other application. A web page cannot enumerate your other tabs or read your desktop, so no proctoring setting turns a focus-loss log into a record of what you looked at.</blockquote>
+      <p>Whether that listener is running at all is a per-assessment choice made by the hiring company, and configurations differ by plan and by product, with a live pairing session behaving nothing like an unattended timed test. Candidates cannot reliably tell which setup they were given, so the safe assumption is that focus is being logged.</p>
+
+      <h2>Why paste is a stronger kind of evidence</h2>
+      <p>Paste detection does not depend on the clipboard being readable, and it barely depends on a paste event firing at all. The editor captures the sequence of edits that produced your final submission, which is what makes the code playback in the report possible: a reviewer scrubs through your solution and watches it get written. Typing produces a long tail of small insertions spread over minutes, with backtracking, a bracket typed and deleted, a variable renamed halfway through. An insertion of sixty lines at a single timestamp with no keystrokes behind it is a different shape entirely, and no separate flag is needed for a human to notice it.</p>
+      <p>That is also why retyping pasted code by hand does not reproduce the trace of writing it: a transcription still arrives in order, top to bottom, without the false starts. Running alongside all of this is a similarity signal comparing submissions against other candidates and against public solutions. That check has nothing to do with focus or paste, and it is frequently the one that raises the question.</p>
+
+      <h2>Worked example: two pastes, one identical log line</h2>
+      <p>Both candidates are forty-one minutes into a ninety-minute test with three tasks. Both paste a block into the editor. The paste itself is stored the same way for each of them: position, length, one timestamp.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Candidate A pastes her own scratch notes</h3>
+            <p>At minute twelve she wrote a prefix-sum helper inside task one, decided it belonged in task three, cut it, and left it on the clipboard. At minute forty-one it goes back in. The paste has provenance inside the recording itself, because a reviewer can scrub back and watch her type that exact function.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Candidate B pastes a solution from outside</h3>
+            <p>A focus loss begins forty seconds after task three loads and lasts five minutes and ten seconds. Twenty seconds after focus returns, a fifty-eight line working solution appears in one frame. Its first appearance anywhere in the session is that frame, it uses an idiom that shows up nowhere in his other two tasks, and it passes on the first run after a single rename.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>What surrounds the paste in the report</th><th>Candidate A, own notes</th><th>Candidate B, external</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Focus loss immediately before</td><td>None, or a few seconds</td><td>5 min 10 s, starting just after the task opened</td></tr>
+            <tr><td>Text seen earlier in the same playback</td><td>Yes, typed by hand at minute twelve</td><td>No, the paste is its first appearance</td></tr>
+            <tr><td>Naming and formatting</td><td>Matches her typed code, same habits, same abbreviations</td><td>A different convention from his other two tasks</td></tr>
+            <tr><td>Editing after the paste</td><td>Ten minutes fixing an off-by-one and renaming variables</td><td>One rename, then submit</td></tr>
+            <tr><td>Run history</td><td>Fails, fixed, fails again, passes</td><td>Passes on the first run</td></tr>
+            <tr><td>Similarity signal</td><td>Nothing external to match against</td><td>May match a public solution or another candidate</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The paste event alone separates neither candidate. Every row after it does. A practical lesson for anyone who pastes out of habit: keep scratch work inside the test editor rather than in a separate window, and your reuse carries its own alibi in the recording. Park it outside and you have thrown away the context that would have explained it.</p>
+
+      <h2>What a reviewer actually does with a flag</h2>
+      <p>Treat these signals as trust adjustments rather than deductions. Your score comes from correctness and performance on the test cases, and the counters do not reduce it. What a flag changes is what happens next, which is usually a follow-up call where someone sets a variation on the same problem and listens for whether your explanation matches the code you submitted. That conversation decides outcomes far more often than a counter does. If something genuinely interrupted you, note the time and mention it in your reply, because an explained five-minute gap and an unexplained one read very differently to the same person.</p>
+      <p>The innocent triggers are worth knowing, because in the log they are indistinguishable from a deliberate exit: notification toasts that steal focus, opening developer tools, a password manager popup, clicking anything on a second monitor, the screen auto-locking, an antivirus or update prompt, and opening a task's own linked documentation in a new tab. Turn on Do Not Disturb, quit chat apps rather than minimising them, and work on one screen.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool</h2>
+      <p>This page is published by a company that sells a live interview assistant, so the limits belong in it. Our overlay is excluded from screen capture at the operating-system level, so it does not appear in a Zoom, Teams or Meet share, in a recording, or in a screenshot. That property is irrelevant to everything above. Focus detection never inspects pixels, it reads which window the operating system considers focused, so clicking the overlay or triggering the <a href="/code-copilot/">Code Copilot</a> capture shortcut moves focus off the test tab and writes the same event as any other application would. Capture exclusion also does nothing against webcam monitoring, a lockdown browser, eye tracking, a second-device camera, or a person watching you in the room.</p>
+      <p>So on a proctored Codility assessment whose rules say no outside assistance, this is not the tool for the job, and we would rather write that than sell you something that fails on the exact terms of the question you typed. Where it earns its place is untimed practice beforehand, and live conversational rounds, where the <a href="/interview-copilot/">Interview Copilot</a> drafts from your own resume while you talk.</p>
+
+      <p>OfferPilot AI is a Windows 10 and 11 desktop app for live interview rounds, not for unattended assessments. If your next stage is a conversation rather than a timed test, the free tier on the <a href="/pricing/">pricing page</a> is five minutes a day, no card required.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/coderpad-what-the-interviewer-sees/">Does CoderPad Detect Tab Switching? What the Interviewer Sees</a></li>
+        <li><a href="/guides/what-interviewers-see-on-coderpad/">Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank</a></li>
+        <li><a href="/guides/does-hackerrank-record-your-screen/">Does HackerRank Record Your Screen? What Each Test Mode Captures</a></li>
+        <li><a href="/guides/is-codesignal-proctored/">Is CodeSignal Proctored? Camera, ID, Screen and Tab Rules</a></li>
+        <li><a href="/guides/can-interviewer-see-alt-tab/">Can a Zoom Host See If You Switch Tabs? The Three Signals</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

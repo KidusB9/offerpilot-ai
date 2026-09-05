@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Window Shows Black When Screen Sharing: Causes and Fixes</title>
+  <meta name="description" content="A black rectangle in a share has three real causes: DRM-protected video, a hardware acceleration mismatch, or deliberate capture exclusion. Test for each in order.">
+  <meta name="keywords" content="window shows black when screen sharing, black screen when sharing window zoom, teams screen share black window, why is my screen share black, chrome black when screen sharing, netflix black screen share, share window black rectangle, google meet window share black, disable hardware acceleration screen share">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/black-window-screen-share/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Window Shows Black When Screen Sharing: Causes and Fixes">
+  <meta property="og:description" content="A black rectangle in a share has three real causes: DRM-protected video, a hardware acceleration mismatch, or deliberate capture exclusion. Test for each in order.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/black-window-screen-share/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-black-window-screen-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Window Shows Black When Screen Sharing: Causes and Fixes">
+  <meta name="twitter:description" content="A black rectangle in a share has three real causes: DRM-protected video, a hardware acceleration mismatch, or deliberate capture exclusion. Test for each in order.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-black-window-screen-share.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Window Shows Black When Screen Sharing: Causes and Fixes","description":"A black rectangle in a share has three real causes: DRM-protected video, a hardware acceleration mismatch, or deliberate capture exclusion. Test for each in order.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/black-window-screen-share/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Window Shows Black When Screen Sharing: Causes and Fixes","url":"https://offerpilotai.ink/guides/black-window-screen-share/","mainEntity":[{"@type":"Question","name":"Why does one window show as a black rectangle when I share my screen?","acceptedAnswer":{"@type":"Answer","text":"Three things cause it. Protected video playback blanks its own video surface so no capture tool receives the frames. A hardware acceleration mismatch means the meeting app's window capture path cannot read what your GPU is drawing. Or the application has deliberately marked its window as excluded from capture. Swapping a window share for a full screen share separates the second cause from the other two in about ten seconds."}},{"@type":"Question","name":"Why is Netflix or a streaming video black when I share my screen?","acceptedAnswer":{"@type":"Answer","text":"That is digital rights management behaving as designed. Protected playback runs through a path that will not hand decoded frames to any capture tool, so viewers get a black rectangle where the video sits while the player controls, the page around it and usually the audio come through normally. No browser change, driver update or setting removes it, because the blanking is the point."}},{"@type":"Question","name":"How do I fix a black window in Zoom or Teams caused by hardware acceleration?","acceptedAnswer":{"@type":"Answer","text":"Share the whole display instead of the single window, which works immediately. Then turn off graphics acceleration in the source application, for example under Settings then System in Chrome, and relaunch it. On a laptop with two graphics chips, open Windows Settings, System, Display, Graphics and set the source app and the meeting app to the same GPU."}},{"@type":"Question","name":"How can I tell DRM apart from a capture bug?","acceptedAnswer":{"@type":"Answer","text":"Look at exactly which pixels are black. DRM blanks only the video rectangle and leaves the player controls, browser tabs and surrounding page visible, and the sound usually keeps playing. A broken capture path blanks the entire window including its title bar and menus. If the window looks perfectly normal on your own monitor and only viewers see black, it is never a rendering fault."}},{"@type":"Question","name":"Does a black rectangle mean someone is hiding something from me?","acceptedAnswer":{"@type":"Answer","text":"Usually not. The common causes are protected video and a graphics capture mismatch, both accidental. Windows does let an application blank or remove its own window from capture, which password managers, banking apps and some overlays use. The newer method removes the window from the frame entirely rather than blacking it, so a visible black box points more often at a bug or at DRM."}},{"@type":"Question","name":"Why does my share freeze or go black during a Windows permission prompt?","acceptedAnswer":{"@type":"Answer","text":"A User Account Control prompt runs on a separate secure desktop that no capture tool can read. Viewers see a frozen frame or a black screen for as long as the prompt is up on your monitor, then the picture resumes the moment you answer it. Nothing is broken and no setting changes it. Approve or cancel the prompt and the share continues."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Black Window In Screen Share","item":"https://offerpilotai.ink/guides/black-window-screen-share/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">Why a window shows up black when you share your screen</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A window that arrives as a black rectangle while the rest of your share looks normal has three realistic causes: protected video playback blanking its own frames, a hardware acceleration mismatch between the app you are sharing and the app doing the capturing, or a window that has deliberately marked itself as uncapturable. To a viewer all three look identical. Three short tests tell them apart, and only one of the three has a fix.</p>
+
+      <h2>Run the tree in this order</h2>
+      <p>Each test rules out a branch, so working through them in order costs less than guessing. The whole sequence takes under two minutes, and you can run it in a meeting with only yourself in it.</p>
+
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Is it black on your own monitor too?</h3><p>Look at the actual window on your desk, not the meeting preview. If it is black there as well, sharing is not involved at all. The application has failed to draw: a crashed browser renderer, a video overlay that lost its surface, a stale display driver. Close it and reopen it, and if that helps only until the next time, install the display driver from the GPU vendor's own installer rather than relying on Windows Update. Stop here. If the window looks perfectly normal to you and only the viewers get black, keep going.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Swap the window share for a whole screen share</h3><p>Stop sharing, start again, and this time pick the entire display instead of the single window. If the black rectangle fills in and viewers can suddenly see the app, the per-window capture path was the problem, which is the acceleration branch below. If it stays black with the whole screen shared, the content is blanking itself and no meeting setting will change that.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Look at exactly which pixels are black</h3><p>Only the video rectangle, with the player controls, browser tabs and page around it still visible, and audio still playing: that is protected playback. The whole window black edge to edge including its title bar and menus, in something like a password manager, a banking client or a floating overlay: that is deliberate capture exclusion. Press Windows key and Print Screen, then open the saved PNG in your Pictures folder to confirm, because a plain screenshot travels the same path a meeting app does.</p></div></div>
+      </div>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>What you see</th>
+              <th>Cause</th>
+              <th>The test that proves it</th>
+              <th>Fixable?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Black to viewers on a window share, fine on a full screen share</td>
+              <td>Hardware acceleration mismatch in the capture path</td>
+              <td>Switching to whole screen makes the app appear</td>
+              <td><strong>Yes.</strong> Toggle acceleration or align the GPUs</td>
+            </tr>
+            <tr>
+              <td>Only the video rectangle black, controls and page visible, sound normal</td>
+              <td>Protected playback, DRM</td>
+              <td>Pause the video: the still frame and the page behind it render for viewers</td>
+              <td><strong>No.</strong> This is the designed behaviour</td>
+            </tr>
+            <tr>
+              <td>Whole window black in both share modes, normal on your monitor</td>
+              <td>Deliberate capture exclusion, older blanking flag</td>
+              <td>The same black box appears in a Windows key and Print Screen screenshot</td>
+              <td><strong>No,</strong> unless that app ships its own switch</td>
+            </tr>
+            <tr>
+              <td>Window absent entirely, desktop visible where it should be</td>
+              <td>Deliberate capture exclusion, newer removal flag</td>
+              <td>The screenshot shows the desktop, not a black shape</td>
+              <td><strong>No.</strong> Nothing arrives to be shown</td>
+            </tr>
+            <tr>
+              <td>Everything freezes or blacks out for a few seconds, then returns</td>
+              <td>A Windows permission prompt on the secure desktop</td>
+              <td>A UAC dialog is sitting on your screen at that moment</td>
+              <td><strong>Yes.</strong> Answer the prompt</td>
+            </tr>
+            <tr>
+              <td>Black on your own monitor as well</td>
+              <td>The app or the driver, not the share</td>
+              <td>Visible before you ever press Share</td>
+              <td><strong>Yes.</strong> Restart the app, update the driver</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Branch one: protected playback</h2>
+      <p>Streaming services that enforce content protection decode video through a path that never hands finished frames to a capture tool. The player is not detecting your meeting and reacting to it. The frames simply do not exist anywhere a screen capture can reach, so the capture composites black into that rectangle instead.</p>
+      <p>The signature is precise and worth memorising. Blanking is limited to the video surface. Play and pause buttons, the progress bar, the page around the player, the browser chrome and the other tabs all come through fine, and the audio usually keeps going, which is why people describe it as sound with a black hole. Pause the video and the still frame or the artwork behind it often reappears for viewers, because a paused player is no longer pushing protected frames.</p>
+      <p>There is no fix. Not a browser flag, not a driver update, not a different meeting platform, because the protection sits underneath all of them. Forcing software decoding sometimes changes the outcome, but on several services it instead drops the picture to a lower quality tier or refuses to play, and the behaviour varies between browsers and service versions, so treat that as something to test rather than something to expect. If you genuinely need a group to watch something together, use whatever shared viewing feature the service itself provides.</p>
+
+      <h2>Branch two: the acceleration mismatch, and how to actually clear it</h2>
+      <p>This is the only branch where you can change the outcome, and in ordinary work calls it is the most common one. Sharing a single window makes the meeting app capture that window's own surface. When the source application renders through the GPU in a way that route cannot read, or when two graphics chips are involved and each app is pinned to a different one, the capture comes back empty and you get black. Sharing the whole display uses a different route, which is exactly why the full screen test works.</p>
+      <p>Work through these in order and re-test after each one. Stop at the first that works, since the later steps cost you performance you would rather keep.</p>
+      <ol>
+        <li><strong>Share the entire display instead of the window.</strong> Not elegant, but it works instantly, and it is the right move if you are three minutes into a call with people waiting. Close anything you do not want seen first, because the whole desktop is now in the stream.</li>
+        <li><strong>Turn off graphics acceleration in the source app, then relaunch it.</strong> In Chrome and Edge it sits under Settings, then System, worded roughly as using graphics acceleration when available. Desktop apps built on the same engine, such as many chat and note clients, usually have an equivalent under advanced settings. The exact wording moves between versions, so search the settings box for the word acceleration instead of following a fixed menu path.</li>
+        <li><strong>Check the meeting client's own video and sharing options.</strong> Zoom, Teams and similar clients expose their own acceleration switches for capture and encoding. Turning them off is a fair test even if you turn them back on once you know the answer.</li>
+        <li><strong>Align both apps to the same GPU.</strong> On a laptop with integrated and discrete graphics, open Windows Settings, then System, Display, Graphics. Add both the source application and the meeting client and set both to the same preference. Both on high performance, or both on power saving. Which one you choose matters far less than the two of them matching.</li>
+        <li><strong>Install the display driver from the vendor.</strong> The version Windows ships is frequently older than the one that fixed a capture regression.</li>
+        <li><strong>Verify from a second device.</strong> Join the same meeting from your phone, share the window again, and look at the phone. A local preview is drawn on your own machine and is not evidence of what anyone else receives.</li>
+      </ol>
+      <p>Two related traps are worth naming. A minimised window can capture as black or as a stale frame, so leave it open and on screen while you test. And a window dragged onto a monitor with different scaling, a different refresh rate or HDR enabled sometimes captures badly on that display alone. If the black rectangle follows one particular monitor, turn HDR off for that display in Windows Settings and re-test before you blame the app.</p>
+
+      <h2>Branch three: the window is excluding itself on purpose</h2>
+      <p>Windows lets an application set a property on its own top-level window telling the compositor how to treat it during capture. One value blanks that window's pixels in the capture stream, which produces the tidy black rectangle in the exact shape and position of the window. A newer value removes the window from the capture frame altogether, so viewers see the desktop behind it and nothing hints that a window was ever there. Password managers, banking clients, credential prompts and some overlays use one or the other.</p>
+      <p>Nothing on the receiving end changes this. The meeting app is not filtering the window out, it is handed an image that never contained those pixels, so no Zoom or Teams setting can restore them. Only the application itself can, and only if it exposes a screen security option of its own. This is also why a black box is more likely a bug or DRM than someone concealing something from you: the modern approach makes a window absent rather than black, and a moving black hole is close to the most conspicuous artefact you can put on a call. The overlay in <a href="/interview-copilot/">OfferPilot AI</a> uses the removal behaviour for that reason, staying readable on your own monitor while being absent from Zoom, Teams, Meet, OBS and screenshots. That covers software asking Windows for the screen and nothing else. It does not affect a webcam, a phone camera pointed at your monitor, a lockdown browser, eye tracking, or a person sitting in the room with you.</p>
+
+      <h2>Where this page, and our product, will not help you</h2>
+      <p>If your black rectangle is DRM, the honest answer is that the video is not going into that call and no article changes it. If you are on macOS or Linux, the acceleration steps above are Windows specific and the GPU preference screen does not exist for you, though the three way diagnosis still holds. And OfferPilot AI is an interview assistant for Windows 10 and 11, not a screen sharing repair tool, so if you landed here with a broken work presentation there is nothing here for you to install: run the tree, take the fix in branch two, and get on with your call. If you are sitting a proctored assessment under rules you agreed to, with a lockdown browser or a live invigilator, none of this is a workaround for that either.</p>
+
+      <p>The compressed version. Black on your monitor means the app. Black only to viewers but fine on a full screen share means acceleration. Black on both with the page around it intact means DRM. Black on both with the whole window gone means the window asked to be left out.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/screen-share-freezes-window-overlap/">Screen Share Frozen When You Open Another Window: Why and Fix</a></li>
+        <li><a href="/guides/does-screen-share-show-second-monitor/">Does Screen Sharing Show My Second Monitor? What Each App Sends</a></li>
+        <li><a href="/guides/test-screen-share-before-interview/">How to Test Screen Share Before a Meeting: A Solo Rehearsal</a></li>
+        <li><a href="/guides/how-apps-hide-from-screen-capture/">How Apps Hide From Screen Sharing on Windows (and the Limits)</a></li>
+        <li><a href="/guides/what-meeting-recordings-capture/">Does a Zoom, Teams or Meet Recording Capture My Whole Screen?</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Curious how capture exclusion actually behaves?</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card required. Run the screenshot test and the second device test yourself.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

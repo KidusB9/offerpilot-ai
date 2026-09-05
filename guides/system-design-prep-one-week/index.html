@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System Design Interview Prep in One Week: The 7 Day Plan</title>
+  <meta name="description" content="One answer skeleton run on a different system each day for seven days: requirements, estimate, API, data model, diagram, deep dive, trade-off. With the opening 60 seconds.">
+  <meta name="keywords" content="how to prepare for system design interview in 1 week, system design interview prep plan, system design interview in one week, system design study plan 7 days, system design answer framework, system design interview practice problems, system design trade-off questions, cram system design interview, system design interview opening">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/system-design-prep-one-week/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="System Design Interview Prep in One Week: The 7 Day Plan">
+  <meta property="og:description" content="One answer skeleton run on a different system each day for seven days: requirements, estimate, API, data model, diagram, deep dive, trade-off. With the opening 60 seconds.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/system-design-prep-one-week/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-system-design-prep-one-week.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="System Design Interview Prep in One Week: The 7 Day Plan">
+  <meta name="twitter:description" content="One answer skeleton run on a different system each day for seven days: requirements, estimate, API, data model, diagram, deep dive, trade-off. With the opening 60 seconds.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-system-design-prep-one-week.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"System Design Interview Prep in One Week: The 7 Day Plan","description":"One answer skeleton run on a different system each day for seven days: requirements, estimate, API, data model, diagram, deep dive, trade-off. With the opening 60 seconds.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/system-design-prep-one-week/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"System Design Interview Prep in One Week: The 7 Day Plan","url":"https://offerpilotai.ink/guides/system-design-prep-one-week/","mainEntity":[{"@type":"Question","name":"How do I prepare for a system design interview in one week?","acceptedAnswer":{"@type":"Answer","text":"Learn one seven part skeleton and run it on a different problem each day: requirements, one scale estimate, the API, the data model, the high level diagram, one deep dive, one trade-off. Sixty minutes a day. On days one and two restrict yourself to five components, a load balancer, cache, queue, replicated database and object store, so you practise reasoning rather than reciting architecture words."}},{"@type":"Question","name":"What should I say in the first 60 seconds of a system design interview?","acceptedAnswer":{"@type":"Answer","text":"Say you want to pin down scope, size it and agree an API before drawing, and that it will take about five minutes. Then name the two core flows, name one feature you are cutting, state your users assumption, say which non functional property you care most about, and ask whether that scope matches. It hands the interviewer a cheap chance to redirect you."}},{"@type":"Question","name":"Which system design problems should I practise in a week?","acceptedAnswer":{"@type":"Answer","text":"One a day, in rising difficulty: a URL shortener, an image and file host, a home timeline feed, group chat, seat booking for events, video upload and playback, then a cold repeat of the feed or the booking system with no notes. The first two are solvable with five components, and each later problem earns exactly one new component you must justify aloud."}},{"@type":"Question","name":"What follow-up questions do system design interviewers ask?","acceptedAnswer":{"@type":"Answer","text":"Nearly always one of four. What falls over first at ten times the traffic. That box just died, what does the user see and for how long. A user writes then reads a second later, do they see their own write. Do you need that component, what breaks if I delete it. Answer each in four sentences: the axis, your side, the price, the trigger to revisit."}},{"@type":"Question","name":"Is one week enough to prepare for a system design interview?","acceptedAnswer":{"@type":"Answer","text":"Enough for structure and vocabulary, which is most of the score at mid level, and not enough for judgment. Senior and staff rounds turn on which failure you chose to accept and why, and a week cannot manufacture production experience. If you have never operated a service, expect to thin out in the deep dive and say so plainly instead of bluffing a number."}},{"@type":"Question","name":"How long should each practice session be?","acceptedAnswer":{"@type":"Answer","text":"Sixty minutes on a fixed clock: five for requirements, five for one estimate, five for the API, five for the data model, ten on the diagram, fifteen on a single deep dive, five speaking a trade-off aloud. Spend the last ten minutes reading a written treatment of the same problem and writing down only what you missed. That review block is what compounds."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"System design prep in one week","item":"https://offerpilotai.ink/guides/system-design-prep-one-week/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Prep timelines and study plans</p>
+      <h1 class="balance">How to prepare for a system design interview in one week</h1>
+      <p class="meta">2026 &middot; ~9 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Learn one answer skeleton, then run it on a different problem every day for seven days. The skeleton has seven parts: requirements, one scale estimate, the API, the data model, the high level diagram, one deep dive, one trade-off. On days 1 and 2 you are allowed exactly five components on the whiteboard and nothing else. Below are the seven problems, the verbatim opening 60 seconds, and the four follow-up questions interviewers use to test whether you understood your own diagram.</p>
+
+      <h2>The skeleton, and what each part has to produce</h2>
+      <p>Most people fail this round by running out of order, not out of knowledge. They draw before they scope, or they list technologies instead of choosing between two. The skeleton fixes the order, and every part has to produce something you could point at.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Requirements</h3>
+            <p>Two or three core flows written on the board, plus one thing you explicitly cut. Cutting out loud is the point. "Search, analytics and moderation are out unless you want them in."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>One scale estimate</h3>
+            <p>One number that changes a decision, not a page of arithmetic. Usually writes per second or bytes per day. If the number would not move a single box on your diagram, do not compute it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The API</h3>
+            <p>Three endpoints, no more. Method, path, the parameters that matter, what comes back. This is where you find out whether you and the interviewer had the same product in mind.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The data model</h3>
+            <p>Two or three tables, each with a primary key and one index. Say which access pattern the index exists for. Skipping this is why deep dives collapse twenty minutes later.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>The high level diagram</h3>
+            <p>Boxes and arrows for one request path, drawn in the direction the data flows. Narrate every box as you draw it, including why it is there at all.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>One deep dive</h3>
+            <p>Pick the component carrying the hard part and take it apart properly. One component understood beats eight boxes named.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>One trade-off</h3>
+            <p>Name the axis, pick a side, state the price you are paying, say what would make you switch. Four sentences, spoken before anyone asks you for them.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The exact opening 60 seconds</h2>
+      <p>Say this, in these words, with the brackets filled in. It costs a minute and buys the interviewer a cheap chance to redirect you before you have drawn anything wrong.</p>
+
+      <blockquote>Before I draw anything I want to pin down scope, size it, and agree an API. That is about five minutes. My reading is that the core flows are [flow A] and [flow B], and I am treating [feature X] as out of scope unless you want it in. I am going to assume [N] daily active users and check that against the write rate, because that number is what decides whether one database is enough here. On non functional requirements I care most about [latency, or durability, or consistency], and I am willing to trade [the other one] for it. Does that scope match what you had in mind, or would you rather I start somewhere else?</blockquote>
+
+      <p>Filled in for day 3: the flows are post an update and load a home timeline, search and ads are out, 300 million daily actives at an average of 200 follows, and I care about timeline read latency more than about seeing a post the instant it is written. Four jobs done in one minute. You named a budget, made a cut, exposed an assumption, and handed control back.</p>
+
+      <h2>Days 1 and 2: five components, nothing else</h2>
+      <p>The rule is mechanical. For the first two days your whiteboard may contain a load balancer, a cache, a queue, a replicated database and an object store. Nothing else. No CDN, no sharding, no consistent hashing, no service mesh, no vendor product names, no reciting CAP.</p>
+      <ul>
+        <li><strong>Load balancer.</strong> Spreads requests across identical app servers. Drawing it is how you commit to stateless servers, and that is a claim you may be asked to defend.</li>
+        <li><strong>Cache.</strong> Read relief. You must say what you cache, what the key is, and how an entry becomes wrong. A cache with no invalidation story is a bug you drew on purpose.</li>
+        <li><strong>Queue.</strong> Turns a slow or failure-prone step asynchronous and absorbs bursts. Whatever sits behind it is now eventually consistent, so say that out loud.</li>
+        <li><strong>Replicated database.</strong> Primary takes writes, replicas take reads. Replication lag is your entire consistency answer at this level, and it is enough.</li>
+        <li><strong>Object store.</strong> Large immutable blobs. The database keeps the key and the metadata, never the bytes.</li>
+      </ul>
+      <p>The constraint is not humility, it is diagnostic. If you cannot get a URL shortener or an image host out of those five boxes, a sixth box will not save you, and an interviewer spots borrowed vocabulary in about ninety seconds. From day 3 you may add whatever the problem genuinely needs, and each addition has to be justified in one sentence as you draw it.</p>
+
+      <h2>The seven days, one problem each</h2>
+      <p>One problem per day, 60 minutes, in this order. Do not swap in something you have already solved, because the skeleton is what you are rehearsing, not the answer.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Day</th><th>Problem</th><th>Allowed on the board</th><th>Deep dive</th><th>Trade-off drilled</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>1</strong></td><td>URL shortener</td><td>Five primitives only</td><td>Key generation and collisions</td><td>Cache TTL against invalidation on write</td></tr>
+            <tr><td><strong>2</strong></td><td>Image and file host</td><td>Five primitives only</td><td>Upload path and the handoff to the object store</td><td>Synchronous upload against queue plus worker</td></tr>
+            <tr><td><strong>3</strong></td><td>Home timeline feed</td><td>Five plus fanout workers</td><td>Fanout on write, fanout on read, hybrid for large accounts</td><td>Read latency against write amplification</td></tr>
+            <tr><td><strong>4</strong></td><td>Group chat</td><td>Five plus a persistent connection layer</td><td>Message ordering and delivery receipts</td><td>At least once delivery against exactly once</td></tr>
+            <tr><td><strong>5</strong></td><td>Seat booking for events</td><td>Five plus a reservation store</td><td>Holding a seat for ten minutes without double selling it</td><td>Strong consistency against availability</td></tr>
+            <tr><td><strong>6</strong></td><td>Video upload and playback</td><td>Five plus CDN and transcoding workers</td><td>The transcode pipeline and what the player fetches first</td><td>Storage cost against startup latency</td></tr>
+            <tr><td><strong>7</strong></td><td>Redo day 3 or day 5 cold, no notes</td><td>Whatever it needs, each box justified</td><td>The one you fumbled the first time</td><td>All four questions, asked aloud and answered aloud</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Run every day on the same clock: five minutes requirements, five estimate, five API, five data model, ten on the diagram, fifteen on the deep dive, five speaking one trade-off. Spend the final ten minutes reading one written treatment of that same problem and writing down only what you missed. That last block is the one that compounds, and it is the one people skip.</p>
+
+      <h2>The four trade-off questions, and the shape of an answer</h2>
+      <p>Follow-ups in this round are nearly always one of four. Rehearse them against the day's own diagram, out loud, before you read anyone else's version.</p>
+      <ol>
+        <li><strong>What falls over first at ten times the traffic?</strong> Name one component, not a list, and describe what the symptom looks like to a user.</li>
+        <li><strong>That box just died. What does the user see, and for how long?</strong> Answer it separately for the primary database, the cache and the queue. Losing a cache should be slow, not broken.</li>
+        <li><strong>A user writes, then reads one second later. Do they see their own write?</strong> The read-your-own-writes question, and it catches nearly everyone who drew replicas without thinking about them.</li>
+        <li><strong>Do you actually need that component? What breaks if I delete it?</strong> If you cannot answer, you copied it off a diagram instead of reasoning your way to it.</li>
+      </ol>
+      <p>Every answer takes the same four sentences: name the axis, pick a side, state the price, name the trigger to revisit. Question 3 on day 3, worked: "Not from a replica, no. Someone who posts and immediately refreshes might hit a replica a couple of hundred milliseconds behind and see nothing. I would read an author's own recent posts from the primary, or merge the new post in on the client, and leave every other reader on the replicas. The price is extra load on the primary, and I would revisit it if author reads grew past a few percent of traffic."</p>
+
+      <h2>Where a week is not enough, and where a copilot is the wrong tool</h2>
+      <p>Seven days buys structure and vocabulary. It does not buy judgment, and interviewers grade those separately. At mid level the structure carries most of the score, so this plan is worth real points. At senior and staff level the round is mostly about which failure you chose to accept and why, and a week cannot manufacture experience you have not had. If you have never operated a service in production, expect the deep dive to be where you thin out, and plan to say so plainly rather than bluffing a number you cannot defend.</p>
+      <p>Live tooling is a poor fit for this specific round, and it is worth being blunt about that. System design is a conversation about marks you made on a shared board, where the interviewer points at your own arrow and asks what happens when it breaks. OfferPilot AI drafts a speakable answer from the interviewer's audio in roughly a second, which helps with a definition you have blanked on, and it cannot defend a diagram you never reasoned through. It is Windows 10 and 11 only, with no macOS, Linux, mobile or browser build. Its overlay is excluded from screen capture at the operating system level, so it stays out of Zoom, Teams, Meet and recordings, but that hides nothing from a webcam, a lockdown browser, a proctor sitting in the room, or a phone pointed at your desk. Where a round's rules forbid assistance, treat this as preparation only.</p>
+
+      <h2>Two things to do tonight, before day 1</h2>
+      <p>Write the seven parts on an index card and keep it in view for all seven sessions. Then open the drawing tool you will actually use in the interview, usually Excalidraw or the platform's own whiteboard, and draw six boxes in it once, so you are not learning a canvas at minute four. If the loop also has a behavioural round, build that question list from your resume with the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> and skim the <a href="/interview-questions/">company question banks</a> on a rest evening, never during a design hour.</p>
+      <p>Start day 1 tonight, keep the five component rule honest for 48 hours, and say the opening 60 seconds out loud every single day. If you want a companion for the read-back block, the free tier gives 5 minutes a day with no card, and the paid tiers sit on the <a href="/pricing/">pricing page</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/coding-interview-prep-1-week/">How to Prepare for a Coding Interview in 1 Week: 7-Day Plan</a></li>
+        <li><a href="/guides/coding-interview-prep-3-days/">3-Day Coding Interview Prep Plan: Hour-by-Hour Schedule</a></li>
+        <li><a href="/guides/coding-interview-prep-2-weeks/">2-Week Coding Interview Prep Plan: Build Week, Simulate Week</a></li>
+        <li><a href="/guides/coding-interview-prep-1-month-with-a-job/">Coding Interview Prep in 1 Month While Working Full Time</a></li>
+        <li><a href="/guides/onsite-loop-prep-five-days/">How to Prepare for a Full Onsite Interview Loop in 5 Days</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

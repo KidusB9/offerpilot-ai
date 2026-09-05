@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full Stack Take-Home vs Live Coding: What Each Format Grades</title>
+  <meta name="description" content="A take-home grades decisions you must defend line by line on the follow-up call. A live round grades your first ten minutes. Time budgets, rubrics and the hybrid.">
+  <meta name="keywords" content="full stack take home assignment vs live coding interview, take home assignment vs live coding, full stack take home interview, take home coding assignment review call, live coding interview full stack, take home walkthrough interview, extend your own code interview round, full stack developer interview process">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/full-stack-take-home-vs-live-coding/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Full Stack Take-Home vs Live Coding: What Each Format Grades">
+  <meta property="og:description" content="A take-home grades decisions you must defend line by line on the follow-up call. A live round grades your first ten minutes. Time budgets, rubrics and the hybrid.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/full-stack-take-home-vs-live-coding/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-full-stack-take-home-vs-live-coding.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Full Stack Take-Home vs Live Coding: What Each Format Grades">
+  <meta name="twitter:description" content="A take-home grades decisions you must defend line by line on the follow-up call. A live round grades your first ten minutes. Time budgets, rubrics and the hybrid.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-full-stack-take-home-vs-live-coding.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Full Stack Take-Home vs Live Coding: What Each Format Grades","description":"A take-home grades decisions you must defend line by line on the follow-up call. A live round grades your first ten minutes. Time budgets, rubrics and the hybrid.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/full-stack-take-home-vs-live-coding/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Full Stack Take-Home vs Live Coding: What Each Format Grades","url":"https://offerpilotai.ink/guides/full-stack-take-home-vs-live-coding/","mainEntity":[{"@type":"Question","name":"What is the difference between a full stack take-home assignment and a live coding interview?","acceptedAnswer":{"@type":"Answer","text":"A take-home is asynchronous work, usually three to six hours of building a small app, judged on decisions you can justify later: schema, error handling, tests on the hard part and a README that runs. A live coding round is 45 to 60 minutes judged on how fast you get a working vertical slice and how you recover when something breaks in front of someone."}},{"@type":"Question","name":"Which is harder, a take-home or a live coding round?","acceptedAnswer":{"@type":"Answer","text":"They fail different people. A take-home is harder if you have limited evening time, because the real cost is often double the stated budget. A live round is harder if environment friction or nerves slow you down, since half the signal is collected in the first fifteen minutes. Neither is easier overall, so choose the format you can rehearse."}},{"@type":"Question","name":"How is the take-home plus live walkthrough hybrid scored?","acceptedAnswer":{"@type":"Answer","text":"The submitted code is the entry ticket and the walkthrough is the verdict. A typical two-hour call spends ten minutes on your demo, twenty to thirty on why you made specific choices, then forty-five to sixty watching you extend your own codebase live. Most rejections happen in that extension segment, not in the code you sent."}},{"@type":"Question","name":"Can I use AI to write a take-home assignment?","acceptedAnswer":{"@type":"Answer","text":"Some companies allow it and ask you to disclose it, others forbid it, so read the brief. The practical problem is separate from the policy: a take-home is work you defend line by line on a follow-up call, and code you did not reason about collapses at the first question about why you chose that schema or where the transaction boundary sits."}},{"@type":"Question","name":"What do reviewers look at first in a full stack take-home?","acceptedAnswer":{"@type":"Answer","text":"Usually the README, then a fresh clone and an attempt to run it, then the commit history, then the diff. A project that does not start on a clean machine is often scored before any code is read. Seed data, a working setup command and a short section naming what you deliberately left out carry more weight than extra features."}},{"@type":"Question","name":"How long should a full stack take-home actually take?","acceptedAnswer":{"@type":"Answer","text":"Stop at the stated budget and write down what you would do next. Briefs that say four hours are frequently completed in ten or more, and reviewers can often infer effort from commit timestamps. A scoped submission with an honest trade-offs section reads as senior judgement, while an over-built one invites questions about code you rushed."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Take-home vs live coding","item":"https://offerpilotai.ink/guides/full-stack-take-home-vs-live-coding/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">Full stack take-home vs live coding: what each format actually grades</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A take-home grades decisions you can still defend a week later. A live round grades your first ten minutes and how you behave when your own stack trace appears on a shared screen. The increasingly common hybrid, a short take-home followed by a scoped two-hour live walkthrough of your own code, is scored almost entirely on the second half. The honest consequence: a take-home is work you must defend line by line, so live assistance belongs in the walkthrough round, not in writing the submission.</p>
+
+      <h2>The three formats side by side</h2>
+      <p>Consultancies skew towards take-homes, early stage startups towards live rounds, and much of the middle has moved to the hybrid, which is cheaper than a four-hour onsite and harder to outsource than a repository.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th></th><th>Take-home</th><th>Live coding</th><th>Hybrid</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Stated time budget</strong></td><td>3 to 6 hours</td><td>45 to 60 minutes</td><td>2 to 4 hours building, then a 90 to 120 minute call</td></tr>
+            <tr><td><strong>Realistic cost</strong></td><td>Often double the brief, plus a follow-up call</td><td>The hour, plus rehearsal</td><td>Close to the brief, the code is deliberately small</td></tr>
+            <tr><td><strong>What it rewards</strong></td><td>Schema choices, error handling, tests on the hard part, a README that runs</td><td>A working vertical slice fast, thinking out loud, reading an error calmly</td><td>Changing your own code under observation</td></tr>
+            <tr><td><strong>What fails candidates</strong></td><td>Will not start on a clean clone, one giant commit, tests only on trivial CRUD</td><td>Forty minutes of data layer with nothing rendered, silence while stuck</td><td>Slow navigation of your own repo, no answer to "why this way"</td></tr>
+            <tr><td><strong>Where the score is decided</strong></td><td>The first five minutes of review</td><td>The opening questions and the first thing that runs</td><td>The live extension segment, not the submitted code</td></tr>
+            <tr><td><strong>Recovery from a bad start</strong></td><td>Good, rewrite before submitting</td><td>Poor, the clock is the constraint</td><td>Good in the build, poor in the call</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>What a full stack take-home is actually graded on</h2>
+      <p>Most briefs share a shape: a small domain with real records, an API over a database, a list view with filtering and pagination, and one hard thing bolted on. The hard thing is the point: optimistic concurrency on an edit, a background job, an idempotent write, role-based access. Everything else is scaffolding, and reviewers work in a predictable order.</p>
+      <ol>
+        <li><strong>The README, then a fresh clone.</strong> They paste your setup command into a terminal with none of your environment on it. If install, migrate, seed and start do not work in that order, the review is mostly over. Ship seed data: a list view with no rows cannot be assessed.</li>
+        <li><strong>The commit history.</strong> One 900-line commit called "solution" reads as either a paste or a panic. Six or seven commits with sane messages let a reviewer follow your reasoning.</li>
+        <li><strong>The hard thing.</strong> If the brief asked for concurrent edits, they look for a version column or a transaction, not for how prettily you wrapped the list component.</li>
+        <li><strong>The tests.</strong> Forty tests on CRUD getters and none on the concurrency case is the most common self-inflicted wound. Two tests on the hard part outrank twenty on the easy part.</li>
+        <li><strong>The trade-offs section.</strong> Three or four lines naming what you left out and why. The cheapest signal of seniority in the submission, and it sets the agenda for the follow-up call.</li>
+      </ol>
+      <p>A four-hour brief answered with Docker Compose, CI, a component library and an auth service invites a reviewer to ask which parts you rushed. Stop at the budget and list what you would build next.</p>
+
+      <h2>What a live full stack round measures instead</h2>
+      <p>Live rounds are either a bare project where you build a thin feature end to end, or an existing service where you add an endpoint and wire it to a screen. The grader watches a process rather than reading an artefact.</p>
+      <p>The behaviour separating passes from fails is the vertical slice: one route returning hard-coded JSON, rendered, then made real. Forty minutes on a repository layer and a DTO mapper without a rendered row fails rounds you were capable of passing. Interviewers also score whether you clarify before typing, whether you narrate while stuck, and whether an error message makes you read it or flinch. Knowing your editor and how to restart a dev server buys minutes you cannot recover later.</p>
+
+      <h2>How the hybrid is scored</h2>
+      <p>The hybrid exists because take-homes stopped being reliable evidence of authorship. A short brief, deliberately smaller than a classic take-home, then a call of roughly two hours in four segments.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>About 10 minutes: you demo</h3>
+            <p>You share your screen and run the thing. Scored loosely, but it starts badly if the app will not launch on your own machine. Have it running before the call.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>20 to 30 minutes: why, not what</h3>
+            <p>They read your code with you and ask about specific lines. Why this schema, where the transaction boundary sits, what happens on a duplicate submit. "That is the convention" scores near zero. Naming what you traded away scores well even when the choice was imperfect.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>45 to 60 minutes: extend it live</h3>
+            <p>The segment that decides the outcome. Typical asks: add pagination to the endpoint you wrote, add one field end to end through migration, API and UI, make a write idempotent, fix an N+1 they noticed, or write the test for the case you skipped. In your own codebase, at your keyboard, while they watch.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>10 minutes: your questions</h3>
+            <p>Weighted less than candidates think, though asking how they handle migrations or on-call lands better than asking about culture.</p>
+          </div>
+        </div>
+      </div>
+      <p>The tells a panel reads as "did not really write this" are behavioural, not forensic. Hesitating over where a file lives. Being unable to run your own test suite. Explaining a function in general terms when asked about one line. None is proof, but together they move a borderline candidate to a no.</p>
+      <p>Preparing takes half an hour. Clone your submission into a fresh directory and run it from the README you wrote. Read the diff as if reviewing a stranger. Write down the three decisions you would attack, and answer each. Pre-open the files an extension will touch.</p>
+
+      <h2>Where live assistance belongs, and where it does not</h2>
+      <p>A take-home is not a test you pass by submitting; it is a claim you underwrite in a conversation. Help that goes into the submission comes back as debt in the walkthrough, collected under time pressure by someone reading the code with you. If you use assistance while building, use it the way you use documentation, to understand a pattern you then implement and can explain. Check the brief: some companies permit AI with disclosure, others prohibit it.</p>
+      <p>The walkthrough and the pure live round are different. There you reason out loud about a codebase you know, and a prompt holding a definition or a complexity argument is closer to a notes page than a ghostwriter. That is what <a href="/code-copilot/">Code Copilot</a> is for, and here are its limits:</p>
+      <ul>
+        <li><strong>Windows 10 and 11 only.</strong> No macOS, Linux, mobile or browser-extension build. If you interview on a Mac, none of this is available to you.</li>
+        <li><strong>Capture exclusion covers screen sharing and recording, nothing more.</strong> The overlay is excluded from capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a proctor in the room, or a second-device camera.</li>
+        <li><strong>It cannot rehearse for you.</strong> Nothing on screen makes you fluent in a repository you skimmed. In the extension segment, code leaves your hands at conversational speed or not at all.</li>
+        <li><strong>The rules belong to the company.</strong> If the brief is ambiguous about tooling, ask before the call.</li>
+      </ul>
+
+      <h2>Choosing, when you get a choice</h2>
+      <p>Take the take-home if your strengths are structural, if you interview badly while observed, and if you have two clear evenings. Take the live round if your calendar is full or you can scaffold your stack without looking things up. If it is the hybrid, treat the build as the smaller half.</p>
+
+      <blockquote>The take-home gets you the meeting. The meeting gets you the offer. Budget your effort accordingly.</blockquote>
+
+      <p>Practice that works: one small end to end feature a week under a timer, then explaining your own diff out loud until the explanations get short. For the half of the process that is not code, the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a question bank from your resume for a named company and role, and the <a href="/interview-questions/">question banks</a> cover the follow-ups after a code review. The free tier is 5 minutes a day with no card; <a href="/pricing/">plans</a> start at $39 a month.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/react-live-coding-interview-help/">React Live Coding Interview Help: One Multi-Scroll Capture</a></li>
+        <li><a href="/guides/ml-engineer-vs-data-scientist-interview/">ML Engineer vs Data Scientist Interview: Every Round Compared</a></li>
+        <li><a href="/guides/sre-linux-troubleshooting-interview/">SRE Interview Linux Troubleshooting: Triage Order to Narrate</a></li>
+        <li><a href="/guides/api-design-vs-system-design-interview/">API Design Interview vs System Design Interview: The Tells</a></li>
+        <li><a href="/guides/data-engineer-sql-interview-round/">Data Engineer SQL Interview Round: What to Expect in 45 Minutes</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Rehearse the walkthrough, not just the build.</h2>
+      <p class="lede" style="margin:0 auto 8px">Capture a multi-scroll prompt in one session and get intuition, a dry run and complexity back, so the reasoning is yours before the call starts.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">See how capture works<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

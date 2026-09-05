@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Screen Share Frozen When You Open Another Window: Why and Fix</title>
+  <meta name="description" content="Cover or minimise the window you are sharing and most platforms keep sending the last good frame. Viewers see a sharp, stale picture and no warning that it stopped.">
+  <meta name="keywords" content="screen share frozen when I open another window, shared window freezes when minimised, zoom screen share stuck on last frame, teams share frozen for viewers, google meet window share not updating, screen share shows old screen, why does my screen share stop updating, share window vs entire screen freeze, minimised window screen share black">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/screen-share-freezes-window-overlap/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Screen Share Frozen When You Open Another Window: Why and Fix">
+  <meta property="og:description" content="Cover or minimise the window you are sharing and most platforms keep sending the last good frame. Viewers see a sharp, stale picture and no warning that it stopped.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/screen-share-freezes-window-overlap/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-screen-share-freezes-window-overlap.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Screen Share Frozen When You Open Another Window: Why and Fix">
+  <meta name="twitter:description" content="Cover or minimise the window you are sharing and most platforms keep sending the last good frame. Viewers see a sharp, stale picture and no warning that it stopped.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-screen-share-freezes-window-overlap.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Screen Share Frozen When You Open Another Window: Why and Fix","description":"Cover or minimise the window you are sharing and most platforms keep sending the last good frame. Viewers see a sharp, stale picture and no warning that it stopped.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/screen-share-freezes-window-overlap/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Screen Share Frozen When You Open Another Window: Why and Fix","url":"https://offerpilotai.ink/guides/screen-share-freezes-window-overlap/","mainEntity":[{"@type":"Question","name":"Why does my screen share freeze when I open another window?","acceptedAnswer":{"@type":"Answer","text":"Because you shared a single window rather than the whole display. When that window is covered or minimised, it can stop producing new frames, and the meeting client has nothing fresh to send. Instead of showing an error, it repeats the last frame it received. Your own monitor looks completely normal, which is why the freeze is almost always reported by someone else first."}},{"@type":"Question","name":"Do viewers get any warning that my screen share is frozen?","acceptedAnswer":{"@type":"Answer","text":"Usually none at all. A held frame is a clean, sharp, correctly sized still image, not a blurry or pixelated one, because the encoder is happily sending a static picture. There is no spinner and no paused banner in most clients. Viewers assume you have simply stopped typing, and can sit watching a minutes old screen without suspecting anything."}},{"@type":"Question","name":"Does minimising a shared window stop the screen share?","acceptedAnswer":{"@type":"Answer","text":"Effectively yes, on every platform worth assuming. A minimised window is no longer being composited, so there are no new pixels to capture. Depending on the client and the capture path you get a frozen last frame or a black rectangle. Switching to another virtual desktop with the Windows key, Ctrl and an arrow behaves the same way, because the shared window is no longer on screen."}},{"@type":"Question","name":"Is covering the shared window as bad as minimising it?","acceptedAnswer":{"@type":"Answer","text":"It is less reliable but often survivable. Modern Windows window capture reads a per window surface kept by the desktop compositor, so a covered window frequently keeps updating for viewers. Older capture paths read what is actually drawn on screen, so occlusion produces a stale or partially wrong image. You cannot tell which path your client chose without testing it, so test rather than assume."}},{"@type":"Question","name":"How do I share a window and still use other applications?","acceptedAnswer":{"@type":"Answer","text":"Put the shared window and the other application side by side with the Windows key and an arrow, or move the other application to a second monitor. If you genuinely need to alt tab through several apps, close what you do not want seen and share the entire display instead. If the content is a web page, sharing that browser tab is the most occlusion tolerant option."}},{"@type":"Question","name":"Why did my share freeze for a few seconds with nothing covering it?","acceptedAnswer":{"@type":"Answer","text":"A Windows permission prompt is the usual answer. User Account Control runs on a separate secure desktop that no capture tool can read, so viewers get a held frame or a black screen for as long as the dialog sits on your monitor. Answering the prompt resumes the picture. A lock screen or screensaver produces the same short gap."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Frozen Share On Window Overlap","item":"https://offerpilotai.ink/guides/screen-share-freezes-window-overlap/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">Why your screen share freezes when you open another window</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Nothing crashed. You shared a single window instead of the whole display, then covered it or minimised it, and that window stopped producing new frames. The meeting client will not show an error for that, so it repeats the last frame it received. Viewers keep watching a sharp, correctly sized, completely stale picture, and on your own monitor everything looks perfect.</p>
+
+      <h2>The part nobody tells you: a held frame looks healthy</h2>
+      <p>People expect a broken video stream to look broken. Blocky, smeared, a spinner, a grey panel saying the connection dropped. A frozen window share looks like none of that. The encoder is being handed the same image over and over, which is the easiest thing in the world to compress, so it sends a crisp still frame using almost no bandwidth. Your connection quality indicator stays green. There is no paused banner, because most clients only show one when a presenter deliberately pauses the share, which is a different state entirely.</p>
+      <p>So the failure is silent at both ends. You see your real desktop. Your viewers see a screenshot from four minutes ago and assume you have stopped typing. The tell is almost always social rather than technical: someone eventually asks whether you are still on the same file, or asks a question about something you scrolled past long ago.</p>
+      <p>One detail sharpens the diagnosis. In most clients the mouse pointer is composited into the stream separately from the captured window, so viewers can sometimes still see your cursor moving over a picture that never changes. If a viewer reports a live cursor over dead content, that is a frozen source, not a network problem.</p>
+
+      <h2>Covering and minimising are two different failures</h2>
+      <p>They get lumped together, and they should not be. On Windows there are broadly two ways a client can grab one window. The modern path asks the desktop compositor for that window's own surface, which the system keeps updating whether or not the window is visible, so a covered window frequently keeps streaming fine. The older path effectively reads the pixels sitting on screen inside the window's rectangle, so anything on top of it either freezes the capture or bleeds into it.</p>
+      <p>Minimising defeats both. A minimised window is not being composited at all, so there is no live surface to read and no on screen rectangle to copy. Every capture path degrades to a held frame or a black box. Switching to another virtual desktop with the Windows key, Ctrl and an arrow does the same thing for the same reason, and catches people out constantly because it feels less drastic than minimising.</p>
+      <p>You cannot tell from the outside which path your client picked, and it can differ between two apps in the same meeting. Treat that as a reason to test rather than a reason to guess.</p>
+
+      <h2>The sixty second test that tells you which one you have</h2>
+      <p>Run this once, on the machine and the client you will actually use. It costs a minute and it settles the question permanently for that setup.</p>
+
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Put something visibly moving in the window you will share</h3><p>A clock showing seconds is ideal. A page with a spinning loader, or a text file where you hold down a key, works too. A static document is useless here, because a frozen share of a static document is indistinguishable from a working one. This is the step people skip, and skipping it invalidates the whole test.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Join the same meeting from your phone, muted, speaker off</h3><p>Watch the phone, not the local preview. Some clients build that preview from a different code path than the stream they send out, so a moving preview is not proof that anyone else is receiving motion. The phone is a real second viewer, which is exactly what you need.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Share the single window, then drag another window over half of it</h3><p>Look at the phone for ten seconds. Seconds still ticking means your client is using the compositor path and mere overlap is safe. Frozen, or showing the covering window instead, means you are on the older path and anything on top of the shared window breaks the stream.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Minimise the shared window and count to ten</h3><p>Expect the phone to freeze or go black. If it does, that is normal and not a bug you can file. Restore the window and note how long it takes for motion to resume, because that lag is what your viewers get every time you come back from another app.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Repeat the whole thing with the entire display shared</h3><p>Cover, minimise and switch virtual desktop again. A full display share should survive all three, because it captures the output of the monitor rather than one window. What it will not survive is a lock screen or a Windows permission dialog, and now you know the difference between those two symptoms.</p></div></div>
+      </div>
+
+      <h2>What each share mode does when something goes on top</h2>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Share mode</th>
+              <th>Another window covers it</th>
+              <th>You minimise it</th>
+              <th>What viewers see beyond the content</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Single window, modern compositor capture</td>
+              <td>Usually keeps updating</td>
+              <td><strong>Freezes or goes black</strong></td>
+              <td>Only that window, even when it is buried</td>
+            </tr>
+            <tr>
+              <td>Single window, older on screen capture</td>
+              <td><strong>Freezes, or leaks the covering window</strong></td>
+              <td><strong>Freezes or goes black</strong></td>
+              <td>Whatever happens to sit in that rectangle</td>
+            </tr>
+            <tr>
+              <td>Entire display</td>
+              <td>Fine, but the covering window is now visible</td>
+              <td>Fine, and viewers watch you minimise it</td>
+              <td>Everything on that monitor, notifications included</td>
+            </tr>
+            <tr>
+              <td>Browser tab, Chrome or Edge</td>
+              <td>Generally keeps updating</td>
+              <td>Generally keeps updating</td>
+              <td>Only the page area of that one tab</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Two honest caveats on that table. Tab sharing is the most occlusion tolerant option, but browsers throttle timers and animation in background tabs to save power, so a page that animates on a clock of its own may stop moving even though the capture is working fine, which produces the same freeze complaint from a completely different cause. And on a laptop running on battery, aggressive power saving can slow redraws in a background window enough that viewers report stutter rather than a clean freeze. Both are worth knowing before you blame the meeting client.</p>
+
+      <h2>What to do instead</h2>
+      <ol>
+        <li><strong>Stop minimising the shared window.</strong> This one habit causes most of these reports. Snap it with the Windows key and the left or right arrow, put the other app in the other half, and both stay composited.</li>
+        <li><strong>Give the second monitor everything you are not sharing.</strong> Shared window on monitor one, notes and chat and the meeting client itself on monitor two. Nothing ever overlaps the shared window, so the question never comes up.</li>
+        <li><strong>If you must move between several apps, share the entire display.</strong> Close what you do not want seen, silence notifications first, and accept that everything on that monitor is now public.</li>
+        <li><strong>Share the tab when the content is a web page.</strong> Coding pads, dashboards and documents all qualify, and tab capture is far less bothered by what sits in front of it.</li>
+        <li><strong>Leave a heartbeat in the shared window.</strong> A visible clock, a blinking cursor, anything that moves. It converts a silent failure into an obvious one for anyone watching.</li>
+        <li><strong>Ask a better question.</strong> "Can you see my screen?" gets a yes from someone staring at a stale frame. "Is my cursor moving, and what does the clock say?" gets a real answer.</li>
+        <li><strong>When in doubt, restart the share.</strong> Stop sharing, share again, pick the window that is actually in front of you now. Five seconds, and it beats ten minutes of presenting to a photograph.</li>
+      </ol>
+
+      <h2>Things that look identical but are not this</h2>
+      <p>A short freeze with nothing covering the window is usually a Windows permission prompt. User Account Control draws on a separate secure desktop that no capture tool can read, so the stream holds its last frame until you answer the dialog, then resumes. A lock screen, a screensaver or a fast user switch does the same. A genuine network problem looks different: it degrades before it stops, goes blocky or smeary, then jumps forward to catch up, whereas a source freeze is pin sharp right up to the moment it stops and never catches up when it returns. And if a particular window arrives as a black rectangle rather than a stale image, that is a separate family of causes including protected video playback and deliberate capture exclusion, which other pages in this section cover.</p>
+
+      <h2>Does a floating overlay cause this?</h2>
+      <p>Not by itself. An overlay is just another window sitting on top, so on the older capture path it belongs in the occlusion category above, and on the compositor path it is irrelevant. The freeze comes from the shared window not producing frames, not from something being drawn over it. The overlay used by OfferPilot AI is marked as excluded from capture at the operating system level, so it never reaches Zoom, Teams, Meet, OBS or a screenshot in the first place, while staying readable on your own monitor. Worth stating plainly: that exclusion covers software asking Windows for the screen, and nothing else. It does nothing about a webcam, a phone camera pointed at your desk, a lockdown browser, eye tracking, or a person sitting in the room with you.</p>
+
+      <h2>Where this page, and our product, stop being useful</h2>
+      <p>If you landed here with a work presentation frozen right now, take the fix and go: snap the windows side by side, or restart the share on the entire display. There is nothing here for you to install. <a href="/interview-copilot/">OfferPilot AI</a> is an interview assistant for Windows 10 and 11, not a screen sharing repair tool, and it will not make a minimised window stream. Everything above is Windows specific as well. macOS and Linux have their own capture models and their own quirks, and guessing at them for you would be worse than saying so. If you are sitting a proctored assessment under rules you agreed to, none of this is a workaround for those rules. Ask the proctor before you change what you are sharing.</p>
+
+      <p>The compressed version, worth remembering the next time someone says the screen looks stuck. Sharing one window means only that window is being read. Covering it might be survivable. Minimising it never is. And whichever one happens, the platform holds the last good frame and tells nobody, so build the habit of never letting the shared window leave the screen.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/black-window-screen-share/">Window Shows Black When Screen Sharing: Causes and Fixes</a></li>
+        <li><a href="/guides/does-screen-share-show-second-monitor/">Does Screen Sharing Show My Second Monitor? What Each App Sends</a></li>
+        <li><a href="/guides/google-meet-tab-vs-window-share/">Google Meet: Share a Tab, a Window, or Your Entire Screen?</a></li>
+        <li><a href="/guides/what-meeting-recordings-capture/">Does a Zoom, Teams or Meet Recording Capture My Whole Screen?</a></li>
+        <li><a href="/guides/test-screen-share-before-interview/">How to Test Screen Share Before a Meeting: A Solo Rehearsal</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Preparing for an interview on Windows?</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, 5 minutes a day, no card required. Run the second device test yourself before the call.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

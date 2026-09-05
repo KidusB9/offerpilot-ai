@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does HackerRank Record Your Screen? Proctoring Tiers Explained</title>
+  <meta name="description" content="HackerRank does not record your desktop by default. It can log tab switches, take webcam snapshots and lock the browser. How to tell which tier you were sent.">
+  <meta name="keywords" content="does hackerrank record your screen, hackerrank proctoring, hackerrank webcam snapshots, hackerrank tab switch detection, is hackerrank proctored, hackerrank full screen mode, hackerrank secure mode, hackerrank copy paste detection, hackerrank proctored test settings">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/hackerrank-proctoring-settings/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does HackerRank Record Your Screen? Proctoring Tiers Explained">
+  <meta property="og:description" content="HackerRank does not record your desktop by default. It can log tab switches, take webcam snapshots and lock the browser. How to tell which tier you were sent.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/hackerrank-proctoring-settings/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-hackerrank-proctoring-settings.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does HackerRank Record Your Screen? Proctoring Tiers Explained">
+  <meta name="twitter:description" content="HackerRank does not record your desktop by default. It can log tab switches, take webcam snapshots and lock the browser. How to tell which tier you were sent.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-hackerrank-proctoring-settings.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does HackerRank Record Your Screen? Proctoring Tiers Explained","description":"HackerRank does not record your desktop by default. It can log tab switches, take webcam snapshots and lock the browser. How to tell which tier you were sent.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/hackerrank-proctoring-settings/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does HackerRank Record Your Screen? Proctoring Tiers Explained","url":"https://offerpilotai.ink/guides/hackerrank-proctoring-settings/","mainEntity":[{"@type":"Question","name":"Does HackerRank record your screen?","acceptedAnswer":{"@type":"Answer","text":"A standard HackerRank test does not record video of your desktop. Its proctoring options capture still webcam snapshots, log when the browser tab loses focus, log paste events into the editor, and can force full screen. If a HackerRank round genuinely records your screen, it is because the employer added a separate proctoring service or asked you to share your screen in a parallel video call."}},{"@type":"Question","name":"Does HackerRank use your webcam?","acceptedAnswer":{"@type":"Answer","text":"Only when the employer enables image proctoring on that test. Snapshots are taken through the browser's normal camera API, so the browser must ask you for camera permission first and the camera indicator light comes on. If you were never shown a permission prompt and never saw a preview of yourself in the device check, no snapshots are being taken."}},{"@type":"Question","name":"Can HackerRank tell if I switch tabs?","acceptedAnswer":{"@type":"Answer","text":"When activity logging is enabled, yes. The test page records that the browser tab lost focus, at what time, and for how long, and the recruiter's report shows a count of those events. It does not record what you switched to. It cannot name the other application, read that window, or see anything outside the test tab itself."}},{"@type":"Question","name":"How do I know if my HackerRank test is proctored before I start?","acceptedAnswer":{"@type":"Answer","text":"Check three things. First, the invite email, which normally states that the test is proctored and whether a webcam is required. Second, the instructions page before the timer starts, which lists the rules for that specific test. Third, the device check and the first seconds after you click Start: a camera prompt means snapshots, a forced full screen means full-screen enforcement."}},{"@type":"Question","name":"Does hiding a window from screen capture hide it from HackerRank proctoring?","acceptedAnswer":{"@type":"Answer","text":"No. Screen-capture exclusion removes a window from screen-share streams, recordings and screenshots on your own machine. It has no effect on a webcam feed, because the camera points at you and the room rather than at the display, and no effect on a lockdown browser, which controls your test environment rather than the screen-capture pipeline."}},{"@type":"Question","name":"Does HackerRank detect copied and pasted code?","acceptedAnswer":{"@type":"Answer","text":"The editor keeps a timeline of how your solution was typed, so a large block of code that appears in a single event is visible as a paste rather than as typing. Reports commonly show paste flags alongside the submission. Plagiarism and similarity checks on the submitted code are a separate layer and run after the test, not during it."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"HackerRank Proctoring Settings","item":"https://offerpilotai.ink/guides/hackerrank-proctoring-settings/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Coding assessment platforms</p>
+      <h1 class="balance">Does HackerRank record your screen?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">In the standard configuration, no. HackerRank does not stream or record video of your desktop. What a test <em>can</em> be configured to do is take still webcam snapshots, log every time the browser tab loses focus, flag pasted code, force full screen, and in the strictest setup lock you into a controlled browser environment. Those are separate switches an employer turns on individually, and you can work out which ones you were sent before the timer starts.</p>
+
+      <h2>The switches an employer can flip on a HackerRank test</h2>
+      <p>Proctoring on HackerRank is not one setting. It is a small stack of them, and most tests sit near the bottom of the stack rather than the top. The useful question is not "is it proctored" but "which of these is on", because they capture very different things.</p>
+
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Tier</th><th>What it physically captures</th><th>What it cannot see</th><th>The tell before you start</th></tr></thead><tbody>
+        <tr><td><strong>1. Nothing enabled</strong></td><td>Your submissions, per-question timestamps, and the editor's own typing timeline</td><td>Anything outside the test tab. No camera, and no focus events surfaced to the reviewer</td><td>Invite mentions duration and question count only, with no camera or rules language</td></tr>
+        <tr><td><strong>2. Activity and focus logging</strong></td><td>Browser blur and visibility events: that the tab lost focus, at what time, for how long, how often. Paste events into the editor, with size</td><td>Which app or tab you moved to, the contents of that window, or anything on a second monitor</td><td>Instructions tell you not to navigate away, and a warning banner appears the first time you leave the tab</td></tr>
+        <tr><td><strong>3. Webcam image proctoring</strong></td><td>Still frames from your webcam at intervals, pulled through the browser's ordinary camera API. Often one photo at the start</td><td>Your screen. The camera faces you and the room, not the display</td><td>A browser camera permission prompt, a live preview of yourself in the device check, and the camera indicator light</td></tr>
+        <tr><td><strong>4. Full-screen enforcement</strong></td><td>Nothing visual. It uses the browser's Fullscreen API and logs each exit from full screen</td><td>What you did while out of full screen, or anything drawn by another application</td><td>Clicking Start throws the browser straight into full screen, and pressing Escape produces a warning plus a counted event</td></tr>
+        <tr><td><strong>5. Secure or lockdown mode</strong></td><td>Your environment. It restricts what the session permits, blocks pasting in from outside, and may check for extra displays or a virtual machine</td><td>Varies by configuration, and you should assume the boundary is wider than you can verify</td><td>The invite warns you in advance, because it needs setup: a specific browser, an extension, or a download</td></tr>
+        <tr><td><strong>6. A bolted-on third-party proctor</strong></td><td>Whatever that service does, which commonly does include continuous screen and webcam recording</td><td>Assume nothing is out of scope</td><td>The invite names a second product, or you install software before the HackerRank link will open</td></tr>
+      </tbody></table></div>
+
+      <p>Tier six is the only one where "HackerRank is recording my screen" is a fair description, and even then it is not HackerRank doing it. That distinction matters when you are reasoning about one specific invite sitting in your inbox rather than about the platform in the abstract.</p>
+
+      <h2>Three checks that tell you which tier you were sent</h2>
+      <p>None of this is hidden from you. A camera cannot be switched on inside a browser without asking, and a test that enforces rules has to state them. The information is sitting in three places you can read before the clock starts.</p>
+
+      <div class="steps mt">
+        <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Read the invite email, not just the button</h3><p>The invite carries the duration, the question count, and normally a line about proctoring. Search it for <code>proctor</code>, <code>webcam</code>, <code>camera</code>, <code>full screen</code> and <code>browser</code>. If it names a second product or asks you to install anything, you are at tier five or six and everything below is academic. An invite that gives you a link, a window of a few days and nothing else is usually tier one or two.</p></div></div>
+        <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Read the instructions page while the timer is still stopped</h3><p>Between the link and the first question there is a page listing the rules for that specific test, and the clock has not started. A proctored test says so here. This page is per-test rather than boilerplate, so it beats anything you read on a forum about how HackerRank "usually" behaves. Read all of it, including the sentence about what happens if you leave the window.</p></div></div>
+        <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>Watch the device check and the first ten seconds after Start</h3><p>If the system check asks for your camera and shows a preview of your own face, snapshots are on. No permission prompt and no preview means no webcam capture, because a browser cannot hand over a frame silently. If clicking Start pushes you into full screen, enforcement is on. Check the camera indicator light as well: it is a hardware signal that does not depend on trusting the page.</p></div></div>
+      </div>
+
+      <h2>What the recruiter actually receives</h2>
+      <p>The report is less cinematic than people imagine. For tiers one and two it is a score, your code, per-question timing, and a short activity summary: how many times the tab lost focus, roughly how long for, and whether large blocks of code arrived as pastes rather than keystrokes. The editor keeps a typing timeline, which is why a 300-character function that appears in a single event reads differently from one typed over four minutes. Similarity and plagiarism checks run on the submitted code after the test, not during it.</p>
+      <p>With image proctoring on, the reviewer additionally gets a grid of webcam stills. It is a set of photographs, not a video, and nobody is watching live. Reviewers tend to open it only when something else in the report already looked odd, such as a perfect score submitted in four minutes.</p>
+      <p>One honest caveat: HackerRank changes its product, and enterprise accounts can be configured in ways the public documentation does not spell out. Treat the tiers above as the shape of the system rather than a guarantee about your particular invite, and let the instructions page be the authority.</p>
+
+      <h2>Screen-capture exclusion does not apply here, and it is worth being blunt</h2>
+      <p>Because this site publishes a Windows overlay excluded from screen capture at the operating-system level, we get asked whether that property helps on a HackerRank test. Capture exclusion removes a window from the screen-capture pipeline: screen shares, recordings, screenshots. That is the whole of it. It has <strong>no effect whatsoever on a webcam feed</strong>, because the camera points at your face and your room, and no compositor setting changes what a lens sees. It has <strong>no effect on a lockdown browser</strong>, because secure mode governs what your test session permits rather than how the desktop is composited. And it does nothing about the oldest signal of all, which is a person watching your eyes track back and forth across something they cannot see.</p>
+      <p>So on a tier three, four, five or six HackerRank assessment, the answer is that OfferPilot AI is the wrong tool and using it would breach rules you accepted on the instructions page. We would rather write that plainly here than have you find out halfway through an assessment that matters.</p>
+
+      <h2>Where a coding copilot is genuinely useful</h2>
+      <p>Before the assessment, not during it. HackerRank rounds draw from a predictable pool of patterns, and the usual gap is recognising which pattern a problem belongs to fast enough to leave time for edge cases. That is a practice problem.</p>
+      <ul>
+        <li><strong>Working through problems on your own time.</strong> <a href="/code-copilot/">Code Copilot</a> screenshots a problem with <code>Ctrl+Alt+S</code>, handles a statement that spans several scrolls, and returns the intuition, a dry run and the Big-O rather than a block of code you could not defend in a follow-up. The intuition is the part that transfers to test day.</li>
+        <li><strong>Rounds where assistance is explicitly permitted.</strong> Some take-home and pair-programming rounds state outright that documentation and tools are allowed. That is a different situation from a proctored assessment, and the rules of your round decide it, not the software.</li>
+        <li><strong>The conversation afterwards.</strong> A HackerRank pass usually leads to a call where someone asks you to walk through your solution and defend a trade-off. The <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a question bank for that company and role from your own r&eacute;sum&eacute;, which is preparation you do days in advance.</li>
+      </ul>
+
+      <h2>The short version</h2>
+      <p>HackerRank is not filming your desktop unless somebody deliberately added a service that does. It is far more likely to be counting tab switches, watching how code arrives in the editor, and possibly photographing you through a camera you granted permission to. All of that is visible before you click Start, provided you read the invite, read the instructions page, and watch what the device check asks for.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/hackerearth-proctoring-camera/">Does HackerEarth Use Your Camera? Every Proctoring Toggle</a></li>
+        <li><a href="/guides/hackerrank-candidate-report/">What Recruiters See in Your HackerRank Report: Field by Field</a></li>
+        <li><a href="/guides/does-hackerrank-record-your-screen/">Does HackerRank Record Your Screen? What Each Test Mode Captures</a></li>
+        <li><a href="/guides/codesignal-proctoring-what-it-detects/">How Strict Is CodeSignal Proctoring? Six Channels, Ranked</a></li>
+        <li><a href="/guides/hackerrank-copy-paste-detection/">Can HackerRank Detect Copy and Paste? What the Report Shows</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Practise the patterns before the invite lands.</h2>
+      <p class="lede" style="margin:0 auto 8px">Windows 10 and 11. Free tier, no card, five minutes a day.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Download free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

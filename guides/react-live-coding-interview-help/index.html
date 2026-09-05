@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>React Live Coding Interview Help: One Multi-Scroll Capture</title>
+  <meta name="description" content="React live coding prompts split the spec, the starter file and the tests across three scrolls. How one Ctrl+Alt+S capture reads all three, on a debounced search.">
+  <meta name="keywords" content="react live coding interview help, react coding interview copilot, codesandbox interview task, react debounce interview question, frontend live coding interview, multi screenshot coding prompt, react hooks live round, ai help react interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/react-live-coding-interview-help/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="React Live Coding Interview Help: One Multi-Scroll Capture">
+  <meta property="og:description" content="React live coding prompts split the spec, the starter file and the tests across three scrolls. How one Ctrl+Alt+S capture reads all three, on a debounced search.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/react-live-coding-interview-help/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-react-live-coding-interview-help.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="React Live Coding Interview Help: One Multi-Scroll Capture">
+  <meta name="twitter:description" content="React live coding prompts split the spec, the starter file and the tests across three scrolls. How one Ctrl+Alt+S capture reads all three, on a debounced search.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-react-live-coding-interview-help.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"React Live Coding Interview Help: One Multi-Scroll Capture","description":"React live coding prompts split the spec, the starter file and the tests across three scrolls. How one Ctrl+Alt+S capture reads all three, on a debounced search.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/react-live-coding-interview-help/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"React Live Coding Interview Help: One Multi-Scroll Capture","url":"https://offerpilotai.ink/guides/react-live-coding-interview-help/","mainEntity":[{"@type":"Question","name":"How do I capture a React coding prompt that spans several scrolls?","acceptedAnswer":{"@type":"Answer","text":"Press Ctrl+Alt+S to start a capture, drag a box around the first region, then use the roughly three second window to scroll and drag again. Repeat for each region, then press Enter to send every shot together as one problem. Esc cancels the session. On a CodeSandbox style React task that is usually three drags: the spec, the starter component file, and the test list."}},{"@type":"Question","name":"Can an AI copilot read a CodeSandbox task where the spec and tests are in different panes?","acceptedAnswer":{"@type":"Answer","text":"Only if it can take more than one screenshot per question. A single crop tool reads whichever pane is visible and answers from partial information, often inventing prop names that are not in the starter file. A multi-shot capture takes several drags in one session and sends them together, so the model sees the spec, the starter component and the test names as one prompt."}},{"@type":"Question","name":"Does Big-O complexity matter in a React live coding interview?","acceptedAnswer":{"@type":"Answer","text":"Rarely. A debounced search box or a controlled form is graded on effect cleanup, controlled inputs, cancelled or guarded in-flight requests and stable list keys, not on asymptotics. Complexity only becomes relevant when the prompt involves a large dataset: filtering thousands of rows on every keystroke, a virtualised list, or a sort running inside render."}},{"@type":"Question","name":"What does an AI answer for a debounced search component actually contain?","acceptedAnswer":{"@type":"Answer","text":"Intuition, a worked dry run and a complexity line. For debounced search the intuition is that you hold two pieces of state, an immediate query that keeps the input controlled and a lagging value that the fetch depends on, with the timer cleared in the effect cleanup. The dry run traces four keystrokes against a 300ms delay and shows why only one request fires."}},{"@type":"Question","name":"Is a coding copilot overlay visible when I share my screen in a live React round?","acceptedAnswer":{"@type":"Answer","text":"OfferPilot AI's overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom, Teams, Meet or OBS share, or in a screenshot, while staying visible on your own monitor. That covers screen sharing and screen recording only. It does not affect a webcam, a lockdown browser, eye tracking, or a person watching you in the room."}},{"@type":"Question","name":"Which model is best for React coding questions?","acceptedAnswer":{"@type":"Answer","text":"Grok, DeepSeek and Gemini all answer every question in parallel, once, and Gemini is the recommended one for coding problems. Switching between the three answers is a display toggle, so it re-asks nothing and costs no extra time. On a React prompt it is worth reading a second answer when the first one skips the cleanup function."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"React live coding interview help","item":"https://offerpilotai.ink/guides/react-live-coding-interview-help/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">React live coding interview help when the prompt spans three scrolls</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A React live coding prompt is almost never one screenful. The spec sits in one pane, the starter component in another, the test list below the fold, and a single-screenshot tool reads one of the three, then confidently answers a question nobody asked. The fix is a capture that takes several shots before it sends anything: <code>Ctrl+Alt+S</code>, drag a box, about three seconds to scroll, drag again, then <code>Enter</code> sends them together as one problem. Here is that session on a debounced search task, and why the Big-O line at the bottom is the least useful part of what comes back.</p>
+
+      <h2>Why a frontend prompt breaks a single-screenshot tool</h2>
+      <p>An algorithm prompt is self-contained: title, constraints, two examples, one panel, one crop. A CodeSandbox or StackBlitz style React task spreads what you need across three places.</p>
+      <ul>
+        <li><strong>The spec pane</strong> holds the behaviour requirements and the numbers. "Wait 300ms after the user stops typing" is usually stated exactly once, here.</li>
+        <li><strong>The starter file</strong> holds the contract: the component name, the props it already receives, which hooks are imported, whether a <code>fetchResults</code> helper exists that you are meant to call, not write.</li>
+        <li><strong>The test list</strong> holds the edge cases. Names like <code>does not fire on unmount</code> or <code>ignores a stale response</code> tell you what the grader cares about, and they sit at the bottom.</li>
+      </ul>
+      <p>Crop one pane and the answer comes back fluent and wrong in a specific way. It invents prop names. It writes a class component when the starter uses hooks. It reaches for <code>lodash.debounce</code> when the README banned new dependencies. It picks 500ms because 300ms was two scrolls away.</p>
+
+      <h2>One capture session, three drags, one Enter</h2>
+      <p>Expand any collapsed sections first, because OCR reads pixels and not the DOM. The constraint that shapes the rest is the roughly three second gap between drags, so decide where you are scrolling first.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Ctrl+Alt+S, then drag one: the spec</h3>
+            <p>Box the requirements text: the delay, any rule about dependencies, the behaviour on empty input. Keep it tight; a drag that swallows the file tree just gives the OCR noise.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Scroll, then drag two: the starter file</h3>
+            <p>From the <code>import</code> lines down to the <code>export</code>. The import list is load-bearing: it says whether <code>useRef</code> is already available and whether a fetch helper is provided.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Scroll, then drag three: the tests</h3>
+            <p>The test names or the acceptance list. This is the drag people skip, and the one that turns a generic debounce into an answer handling unmount and stale responses.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Enter to send, Esc to abandon</h3>
+            <p><code>Enter</code> submits all three shots together as one problem, and OCR runs server-side so text-only models can read them. <code>Esc</code> cancels the session, which is what you want if a drag caught the wrong region.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>What comes back on a debounced search box</h2>
+      <p>The standard version: a controlled search input, results fetched from an API, debounced by 300ms, with tests for unmount and out-of-order responses. What returns is intuition, a dry run, then complexity.</p>
+
+      <h3>The intuition</h3>
+      <ul>
+        <li><strong>Two pieces of state, not one.</strong> <code>query</code> updates on every keystroke so the input stays controlled and typing never lags. A second value, <code>debounced</code>, trails behind and is the only thing the fetch effect depends on. Collapsing them into one is the common wrong answer, and the input visibly stutters.</li>
+        <li><strong>The timer has to survive re-renders.</strong> A <code>let id</code> in the component body is a fresh binding every render, so a cleanup reading it clears nothing. Keep the id in the closure of the effect that set it, or in a <code>useRef</code>.</li>
+        <li><strong>Cleanup is the mechanism.</strong> <code>useEffect(() =&gt; { const id = setTimeout(...); return () =&gt; clearTimeout(id); }, [query, delay])</code>. Cancelling on the next keystroke is what makes this a debounce rather than a delay. <code>delay</code> belongs in the dependency array when it is a prop.</li>
+        <li><strong>The fetch needs a guard.</strong> An <code>AbortController</code> aborted in the fetch effect's cleanup, or a check that the resolved query still matches the current one before <code>setState</code>.</li>
+      </ul>
+
+      <h3>The dry run</h3>
+      <p>Worth reading twice, because it is the part you will narrate out loud. With a 300ms delay:</p>
+      <ol>
+        <li><strong>t = 0</strong>, you type <code>r</code>. The effect schedules timer A for t = 300.</li>
+        <li><strong>t = 90</strong>, <code>e</code>. The cleanup fires first and clears A. Timer B is set for t = 390.</li>
+        <li><strong>t = 180</strong> and <strong>t = 260</strong>, <code>a</code> then <code>c</code>. Each clears the timer before it, leaving D set for t = 560.</li>
+        <li><strong>t = 560</strong>, you have stopped typing, D fires and sets <code>debounced</code> to <code>reac</code>. The fetch effect runs once. Four keystrokes, one request.</li>
+        <li><strong>Unmount at t = 500</strong>, before D fires: the cleanup clears D, so nothing sets state on an unmounted component. That is one of the tests.</li>
+        <li><strong>Out of order</strong>: with two requests in flight, the response for <code>rea</code> can land after the one for <code>reac</code>. The abort or the stale check drops it. That is the other test, and the one candidates miss.</li>
+      </ol>
+
+      <h3>Where the Big-O line is beside the point</h3>
+      <p>The answer ends with complexity, because that is what the format returns for every problem. Here it will say something close to O(1) per keystroke and O(n) to render n results. True, and useless in the moment. Nobody grading a frontend round is checking asymptotics. They are checking whether the effect cleans up, whether the input stays controlled, whether you cancel the in-flight request, and whether list keys are stable identifiers rather than the array index. Read the intuition and dry run, skim the complexity.</p>
+      <p>The exceptions are narrow. Filtering a few thousand rows on every keystroke, a virtualised list, or a sort inside render turns that line back into the answer. When the prompt names a dataset size, that is the tell.</p>
+
+      <h2>Which layouts actually need more than one shot</h2>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Prompt layout</th><th>Drags</th><th>What a single crop loses</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Algorithm prompt in one panel</td><td>One</td><td>Little, if constraints and examples are in the box</td></tr>
+            <tr><td>CodeSandbox or StackBlitz React task</td><td>Three</td><td>Prop names in the starter file, the delay stated only in the spec</td></tr>
+            <tr><td>Take-home README plus a repo file</td><td>Two or three</td><td>The "no new dependencies" rule, which lives in the README</td></tr>
+            <tr><td>A doc the interviewer scrolls</td><td>Whatever you catch</td><td>Whatever they scrolled past</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Where this is the wrong tool</h2>
+      <p>A React live round is a conversation, not a submission. The interviewer will interrupt: why a ref and not state for the timer, what happens if it unmounts mid-flight, now make it cancel on blur. An answer you did not understand collapses at the first follow-up, faster here than on an algorithm round, because the grader watches you refactor rather than reading a finished function.</p>
+      <ul>
+        <li><strong>Windows 10 and 11 only.</strong> No macOS, Linux, mobile or browser-extension build. If your round is on a Mac, none of this applies.</li>
+        <li><strong>Capture exclusion covers screen sharing and recording, nothing else.</strong> OfferPilot AI's overlay is excluded from screen capture at the operating system level, so it is absent from Zoom, Teams, Meet, OBS and screenshots while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a proctor in the room, or a phone camera behind you.</li>
+        <li><strong>The rules belong to the company.</strong> Some frontend screens explicitly allow documentation and AI assistance, some do not. Read the instructions, and ask if they are ambiguous.</li>
+        <li><strong>The last mile is yours.</strong> Code that reads correctly still needs the right import paths, the right file, and the sandbox's test runner.</li>
+      </ul>
+
+      <h2>Practise the loop before you need it</h2>
+      <p>Hold <code>P</code> for a see-through overlay so the answer and the starter file are readable in one glance, <code>Ctrl+Alt+H</code> to hide it, <code>Ctrl+Alt+Q</code> to cycle the answer mode. Grok, DeepSeek and Gemini each answer every question in parallel, once, so switching between them costs no extra time; read Gemini first on coding problems. Then run a few React tasks a week with <a href="/code-copilot/">Code Copilot</a>, reading the intuition and dry run before the code, then rebuilding the component from memory while narrating it. For the half of the round that is not code, the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> and the <a href="/interview-questions/">question banks</a> cover the follow-ups. The free tier is 5 minutes a day with no card, enough to check that a three-drag capture reads your sandbox; <a href="/pricing/">plans</a> start at $39 a month.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/full-stack-take-home-vs-live-coding/">Full Stack Take-Home vs Live Coding: What Each Format Grades</a></li>
+        <li><a href="/guides/product-manager-case-interview-copilot/">AI Copilot for Product Manager Case Interviews: 5 Case Types</a></li>
+        <li><a href="/guides/new-grad-software-engineer-interview-copilot/">AI Interview Copilot for New Grad SWE: Which Rounds It Helps</a></li>
+        <li><a href="/guides/data-engineer-sql-interview-round/">Data Engineer SQL Interview Round: What to Expect in 45 Minutes</a></li>
+        <li><a href="/guides/ml-system-design-interview-answer-structure/">ML System Design Interview: The Answer Spine Candidates Skip</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Three drags, one Enter, the whole prompt.</h2>
+      <p class="lede" style="margin:0 auto 8px">Capture a spec, a starter file and a test list in one session, and get intuition and a dry run back, not just a code block.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">See how capture works<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

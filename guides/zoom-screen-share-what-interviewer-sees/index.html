@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What an Interviewer Sees When You Share Your Zoom Screen</title>
+  <meta name="description" content="Entire Screen sends your taskbar, toasts and Alt-Tab strip. A window sends one app. A Chrome tab sends only the page. Exactly what leaks in each Zoom mode.">
+  <meta name="keywords" content="what can interviewer see when i share my screen on zoom, zoom screen share what do they see, does zoom screen share show notifications, zoom share window vs entire screen, can they see my other tabs on zoom, zoom green border screen share, silence notifications when sharing zoom, does zoom share show my taskbar">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/zoom-screen-share-what-interviewer-sees/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="What an Interviewer Sees When You Share Your Zoom Screen">
+  <meta property="og:description" content="Entire Screen sends your taskbar, toasts and Alt-Tab strip. A window sends one app. A Chrome tab sends only the page. Exactly what leaks in each Zoom mode.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/zoom-screen-share-what-interviewer-sees/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-zoom-screen-share-what-interviewer-sees.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="What an Interviewer Sees When You Share Your Zoom Screen">
+  <meta name="twitter:description" content="Entire Screen sends your taskbar, toasts and Alt-Tab strip. A window sends one app. A Chrome tab sends only the page. Exactly what leaks in each Zoom mode.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-zoom-screen-share-what-interviewer-sees.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What an Interviewer Sees When You Share Your Zoom Screen","description":"Entire Screen sends your taskbar, toasts and Alt-Tab strip. A window sends one app. A Chrome tab sends only the page. Exactly what leaks in each Zoom mode.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/zoom-screen-share-what-interviewer-sees/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"What an Interviewer Sees When You Share Your Zoom Screen","url":"https://offerpilotai.ink/guides/zoom-screen-share-what-interviewer-sees/","mainEntity":[{"@type":"Question","name":"What can an interviewer see when I share my screen on Zoom?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on which tile you clicked. Sharing a screen sends that whole display: taskbar, unread badges, notification toasts, the Alt-Tab strip and any dialog that jumps to the front. Sharing an application window sends only that window's rectangle, so toasts and the taskbar never enter the stream. Sharing a Chrome tab, which is available when you join Zoom in a browser, sends only the page viewport, with no address bar and no tab titles."}},{"@type":"Question","name":"Can the interviewer see my notifications when I share my screen on Zoom?","acceptedAnswer":{"@type":"Answer","text":"Only during a whole-screen share. A Windows toast is drawn on its own surface above the desktop, so it lands inside a display capture but falls outside a single window or tab capture. If you must share a display, turn on Do Not Disturb in Windows Settings, System, Notifications, and tick Zoom's own Silence system notifications when sharing desktop option under Settings, Share Screen."}},{"@type":"Question","name":"Can the interviewer see my other browser tabs on Zoom?","acceptedAnswer":{"@type":"Answer","text":"If you share the browser window, yes. The tab strip, every tab title, the address bar, your bookmarks bar and the downloads bubble are all part of that window and all get transmitted. If you share a single Chrome tab through the browser picker, none of that is sent, because capture starts at the top edge of the page itself, below all browser chrome."}},{"@type":"Question","name":"If I share one window on Zoom, can they see other windows I open on top of it?","acceptedAnswer":{"@type":"Answer","text":"Generally no. Modern Windows window capture reads the shared window's own pixels rather than the screen region it occupies, so something sitting on top of it covers your view and not theirs. The visible side effect is that viewers see a still-looking image while you click on things they cannot see. Test it once on your own machine, because older graphics paths can render the covered area black."}},{"@type":"Question","name":"Why does my Zoom share freeze when a Windows admin or password prompt appears?","acceptedAnswer":{"@type":"Answer","text":"Because Windows switches to a secure desktop for User Account Control prompts, Ctrl-Alt-Delete and the lock screen, and no application is allowed to record it. Zoom keeps sending the last frame it captured, so participants see a frozen picture until you answer the prompt. Nothing has crashed and nothing private has leaked, but it looks like a stall, so say what is happening."}},{"@type":"Question","name":"How can I check exactly what my Zoom screen share is transmitting?","acceptedAnswer":{"@type":"Answer","text":"Read the green border. Zoom draws it around precisely the surface being encoded, so if it hugs one window only that window is going out, and if it frames a whole panel then everything on that panel is going out. To see it from the other side, start a meeting with yourself, join from your phone as a second participant, share, and look at the phone."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"What Interviewers See in a Zoom Share","item":"https://offerpilotai.ink/guides/zoom-screen-share-what-interviewer-sees/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">What can an interviewer see when you share your screen on Zoom?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Exactly one thing decides it: which tile you clicked in the Share Screen picker. Pick <strong>a screen</strong> and you send that entire display, taskbar badges, notification toasts, the Alt-Tab thumbnail strip and any dialog that jumps to the front included. Pick <strong>an application window</strong> and Zoom sends that window's rectangle and nothing else, so a toast landing on top of it is on your monitor only. Pick <strong>a Chrome tab</strong>, which is what you get when you join Zoom in a browser rather than the desktop client, and you send the page viewport alone: no address bar, no tab titles, no bookmarks, no downloads. Row by row, below.</p>
+
+      <h2>The three modes, side by side</h2>
+      <p>Every cell describes what <em>the interviewer receives</em>, not what your own monitor shows. Those two diverge most in the window column, which is where the surprises live.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>What leaks</th>
+              <th>Entire screen</th>
+              <th>Application window</th>
+              <th>Chrome tab</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Taskbar, tray, unread badges</strong></td>
+              <td>Sent, including the unread badge on your mail client and the orange flash of an app demanding attention.</td>
+              <td>Not sent. Capture is clipped to the window's own bounds.</td>
+              <td>Not sent.</td>
+            </tr>
+            <tr>
+              <td><strong>Notification toasts</strong></td>
+              <td>Sent, with sender name and the first line of the message. This is the accident that actually happens.</td>
+              <td>Not sent. A toast is its own surface drawn above the desktop, outside the shared window.</td>
+              <td>Not sent, for the same reason.</td>
+            </tr>
+            <tr>
+              <td><strong>Your second monitor</strong></td>
+              <td>Only the display you picked. Zoom lists Screen 1 and Screen 2 as separate tiles with live previews.</td>
+              <td>Only the window, wherever on your desk it happens to sit.</td>
+              <td>Only the tab.</td>
+            </tr>
+            <tr>
+              <td><strong>Alt-Tab preview strip</strong></td>
+              <td>Sent. Every open window's thumbnail and title, for as long as you hold the keys down.</td>
+              <td>Not sent. The shared window carries on updating underneath it.</td>
+              <td>Not sent.</td>
+            </tr>
+            <tr>
+              <td><strong>A dialog from another app that jumps to the front</strong></td>
+              <td>Sent in full: calendar reminders, update prompts, incoming call popups.</td>
+              <td>Not sent. It covers your view, not theirs, so they see a still image while you click something invisible.</td>
+              <td>Not sent.</td>
+            </tr>
+            <tr>
+              <td><strong>A dialog opened by the shared app itself</strong></td>
+              <td>Sent.</td>
+              <td>Usually sent when Windows treats it as a child of the shared window. A separate top-level window from the same program can drop out of the stream.</td>
+              <td>Only if drawn inside the page. Print preview, permission bubbles and extension popups sit outside the viewport.</td>
+            </tr>
+            <tr>
+              <td><strong>Address bar, tab strip, bookmarks</strong></td>
+              <td>Sent, along with everything else on the panel.</td>
+              <td>Sent in full if the window you shared is the browser: every tab title and the current URL are readable.</td>
+              <td>Never sent. Capture begins at the top edge of the page viewport.</td>
+            </tr>
+            <tr>
+              <td><strong>Downloads</strong></td>
+              <td>Sent, plus File Explorer if you open the folder.</td>
+              <td>Sent. The download bubble is browser chrome, so it belongs to the window.</td>
+              <td>Not sent.</td>
+            </tr>
+            <tr>
+              <td><strong>Sound</strong></td>
+              <td colspan="2">Nothing unless you tick <em>Share sound</em> before pressing Share. Tick it and all system audio goes, notification chimes included.</td>
+              <td>The browser picker offers that tab's audio and normally arrives with it already enabled.</td>
+            </tr>
+            <tr>
+              <td><strong>If you minimise it</strong></td>
+              <td>Nothing changes. The desktop is still the desktop.</td>
+              <td>Viewers get a frozen last frame until you restore the window.</td>
+              <td>Keeps streaming. A background tab is still captured, and Chrome says so in a bar.</td>
+            </tr>
+            <tr>
+              <td><strong>A UAC prompt or Ctrl-Alt-Delete</strong></td>
+              <td colspan="3">Not captured in any mode. Windows switches to a secure desktop no application may record, so the stream holds its last frame until you answer.</td>
+            </tr>
+            <tr>
+              <td><strong>Where you find it</strong></td>
+              <td>Share Screen, Basic tab, the Screen 1 and Screen 2 tiles.</td>
+              <td>Same Basic tab, the list of open windows below the screens.</td>
+              <td>Not offered by the Windows desktop client. Join Zoom in Chrome and the browser's own picker supplies it.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Two rows deserve a sentence more. <strong>Window-on-top</strong> is the one people misremember in both directions: Windows window capture reads the shared window's own pixels rather than the screen region it occupies, so covering it changes nothing in the stream. Older graphics paths could render the covered area black instead, so confirm it on your own machine rather than taking it on trust. Zoom also filters its own client windows out of a display capture, which is why a Zoom share does not produce the hall of mirrors a browser-based one does.</p>
+
+      <p>A fourth mode behaves unlike the other three. <em>Share Screen, Advanced, Portion of Screen</em> transmits a resizable rectangle you drag over your desktop. Anything that moves under it goes out, a toast that lands inside it included, so treat it as a framing tool and not a privacy tool.</p>
+
+      <h2>Five minutes before the call, on Windows 11</h2>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Turn on Do Not Disturb, then read the automatic rules</h3><p>Settings, System, Notifications, then toggle <strong>Do not disturb</strong> on. Expand <em>Turn on do not disturb automatically</em> and actually read it. The rule people assume is protecting them is "When duplicating my display", and a normal Zoom share on an extended desktop does not trigger it. Open <em>Set priority notifications</em> too, because Do Not Disturb still lets everything on that list through.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Tick Zoom's own switch</h3><p>Zoom Settings, Share Screen, then <strong>Silence system notifications when sharing desktop</strong>. It is a second layer over Windows Do Not Disturb and it applies to display shares. On the same page, set <em>Window size when screen sharing</em> to Maintain current size so nothing leaps to fullscreen the moment you start, and leave the green border indicator enabled.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Clear the surfaces a toast leaves behind</h3><p>Silencing the popup does not silence the badge. Quit or sign out of the chat and mail apps rather than muting them, so no unread count builds on the taskbar while you talk. If you will share a browser window, open a fresh profile or a guest window, because personal bookmarks sit inside that rectangle. And in Windows 11 the Widgets button opens its board on hover, not on click.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Share, then read the green border before you speak</h3><p>Zoom draws a green border around precisely the surface it is encoding. If it hugs one window, only that window is going out. If it frames a whole panel, everything on that panel is going out. If it frames the panel you did not mean, stop and reshare. It is the only in-the-moment check that is actually reliable, because the tile numbers in the picker come from Zoom's own display enumeration and need not match the numbers Windows shows.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Verify from a second device, once</h3><p>Start a meeting with yourself, join from your phone as a muted second participant, share each way and watch the phone. Do it once, note what surprised you, and you never have to guess again.</p></div></div>
+      </div>
+
+      <h2>What they can infer even when the pixels are clean</h2>
+      <p>Hiding a surface is not the same as hiding that something happened on it, and an interviewer watching a share picks up more than the frame. The pointer that slides off one edge and does not come back for eight seconds. The long static stretch while you are clearly doing something, which is the window-share signature described above. A cursor that jumps to a new position instead of travelling, which is what happens when you act on an unshared panel and come back. None of these prove anything. All of them get noticed.</p>
+
+      <h2>Where this stops being useful</h2>
+      <p>This page is about a video call between two people, not a proctored assessment, and that distinction matters more than anything above. A screen share is a stream you started and can stop. A proctored exam is software with permission to inspect your machine, count your displays, watch your webcam and log what you do. The rules there belong to whoever sent you the link.</p>
+      <p>Since we make a tool that touches this, plainly. The <a href="/interview-copilot/">OfferPilot AI</a> overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom share or a recording of one, on every plan including the free tier. That is a narrow claim and people over-read it constantly. Capture exclusion does nothing about a webcam, a lockdown browser, a proctoring agent, eye tracking, a second-device camera, or a person sitting in the room with you. On a monitored exam it is the wrong tool, and we would rather say so than sell you a subscription you will regret. It is Windows 10 and 11 only, so none of it applies on a Mac. The <a href="/pricing/">free tier needs no card</a>, so the self-meeting test above settles any of this without believing a vendor page.</p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li><strong>Window share is the default answer for an interview.</strong> Toasts, the taskbar, Alt-Tab and other apps' dialogs all fall outside it, with no configuration needed.</li>
+        <li><strong>Whole-screen share means the whole screen.</strong> If a round forces it, run the notification routine first rather than trusting muscle memory.</li>
+        <li><strong>The green border is the only live source of truth.</strong> Screen 1 is Zoom's internal number, not a place on your desk.</li>
+        <li><strong>A frozen picture is usually a secure desktop or a minimised window,</strong> not a dropped connection. Say so out loud and the pause stops being awkward.</li>
+      </ul>
+      <p>If your next round is a live coding call, where the shared thing is an editor rather than your desktop, the mechanics differ again and sit on the <a href="/code-copilot/">Code Copilot</a> page.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/coderpad-hackerrank-what-interviewer-sees/">Does CoderPad Detect Screen Sharing? Two Separate Channels</a></li>
+        <li><a href="/guides/can-interviewer-see-alt-tab/">Can a Zoom Host See If You Switch Tabs? The Three Signals</a></li>
+        <li><a href="/guides/can-zoom-see-my-whole-computer/">Can Zoom See Everything on My Computer? What It Really Holds</a></li>
+        <li><a href="/guides/coderpad-what-the-interviewer-sees/">Does CoderPad Detect Tab Switching? What the Interviewer Sees</a></li>
+        <li><a href="/guides/can-zoom-see-other-apps-open/">Can Zoom See What Other Apps You Have Open? Three Exceptions</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">See what your share actually sends.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card. Meet yourself, join from your phone, share each way and watch.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

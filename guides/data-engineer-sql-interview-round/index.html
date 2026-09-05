@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Engineer SQL Interview Round: What to Expect in 45 Minutes</title>
+  <meta name="description" content="What a 45-minute data engineer SQL round contains: aggregation first, joins next, window functions deciding the senior bar, plus one worked gaps-and-islands query.">
+  <meta name="keywords" content="data engineer sql interview round, what to expect data engineer sql interview, sql window functions interview, gaps and islands sql interview, data engineer interview questions sql, sql technical screen 45 minutes, senior data engineer sql round, sql assessment schema screenshot">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/data-engineer-sql-interview-round/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Data Engineer SQL Interview Round: What to Expect in 45 Minutes">
+  <meta property="og:description" content="What a 45-minute data engineer SQL round contains: aggregation first, joins next, window functions deciding the senior bar, plus one worked gaps-and-islands query.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/data-engineer-sql-interview-round/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-data-engineer-sql-interview-round.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Data Engineer SQL Interview Round: What to Expect in 45 Minutes">
+  <meta name="twitter:description" content="What a 45-minute data engineer SQL round contains: aggregation first, joins next, window functions deciding the senior bar, plus one worked gaps-and-islands query.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-data-engineer-sql-interview-round.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Data Engineer SQL Interview Round: What to Expect in 45 Minutes","description":"What a 45-minute data engineer SQL round contains: aggregation first, joins next, window functions deciding the senior bar, plus one worked gaps-and-islands query.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/data-engineer-sql-interview-round/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Data Engineer SQL Interview Round: What to Expect in 45 Minutes","url":"https://offerpilotai.ink/guides/data-engineer-sql-interview-round/","mainEntity":[{"@type":"Question","name":"What does a data engineer SQL interview round actually cover?","acceptedAnswer":{"@type":"Answer","text":"Most 45-minute rounds spend the largest share on aggregation and filtering: GROUP BY, HAVING, COUNT DISTINCT and conditional aggregation. Joins come next, usually a LEFT JOIN that fans out or an anti-join with NULLs in it. Window functions arrive late, in one or two questions, and they are the tier that separates a mid-level pass from a senior one. The final minutes are often a verbal chat about grain, indexes or why a query is slow."}},{"@type":"Question","name":"Do I need window functions to pass a data engineer SQL interview?","acceptedAnswer":{"@type":"Answer","text":"For a junior or analytics-adjacent role you can often pass on solid aggregation and joins alone. For senior data engineering roles they are the deciding tier. The four that appear most are ROW_NUMBER for deduplication, LAG or LEAD for period-over-period changes, SUM OVER with a frame clause for running totals, and the row_number subtraction trick behind consecutive-day streak questions."}},{"@type":"Question","name":"How do you write a consecutive-days streak query in SQL?","acceptedAnswer":{"@type":"Answer","text":"Collapse the events to one row per user per day, number those days per user with ROW_NUMBER ordered by date, then subtract the row number from the date. Inside a run of consecutive days both values increase in step, so the difference stays constant and identifies the island. Group by user and that constant, count the rows in each group, then take the maximum per user."}},{"@type":"Question","name":"How do I capture a SQL assessment where the schema and the question are on different scrolls?","acceptedAnswer":{"@type":"Answer","text":"Press Ctrl+Alt+S to start a capture, drag a box around the DDL or column list, then use the roughly three second window to scroll and drag the question itself. A third drag catches the dialect banner and any expected output. Enter sends every shot together as one problem and Esc cancels. Without the schema shot a model invents column names and answers in whichever SQL dialect it guesses."}},{"@type":"Question","name":"What is the most common mistake in a SQL interview round?","acceptedAnswer":{"@type":"Answer","text":"Counting rows after a one-to-many join. A LEFT JOIN from customers to orders repeats the customer row once per order, so COUNT(*) and any SUM of a customer-level column are inflated, and the result looks plausible enough that nobody catches it. Use COUNT(DISTINCT customer_id), aggregate the child table in a CTE before joining, or use EXISTS when you only need existence."}},{"@type":"Question","name":"Will an AI copilot overlay show up when I share my screen in a SQL interview?","acceptedAnswer":{"@type":"Answer","text":"OfferPilot AI's overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom, Teams, Meet or OBS share, or in a screenshot, while staying visible on your own monitor. That covers screen sharing and screen recording only. It does not affect a webcam feed, a lockdown browser, eye tracking, or a person watching you in the room."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Data engineer SQL interview round","item":"https://offerpilotai.ink/guides/data-engineer-sql-interview-round/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">What to expect in a data engineer SQL interview round</h1>
+      <p class="meta">2026 &middot; ~9 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A 45-minute data engineer SQL screen is not evenly split. Aggregation and filtering take the largest slice, the first questions and the ones you clear to reach anything else. Joins are next, and the failure there is a fan-out that returns a wrong number rather than an error. Window functions arrive last, in one or two questions, and they are the tier that decides whether the write-up says senior. Below: that split in detail, one streak question worked from a stakeholder's Slack message to a query that runs, and the capture sequence for when the schema and the question sit on different scrolls.</p>
+
+      <h2>What the 45 minutes is actually made of</h2>
+      <p>No public dataset breaks a SQL round into minutes, so treat this as a planning split, not a measurement. It matches the shape of the format: questions get harder in order, and the last one exists to separate candidates who all passed the first three.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Tier</th><th>Where it sits</th><th>What it looks like</th><th>What failing it costs</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Aggregation and filtering</td><td>Largest slice, first</td><td><code>GROUP BY</code> with <code>HAVING</code>, <code>COUNT(DISTINCT ...)</code>, conditional aggregation, date bucketing</td><td>The round ends early. Nothing else gets asked.</td></tr>
+            <tr><td>Joins and set logic</td><td>Second, often the first question extended</td><td>Left join fan-out, anti-joins, self-joins, a many-to-many bridge table</td><td>A query that runs and returns a number three times too large.</td></tr>
+            <tr><td>Window functions</td><td>One or two questions, near the end</td><td>Deduplication, period-over-period, running totals, gaps and islands</td><td>You pass, and the level comes back one band lower than you wanted.</td></tr>
+            <tr><td>Modelling and performance</td><td>Final minutes, usually verbal</td><td>Grain, slowly changing dimensions, why this scan is slow, what you would index</td><td>Only bites at senior and above, but it bites hard there.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>The traps that live in the biggest tier</h3>
+      <p>People revise window functions and then lose the round on tier one. The recurring traps, in rough order of how often they cost someone an offer:</p>
+      <ul>
+        <li><strong>Counting after a fan-out.</strong> A <code>LEFT JOIN</code> from customers to orders repeats each customer once per order. <code>COUNT(*)</code> now counts orders, and <code>SUM(c.credit_limit)</code> adds the same limit five times. Aggregate the child table in a CTE first, or use <code>COUNT(DISTINCT c.customer_id)</code>.</li>
+        <li><strong><code>COUNT(*)</code> against <code>COUNT(col)</code> after a left join.</strong> The unmatched row still exists, with NULLs in it. <code>COUNT(*)</code> returns 1 for a customer with no orders, <code>COUNT(o.order_id)</code> returns 0. One of those answers "how many orders", and it is not the first one.</li>
+        <li><strong><code>NOT IN</code> with a NULL in the subquery.</strong> It returns zero rows, silently, because the comparison is unknown rather than false. <code>NOT EXISTS</code> does not behave that way. This is a favourite follow-up precisely because it is so quiet.</li>
+        <li><strong><code>WHERE</code> against <code>HAVING</code>.</strong> Date filters belong in <code>WHERE</code>, before grouping. A filter on an aggregate belongs in <code>HAVING</code>. Putting the date in <code>HAVING</code> works on some engines and scans far more than it needs to.</li>
+        <li><strong>Half-open date ranges.</strong> If the column is a timestamp, <code>BETWEEN '2026-04-01' AND '2026-06-30'</code> quietly drops everything after midnight on the last day. Write <code>&gt;= '2026-04-01' AND &lt; '2026-07-01'</code> and say why out loud.</li>
+      </ul>
+
+      <h2>One window function question, from Slack message to running query</h2>
+      <p>Good interviewers phrase the last question the way a stakeholder would, because reading the ask is part of the job. It lands looking like this:</p>
+      <blockquote>hey, for the retention deck: for each user, what was their longest run of consecutive days they opened the app in Q2? and how many users hit 7 days in a row?</blockquote>
+      <p>The schema is two tables and a dialect note:</p>
+      <pre class="code" style="margin:14px 0"><span class="cm">-- PostgreSQL 14</span>
+events(user_id BIGINT, event_ts TIMESTAMPTZ, event_name TEXT)
+users (user_id BIGINT, signup_date DATE, plan TEXT)</pre>
+      <p>Say the shape of the answer before you type. This is a gaps-and-islands problem: find runs of consecutive values, measure each run, take the longest per user. Three moves get you there.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Collapse events to days</h3>
+            <p>The question is about days, not events, and a user who opens the app forty times on Tuesday still has one day. <code>DISTINCT</code> on the cast date does it, with the quarter as a half-open range.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Subtract a row number from the date</h3>
+            <p>Number each user's days in date order. Inside a run of consecutive days the date and the row number both climb by one, so <code>date - row_number</code> stays constant. A gap moves the date by more than one and the difference jumps to a new value. That constant is the island key, and its actual value is meaningless. Only its constancy matters.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Group by the island, then by the user</h3>
+            <p>Count rows per island to get streak lengths, then take the maximum per user. The second half of the ask falls out of the same CTE with one more line.</p>
+          </div>
+        </div>
+      </div>
+      <pre class="code" style="margin:14px 0"><span class="kw">with</span> days <span class="kw">as</span> (
+  <span class="kw">select distinct</span> user_id, event_ts::date <span class="kw">as</span> d
+  <span class="kw">from</span> events
+  <span class="kw">where</span> event_name = <span class="st">'app_open'</span>
+    <span class="kw">and</span> event_ts &gt;= <span class="kw">date</span> <span class="st">'2026-04-01'</span>
+    <span class="kw">and</span> event_ts &lt;  <span class="kw">date</span> <span class="st">'2026-07-01'</span>
+),
+islands <span class="kw">as</span> (
+  <span class="kw">select</span> user_id, d,
+         d - (<span class="kw">row_number</span>() <span class="kw">over</span> (<span class="kw">partition by</span> user_id <span class="kw">order by</span> d))::int <span class="kw">as</span> grp
+  <span class="kw">from</span> days
+),
+streaks <span class="kw">as</span> (
+  <span class="kw">select</span> user_id, grp, <span class="kw">count</span>(*) <span class="kw">as</span> streak_len,
+         <span class="kw">min</span>(d) <span class="kw">as</span> started, <span class="kw">max</span>(d) <span class="kw">as</span> ended
+  <span class="kw">from</span> islands
+  <span class="kw">group by</span> user_id, grp
+)
+<span class="kw">select</span> user_id, <span class="kw">max</span>(streak_len) <span class="kw">as</span> longest_streak
+<span class="kw">from</span> streaks
+<span class="kw">group by</span> user_id
+<span class="kw">order by</span> longest_streak <span class="kw">desc</span>;</pre>
+      <p>The second question is one line against the same <code>streaks</code> CTE, and it needs no extra grouping because any island of seven or more qualifies the user:</p>
+      <pre class="code" style="margin:14px 0"><span class="kw">select count</span>(<span class="kw">distinct</span> user_id) <span class="kw">from</span> streaks <span class="kw">where</span> streak_len &gt;= 7;</pre>
+      <p>Trace three days out loud while you write it. If a user's days are 4, 5 and 9 April, the row numbers are 1, 2, 3 and the differences are 3 Apr, 3 Apr, 6 Apr. Two rows in the first island, one in the second, longest streak two. That thirty-second trace convinces an interviewer you derived the trick rather than memorised it.</p>
+
+      <h3>The follow-ups this question always gets</h3>
+      <ul>
+        <li><strong>"Why <code>ROW_NUMBER</code> and not <code>RANK</code>?"</strong> Ties. <code>RANK</code> leaves holes after a tie, which breaks the arithmetic. The <code>DISTINCT</code> removes duplicate dates so it does not bite here, but say that you know the choice is not arbitrary.</li>
+        <li><strong>"Does it break across month or year boundaries?"</strong> No, and that is the point of subtracting from the date rather than from a day-of-month. To a date type, 30 April and 1 May are one day apart.</li>
+        <li><strong>"Users are in different timezones."</strong> <code>event_ts::date</code> resolves in the session timezone. If each user carries a timezone column, cast with <code>(event_ts at time zone u.tz)::date</code>, which pulls the join earlier in the query.</li>
+        <li><strong>"Now do it per week."</strong> Truncate to the week, <code>DISTINCT</code> those, and subtract <code>row_number * interval '7 days'</code> instead of a plain integer.</li>
+        <li><strong>"Four hundred million rows. Will this run?"</strong> The <code>DISTINCT</code> is the expensive step. A composite index on <code>(user_id, event_ts)</code> where the filter is selective, or a pre-aggregated daily activity table, is the honest answer.</li>
+      </ul>
+
+      <h2>When the schema block and the question are on different scrolls</h2>
+      <p>SQL assessments almost never fit one screen. The DDL or ERD sits at the top, a banner underneath says which engine the queries run against, and the question, its sub-parts and an expected-output table sit below the fold. Crop the question alone and any AI answer invents <code>login_date</code> when the column is <code>event_ts</code>, joins on <code>id</code> when the key is <code>user_id</code>, and picks a dialect at random. The schema shot matters far more here than on an algorithm prompt, where the problem is self-contained.</p>
+      <p>OfferPilot AI's <a href="/code-copilot/">Code Copilot</a> takes several shots in one session before it sends anything. Expand any collapsed table definitions first, because OCR reads pixels and not the DOM.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3><code>Ctrl+Alt+S</code>, drag one: the schema</h3>
+            <p>Box the DDL or the column lists for the tables the question names, types included. A <code>TIMESTAMPTZ</code> against a <code>DATE</code> changes the answer, and so does a nullable foreign key.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Scroll, drag two: the dialect banner and the question</h3>
+            <p>You get roughly three seconds between drags, so decide where you are scrolling before you start. Catch the "queries run against PostgreSQL 14" line in the same box as the question text if the layout allows it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Scroll, drag three: expected output</h3>
+            <p>The sample result table names the output columns and their order, which is what an automated grader diffs against. This is the drag people skip, and the one that turns a right answer into a passing one.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3><code>Enter</code> to send, <code>Esc</code> to abandon</h3>
+            <p>Enter submits all three shots together as one problem, and OCR runs server-side so text-only models can read them. Esc cancels the whole session if a drag caught the wrong pane.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Where this goes wrong, starting with the dialect</h2>
+      <p>A generated query can be logically perfect and still refuse to run on the grader's engine, because window and aggregate syntax diverges hard between databases. Check any answer against the dialect banner before you paste it.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Feature</th><th>PostgreSQL</th><th>MySQL 8</th><th>Snowflake / BigQuery</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>QUALIFY</code> to filter a window result</td><td>No, wrap it in a subquery</td><td>No, wrap it in a subquery</td><td>Yes</td></tr>
+            <tr><td><code>COUNT(*) FILTER (WHERE ...)</code></td><td>Yes</td><td>No, use <code>SUM(CASE WHEN ...)</code></td><td>Varies by engine, check the docs</td></tr>
+            <tr><td><code>DATE_TRUNC('week', d)</code></td><td>Yes</td><td>No direct equivalent</td><td>Yes</td></tr>
+            <tr><td><code>col::date</code> cast shorthand</td><td>Yes</td><td>No, use <code>DATE(col)</code></td><td>Yes in Snowflake, use <code>CAST</code> in BigQuery</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The wider limits deserve naming plainly. A SQL round is graded on the narration as much as the query, and the interviewer will change the spec halfway through your answer, which is exactly where a query you did not derive falls apart. The overlay's capture exclusion works at the operating system level, so it is absent from Zoom, Teams, Meet, OBS and screenshots while staying visible on your own monitor, but that covers screen sharing and screen recording only. It does nothing about a webcam, a lockdown browser, eye tracking, or a proctor watching in the room. The app is Windows 10 and 11 only. OCR can misread a column name in a low-contrast ERD image, so read the identifiers back against the schema. And the rules belong to the company: some take-homes allow assistance and some forbid it, so read the instructions and ask when they are ambiguous.</p>
+
+      <h2>Practise the weighting, not the topic list</h2>
+      <p>Work the tiers in the order the round uses them. Spend most of your reps on aggregation with joins underneath it, because that is where offers are lost quietly, then drill four window patterns until they are automatic: <code>ROW_NUMBER</code> for deduplication, <code>LAG</code> for period-over-period, <code>SUM ... OVER</code> with an explicit frame for running totals, and the row-number subtraction above. Take a real assessment page, run the three-drag capture on it, read the intuition before the code, then rebuild the query in a blank editor while narrating it. For the modelling conversation at the end, the <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a bank around the pipeline stack named in the job description, and the <a href="/interview-questions/">question banks</a> cover the rest. The free tier is 5 minutes a day with no card; <a href="/pricing/">paid plans</a> start at $39 a month and meter listening time only.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/new-grad-software-engineer-interview-copilot/">AI Interview Copilot for New Grad SWE: Which Rounds It Helps</a></li>
+        <li><a href="/guides/ml-engineer-vs-data-scientist-interview/">ML Engineer vs Data Scientist Interview: Every Round Compared</a></li>
+        <li><a href="/guides/api-design-vs-system-design-interview/">API Design Interview vs System Design Interview: The Tells</a></li>
+        <li><a href="/guides/sre-linux-troubleshooting-interview/">SRE Interview Linux Troubleshooting: Triage Order to Narrate</a></li>
+        <li><a href="/guides/data-scientist-product-sense-interview/">Data Scientist Product Sense Interview Questions: 4-Move Answer</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Capture the schema and the question together.</h2>
+      <p class="lede" style="margin:0 auto 8px">One session, three drags, one Enter, and an answer that uses your column names and your SQL dialect.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">See how capture works<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

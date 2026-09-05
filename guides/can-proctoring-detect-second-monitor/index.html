@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can Proctoring Software Detect a Second Monitor? How It Knows</title>
+  <meta name="description" content="Yes, and without looking at the screen. Any application can ask the operating system for the list of attached displays, with no prompt, no camera and no captured pixel.">
+  <meta name="keywords" content="can proctoring software detect a second monitor, does proctoring software detect dual monitors, how does proctoring detect two monitors, display enumeration proctoring, proctored exam second monitor rule, does a proctored test know how many screens, unplug second monitor for online exam, screen isExtended detection, virtual display driver flagged exam">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/can-proctoring-detect-second-monitor/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Can Proctoring Software Detect a Second Monitor? How It Knows">
+  <meta property="og:description" content="Yes, and without looking at the screen. Any application can ask the operating system for the list of attached displays, with no prompt, no camera and no captured pixel.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/can-proctoring-detect-second-monitor/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-can-proctoring-detect-second-monitor.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Can Proctoring Software Detect a Second Monitor? How It Knows">
+  <meta name="twitter:description" content="Yes, and without looking at the screen. Any application can ask the operating system for the list of attached displays, with no prompt, no camera and no captured pixel.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-can-proctoring-detect-second-monitor.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Can Proctoring Software Detect a Second Monitor? How It Knows","description":"Yes, and without looking at the screen. Any application can ask the operating system for the list of attached displays, with no prompt, no camera and no captured pixel.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/can-proctoring-detect-second-monitor/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Can Proctoring Software Detect a Second Monitor? How It Knows","url":"https://offerpilotai.ink/guides/can-proctoring-detect-second-monitor/","mainEntity":[{"@type":"Question","name":"Can proctoring software detect a second monitor?","acceptedAnswer":{"@type":"Answer","text":"Yes. An installed proctoring client asks the operating system how many displays are attached and reads back a list containing each panel's name, size and position. That call is ordinary and unprivileged, so there is no permission prompt to decline and no setting inside the app that turns it off. A browser based proctored page can usually learn the same fact as a simple boolean."}},{"@type":"Question","name":"How does proctoring software know about a monitor it cannot see?","acceptedAnswer":{"@type":"Answer","text":"Through display enumeration. Every desktop operating system keeps a register of attached displays so ordinary software can position windows correctly, and it hands that register to any application that asks. Detecting a panel and capturing a panel are separate capabilities with separate permissions, so the software never needs the second screen's contents to know it exists."}},{"@type":"Question","name":"Does turning the second monitor off count as disconnecting it?","acceptedAnswer":{"@type":"Answer","text":"Not reliably. Whether a powered off panel drops out of the display list depends on the connection standard and the monitor itself, so a screen that looks dark on your desk can still appear as a second entry. If a rule says one display, unplug the cable rather than pressing the power button, and do it before the client launches."}},{"@type":"Question","name":"Can I check what a proctoring client would see about my displays?","acceptedAnswer":{"@type":"Answer","text":"Yes, in about fifteen seconds. Open Windows PowerShell, run Add-Type -AssemblyName System.Windows.Forms, then run Screen AllScreens through Select-Object for DeviceName, Primary and Bounds. You get one row per attached display, including phantom displays created by virtual display drivers that ship with remote desktop and streaming tools."}},{"@type":"Question","name":"Does mirroring my two monitors hide the second one?","acceptedAnswer":{"@type":"Answer","text":"Mirroring does report a single display, because Duplicate mode is one desktop painted onto two panels rather than two desktops. It is not a workaround worth using. Everything on the spare panel is already inside any screen share you give, both screens are still lit for a webcam room scan, and it gives you no private workspace at all."}},{"@type":"Question","name":"If a second monitor is detected, am I automatically disqualified?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on the product tier. Lockdown clients and remote certification exams usually gate at launch and simply refuse to start until you disconnect. Browser based proctoring more often records the configuration as a note in a session report a human reviews later, alongside focus changes and camera stills, where it is context rather than a verdict."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Proctoring and a Second Monitor","item":"https://offerpilotai.ink/guides/can-proctoring-detect-second-monitor/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Can proctoring software detect a second monitor?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Yes, an installed proctoring client detects a second monitor trivially, and a browser based one usually can too. It does not do this by looking at your screens. It asks the operating system how many displays are attached and reads back a list, which is an ordinary, unprivileged call that raises no prompt and takes microseconds. The interesting questions are not whether it can see the monitor, but <strong>when it checks</strong>, whether it <strong>blocks or merely flags</strong>, and which desk arrangements produce a count that surprises you.</p>
+
+      <h2>Display enumeration, the mechanism behind the whole question</h2>
+      <p>Every desktop operating system maintains a register of attached displays so that ordinary software can lay windows out correctly, and it hands that register to any application that asks. On Windows the call is <code>EnumDisplayMonitors</code>, or <code>GetSystemMetrics</code> with the monitor count constant, or the managed equivalent <code>Screen.AllScreens</code>. On macOS it is <code>NSScreen.screens</code>. Each entry carries a device name, a rectangle giving that panel's size and its position in the virtual desktop, and a flag marking the primary. None of that is surveillance, it is the same information a photo editor uses to remember which monitor you left it on. The consequence is the part candidates get wrong: <strong>the software never needs to see the second screen's contents to know it exists</strong>. Detecting the panel and capturing the panel are separate capabilities with separate permissions, and enumeration is the cheap one. There is no dialog to decline, no camera involved, and nothing you can turn off inside the app. If a second display is attached, the list has two rows in it.</p>
+
+      <h2>Run the exact query a proctoring client runs</h2>
+      <p>You can read your own list in about fifteen seconds and see precisely what would be reported about your hardware. Open Windows PowerShell and run these two lines:</p>
+      <ul>
+        <li><code>Add-Type -AssemblyName System.Windows.Forms</code></li>
+        <li><code>[System.Windows.Forms.Screen]::AllScreens | Select-Object DeviceName, Primary, Bounds</code></li>
+      </ul>
+      <p>On the two monitor machine this page was written on, that printed <code>\\.\DISPLAY1</code>, primary true, bounds starting at X=0, then <code>\\.\DISPLAY5</code>, primary false, bounds starting at X=1536. Two details in that output are worth keeping. The device names are not 1 and 2, they are 1 and 5, because Windows keeps stale slots for panels that were once attached, so a name is never a reliable count. And the bounds are logical coordinates affected by display scaling rather than native pixels, which is why a 4K panel can report as something much smaller. The X offset is the second useful signal: a non zero or negative X on any entry is the arithmetic that tells a client your desktop spans more than one panel.</p>
+      <p>For the browser case, press F12 and type <code>screen.isExtended</code> in the Console. In Chromium browsers that returns a boolean with no prompt at all, and true means more than one display is attached. The sizes and labels sit behind a window management permission you would see and could refuse. The boolean you cannot refuse.</p>
+
+      <h2>What your desk looks like versus what the count returns</h2>
+      <p>The count is not a headcount of lit panels, and the gaps run in both directions. This is where honest surprises happen, including flags on setups the candidate considered single monitor.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <tr><th>Physical arrangement</th><th>What enumeration returns</th><th>Practical consequence</th></tr>
+          <tr><td>Laptop panel plus one external, set to Extend</td><td>Two displays, with distinct bounds</td><td>The plain case. Detected, and flagged wherever a single display rule exists.</td></tr>
+          <tr><td>Laptop closed in a dock, one external screen</td><td>One display</td><td>Genuinely a single display setup. The internal panel is off, not merely ignored.</td></tr>
+          <tr><td>Two panels set to Duplicate or mirror</td><td>One display</td><td>Not a loophole. One desktop painted twice means everything on the spare panel is already inside any screen share, and a room scan still sees two lit screens.</td></tr>
+          <tr><td>Spanned mode such as NVIDIA Surround or AMD Eyefinity</td><td>One display at an unusual resolution</td><td>A single entry reading 5760 by 1080 is its own anomaly, and a capture of that one display contains all three panels.</td></tr>
+          <tr><td>HDMI dummy plug or a virtual display adapter</td><td>An extra display with no physical panel</td><td>Counted like any other. It adds to the number rather than hiding anything.</td></tr>
+          <tr><td>Remote desktop, streaming or capture tools that install a virtual display driver</td><td>A phantom display that you cannot see</td><td>The most common false positive. Worth checking before an exam rather than arguing about afterwards.</td></tr>
+          <tr><td>A TV or projector left connected to a dock, screen off</td><td>Varies by cable and monitor</td><td>Whether a powered off panel drops out of the list depends on the connection, so unplug the cable rather than trusting the power button.</td></tr>
+        </table>
+      </div>
+
+      <p>That last row is the practical instruction hiding in this table. If a rule says one display, disconnect at the cable. Switching a monitor off is a change in the monitor, not necessarily a change in the list the operating system publishes, and the only way to know which your hardware does is to run the check above with the panel off.</p>
+
+      <h2>Detecting is not the same as blocking</h2>
+      <p>Software that can count displays chooses what to do about it, and the choices differ enormously by product tier.</p>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>A hard gate at launch</h3><p>Lockdown clients and remote certification exams typically check before the first question and refuse to start, telling you to disconnect. This is the friendliest failure mode, because it happens while nothing is at stake and the timer has not started.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>A recorded fact in a report</h3><p>Browser based proctoring more often logs the configuration and moves on. The multi display note lands in a session report a reviewer reads later, next to focus changes and camera stills, and it is context rather than a verdict on its own.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>A continuous watch, not a single snapshot</h3><p>Windows broadcasts a message when the display configuration changes, so a resident client can be told about a monitor plugged in mid session without polling for it. Unplugging for the launch check and reconnecting once the test is running is therefore a timestamped event, which reads far worse than the original configuration would have.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>No check at all</h3><p>Plenty of unproctored employer tests and every live shared editor session enumerate nothing, because there is no agent on your machine to do it. Here the only observer is a human watching your pointer and your eyes.</p></div></div>
+      </div>
+      <p>Work out which of those four you are in first, because it changes what matters. The way to find out is not a general article, it is the rules screen on your own invite, searched for the words monitor, display and screen.</p>
+
+      <h2>What a display count still does not reveal</h2>
+      <p>Enumeration is a list of panels, not a view of them. Knowing a second monitor exists tells the software its resolution, its position and its name, and nothing about what is drawn on it. Reading pixels needs a separate capture grant, which on the web is the share prompt you click through. So a session can know you have two displays and hold no image of the second one. That cuts both ways. The count is a rules question rather than an evidence question, and a setup that looks clean in the list can still be exposed by the webcam, which watches your eyes rather than your hardware. Sustained sideways gaze at something outside the frame is a far more commonly reported trigger for human review than any display count.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool for this</h2>
+      <p>Worth stating plainly, since a vendor publishes this page. The OfferPilot AI overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots while staying visible on your own monitor, on every plan including the free one. Set that against the mechanism above and the limit is obvious. Capture exclusion changes what a capture stream contains. It has nothing to do with display enumeration, so a client counting attached panels returns the same number either way, and it does nothing about a webcam, a lockdown browser, an invigilator in the room, eye tracking, or a phone propped up as a second camera. On a proctored assessment that states a single display rule, the correct action is to disconnect the monitor and follow the rule, and we would rather say that than sell you a misunderstanding. It is Windows 10 and 11 only, so on a Mac none of this applies to you.</p>
+      <p>The uses that hold up sit outside the monitored window. Working through timed problems beforehand against something that explains the intuition, dry runs the solution and gives you the complexity is what turns a memorised pattern into something you can defend out loud, which is what <a href="/code-copilot/">Code Copilot</a> is built for.</p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li><strong>Yes, and without looking.</strong> The operating system publishes the display list to any application that asks, so the count is available without a prompt, a camera or a single captured pixel.</li>
+        <li><strong>Check your own list first.</strong> Two lines of PowerShell show you exactly what would be reported, including phantom displays from virtual display drivers that you did not know were there.</li>
+        <li><strong>Disconnect at the cable, before launch.</strong> A powered off panel may still enumerate, and reconnecting mid session is an event with a timestamp on it.</li>
+        <li><strong>The count is a rules question.</strong> Detection tells them a panel exists. Whether that matters is written on your invite, so read it rather than guessing.</li>
+      </ul>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/second-monitor-online-assessment/">Can You Use Two Monitors During an Online Assessment or Test?</a></li>
+        <li><a href="/guides/proctoring-virtual-machine-remote-desktop-detection/">Can a Proctored Exam Detect a Virtual Machine or Remote Desktop?</a></li>
+        <li><a href="/guides/hackerrank-tab-switching-detection/">Does HackerRank Detect Tab Switching? What the Flag Records</a></li>
+        <li><a href="/guides/does-hackerrank-record-your-screen/">Does HackerRank Record Your Screen? What Each Test Mode Captures</a></li>
+        <li><a href="/guides/coderpad-hackerrank-what-interviewer-sees/">Does CoderPad Detect Screen Sharing? Two Separate Channels</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Do the work before the timer starts.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card. Windows 10 and 11 only, and not for a proctored exam.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

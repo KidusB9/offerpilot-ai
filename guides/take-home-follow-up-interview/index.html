@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Take-Home Follow-Up Interview Questions: The 12 They Ask</title>
+  <meta name="description" content="The 12 questions reviewers actually ask about a take-home submission, a strong and a weak answer for each, plus a three minute walkthrough script you can rehearse.">
+  <meta name="keywords" content="take home project follow up interview questions, take home assignment review call, defend your take home submission, code walkthrough interview script, take home follow up call questions, why did you choose this data structure interview, what would you test next interview answer, take home project debrief interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/take-home-follow-up-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Take-Home Follow-Up Interview Questions: The 12 They Ask">
+  <meta property="og:description" content="The 12 questions reviewers actually ask about a take-home submission, a strong and a weak answer for each, plus a three minute walkthrough script you can rehearse.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/take-home-follow-up-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-take-home-follow-up-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Take-Home Follow-Up Interview Questions: The 12 They Ask">
+  <meta name="twitter:description" content="The 12 questions reviewers actually ask about a take-home submission, a strong and a weak answer for each, plus a three minute walkthrough script you can rehearse.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-take-home-follow-up-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Take-Home Follow-Up Interview Questions: The 12 They Ask","description":"The 12 questions reviewers actually ask about a take-home submission, a strong and a weak answer for each, plus a three minute walkthrough script you can rehearse.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/take-home-follow-up-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Take-Home Follow-Up Interview Questions: The 12 They Ask","url":"https://offerpilotai.ink/guides/take-home-follow-up-interview/","mainEntity":[{"@type":"Question","name":"What questions do they ask on a take-home follow-up call?","acceptedAnswer":{"@type":"Answer","text":"Almost always the same twelve: walk me through it, why this data structure, why this library, where does it break at 100x, what would you test next, which part are you least happy with, how long did it really take, what happens on a concurrent write, what does a caller see when it fails, where would a new field go, did you use AI, and what is not production ready."}},{"@type":"Question","name":"How do I answer which part of your code are you least happy with?","acceptedAnswer":{"@type":"Answer","text":"Name exactly one part, give the reason it ended up that way, and bound the fix. For example: the list endpoint loads the whole filtered set into memory because pagination was not in the brief, and the fix is keyset pagination on created_at plus an index, about an hour. One flaw with a plan beats a general apology."}},{"@type":"Question","name":"How long should the code walkthrough be?","acceptedAnswer":{"@type":"Answer","text":"Around three minutes, then stop and let them steer. Budget roughly twenty five seconds on the entry point, seventy five following one request end to end, forty five on a deliberate trade-off, and thirty on known gaps. Reading folders alphabetically or narrating every file burns the reviewer's attention before you reach anything you want scored."}},{"@type":"Question","name":"What if I cannot remember why I wrote something?","acceptedAnswer":{"@type":"Answer","text":"Say what the code does now, say what you would choose today, and say what would make you revisit it. That reads as an engineer reasoning in real time. Never say you have no idea why it is there, and never disown the line, because a reviewer cannot separate forgetting from not having written it."}},{"@type":"Question","name":"Should I admit I used AI on the take-home?","acceptedAnswer":{"@type":"Answer","text":"Follow the brief. If it asks for disclosure, disclose specifically: which tool, which parts, and what you checked afterwards. If it forbids AI, that includes the follow-up call. The practical risk is separate from policy, since anything you cannot explain line by line collapses under the second or third why question."}},{"@type":"Question","name":"How do I answer where does this break at 100x the data?","acceptedAnswer":{"@type":"Answer","text":"Name the first thing that breaks, roughly at what size, and the fix, then name the second thing. Strong answers sound like: the list endpoint loads every filtered row before slicing, so memory and p99 go first around a few hundred thousand rows, and behind that is an N+1 on the customer lookup."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Take-home follow-up call","item":"https://offerpilotai.ink/guides/take-home-follow-up-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Interview formats and question types</p>
+      <h1 class="balance">The take-home follow-up call: defending your submission</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">The follow-up call is not a demo, it is a defence. A reviewer has already read your code, picked four or five decisions out of it, and booked 45 minutes to ask why. The questions are repetitive across companies, so below are the twelve that keep coming back, with a strong and a weak answer for each, plus a three minute walkthrough script you can rehearse tonight against a clock.</p>
+
+      <h2>What is actually being scored</h2>
+      <p>Three things, in this order. Did you write it. Can you defend a decision without either collapsing or digging in. Do you know where your own code is weak before they tell you. Notice what is missing: whether the code is good. Submissions that reach this stage are already good enough, which is why you got the call. It decides whether the person who wrote them can be trusted with a production change.</p>
+      <p>Most calls run demo, then why questions, then either your questions or a live extension of your own code. The why segment is where offers are won and lost, and it is the segment nobody rehearses.</p>
+
+      <h2>The twelve questions, with a strong and a weak answer</h2>
+      <p>Assume the common brief shape: a small service over a database, a list endpoint with filtering, one write that changes state, a README. The answers below use that shape so you can see the level of detail that lands. Swap in your own nouns.</p>
+
+      <h3>1. Walk me through it</h3>
+      <ul>
+        <li><strong>Weak:</strong> opening the repo and reading the folder tree aloud in alphabetical order.</li>
+        <li><strong>Strong:</strong> entry point, one request followed end to end, one trade-off, known gaps, then stop. The full script is in the next section.</li>
+      </ul>
+
+      <h3>2. Why this data structure?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "It felt like the natural fit." That is taste, not reasoning, and it invites a harder follow-up.</li>
+        <li><strong>Strong:</strong> access pattern, cost, rejected alternative. "Every request looks an order up by id and the working set is small, so a map keyed by id gives constant time reads. A list would have preserved insertion order, which I do need for pagination, so the endpoint sorts by created_at and id before slicing."</li>
+      </ul>
+
+      <h3>3. Why this library?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "It is the standard one" or "it has the most stars."</li>
+        <li><strong>Strong:</strong> what it saved, what it costs, and how you would remove it. "It handles query building and migrations, which was about two hours I would rather spend on the status update logic. The cost is that raw SQL now goes through an escape hatch. If I had to drop it, data access sits behind one repository module, so the blast radius is that file."</li>
+      </ul>
+
+      <h3>4. Where does this break at 100x?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "It should scale fine" or the reflex answer, "I would add caching."</li>
+        <li><strong>Strong:</strong> first failure, rough size, fix, then the second failure. "The list endpoint breaks before the database does. I load the whole filtered set into memory and slice in the application, so memory and p99 go first, somewhere in the hundreds of thousands of rows. The fix is keyset pagination on created_at and id with a matching index. Behind that is an N+1 on the customer lookup, which is a join or a batched load."</li>
+      </ul>
+
+      <h3>5. What would you test next?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "More coverage" or "integration tests." Both mean you have not thought about which branch is actually dangerous.</li>
+        <li><strong>Strong:</strong> the untested branch, the assertion, the reason it is missing. "Two status updates racing on the same order, asserting the loser gets a conflict rather than silently overwriting. I skipped it because it needs a second connection and a transaction fixture, which was roughly 40 minutes I did not have inside the budget."</li>
+      </ul>
+
+      <h3>6. Which part are you least happy with?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "Honestly, all of it, I would rewrite the whole thing." Also weak: "Nothing really."</li>
+        <li><strong>Strong:</strong> exactly one part, why it ended up that way, and a bounded fix. "The controller does validation, mapping and persistence in one function. It grew that way because the write was the last thing I built. Splitting validation into a schema and pushing persistence into the repository is under an hour, and I would do it before adding the second write."</li>
+      </ul>
+
+      <h3>7. How long did it actually take, and what did you cut?</h3>
+      <ul>
+        <li><strong>Weak:</strong> a number that contradicts your commit timestamps, in either direction.</li>
+        <li><strong>Strong:</strong> the real number and the cut list. "Close to six hours against a stated four. The extra two went on the concurrent update. I cut auth, the second filter and the Docker setup, and they are named in the trade-offs section of the README."</li>
+      </ul>
+
+      <h3>8. What happens if two people do this at the same time?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "The database handles it."</li>
+        <li><strong>Strong:</strong> name the window, the mechanism, and what the client sees. "There is a read-modify-write window between loading the order and saving the new status. I close it with a version column and a conditional update, so the second writer affects zero rows and the API returns 409 with the current version. The alternative was a row lock, which I avoided because the transaction spans an outbound call."</li>
+      </ul>
+
+      <h3>9. What does a caller see when this fails?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "It throws an error."</li>
+        <li><strong>Strong:</strong> status code, body shape, and what you deliberately left out. "Validation failures return 422 with the field and the rule. Anything unexpected returns 500 with a correlation id that is also in the log line, so the caller has something to quote back. I skipped retries because there is one outbound dependency and no evidence yet about how it fails."</li>
+      </ul>
+
+      <h3>10. If I asked you to add a field, where would it go?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "Somewhere in the service layer, I would have to look."</li>
+        <li><strong>Strong:</strong> the files in order, out loud, without opening them. "Migration, then the model, then the serializer, then the filter whitelist in the query builder, then the two endpoint tests that assert the response shape." This is the authorship question wearing a costume. Slow navigation of your own repository here does more damage than a wrong technical opinion anywhere else in the call.</li>
+      </ul>
+
+      <h3>11. Did you use AI, and what did you verify?</h3>
+      <ul>
+        <li><strong>Weak:</strong> a denial that the next three questions puncture, or a shrug that implies you shipped code you never read.</li>
+        <li><strong>Strong:</strong> whatever the brief asked for, stated specifically. If it asked for disclosure: which tool, which parts, and what you checked afterwards. If it forbade AI during the exercise, it forbade it for the call as well.</li>
+      </ul>
+
+      <h3>12. What is not production ready here?</h3>
+      <ul>
+        <li><strong>Weak:</strong> "I think it is production ready." That is the most expensive sentence in the call.</li>
+        <li><strong>Strong:</strong> three items ranked by what would page someone first. "No authentication on any endpoint. No timeout on the outbound call, so a slow dependency ties up workers. And the migration has no rollback path. Everything else I would let ride for a week and watch."</li>
+      </ul>
+
+      <h2>The three minute walkthrough script</h2>
+      <p>"Walk me through your solution" is an open question with a closed correct length. Three minutes, four movements, then hand control back. Rehearse it out loud until it fits without rushing.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>0:00 to 0:25, the entry point</h3>
+            <p>What the thing is, how it starts, where a reader should open first. "It is a small orders service. One command migrates, seeds and starts it. If you are reading it cold, start at routes, then the order service, then the repository. Everything else is wiring."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>0:25 to 1:40, one request end to end</h3>
+            <p>Pick the write, not the read, because the write is where the judgement is. Follow a single status update from route to validation to the version check to the response, naming each file as you pass through it. One path, no detours. If they want the list endpoint they will ask for it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>1:40 to 2:25, one deliberate trade-off</h3>
+            <p>Choose it in advance, and choose one you can argue from both sides. "I used optimistic concurrency rather than a lock. It costs the client a retry on conflict and it keeps the transaction short, which matters because of the outbound call. Under heavy contention on a single row a lock would be simpler, and this data does not have that shape."</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>2:25 to 3:00, known gaps, then stop</h3>
+            <p>Two or three gaps, each with a reason. No auth, in-memory pagination, one untested race. Then say you are happy to go deeper anywhere, and be quiet. Naming your gaps first also sets the agenda, because reviewers tend to probe what you raised rather than hunt for something you did not.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>The night before: thirty minutes of rehearsal</h2>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Do this</th><th>Time</th><th>What it prevents</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Clone your own submission into a clean directory and run it from the README you wrote</td><td>10 min</td><td>The demo failing on your own machine, which sets the tone for everything after it</td></tr>
+            <tr><td>Read your diff as if reviewing a stranger, and write down the three decisions you would attack</td><td>10 min</td><td>Hearing your weakest choice named by someone else first</td></tr>
+            <tr><td>Say the three minute script out loud against a timer</td><td>5 min</td><td>A nine minute ramble that ends before the interesting part</td></tr>
+            <tr><td>Pre-open the four files a likely extension would touch</td><td>5 min</td><td>Fumbling through your own repository while someone watches</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>The trap: disowning your own code to look humble</h2>
+      <p>This is the most common way a good submission loses a call. The reviewer points at a function, the candidate says "yeah, that one is messy, I would redo it." The reviewer points at another, same answer. By the fifth question the candidate has volunteered a defect list, defended nothing, and left the reviewer holding an unanswerable question: if you already knew all of that, why is it in the code you sent?</p>
+      <p>Self-criticism reads as senior only when it arrives with a reason and a boundary. Use the shape: this was deliberate because X, the cost is Y, if it had to handle Z I would do W. Under that rule, "I would rewrite it" is not humility, it is an admission with no engineering in it.</p>
+      <p>The mirror trap is real too. Defending every line to the last breath reads as someone who will be expensive in code review. The difference is whether you can say out loud which criticisms you accept and which you do not. And if you genuinely cannot remember why a line exists, say what it does now, say what you would choose today, then move on. Never say you have no idea, because from the other side of the call that is indistinguishable from not having written it.</p>
+
+      <blockquote>Every admission needs a reason and a fix with a size on it. Without those, you are just reviewing yourself badly in front of someone who was about to hire you.</blockquote>
+
+      <h2>Where a copilot is the wrong tool for this call</h2>
+      <p>Worth being direct, since this page is published by a vendor. A follow-up call is the hardest possible case for live AI assistance, and OfferPilot AI is Windows 10 and 11 only, so on a Mac none of it is available to you anyway.</p>
+      <ul>
+        <li><strong>The context lives in your head, not on the internet.</strong> A drafted answer is grounded in your resume and a company question bank. Neither one contains the reason you keyed that map by id. Nothing can defend line 42 of a repository it has never read.</li>
+        <li><strong>You are doing most of the talking.</strong> Metering counts listening time only, so on a call where you speak for two thirds of the hour the clock barely moves. That is a signal about how little there is here for a copilot to do.</li>
+        <li><strong>Capture exclusion covers screen sharing and recording, nothing more.</strong> The overlay is excluded at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots while staying visible on your own monitor. It does nothing about a webcam, a proctor, a lockdown browser, eye tracking or a second-device camera. On this call you are sharing your screen and reading your own code with your face visible, so looking anywhere else is the wrong instinct regardless of what is captured.</li>
+        <li><strong>The brief sets the rules.</strong> If it prohibited AI during the exercise, treat the call the same way, and ask beforehand if the wording is ambiguous.</li>
+      </ul>
+      <p>Where preparation tooling earns its place is on either side of this call rather than inside it. The <a href="/interview-copilot/#generator">company Q&amp;A generator</a> builds a question bank for a named company and role from your resume, which covers the behavioural half of the loop rather than the code half. And if the call ends with a live extension or a fresh problem in a shared editor, that is a different round with different rules, which is what <a href="/code-copilot/">Code Copilot</a> is built for: capture the prompt, get intuition, a dry run and complexity back.</p>
+
+      <p>None of it substitutes for the half hour in the table above. The people who pass this call are rarely the ones with the cleverest submission. They are the ones who reopened their own code the night before and remembered why.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/take-home-coding-assignment-time-limit/">How Long Should a Take-Home Coding Assignment Take? Time-Box It</a></li>
+        <li><a href="/guides/salary-negotiation-call-script/">Salary Negotiation Script: Recruiter Phone Call, Five Moments</a></li>
+        <li><a href="/guides/conflict-with-a-coworker-interview-answer/">Tell Me About a Time You Had a Conflict With a Coworker</a></li>
+        <li><a href="/guides/technical-phone-screen-30-minutes/">Technical Phone Screen: What to Expect in a 30-Minute Call</a></li>
+        <li><a href="/guides/hiring-manager-interview-round/">Hiring Manager Interview Questions: The 3 Decisions Being Made</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Rehearse the round after the walkthrough.</h2>
+      <p class="lede" style="margin:0 auto 8px">If the call ends with a live extension or a new problem, capture a multi-scroll prompt in one pass and get the reasoning back before you type.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/code-copilot/">See how capture works<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/download/">Download for Windows</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Whereby Screen Share: What Others Can See in Each Picker Tab</title>
+  <meta name="description" content="Whereby hands you Chrome's own share picker. Entire Screen sends one display and its toasts, Window sends one app with no audio, Chrome Tab sends a page only.">
+  <meta name="keywords" content="whereby screen share what others can see, whereby share screen browser, chrome share picker entire screen window tab, ringcentral browser screen share, getdisplaymedia picker options, whereby share tab audio, chrome stop sharing bar, does whereby show my other tabs, browser based screen share vs native client">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/browser-based-screen-share-whereby-ringcentral/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Whereby Screen Share: What Others Can See in Each Picker Tab">
+  <meta property="og:description" content="Whereby hands you Chrome's own share picker. Entire Screen sends one display and its toasts, Window sends one app with no audio, Chrome Tab sends a page only.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/browser-based-screen-share-whereby-ringcentral/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-browser-based-screen-share-whereby-ringcentral.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Whereby Screen Share: What Others Can See in Each Picker Tab">
+  <meta name="twitter:description" content="Whereby hands you Chrome's own share picker. Entire Screen sends one display and its toasts, Window sends one app with no audio, Chrome Tab sends a page only.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-browser-based-screen-share-whereby-ringcentral.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Whereby Screen Share: What Others Can See in Each Picker Tab","description":"Whereby hands you Chrome's own share picker. Entire Screen sends one display and its toasts, Window sends one app with no audio, Chrome Tab sends a page only.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/browser-based-screen-share-whereby-ringcentral/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Whereby Screen Share: What Others Can See in Each Picker Tab","url":"https://offerpilotai.ink/guides/browser-based-screen-share-whereby-ringcentral/","mainEntity":[{"@type":"Question","name":"What can other people see when I share my screen in Whereby?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on which tab of Chrome's share picker you choose. Entire Screen sends one whole display, including notification toasts, your taskbar and anything you open on it. Window sends a single application and nothing behind or around it. Chrome Tab sends one page's viewport, with no address bar, no bookmarks bar and no other tabs."}},{"@type":"Question","name":"Does Chrome's Stop sharing bar appear in my screen share?","acceptedAnswer":{"@type":"Answer","text":"No. Chrome draws that bar, and the coloured border around the captured surface, as its own on-screen indicators and keeps them out of the frames it hands to the meeting. You see them, the far end does not. That is deliberate, so a capture can never run without you being told. Confirm it once from a second device if it matters."}},{"@type":"Question","name":"Can I share computer audio in a browser-based Whereby or RingCentral call?","acceptedAnswer":{"@type":"Answer","text":"Only from two of the three tabs. Chrome Tab offers a share tab audio tick box, which carries whatever that page plays. Entire Screen on Windows offers a system audio tick box that starts switched off. The Window tab has no audio option at all, so a shared desktop application is silent no matter how loud it is."}},{"@type":"Question","name":"Why does the Whereby share dialog look different from Zoom's?","acceptedAnswer":{"@type":"Answer","text":"Because it is not Whereby's dialog. Browser-based meeting tools call the getDisplayMedia API and Chrome, not the website, draws the chooser and owns the decision. The site can hint which tab opens first and whether an audio tick box appears, but it sees nothing of your screen until you have picked a surface and pressed Share."}},{"@type":"Question","name":"How do I make sure I share the right monitor in Chrome's picker?","acceptedAnswer":{"@type":"Answer","text":"Chrome's Entire Screen tab identifies displays by live thumbnail and a generic number rather than by monitor name, and its ordering need not match Windows'. Open Settings, System, Display and press Identify to learn which physical screen is which, tidy the one you intend to send, then match it by picture in the picker."}},{"@type":"Question","name":"If I share one Chrome tab, can people see my other tabs?","acceptedAnswer":{"@type":"Answer","text":"No. A tab capture starts at the top edge of the page viewport, so the tab strip, the address bar, the bookmarks bar and the downloads bubble all sit outside it. Switching tabs yourself does not change what viewers receive. Watch the sharing bar, though, because its Share this tab instead button swaps the stream in one click."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Browser-Based Screen Share","item":"https://offerpilotai.ink/guides/browser-based-screen-share-whereby-ringcentral/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">Whereby screen share: what others can actually see</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Whereby, RingCentral in the browser and every other tool that runs a call inside a tab do not draw their own share dialog. They call one browser API and Chrome takes over, with a picker that has exactly three tabs. <strong>Entire Screen</strong> sends one whole display, notification toasts and taskbar included. <strong>Window</strong> sends a single application, with no audio at all. <strong>Chrome Tab</strong> sends one page's viewport and nothing around it. The one thing you never send is the Stop sharing bar Chrome pins to your own screen.</p>
+
+      <h2>Why a browser meeting hands the decision to Chrome</h2>
+      <p>A native client such as the Zoom or Teams desktop app holds an operating-system capture permission and can enumerate your windows itself, which is why it can build a chooser with its own extras. A page running in a tab cannot do any of that. It has one entry point, <code>navigator.mediaDevices.getDisplayMedia()</code>, and the rule attached to it is that the <em>browser</em> presents the choice and the site receives nothing until you have made it. Whereby's own interface ends at the Share screen button. Everything from that click until the stream starts belongs to Chrome.</p>
+      <p>Three consequences worth knowing. The site never sees a list of your open windows, so no meeting platform can report what you had open and chose not to share. It cannot preselect anything for you, which is why the Share button stays greyed out until you click a thumbnail yourself. And it cannot dismiss or restyle the picker to rush you past it.</p>
+      <p>What a site <em>can</em> do is pass hints, which explains why your picker sometimes differs from a colleague's on the same Chrome build. A site can ask which tab opens first with <code>displaySurface</code>, hide the system audio tick box with <code>systemAudio</code>, turn on the Share this tab instead button with <code>surfaceSwitching</code>, and keep its own meeting tab out of the tab list with <code>selfBrowserSurface</code>. That last one is why the Whereby or RingCentral tab is often missing from the list, and why the classic infinite mirror is harder to trigger from Chrome Tab than from Entire Screen.</p>
+
+      <h2>The three tabs, and what each one transmits</h2>
+      <p>Every cell describes what the far end receives, not what your own monitor shows.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Behaviour</th>
+              <th>Entire Screen</th>
+              <th>Window</th>
+              <th>Chrome Tab</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>What is captured</strong></td>
+              <td>One display in full, plus whatever moves onto it.</td>
+              <td>One top-level window, cropped to its own edges.</td>
+              <td>One tab's page viewport, from the top of the page down.</td>
+            </tr>
+            <tr>
+              <td><strong>How you pick it</strong></td>
+              <td>By live thumbnail and a generic number. No monitor names.</td>
+              <td>By thumbnail plus the window's title text.</td>
+              <td>By favicon and tab title in a list.</td>
+            </tr>
+            <tr>
+              <td><strong>Audio offered</strong></td>
+              <td>A system audio tick box on Windows, off until you tick it.</td>
+              <td>None. There is no per-window audio capture.</td>
+              <td>A share tab audio tick box, carrying that page's sound.</td>
+            </tr>
+            <tr>
+              <td><strong>Toasts, taskbar, tray</strong></td>
+              <td>Sent, sender names and unread badges included.</td>
+              <td>Not sent. They are separate surfaces.</td>
+              <td>Not sent.</td>
+            </tr>
+            <tr>
+              <td><strong>Address bar, bookmarks, other tabs</strong></td>
+              <td>Sent whenever Chrome is on that display.</td>
+              <td>Sent in full if the window you picked is Chrome.</td>
+              <td>Never sent. Capture starts below all browser chrome.</td>
+            </tr>
+            <tr>
+              <td><strong>Something covering it</strong></td>
+              <td>Whatever is on top is what goes out.</td>
+              <td>Generally still captured while occluded. Minimising usually freezes the last frame.</td>
+              <td>Unaffected. A background tab keeps streaming.</td>
+            </tr>
+            <tr>
+              <td><strong>Your other monitor</strong></td>
+              <td>Not sent. You choose one display, not all of them.</td>
+              <td>Not sent, and dragging the window between displays does not break the share.</td>
+              <td>Not sent.</td>
+            </tr>
+            <tr>
+              <td><strong>Ends when</strong></td>
+              <td>You press Stop sharing, or the call ends.</td>
+              <td>You close the window, or press Stop sharing.</td>
+              <td>You close the tab, or press Stop sharing.</td>
+            </tr>
+            <tr>
+              <td><strong>An overlay excluded from capture at OS level</strong></td>
+              <td>Absent from the stream.</td>
+              <td>Absent from the stream.</td>
+              <td>Absent from the stream.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Three details the table cannot hold. The mouse pointer rides along with an Entire Screen or a Window share, so a cursor circling a line of code is part of the picture, while a Chrome Tab capture is normally pointer-free and viewers see the page move without seeing you move it. Chrome's own dialogs behave the same way: a permission bubble, a print preview or the native Save file box are browser furniture, not page content, so they land in a screen share and stay out of a tab share. And whichever surface you pick, Whereby and RingCentral put it into the room as a WebRTC video tile that participants can expand or pin, encoded at whatever the connection will carry. Nine-point text in a wide IDE can arrive soft even though your own display looks crisp, so raise the font before you share rather than after someone asks.</p>
+
+      <h2>The Stop sharing bar is for you, not for them</h2>
+      <p>Once capture starts, Chrome adds its own furniture: a coloured border around the captured tab or window, and a small bar carrying a Stop sharing button, joined by a Share this tab instead button when the site has asked for surface switching. Those are Chrome's indicators, drawn as Chrome's own surfaces, and Chrome keeps them out of the frames it encodes for the meeting. You sit looking at a bar that says you are sharing, while the interviewer looking at that same display sees only the desktop underneath it. The picker never reaches the stream either, for the simpler reason that capture does not begin until after you press Share.</p>
+      <p>Two practical notes. The bar floats above your content and can cover the bottom of the window you are demonstrating, which is your problem and not theirs. And Share this tab instead is one click that silently swaps what the room is watching, so treat it the way you would treat any button next to a live microphone.</p>
+
+      <h2>The gaps against a native desktop client</h2>
+      <p>If you have only ever shared from the Zoom or Teams desktop app, the browser picker will feel stripped back, because it is.</p>
+      <ul>
+        <li><strong>No filtering and no region select.</strong> The Window tab is a flat grid of every top-level window you have open: no search box, no grouping by application, and no equivalent of the desktop clients' portion-of-screen, whiteboard, second-camera or computer-sound-only modes. Twenty open windows means scrolling twenty live thumbnails, all readable on your own screen while you hunt.</li>
+        <li><strong>Audio is bolted to the surface type.</strong> You do not choose sound separately from picture. Tab audio exists only under Chrome Tab, system audio only under Entire Screen and only on Windows, and window shares are silent, full stop. A desktop client will mix computer audio into any share type. In the browser the rule is simpler: if it makes noise and it can live in a tab, put it in a tab.</li>
+        <li><strong>Monitors are chosen by picture, not by name.</strong> Chrome shows a thumbnail and a generic number for each display, never the model, and its ordering need not match Windows'. This is the most common route to sharing the wrong screen in a browser call.</li>
+        <li><strong>No pause.</strong> The picker has no pause control. Stopping means walking back through it from the beginning, which the whole room watches you do.</li>
+      </ul>
+
+      <h2>What to do in the ninety seconds before you press Share</h2>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Decide the surface, then run Identify</h3><p>Pick the surface before the grid is open and everyone is waiting. On a multi-monitor setup, Settings, System, Display, Identify puts a large number on each physical screen, so you can match Chrome's thumbnail by picture rather than trusting the numbering to agree.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Tidy the surface you are sending, not the one you are on</h3><p>For Entire Screen, quieten notifications and close chat windows on that display. For a window share, only that window matters.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Read the audio tick box</h3><p>It is the only chance you get. Changing your mind later means stopping the share and reopening the picker in front of everyone.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Verify from a second device</h3><p>Join the same room from your phone, mic muted and speaker off, and look at what it renders. Your own monitor is the least reliable evidence available to you.</p></div></div>
+      </div>
+
+      <h2>Where the overlay fits, and what it will not do</h2>
+      <p>The last table row works by a different mechanism from the rest. Windows lets a window be marked so the compositor removes it from any capture before an application receives a single frame. <a href="/interview-copilot/">OfferPilot AI</a> uses that, so its overlay is absent from all three picker modes, and from Zoom, Teams, OBS and a plain screenshot, while staying visible on your own monitor. Because the exclusion happens below Chrome, which picker tab you used makes no difference, and no browser extension is involved, so nothing of it shows in your tab list. It is on every plan, the free one included, which is the point of the phone test above: prove it before you rely on it. In a browser-based coding round, share the editor tab and read <a href="/code-copilot/">Code Copilot</a> beside it.</p>
+      <p>The limits deserve equal billing. Capture exclusion covers screen sharing, screen recording and screenshots. It does nothing about a webcam, a lockdown browser that takes over the machine, a proctor watching you in the room, eye tracking, or a phone propped up as a second camera. Eyes travelling repeatedly to one side read as exactly that on video, whatever is or is not inside the share. It is also Windows 10 and 11 only, so on a Mac it is the wrong tool and no amount of picker knowledge changes that. <a href="/pricing/">The free tier</a> exists partly so you find that out today rather than five minutes before a call.</p>
+
+      <h2>Where this page stops being reliable</h2>
+      <ul>
+        <li><strong>It describes Chrome on Windows.</strong> Firefox draws a different chooser that names windows in text rather than showing thumbnails, which is genuinely better for picking, and its audio support is narrower. Recent Safari hands off to the macOS system picker. If your dialog disagrees with this page, trust your dialog.</li>
+        <li><strong>RingCentral ships a desktop build as well as a browser one,</strong> and a desktop app is free to draw its own chooser with extras a web page cannot have. If your picker offers options this page does not mention, you are almost certainly not in the browser version.</li>
+        <li><strong>Labels move between Chrome releases</strong> more often than behaviour does. Look for a tick box near the bottom of the picker rather than one exact string, and confirm the indicator behaviour once from a second device.</li>
+      </ul>
+      <p>The short version for a browser-based interview: the picker is Chrome's, its three tabs are three different privacy trade-offs, and the only one that sends nothing but the work itself is Chrome Tab.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/google-meet-tab-vs-window-share/">Google Meet: Share a Tab, a Window, or Your Entire Screen?</a></li>
+        <li><a href="/guides/teams-share-window-vs-screen/">Microsoft Teams Share Window vs Share Screen: What Others See</a></li>
+        <li><a href="/guides/zoom-share-screen-vs-window/">Zoom Share Screen vs Share Window: What They Actually See</a></li>
+        <li><a href="/guides/does-screen-share-show-second-monitor/">Does Screen Sharing Show My Second Monitor? What Each App Sends</a></li>
+        <li><a href="/guides/webex-share-application-vs-screen/">Webex Share Application vs Share Screen (and Share a Portion)</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">See what your browser share actually sends.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free, no card. Open a solo room, walk the three picker tabs, and watch the overlay stay out of the frame from your phone.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

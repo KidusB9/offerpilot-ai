@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevOps Interview vs SRE Interview: Two Different Question Sets</title>
+  <meta name="description" content="DevOps loops ask pipeline design, Terraform and container internals. SRE loops ask SLO maths, error budgets and live debugging. Plus a job-description decoder.">
+  <meta name="keywords" content="devops interview vs sre interview, sre vs devops interview questions, devops interview questions pipeline design, sre interview slo error budget questions, error budget interview question, kubernetes interview namespaces cgroups, devops or sre job description, sre incident command interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/devops-interview-vs-sre-interview/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="DevOps Interview vs SRE Interview: Two Different Question Sets">
+  <meta property="og:description" content="DevOps loops ask pipeline design, Terraform and container internals. SRE loops ask SLO maths, error budgets and live debugging. Plus a job-description decoder.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/devops-interview-vs-sre-interview/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-devops-interview-vs-sre-interview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="DevOps Interview vs SRE Interview: Two Different Question Sets">
+  <meta name="twitter:description" content="DevOps loops ask pipeline design, Terraform and container internals. SRE loops ask SLO maths, error budgets and live debugging. Plus a job-description decoder.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-devops-interview-vs-sre-interview.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"DevOps Interview vs SRE Interview: Two Different Question Sets","description":"DevOps loops ask pipeline design, Terraform and container internals. SRE loops ask SLO maths, error budgets and live debugging. Plus a job-description decoder.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/devops-interview-vs-sre-interview/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"DevOps Interview vs SRE Interview: Two Different Question Sets","url":"https://offerpilotai.ink/guides/devops-interview-vs-sre-interview/","mainEntity":[{"@type":"Question","name":"What is the difference between a DevOps interview and an SRE interview?","acceptedAnswer":{"@type":"Answer","text":"A DevOps loop tests how you build and ship: CI/CD pipeline design, infrastructure as code, and container and Linux internals such as namespaces and cgroups. An SRE loop tests how you run things under a reliability contract: SLO and error budget arithmetic, incident command, and a live troubleshooting round on a deliberately broken system. Both postings mention Kubernetes and Terraform, but the two loops grade different answers to the same question."}},{"@type":"Question","name":"Do SRE interviews include coding rounds?","acceptedAnswer":{"@type":"Answer","text":"Often, and the depth depends on which SRE variant the team runs. Some SRE loops, the software-leaning track at large infrastructure companies being the best known example, include a standard algorithms round graded on the software engineering bar. Others replace it with a scripting exercise: parse a log stream, call an API with retries and backoff, or write an idempotent cleanup script. The posting usually gives it away, since one version lists data structures and the other lists Python or Go for automation."}},{"@type":"Question","name":"What is an error budget and how is it calculated in an interview?","acceptedAnswer":{"@type":"Answer","text":"An error budget is the amount of unreliability an SLO permits. For a 99.9 percent availability target over a 30-day month there are 43,200 minutes in the window, so the budget is 0.1 percent of that, 43.2 minutes. At 99.95 percent it is 21.6 minutes and at 99.99 percent it is 4.32 minutes. Request-based SLOs work identically: 10 million requests at 99.9 percent permits 10,000 failures."}},{"@type":"Question","name":"How do I tell from a job description whether I will get a DevOps or an SRE loop?","acceptedAnswer":{"@type":"Answer","text":"Ignore the tool list, because Kubernetes, Docker and Terraform appear in both. Read the verbs instead. Build, automate, enable, streamline and self-service predict a DevOps or platform loop with a pipeline design round. Operate, measure, defend, respond, reduce toil and on-call rotation predict an SRE loop with SLO maths and an incident scenario. A posting that names an error budget almost always runs the SRE version."}},{"@type":"Question","name":"Do DevOps interviews ask about Linux namespaces and cgroups?","acceptedAnswer":{"@type":"Answer","text":"Frequently, usually as a follow-up rather than as a definition question. The expected answer is that a container is an ordinary Linux process with namespaces limiting what it can see, pid, net, mnt, uts, ipc and user among them, and cgroups limiting what it can consume. A common probe is why a container exits with code 137, which is 128 plus signal 9, meaning the kernel killed it at the cgroup memory limit."}},{"@type":"Question","name":"Can an AI interview copilot help in a DevOps or SRE interview?","acceptedAnswer":{"@type":"Answer","text":"It helps in the spoken rounds, where a prompt restores a definition or a structure you already knew, and in behavioural and postmortem discussions. It helps least in the live troubleshooting round, where you are typing into a shared terminal and the interviewer is watching your commands rather than listening for a definition. OfferPilot AI runs on Windows 10 and 11 only, and its capture exclusion hides the overlay from screen sharing, not from a webcam or a proctor."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"DevOps interview vs SRE interview","item":"https://offerpilotai.ink/guides/devops-interview-vs-sre-interview/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Roles and seniority</p>
+      <h1 class="balance">DevOps interview vs SRE interview: what each loop actually asks</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A DevOps loop interrogates how software gets built and shipped: pipeline design, infrastructure as code, and container internals down to namespaces and cgroups. An SRE loop interrogates how a running system is held to a reliability contract: SLO and error budget arithmetic, incident command, and a live troubleshooting round on a box someone has deliberately broken. The two postings look almost identical, because both list Kubernetes, Terraform and Prometheus. The interviews overlap far less than the tool lists suggest, and the wording of the job description predicts which one you will get.</p>
+
+      <h2>The two question sets, side by side</h2>
+      <p>Seven round types cover nearly every loop in either family. The difference is which of them appear, and which one carries the levelling decision.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Round</th><th>DevOps and platform loop</th><th>SRE loop</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CI/CD pipeline design</strong></td>
+              <td>Very common, often the deciding round. Build once and promote the same artefact, caching, ephemeral runners, secret injection, monorepo change detection, signed artefacts.</td>
+              <td>Uncommon as a round. May surface as one question about safe rollout and rollback.</td>
+            </tr>
+            <tr>
+              <td><strong>Infrastructure as code</strong></td>
+              <td>Very common. State backends and locking, drift, importing existing resources, module boundaries, why <code>for_each</code> beats <code>count</code> when a list element is removed, plan review run as a code review exercise.</td>
+              <td>Sometimes, and shallower. Usually one question about whether a change is reversible under pressure.</td>
+            </tr>
+            <tr>
+              <td><strong>Container and Linux internals</strong></td>
+              <td>Common, follow-up style. Namespaces, cgroup limits, image layers, exit codes, what happens between <code>kubectl apply</code> and a pod passing readiness.</td>
+              <td>Common but aimed differently: the same internals as a debugging instrument rather than as a design topic.</td>
+            </tr>
+            <tr>
+              <td><strong>Live troubleshooting</strong></td>
+              <td>Occasional, usually a broken pipeline or a pod stuck in <code>CrashLoopBackOff</code>.</td>
+              <td>Nearly always, and typically the round that decides the offer. A shared terminal, a real fault, and you narrating hypotheses out loud.</td>
+            </tr>
+            <tr>
+              <td><strong>SLO, SLI and error budget</strong></td>
+              <td>Rare, and treated as vocabulary when it appears.</td>
+              <td>Nearly always, with arithmetic. You will be asked to pick an SLI, defend a target, and do the budget sum in your head.</td>
+            </tr>
+            <tr>
+              <td><strong>Incident command roleplay</strong></td>
+              <td>Rare.</td>
+              <td>Common at mid level and above. A pager fires, the interviewer plays the system, and you are graded on the questions you ask and on how you separate mitigation from diagnosis.</td>
+            </tr>
+            <tr>
+              <td><strong>Coding</strong></td>
+              <td>Scripting and tooling. Write something idempotent, parse structured logs, wrap an API with retries.</td>
+              <td>Split by track. Software-leaning SRE roles run a genuine algorithms round on the engineering bar. Systems-leaning roles replace it with the same scripting exercise.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The structural point behind the table: a DevOps loop asks what you would build, an SRE loop asks what you would do while it is on fire. Candidates who arrive at an SRE loop with architecture diagrams get caught out in the incident round, because nobody wants a diagram. They want to know what you check first and what you would be willing to break to stop the bleeding.</p>
+
+      <h2>The job-description decoder</h2>
+      <p>The tool list is noise. Kubernetes, Docker, Terraform, Prometheus and Grafana appear in both families and predict nothing at all. What predicts the loop is the verbs and the accountability language.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Wording in the posting</th><th>Loop it predicts</th><th>What to rehearse</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"Enable engineering teams", "self-service", "golden paths", "internal developer platform", "reduce build times", "improve developer experience"</td><td>DevOps or platform</td><td>Pipeline design end to end, artefact promotion, module design in Terraform</td></tr>
+            <tr><td>"Own and defend SLOs", "error budget", "reduce toil", "lower MTTR", "capacity planning", "blameless postmortem"</td><td>SRE</td><td>Budget arithmetic, burn-rate alerting, one postmortem you can narrate from memory</td></tr>
+            <tr><td>"Participate in a 24/7 on-call rotation", especially with a compensation or paging clause attached</td><td>SRE, almost certainly with an incident roleplay</td><td>Incident command: roles, comms, mitigate before you diagnose</td></tr>
+            <tr><td>"Deep Linux internals", "kernel", "TCP/IP", "performance tuning"</td><td>Systems-leaning SRE</td><td>A live debug round in a shared terminal</td></tr>
+            <tr><td>"Data structures and algorithms", or a named online coding screen in the process description</td><td>Software-leaning SRE</td><td>A real algorithms round, same bar as a backend loop</td></tr>
+            <tr><td>"Python or Go for automation and tooling", with no algorithms mention anywhere</td><td>Either family, scripting round</td><td>Idempotency, retries with backoff, log parsing, exit codes</td></tr>
+            <tr><td>"Kubernetes, Terraform, Docker, CI/CD" and nothing else concrete</td><td>Undetermined</td><td>Ask the recruiter which rounds are on the schedule</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two secondary signals are worth ten seconds each. Who the role reports to: a platform or developer productivity team writes the build loop, a central reliability organisation writes the SLO loop. And whether the posting describes the systems you would own or the teams you would serve. "You will own the availability of the checkout path" and "you will support twelve product teams" produce different interviews, written by different people.</p>
+
+      <h2>The error budget question, worked</h2>
+      <p>This is the round DevOps candidates lose most often, and it is unforgiving because the numbers are checkable. A 30-day month contains 43,200 minutes. The budget is whatever the SLO gives away:</p>
+      <ul>
+        <li><strong>99.9 percent</strong> leaves 43.2 minutes of unavailability in the month.</li>
+        <li><strong>99.95 percent</strong> leaves 21.6 minutes.</li>
+        <li><strong>99.99 percent</strong> leaves 4.32 minutes, which is less time than most manual rollbacks take, so any credible answer at that target has to include automated mitigation.</li>
+      </ul>
+      <p>Request-based SLOs behave the same way and are usually the better choice for a request-serving system: 10 million requests a month at 99.9 percent success permits 10,000 failures, so an incident that fails 2,000 requests has spent a fifth of the month's budget in one go. Say that number out loud. It is the moment the interviewer stops checking whether you have memorised a definition.</p>
+      <p>The follow-up is almost always burn rate, which is how fast you are spending relative to the budget lasting exactly one window. Consuming 2 percent of a 30-day budget inside a single hour is a burn rate of roughly 14.4, because one hour is about a 720th of the window. That is the standard fast-burn page. A slower companion condition, in the region of 5 percent of the budget over six hours, catches the degradations that never trip the fast alert but would still exhaust the month. Explaining why two windows exist, one for precision and one to avoid missing a slow leak, separates people who have run an SLO from people who have read about one.</p>
+      <p>Then comes the trap. "Your service needs 99.9 percent. It calls a payment provider with a 99.5 percent contract, on every request." If that call is synchronous and unguarded, your ceiling is the dependency's number and no amount of your own reliability recovers it. The answers that pass are a timeout with a bounded retry, a cached or degraded response path, moving the call off the request path, or renegotiating the SLO to match physics. "We would add more replicas" does not pass.</p>
+
+      <h2>The container internals question, worked</h2>
+      <p>On the DevOps side the equivalent depth check is containers. The framing that scores is that a container is not a small virtual machine. It is an ordinary Linux process with three things wrapped around it: namespaces limiting what it can see (pid, net, mnt, uts, ipc, user, cgroup), cgroups limiting what it can consume, and a layered filesystem, usually overlayfs, giving it its own root. Capabilities and seccomp then trim what it is allowed to ask the kernel for.</p>
+      <p>Interviewers push on the consequences, and these three come up repeatedly:</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Why exit code 137</h3>
+            <p>137 is 128 plus signal 9. The kernel killed the process, and inside a container that usually means the cgroup memory limit was reached. 143 is 128 plus signal 15, an ordinary SIGTERM, so it is a graceful shutdown rather than an incident. Knowing the arithmetic rather than the folklore reads well, and it leads naturally into the difference between a request and a limit.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Why a runtime sees the host's memory</h3>
+            <p>Parts of <code>/proc</code>, including <code>meminfo</code>, are not namespaced, so a process reading them sees the machine rather than its own limit. Older JVMs and several other runtimes sized their heaps from that number and then got killed at a far smaller cgroup limit. Modern runtimes read the cgroup limit instead, which is why the real fix is often a runtime upgrade rather than a bigger memory request.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Why a CPU limit causes latency spikes at low utilisation</h3>
+            <p>CPU limits are enforced as a quota inside a scheduling period, typically 100ms. A service that is idle on average but bursty can exhaust its slice early in a period and then wait for the next one, which appears as tail latency while the dashboard shows modest average CPU. The evidence is the throttling counters in the cgroup's CPU statistics, and the usual remedy is raising or removing the limit while keeping the request honest.</p>
+          </div>
+        </div>
+      </div>
+      <p>An SRE interviewer can ask exactly these questions, but the follow-up differs. DevOps asks how you would stop it happening across every team. SRE asks how you would have found it at three in the morning with only the dashboards that already exist. One worked answer per framing beats treating them as two topics, and the <a href="/interview-questions/">question banks</a> are a reasonable place to sort prompts by the framing they belong to.</p>
+
+      <h2>Where a copilot earns nothing in these loops</h2>
+      <p>The live troubleshooting round is the worst possible fit for live assistance, and it is the round SRE loops weigh most heavily. You are typing into a shared terminal while the interviewer watches the commands scroll past, grading the order you check things in and whether you say what you expect to see before you press enter. Reading a suggestion breaks that narration, and pasting a command you cannot justify fails at the first follow-up. That round has to come from practice, and our walkthrough of the <a href="/guides/sre-linux-troubleshooting-interview/">SRE Linux troubleshooting round</a> covers the triage order worth rehearsing.</p>
+      <ul>
+        <li><strong>Windows only.</strong> OfferPilot AI runs on Windows 10 and 11. There is no macOS build, no Linux build, no mobile app and no browser extension. A large share of infrastructure engineers interview from a Mac or a Linux desktop, and for them none of this applies.</li>
+        <li><strong>Capture exclusion covers screen sharing and screen recording, nothing else.</strong> The overlay is excluded from screen capture at the operating system level, so it does not appear in Zoom, Teams, Meet, OBS or screenshots, while staying visible on your own monitor. It does nothing about a webcam, a lockdown browser, eye tracking, a second-device camera or a person in the room.</li>
+        <li><strong>Incident roleplay is graded on your questions, not your answers.</strong> The interviewer is waiting to hear you ask who else is affected, what changed in the last hour, and whether you can mitigate before you understand. A prompted answer arrives in the wrong shape entirely.</li>
+        <li><strong>Follow the process rules you were sent.</strong> Some companies permit documentation and AI assistance openly, some do not. Ask when the instructions are ambiguous.</li>
+      </ul>
+      <p>Where it does pay is narrower: the spoken breadth questions in either loop, where a prompt restores a definition you already knew, the postmortem and behavioural discussion, and the algorithms round some SRE tracks still run, which <a href="/code-copilot/">Code Copilot</a> handles as a screenshot-to-solution path with a dry run and complexity attached.</p>
+
+      <h2>Prepare for one loop, not the union of both</h2>
+      <p>The two revision plans barely intersect. For a DevOps loop, design a pipeline out loud in ten minutes and defend one structural decision in your Terraform layout. For an SRE loop, do budget arithmetic without a calculator and narrate one real incident from page to postmortem. If the posting is still ambiguous after the decoder above, ask the recruiter which rounds are on the schedule and whether the coding exercise is algorithms or scripting. That answer redirects a week of preparation.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/sdet-test-case-design-interview/">SDET Interview Test Case Design: Writing Cases for File Upload</a></li>
+        <li><a href="/guides/product-manager-case-interview-copilot/">AI Copilot for Product Manager Case Interviews: 5 Case Types</a></li>
+        <li><a href="/guides/api-design-vs-system-design-interview/">API Design Interview vs System Design Interview: The Tells</a></li>
+        <li><a href="/guides/data-scientist-product-sense-interview/">Data Scientist Product Sense Interview Questions: 4-Move Answer</a></li>
+        <li><a href="/guides/ml-system-design-interview-answer-structure/">ML System Design Interview: The Answer Spine Candidates Skip</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Rehearse the loop the posting actually describes.</h2>
+      <p class="lede" style="margin:0 auto 8px">Build a company and role specific question bank from your own resume, then practise the rounds that loop really runs. The free tier is 5 minutes a day, no card required.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/interview-copilot/#generator">Generate a company Q&amp;A bank<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/pricing/">See plans</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Codility Similarity Check Flagged: What Triggers It and Why</title>
+  <meta name="description" content="A similarity flag is a resemblance score, not a verdict. What your normalised code is compared against, why standard algorithms collide, and how to reply calmly.">
+  <meta name="keywords" content="codility similarity check flagged, codility plagiarism detection, codility similarity score, codility flagged my code, does codility detect ai code, codility candidate report similarity, codility cheating flag, how to respond to a plagiarism flag interview">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/codility-similarity-check-flag/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Codility Similarity Check Flagged: What Triggers It and Why">
+  <meta property="og:description" content="A similarity flag is a resemblance score, not a verdict. What your normalised code is compared against, why standard algorithms collide, and how to reply calmly.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/codility-similarity-check-flag/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-codility-similarity-check-flag.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Codility Similarity Check Flagged: What Triggers It and Why">
+  <meta name="twitter:description" content="A similarity flag is a resemblance score, not a verdict. What your normalised code is compared against, why standard algorithms collide, and how to reply calmly.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-codility-similarity-check-flag.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Codility Similarity Check Flagged: What Triggers It and Why","description":"A similarity flag is a resemblance score, not a verdict. What your normalised code is compared against, why standard algorithms collide, and how to reply calmly.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/codility-similarity-check-flag/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Codility Similarity Check Flagged: What Triggers It and Why","url":"https://offerpilotai.ink/guides/codility-similarity-check-flag/","mainEntity":[{"@type":"Question","name":"Why did Codility flag my submission as similar when I wrote it myself?","acceptedAnswer":{"@type":"Answer","text":"Because a correct textbook algorithm has very few valid forms. An iterative binary search offers a handful of real choices: the loop condition, the midpoint expression, the comparison order and the failure return. Variable names are removed before comparison, so thousands of honest candidates reduce to about a dozen identical structures. A high match on that kind of task carries almost no information."}},{"@type":"Question","name":"What does a coding assessment similarity check compare my code against?","acceptedAnswer":{"@type":"Answer","text":"Three pools. Earlier submissions to the same task, which spans every company that has ever used it rather than just your batch. Publicly posted solutions from forums, gists, blogs and repositories. And the recognisable shapes of model-generated answers, since one model given the same task statement returns near-identical programs to everyone who asks."}},{"@type":"Question","name":"Does a similarity flag mean I failed the assessment?","acceptedAnswer":{"@type":"Answer","text":"No. Your score comes from correctness and performance on the test cases, and the similarity result sits beside it in the report rather than inside the score. It changes how much a reviewer trusts the result, which usually means a follow-up question or a live variant of the same problem. Being asked is a better outcome than being filtered without explanation."}},{"@type":"Question","name":"Will renaming variables or reformatting my code avoid a similarity flag?","acceptedAnswer":{"@type":"Answer","text":"No, and it can make things worse. Similarity systems canonicalise before they measure: comments removed, whitespace collapsed, identifiers replaced by positional placeholders, and often the control flow reduced to a structural fingerprint. Renaming, reordering independent statements and swapping loop keywords survive that process untouched. Deliberately obfuscated code also reads badly to the human who eventually opens it."}},{"@type":"Question","name":"What should I say if a hiring manager asks me about a similarity flag?","acceptedAnswer":{"@type":"Answer","text":"Keep it to four sentences. Name the algorithm, state plainly that you wrote it during the session, explain that a standard algorithm has few valid forms so most correct submissions normalise to the same shape, then offer once to walk through it or take a live variant. Explain the mechanism rather than protesting innocence, and do not repeat the offer."}},{"@type":"Question","name":"Does using an AI assistant make a similarity flag more likely?","acceptedAnswer":{"@type":"Answer","text":"Yes, markedly. A model given the same task statement produces the same helper decomposition, guard clauses, comment cadence and naming register for every candidate who prompts it, so pasted output resembles thousands of other submissions rather than standing apart from them. On an unattended assessment that forbids outside assistance, that is both a rules problem and the worst possible input to a similarity check."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Codility similarity check flag","item":"https://offerpilotai.ink/guides/codility-similarity-check-flag/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Coding assessment platforms</p>
+      <h1 class="balance">Codility similarity check: what actually triggers a flag</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A similarity flag is a resemblance score, not a verdict. Your code is normalised first, with comments dropped, formatting collapsed and identifiers stripped of their names, then compared against a large body of earlier submissions to the same task and against solutions that circulate publicly. Short canonical algorithms collide constantly, because there are only a handful of correct ways to write a binary search. A flag starts a conversation, and the conversation is usually winnable in four sentences.</p>
+
+      <h2>What the check compares your submission against</h2>
+      <p>Three pools, all of them larger than candidates assume.</p>
+      <ul>
+        <li><strong>Prior submissions to the same task.</strong> Assessment tasks are reused across many hiring companies over years. Your comparison pool is not the eleven other people in this batch, it is everyone ever given that task on the platform.</li>
+        <li><strong>Publicly available solutions.</strong> Task statements get pasted into forums, gists and public repositories, usually with an answer attached. Anything indexable is a candidate, including code written years before your test opened.</li>
+        <li><strong>The shapes typical of generated answers.</strong> A model given a well-specified prompt is strikingly consistent: the same helper decomposition, the same guard clause, the same comment cadence, the same naming register. Everyone prompting it with the same task statement receives near-siblings.</li>
+      </ul>
+      <p>What gets compared is not the characters you typed. Any similarity system worth running canonicalises before it measures: comments removed, whitespace collapsed, identifiers replaced by positional placeholders, and in stronger implementations the code parsed down to a structural fingerprint of its control flow. Renaming <code>left</code> to <code>lo</code>, reordering independent statements, swapping a <code>for</code> loop for a <code>while</code> loop: none of it moves the needle. Two programs a human would call the same algorithm score as the same algorithm.</p>
+      <p>Codility does not publish its matching algorithm or its thresholds, so treat precise claims about them with suspicion, the exact triggering percentage included. The normalise-then-compare shape is standard across the field and safe to reason from. The numbers are not.</p>
+
+      <h2>Why a textbook binary search flags with no misconduct involved</h2>
+      <p>Write out the real degrees of freedom in a correct iterative binary search returning an index or a sentinel.</p>
+      <ul>
+        <li>The loop condition: <code>while lo &lt;= hi</code>, or <code>while lo &lt; hi</code> with a check afterwards.</li>
+        <li>The midpoint: <code>(lo + hi) // 2</code> or <code>lo + (hi - lo) // 2</code>, identical where integers cannot overflow.</li>
+        <li>The comparison order: equality first, or the ordering test first with equality falling through.</li>
+        <li>The failure return: <code>-1</code>, a null value, or the insertion point.</li>
+        <li>The names: lo and hi, left and right, l and r, start and end.</li>
+      </ul>
+      <p>Multiply the genuine choices and you get between eight and thirty distinct programs. Now delete the last bullet, because normalisation deletes it for you. What remains is about a dozen shapes shared by everyone who has ever solved that task correctly. Collision there is not a risk, it is the expected outcome.</p>
+      <p>Sliding window behaves the same way: advance the right edge, update the counter, shrink from the left while the window is invalid, record the best. That skeleton is what survives normalisation, and so does a hash map frequency count.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Task shape</th><th>Room the solution has</th><th>What a high match means</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Binary search or two pointers on sorted input</td><td>None, the structure is forced</td><td>Near zero information, expect a match</td></tr>
+            <tr><td>Sliding window with a counter</td><td>Very little</td><td>Weak signal at best</td></tr>
+            <tr><td>Frequency map, then sort or select</td><td>Almost none</td><td>Near zero information</td></tr>
+            <tr><td>BFS or DFS over a grid</td><td>Traversal standard, bookkeeping varies</td><td>Mild, unless the bookkeeping matches too</td></tr>
+            <tr><td>Classic DP with a known recurrence</td><td>Some, in table layout and rolling arrays</td><td>Mild</td></tr>
+            <tr><td>Multi-rule simulation, fiddly edge cases</td><td>Dozens of valid structures</td><td>Strong, worth a careful read</td></tr>
+            <tr><td>A non-obvious trick forced by an odd constraint</td><td>Moderate</td><td>Strong if it matches line for line</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Say that asymmetry out loud if you are asked. A high match on a binary search means almost nothing. The same number on a simulation with seven business rules means a great deal, because a thousand ways to write it existed and two people picked the same one.</p>
+
+      <h2>What the recruiter sees on their end</h2>
+      <p>The result lands inside the candidate report, beside the score and the code playback rather than instead of them. In general terms, since layout varies by plan and by how the company configured the assessment:</p>
+      <ul>
+        <li>A per-task result, not a per-candidate one. Task two can flag while tasks one and three sit clean.</li>
+        <li>A degree of resemblance, shown as a score or a band, not a yes or no, usually with a way to see what it matched side by side.</li>
+        <li>The playback that replays your solution being written, the timing, and the focus and paste signals if that company switched them on.</li>
+      </ul>
+      <p>Nothing in it uses the word cheating. It reports resemblance and leaves the judgement to a person. An engineer who opens the detail, sees a binary search and scrubs the playback to watch you type it closes the flag in ninety seconds. A coordinator working through forty reports who sees a coloured badge may open nothing. You cannot pick which of the two gets your report, which is why being asked at all is the good outcome. The ones never asked are filtered in silence.</p>
+
+      <h2>What to say when a hiring manager raises it</h2>
+      <p>Four rules, then the words.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Keep it to a few sentences</h3>
+            <p>Length reads as anxiety. A short paragraph settles this. A page of justification invites a second look.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Name the algorithm first</h3>
+            <p>Anyone who wrote the code can say what it is in three words without hedging. Lead with that.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Explain the mechanism, do not plead</h3>
+            <p>"Standard algorithm, few valid forms, they all normalise to one shape" is checkable. "I promise I did not cheat" is not.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Offer the resolution once</h3>
+            <p>A live variant, or a walk-through on a call. Say it plainly, then stop. Repeating the offer undoes it.</p>
+          </div>
+        </div>
+      </div>
+      <blockquote>Thanks for asking directly, I would much rather answer it. Task two is a standard iterative binary search and I wrote it during the session. There are only a few correct ways to write one, so once names and formatting are normalised most correct submissions look alike. Happy to walk through mine, or to take a variant live on a call, whichever suits.</blockquote>
+      <p>Swap the second sentence for your actual task and leave the rest alone. If you consulted documentation on an assessment that allowed it, say so in one clause: "I looked up the bisect signature in the docs" removes the only detail that could later look concealed.</p>
+      <p>If the flag is fair, none of that applies. When you submitted something you did not write on a test whose rules forbade it, no phrasing turns it into a misunderstanding, and a live variant surfaces it inside five minutes. The cheapest response is the unglamorous one: say what you used, ask to redo the task live, accept that some companies will end it there. Owning it early sometimes earns a second attempt. Nothing is earned after a bluff collapses on a screen share.</p>
+
+      <h2>Where OfferPilot AI does not help</h2>
+      <p>Worth being blunt, since this page is published by a company that sells a coding assistant. Nothing our product does changes a similarity score. The overlay is excluded from screen capture at the operating-system level, so it is absent from a Zoom, Teams or Meet share, from recordings and from screenshots, which is beside the point here: the check reads submitted text long after any screen sharing is over. Capture exclusion also does nothing against webcam monitoring, a lockdown browser, eye tracking, a second-device camera or a person in the room.</p>
+      <p>There is a sharper version of the point. A model-drafted solution pasted in unaltered is close to the worst possible input to a similarity system, because everyone prompting that model with that task statement gets a near-identical program. So on an unattended timed assessment whose rules forbid outside assistance, <a href="/code-copilot/">Code Copilot</a> is the wrong tool, and no framing changes that. It earns its place in untimed practice, where the value is the intuition, the dry run and the complexity reasoning rather than the code.</p>
+
+      <p>If your next stage is a call about the code you already submitted, that is a live round and a different problem. The <a href="/interview-copilot/">Interview Copilot</a> drafts from your own resume while you talk, on <a href="/download/">Windows 10 and 11</a> only, and the free tier on the <a href="/pricing/">pricing page</a> is five minutes a day with no card.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/hackerrank-candidate-report/">What Recruiters See in Your HackerRank Report: Field by Field</a></li>
+        <li><a href="/guides/hackerrank-copy-paste-detection/">Can HackerRank Detect Copy and Paste? What the Report Shows</a></li>
+        <li><a href="/guides/codesignal-proctoring-what-it-detects/">How Strict Is CodeSignal Proctoring? Six Channels, Ranked</a></li>
+        <li><a href="/guides/hackerrank-codepair-interview/">HackerRank CodePair Interview: What to Expect in the Pad</a></li>
+        <li><a href="/guides/codility-performance-score-zero/">Codility Performance Score 0%, Correctness 100%: Why It Happens</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Google Software Engineer (L3/L4), General Interview Questions and Answers (2026)</title>
+  <meta name="description" content="11 real Google Software Engineer (L3/L4), General interview questions with model answers, covering opening, coding, algorithms & complexity, system sense.">
+  <meta name="keywords" content="Google interview questions, Google Software Engineer (L3/L4), General interview, Google interview questions and answers, Google behavioral interview questions, Google technical interview prep">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/interview-questions/google/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Google Software Engineer (L3/L4), General Interview Questions and Answers (2026)">
+  <meta property="og:description" content="11 real Google Software Engineer (L3/L4), General interview questions with model answers, covering opening, coding, algorithms & complexity, system sense.">
+  <meta property="og:url" content="https://offerpilotai.ink/interview-questions/google/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/interview-questions-google.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Google Software Engineer (L3/L4), General Interview Questions and Answers (2026)">
+  <meta name="twitter:description" content="11 real Google Software Engineer (L3/L4), General interview questions with model answers, covering opening, coding, algorithms & complexity, system sense.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/interview-questions-google.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Google Software Engineer (L3/L4), General Interview Questions and Answers","url":"https://offerpilotai.ink/interview-questions/google/","mainEntity":[{"@type":"Question","name":"Tell me about yourself.","acceptedAnswer":{"@type":"Answer","text":"Give a concise arc of your background and the production systems you have shipped, emphasizing correctness, clarity, and real algorithmic intuition rather than rote practice. A strong Google framing is that scale forces you to care about complexity for real, an O(n^2) that is fine at a thousand rows falls over at a billion, so tie your interest to that. Keep it to about a minute and lead with what is most relevant to the role."}},{"@type":"Question","name":"Two Sum, return indices of the two numbers that add up to a target.","acceptedAnswer":{"@type":"Answer","text":"Confirm assumptions first, exactly one solution and no reusing an element, then state the brute-force O(n^2) baseline. Move to a single-pass hash map from value to index, checking whether target minus the current number is already seen, and state O(n) time and O(n) space. Dry-run [2,7,11,15] target 9 to show the lookup returning the right indices."}},{"@type":"Question","name":"Number of islands, count connected groups of land in a grid.","acceptedAnswer":{"@type":"Answer","text":"Frame it as connected components on an implicit grid graph where each cell is a node and edges join orthogonally adjacent land. Scan the grid, and on each unvisited land cell increment the count and flood-fill to mark everything reachable so you do not recount it, noting DFS and BFS are both valid and that BFS avoids deep recursion on huge grids. State O(rows times cols) time and the worst-case space for the recursion or queue."}},{"@type":"Question","name":"Longest increasing subsequence, return its length.","acceptedAnswer":{"@type":"Answer","text":"Give the clean O(n^2) DP first, dp[i] is the LIS length ending at i by scanning earlier smaller elements, then reach for the optimal O(n log n). Explain the patience-sorting tails array where tails[k] is the smallest possible tail of an increasing subsequence of length k+1, binary-searching for the first tail at least the current number and replacing it, or appending to extend. Note the answer is the length of tails and that tails is not a real subsequence but its length is provably correct."}},{"@type":"Question","name":"Walk me through analyzing time and space complexity, how do you reason about it?","acceptedAnswer":{"@type":"Answer","text":"Describe your method: count operations as a function of input size, keep the dominant term, drop constants, that is worst-case Big-O. Call out hidden costs like string concatenation in a loop, slicing that copies, or a nested lookup that is secretly O(n), and for recursion write the recurrence and use the Master Theorem, citing merge sort's T(n)=2T(n/2)+O(n) as O(n log n). For space, count memory beyond the input and explicitly include recursion-stack depth, and separate worst case from amortized, like a dynamic-array push."}},{"@type":"Question","name":"How does a hash map work, and when does it degrade?","acceptedAnswer":{"@type":"Answer","text":"Explain that a hash function picks a bucket, giving O(1) average insert, lookup, and delete, with collisions handled by chaining or open addressing. Then be precise about degradation: O(n) when many keys collide from a bad hash or adversarial input, plus the hidden resize-and-rehash cost that is O(n) on that operation but amortizes to O(1). Close by noting that when you need a tight worst-case guarantee you reach for a balanced tree with O(log n) and ordering instead."}},{"@type":"Question","name":"When would you use BFS versus DFS on a graph?","acceptedAnswer":{"@type":"Answer","text":"Start from the shared cost, both visit every node in O(V + E), then contrast use cases. Use BFS for shortest paths in unweighted graphs and level-order work because it explores by distance, and use DFS for reachability, topological sort, cycle detection, and full-path exploration. Mention the memory-and-depth trade-off, BFS can hold a wide frontier while DFS can blow the stack on deep graphs, and note that weighted shortest paths call for Dijkstra or Bellman-Ford instead."}},{"@type":"Question","name":"How would you design a URL shortener like tinyurl?","acceptedAnswer":{"@type":"Answer","text":"Center it on a mapping from short key to long URL, and generate keys by base62-encoding an incrementing or distributed counter for short, collision-free keys, noting a hash works but needs collision handling. Emphasize that reads vastly outnumber writes, so keep the write path simple and put a cache in front of a sharded store, and push analytics asynchronously off the hot path. Show scale awareness, seven base62 characters is trillions of combinations, and close by asking about custom aliases, expiration, and the read-to-write ratio since those change the design."}},{"@type":"Question","name":"Tell me about a time you worked with a difficult teammate or resolved a conflict.","acceptedAnswer":{"@type":"Answer","text":"Pick a real technical disagreement and show you separated the person from the position. Describe asking what outcome each side was optimizing for, one protecting a timeline, one worried about scale, then turning it into something measurable like a small benchmark or risk assessment as the tiebreaker. Land a result where the data decided and you still folded the other person's concern in, like phasing a migration so nothing shipped late."}},{"@type":"Question","name":"Tell me about a time you had to learn something quickly or work through ambiguity.","acceptedAnswer":{"@type":"Answer","text":"Choose a story where you were handed something unfamiliar with no clear owner and a vague report. Show that you anchored on measurement first, reproduce it, profile to find the hot path, fix the real cause like an accidental O(n^2) from a lookup that should be a set, then leave the place better documented with a benchmark in CI so it cannot silently regress. Close that you are comfortable in ambiguity because you start from a real measurement."}},{"@type":"Question","name":"Do you have any questions for us?","acceptedAnswer":{"@type":"Answer","text":"Ask questions that get past the recruiting version. Strong ones: what the strongest engineer on the team does differently from a solid one, how the team decides between a cleaner abstraction and the pragmatic version under a deadline, and what technical problem the team is stuck on right now."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Interview questions","item":"https://offerpilotai.ink/interview-questions/"},{"@type":"ListItem","position":3,"name":"Google","item":"https://offerpilotai.ink/interview-questions/google/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/interview-questions/" style="color:var(--muted-2)">Interview questions</a> · Big Tech</p>
+      <h1 class="balance">Google Software Engineer (L3/L4), General Interview Questions and Answers</h1>
+      <p class="meta">11 questions with model answers · Stack: Python,Java,C++,Data Structures,Algorithms,Distributed Systems</p>
+    </div>
+    <article class="prose reveal">
+      <p class="lede">These are the questions a Google loop for a Software Engineer (L3/L4), General actually asks, each with an answer you can adapt and say out loud. Rehearse them first, then run <a href="/download/">OfferPilot AI</a> live in the interview so the copilot hears the question and drafts your answer in real time.</p>
+      <h2>Opening</h2>
+      <h3>Tell me about yourself.</h3>
+      <p>Give a concise arc of your background and the production systems you have shipped, emphasizing correctness, clarity, and real algorithmic intuition rather than rote practice. A strong Google framing is that scale forces you to care about complexity for real, an O(n^2) that is fine at a thousand rows falls over at a billion, so tie your interest to that. Keep it to about a minute and lead with what is most relevant to the role.</p>
+      <h2>Coding</h2>
+      <h3>Two Sum, return indices of the two numbers that add up to a target.</h3>
+      <p>Confirm assumptions first, exactly one solution and no reusing an element, then state the brute-force O(n^2) baseline. Move to a single-pass hash map from value to index, checking whether target minus the current number is already seen, and state O(n) time and O(n) space. Dry-run [2,7,11,15] target 9 to show the lookup returning the right indices.</p>
+      <h3>Number of islands, count connected groups of land in a grid.</h3>
+      <p>Frame it as connected components on an implicit grid graph where each cell is a node and edges join orthogonally adjacent land. Scan the grid, and on each unvisited land cell increment the count and flood-fill to mark everything reachable so you do not recount it, noting DFS and BFS are both valid and that BFS avoids deep recursion on huge grids. State O(rows times cols) time and the worst-case space for the recursion or queue.</p>
+      <h3>Longest increasing subsequence, return its length.</h3>
+      <p>Give the clean O(n^2) DP first, dp[i] is the LIS length ending at i by scanning earlier smaller elements, then reach for the optimal O(n log n). Explain the patience-sorting tails array where tails[k] is the smallest possible tail of an increasing subsequence of length k+1, binary-searching for the first tail at least the current number and replacing it, or appending to extend. Note the answer is the length of tails and that tails is not a real subsequence but its length is provably correct.</p>
+      <h2>Algorithms &amp; Complexity</h2>
+      <h3>Walk me through analyzing time and space complexity, how do you reason about it?</h3>
+      <p>Describe your method: count operations as a function of input size, keep the dominant term, drop constants, that is worst-case Big-O. Call out hidden costs like string concatenation in a loop, slicing that copies, or a nested lookup that is secretly O(n), and for recursion write the recurrence and use the Master Theorem, citing merge sort's T(n)=2T(n/2)+O(n) as O(n log n). For space, count memory beyond the input and explicitly include recursion-stack depth, and separate worst case from amortized, like a dynamic-array push.</p>
+      <h3>How does a hash map work, and when does it degrade?</h3>
+      <p>Explain that a hash function picks a bucket, giving O(1) average insert, lookup, and delete, with collisions handled by chaining or open addressing. Then be precise about degradation: O(n) when many keys collide from a bad hash or adversarial input, plus the hidden resize-and-rehash cost that is O(n) on that operation but amortizes to O(1). Close by noting that when you need a tight worst-case guarantee you reach for a balanced tree with O(log n) and ordering instead.</p>
+      <h3>When would you use BFS versus DFS on a graph?</h3>
+      <p>Start from the shared cost, both visit every node in O(V + E), then contrast use cases. Use BFS for shortest paths in unweighted graphs and level-order work because it explores by distance, and use DFS for reachability, topological sort, cycle detection, and full-path exploration. Mention the memory-and-depth trade-off, BFS can hold a wide frontier while DFS can blow the stack on deep graphs, and note that weighted shortest paths call for Dijkstra or Bellman-Ford instead.</p>
+      <h2>System Sense</h2>
+      <h3>How would you design a URL shortener like tinyurl?</h3>
+      <p>Center it on a mapping from short key to long URL, and generate keys by base62-encoding an incrementing or distributed counter for short, collision-free keys, noting a hash works but needs collision handling. Emphasize that reads vastly outnumber writes, so keep the write path simple and put a cache in front of a sharded store, and push analytics asynchronously off the hot path. Show scale awareness, seven base62 characters is trillions of combinations, and close by asking about custom aliases, expiration, and the read-to-write ratio since those change the design.</p>
+      <h2>Googleyness &amp; Collaboration</h2>
+      <h3>Tell me about a time you worked with a difficult teammate or resolved a conflict.</h3>
+      <p>Pick a real technical disagreement and show you separated the person from the position. Describe asking what outcome each side was optimizing for, one protecting a timeline, one worried about scale, then turning it into something measurable like a small benchmark or risk assessment as the tiebreaker. Land a result where the data decided and you still folded the other person's concern in, like phasing a migration so nothing shipped late.</p>
+      <h3>Tell me about a time you had to learn something quickly or work through ambiguity.</h3>
+      <p>Choose a story where you were handed something unfamiliar with no clear owner and a vague report. Show that you anchored on measurement first, reproduce it, profile to find the hot path, fix the real cause like an accidental O(n^2) from a lookup that should be a set, then leave the place better documented with a benchmark in CI so it cannot silently regress. Close that you are comfortable in ambiguity because you start from a real measurement.</p>
+      <h2>Closing</h2>
+      <h3>Do you have any questions for us?</h3>
+      <p>Ask questions that get past the recruiting version. Strong ones: what the strongest engineer on the team does differently from a solid one, how the team decides between a cleaner abstraction and the pragmatic version under a deadline, and what technical problem the team is stuck on right now.</p>
+      <h2>Answer these live, not just in practice</h2>
+      <p>Preparation gets you the shape of an answer. In the room, the follow-up you did not rehearse is what decides the loop. OfferPilot AI listens to the interviewer, transcribes on-device, and drafts a speakable answer grounded in your own résumé, while staying off the screen-share stream. <a href="/download/">Download it free</a> and get 5 minutes a day, or see <a href="/pricing/">plans</a>.</p>
+    </article>
+  </div>
+</section>
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Copilot: AI Coding & LeetCode Interview Assistant</title>
+  <meta name="description" content="Screenshot any coding prompt with a hotkey. Code Copilot reads it with OCR plus vision, then streams the optimal solution with approach, a dry run, and Big-O.">
+  <meta name="keywords" content="AI coding copilot, leetcode helper, coding interview assistant, AI for hackerrank, codesignal assistant, coderpad helper, screenshot to code, OCR coding solver">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/code-copilot/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Code Copilot: AI Coding & LeetCode Interview Assistant">
+  <meta property="og:description" content="Screenshot any coding prompt with a hotkey. Code Copilot reads it with OCR plus vision, then streams the optimal solution with approach, a dry run, and Big-O.">
+  <meta property="og:url" content="https://offerpilotai.ink/code-copilot/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/code-copilot.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Code Copilot: AI Coding & LeetCode Interview Assistant">
+  <meta name="twitter:description" content="Screenshot any coding prompt with a hotkey. Code Copilot reads it with OCR plus vision, then streams the optimal solution with approach, a dry run, and Big-O.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/code-copilot.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"OfferPilot AI Code Copilot","applicationCategory":"DeveloperApplication","operatingSystem":"Windows","url":"https://offerpilotai.ink/code-copilot/","description":"A screen-share-safe coding interview assistant. Press a hotkey to screenshot any LeetCode, HackerRank, CodeSignal, or CoderPad prompt; it OCRs and reads the image, then streams the optimal solution with approach, intuition, a dry run, and Big-O across four AI models in parallel.","featureList":["Hotkey screenshot capture (Ctrl+Alt+S)","Tesseract OCR plus vision-model image reading","Streamed optimal solution with approach, intuition, dry run, and Big-O","Four models in parallel: Grok, DeepSeek, Gemini, and a local knowledge-base model","Multi-capture batching and crash-proof session cache","Screen-share invisible overlay"],"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD"},{"@type":"Offer","name":"Pro","price":"39","priceCurrency":"USD"},{"@type":"Offer","name":"Ultimate","price":"69","priceCurrency":"USD"},{"@type":"Offer","name":"6-Month Pass","price":"249","priceCurrency":"USD"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does Code Copilot capture a coding prompt?","acceptedAnswer":{"@type":"Answer","text":"Press Ctrl+Alt+S to screenshot whatever coding prompt is on screen. Code Copilot runs the image through Tesseract OCR to extract the text and also sends the raw screenshot to a vision model, so diagrams, test cases, and formatting that OCR misses are still read accurately."}},{"@type":"Question","name":"Which coding platforms does it work with?","acceptedAnswer":{"@type":"Answer","text":"Code Copilot works with LeetCode, HackerRank, CodeSignal, and CoderPad. Because it captures the screen rather than integrating with a site, it works anywhere a prompt is visible, including PDFs and take-home documents."}},{"@type":"Question","name":"What AI models does Code Copilot use?","acceptedAnswer":{"@type":"Answer","text":"It runs four models in parallel (Grok, DeepSeek, Gemini, and a local knowledge-base model for offline and instant matches) and lets you switch between their answers instantly. The local model returns cached matches immediately with no network round-trip."}},{"@type":"Question","name":"What happens if the app crashes mid-problem?","acceptedAnswer":{"@type":"Answer","text":"A crash-proof session cache writes every answer as it streams. If the app dies, it restores your captures and solutions on the next launch, so you never lose a worked problem."}},{"@type":"Question","name":"Is Code Copilot visible during a screen share?","acceptedAnswer":{"@type":"Answer","text":"No. The overlay opts out of screen capture at the OS level, so it renders on your monitor but is composited out of the frame that Zoom, Teams, Meet, and screen recorders receive. It also stays out of the taskbar and Alt-Tab."}}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+<section class="section hero">
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy reveal">
+        <p class="eyebrow hero__eyebrow"><span class="dot dot--live"></span> Code Copilot · hidden on screen share</p>
+        <h1 class="balance">Screenshot the problem.<br>Get the <span class="grad-text">optimal</span> answer.</h1>
+        <p class="hero__sub">Press <span class="mono" style="color:var(--cyan)">Ctrl+Alt+S</span> on any coding prompt. Code Copilot reads it with OCR and a vision model, then streams the best solution (approach, intuition, a dry run, and Big-O) across four AI models you switch between instantly.</p>
+        <div class="hero__cta">
+          <a class="btn btn--solid btn--lg" data-plan="free" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost btn--lg" href="/pricing/">See pricing</a>
+        </div>
+        <p class="hero__note"><span class="dot dot--live"></span> LeetCode, HackerRank, CodeSignal &amp; CoderPad · Windows · from $0</p>
+      </div>
+
+      <!-- SIGNATURE: the answer card -->
+      <div class="hero__hud reveal">
+        <div class="hud">
+          <div class="hud__bar">
+            <div class="hud__dots"><i></i><i></i><i></i></div>
+            <span class="hud__title">leet.cs · Two Sum · streaming</span>
+            <span class="hud__shield" style="margin-left:auto">🛡 hidden from capture</span>
+          </div>
+          <div style="padding:16px 16px 6px">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+              <span class="pill" style="border-color:rgba(110,231,255,.4);color:var(--cyan)">Grok</span>
+              <span class="pill">DeepSeek</span>
+              <span class="pill">Gemini</span>
+              <span class="pill" style="border-color:rgba(55,227,155,.4);color:var(--live)">Local · instant</span>
+            </div>
+            <p class="mono" style="font-size:11px;letter-spacing:.12em;color:var(--muted-2);text-transform:uppercase;margin:0 0 4px">Approach</p>
+            <p class="muted" style="margin:0 0 8px;font-size:.92rem">One pass with a hash map. For each number, check whether its complement <span class="mono">target − n</span> was already seen. Store value to index as you go.</p>
+            <pre class="code" style="margin:8px 0 0"><span class="cm">// C#: one-pass hash map</span>
+<span class="kw">public int</span>[] TwoSum(<span class="kw">int</span>[] nums, <span class="kw">int</span> target) {
+    <span class="kw">var</span> seen = <span class="kw">new</span> Dictionary&lt;<span class="kw">int</span>, <span class="kw">int</span>&gt;();
+    <span class="kw">for</span> (<span class="kw">int</span> i = 0; i &lt; nums.Length; i++) {
+        <span class="kw">int</span> need = target - nums[i];
+        <span class="kw">if</span> (seen.ContainsKey(need))
+            <span class="kw">return new int</span>[] { seen[need], i };
+        seen[nums[i]] = i;
+    }
+    <span class="kw">return</span> System.Array.Empty&lt;<span class="kw">int</span>&gt;();
+}
+<span class="cm">// Time O(n) · Space O(n)</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRUST STRIP ============================ -->
+<section class="trust">
+  <div class="wrap trust__inner">
+    <span class="trust__label">Reads prompts straight off</span>
+    <div class="trust__logos">
+      <span>LeetCode</span><span>HackerRank</span><span>CodeSignal</span><span>CoderPad</span><span>Take-home PDFs</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ HOW IT WORKS ============================ -->
+<section class="section section--tight" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow--num" data-num="/ 03">The pipeline</p>
+      <h2 class="balance">Capture, read, stream. One hotkey.</h2>
+      <p class="lede">No copy-paste and no window switching. From keypress to a working solution in the overlay, the whole loop runs on one shortcut.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>You capture the prompt</h3><p>Hit <span class="mono" style="color:var(--cyan)">Ctrl+Alt+S</span> to screenshot whatever is on screen. Grab several shots for a long or multi-part problem, then press Enter to send them together as one capture.</p></div></div>
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>It reads with OCR and vision</h3><p>Tesseract OCR pulls the text while the raw screenshot goes to a vision model in parallel. Test cases, tables, and constraints that OCR garbles are still read correctly straight from the image.</p></div></div>
+      <div class="step reveal"><div class="step__n" aria-hidden="true"></div><div><h3>It streams the optimal solution</h3><p>The answer appears token by token in the overlay: approach, intuition, thought process, a worked dry run, and the Big-O for time and space, with the full solution in your language.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FEATURES GRID ============================ -->
+<section class="section" id="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Built for the coding screen</p>
+      <h2 class="balance">Everything the round throws at you, handled.</h2>
+      <p class="lede">Code Copilot is tuned for timed coding rounds: fast capture, four models to cross-check, and a session that survives a crash.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="m8 9 2 2-2 2M13 13h3"/></svg>
+        </div>
+        <h3>Hotkey screenshot</h3>
+        <p>One press of Ctrl+Alt+S grabs the prompt. No copy-paste, no switching windows, no leaving the coding tab.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8V5a2 2 0 0 1 2-2h3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M7 12h10"/></svg>
+        </div>
+        <h3>OCR plus vision, together</h3>
+        <p>Tesseract extracts the text and a vision model reads the image at the same time, so nothing in the prompt gets lost.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h3>Four models, instant switch</h3>
+        <p>Grok, DeepSeek, Gemini, and a local knowledge-base model run in parallel. Flip between their answers with a keystroke.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6a8 3 0 0 0 16 0M4 6v12a8 3 0 0 0 16 0V6M4 12a8 3 0 0 0 16 0"/></svg>
+        </div>
+        <h3>Local offline model</h3>
+        <p>The local knowledge base returns matches instantly with no network round-trip, a fully offline path whenever you want one.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="14" height="10" rx="2"/><path d="M7 8h6M7 11h4"/><rect x="9" y="10" width="12" height="10" rx="2"/></svg>
+        </div>
+        <h3>Multi-capture batching</h3>
+        <p>Grab several screenshots for a long problem, then press Enter to send them as one. Full context, one answer.</p>
+      </div>
+      <div class="card feat reveal">
+        <div class="feat__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v6l4 2"/><path d="M3.5 12a8.5 8.5 0 1 1 3 6.5"/><path d="M3 15v4h4"/></svg>
+        </div>
+        <h3>Crash-proof session cache</h3>
+        <p>Every answer is written as it streams. If the app dies, it restores your captures and solutions on the next launch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ANSWER ANATOMY / SCREEN-SHARE SAFE ============================ -->
+<section class="section" id="invisible">
+  <div class="wrap split">
+    <div class="split__body reveal">
+      <p class="eyebrow"><span class="dot dot--live"></span> Screen-share safe</p>
+      <h2 class="balance">On your screen. Off the recording.</h2>
+      <p class="lede">The overlay opts out of screen capture at the OS level. The interviewer's shared view and any recorder see the coding tab exactly as it is, while the answer card is composited out of the frame.</p>
+      <ul style="list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px">
+        <li class="muted">✦ Excluded from Zoom, Teams, Meet, Discord, OBS &amp; PrintScreen</li>
+        <li class="muted">✦ Stays out of the taskbar and Alt-Tab so it never leaks</li>
+        <li class="muted">✦ A live shield badge tells you the truth: green when hidden</li>
+        <li class="muted">✦ Every answer streams with a dry run and Big-O so you can reason out loud, not just paste</li>
+      </ul>
+    </div>
+    <div class="split__media reveal">
+      <div class="card" style="padding:0;overflow:hidden">
+        <div class="hud__bar"><div class="hud__dots"><i></i><i></i><i></i></div><span class="hud__title">answer anatomy</span><span class="hud__shield" style="margin-left:auto">🛡 excluded</span></div>
+        <pre class="code" style="margin:0;border:none;border-radius:0"><span class="cm">// every capture returns the same shape:</span>
+approach   <span class="st">"one-pass hash map"</span>
+intuition  <span class="st">"trade space for a single scan"</span>
+steps      <span class="st">"iterate, look up complement, store"</span>
+dry_run    <span class="st">"[2,7,11,15], target 9 -> [0,1]"</span>
+solution   <span class="st">"full code, your language"</span>
+big_o      time <span class="st">"O(n)"</span>  space <span class="st">"O(n)"</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STATS ============================ -->
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat reveal"><b>4</b><span>models in parallel</span></div>
+      <div class="stat reveal"><b>2</b><span>readers: OCR + vision</span></div>
+      <div class="stat reveal"><b>1</b><span>hotkey to capture</span></div>
+      <div class="stat reveal"><b>$0</b><span>to start</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow" style="justify-content:center">Questions</p>
+      <h2>How Code Copilot handles the screen.</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>How does it capture a coding prompt?</summary><p>Press <span class="mono">Ctrl+Alt+S</span> to screenshot whatever is on screen. Code Copilot runs the image through Tesseract OCR to pull the text and, at the same time, sends the raw screenshot to a vision model, so diagrams, test cases, and formatting that OCR misses are still read accurately.</p></details>
+      <details><summary>Which platforms does it work with?</summary><p>It works with LeetCode, HackerRank, CodeSignal, and CoderPad. Because it reads the screen rather than integrating with a site, it also works on take-home PDFs and anything else with a visible prompt.</p></details>
+      <details><summary>What are the four models?</summary><p>Grok, DeepSeek, Gemini, and a local knowledge-base model run in parallel, and you can switch between their answers instantly. The local model returns cached matches immediately with no network round-trip, which doubles as a fully offline path.</p></details>
+      <details><summary>Can I send more than one screenshot?</summary><p>Yes. Multi-capture lets you grab several screenshots for a long or multi-part problem and press Enter to send them together, so the model gets the full context in a single answer.</p></details>
+      <details><summary>What happens if it crashes mid-problem?</summary><p>A crash-proof session cache writes every answer as it streams. If the app dies, it restores your captures and solutions on the next launch, so a worked problem is never lost.</p></details>
+      <details><summary>Is it visible during a screen share?</summary><p>No. The overlay opts out of capture at the OS level, so it renders on your monitor but is composited out of the frame Zoom, Teams, Meet, and recorders receive. It also stays out of the taskbar and Alt-Tab, and a live shield badge shows the current protection state.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <p class="eyebrow" style="justify-content:center"><span class="dot dot--live"></span> Practice the optimal answer, not the panic</p>
+      <h2 class="balance">Bring Code Copilot to your next round.</h2>
+      <p class="lede" style="margin:0 auto 8px">Start free in a minute. Capture a problem, read the approach, and learn the pattern before the timer starts.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" data-plan="free" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">See Interview Copilot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/scripts/checkout.js" defer></script>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

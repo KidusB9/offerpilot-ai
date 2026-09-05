@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does CoderPad Detect Screen Sharing? Two Separate Channels</title>
+  <meta name="description" content="No. CoderPad and HackerRank run in a browser tab and cannot see your Zoom share. The editor logs typing, runs, pastes and blur; the meeting carries pixels only.">
+  <meta name="keywords" content="does coderpad detect screen sharing, can coderpad see my screen, does hackerrank know if i am screen sharing, coderpad playback what interviewer sees, hackerrank screen recording, coderpad paste detection, what does the interviewer see on coderpad, zoom share vs coderpad log">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/coderpad-hackerrank-what-interviewer-sees/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does CoderPad Detect Screen Sharing? Two Separate Channels">
+  <meta property="og:description" content="No. CoderPad and HackerRank run in a browser tab and cannot see your Zoom share. The editor logs typing, runs, pastes and blur; the meeting carries pixels only.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/coderpad-hackerrank-what-interviewer-sees/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-coderpad-hackerrank-what-interviewer-sees.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does CoderPad Detect Screen Sharing? Two Separate Channels">
+  <meta name="twitter:description" content="No. CoderPad and HackerRank run in a browser tab and cannot see your Zoom share. The editor logs typing, runs, pastes and blur; the meeting carries pixels only.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-coderpad-hackerrank-what-interviewer-sees.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does CoderPad Detect Screen Sharing? Two Separate Channels","description":"No. CoderPad and HackerRank run in a browser tab and cannot see your Zoom share. The editor logs typing, runs, pastes and blur; the meeting carries pixels only.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/coderpad-hackerrank-what-interviewer-sees/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does CoderPad Detect Screen Sharing? Two Separate Channels","url":"https://offerpilotai.ink/guides/coderpad-hackerrank-what-interviewer-sees/","mainEntity":[{"@type":"Question","name":"Does CoderPad know that I am screen sharing on Zoom?","acceptedAnswer":{"@type":"Answer","text":"No. The pad is a web page in a browser tab. Screen sharing is negotiated between your meeting client and the operating system, and no browser API tells a website that another application is capturing the display. A pad running with no call at all and the same pad running mid share are identical sessions on the server."}},{"@type":"Question","name":"Can HackerRank or CoderPad record my screen through the browser?","acceptedAnswer":{"@type":"Answer","text":"Only if the employer enabled screen capture for that specific assessment, and only after your browser draws its own Choose what to share picker and you click through it. A site cannot restyle, preselect or auto-accept that dialog. If no picker appeared, the platform holds no video of your screen, though it still logs pastes, blur and code playback."}},{"@type":"Question","name":"If the video call drops, does the CoderPad record disappear?","acceptedAnswer":{"@type":"Answer","text":"No, and that is the clearest proof the two channels are independent. The pad keeps its edit history, run history, paste marks and focus events whether or not a call was ever running. A meeting recording works the same way in reverse: it holds pixels and audio and knows nothing about how the code arrived in the editor."}},{"@type":"Question","name":"Does sharing only the CoderPad tab hide my other windows?","acceptedAnswer":{"@type":"Answer","text":"From the meeting, yes. A tab or window share sends one surface, so notification toasts and other applications stay out of the stream. It changes nothing on the other channel. The pad still records that focus left it, so a switch is visible in the editor log even though the viewer sees a still pad."}},{"@type":"Question","name":"Can the interviewer tell which tab I switched to?","acceptedAnswer":{"@type":"Answer","text":"The editor channel carries no destination. Browser visibility and focus events name no URL, window title or application, only that the page stopped being focused and for how long. The meeting channel carries a destination only if you were sharing your entire screen at that moment. Share one tab and the pad reports the gap while the video shows nothing."}},{"@type":"Question","name":"Does an overlay hidden from screen capture stop CoderPad flagging me?","acceptedAnswer":{"@type":"Answer","text":"No. Capture exclusion removes a window from the meeting channel only. The editor channel reads browser focus and paste origin rather than pixels, so clicking any overlay raises the same blur event as any other application. Capture exclusion also does nothing against webcam monitoring, lockdown browsers, eye tracking or a person watching you in the room."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"CoderPad, HackerRank and the screen share","item":"https://offerpilotai.ink/guides/coderpad-hackerrank-what-interviewer-sees/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Does CoderPad detect screen sharing? What the interviewer sees vs what the share sends</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">No. CoderPad has no idea whether you are screen sharing, and neither does HackerRank. Both run as an ordinary page in a browser tab, and no browser API tells a web page that a separate application is duplicating the display. What is actually running during a live technical interview is two recordings side by side that never touch: the editor, which knows precisely how your code arrived but nothing about your screen, and the meeting share, which carries pixels but has no concept of a paste event. Nearly every worry about these platforms resolves once you work out which of the two channels a given signal lives on.</p>
+
+      <h2>Why a pad cannot see the share</h2>
+      <p>Screen sharing is a transaction between your meeting client and the operating system. Zoom, Teams or Meet asks the OS for a surface, entire screen, a single window or a single tab, and the OS returns a stream of frames. That happens in a different process from your browser tab and it publishes nothing to the pages you have open. There is no <code>navigator.amIBeingShared</code>. A web page cannot enumerate your running applications, cannot read the compositor, and cannot learn that the pixels it just painted are being copied elsewhere. A CoderPad session with no call attached and the same session running mid share are the same session on the server.</p>
+      <p>There is exactly one route by which pixels reach a browser-based assessment, and it is loud. The page calls the display capture API, your browser draws its own <em>Choose what to share</em> picker, and you select a surface. Chrome and Edge then hold a visible sharing indicator up for as long as the stream runs. A site cannot restyle that dialog, cannot preselect a surface for you, and cannot accept it on your behalf. So the picker is the tell. If none appeared, the platform is holding no video of your screen. Whether a particular test switches that on is an employer setting rather than a fixed property of CoderPad or HackerRank, so judge by what you were prompted for rather than by what a vendor page says in general.</p>
+      <p>Worth separating a related fear here. Not detecting the share is not the same as not detecting anything. The editor channel is quietly detailed, needs no permission at all, and is switched on in almost every test you will ever open.</p>
+
+      <h2>The two channels, side by side</h2>
+      <p>Read each row as a question rather than a verdict: of these two independent systems, which one could possibly know this? The left column is what the editor records on its own, with no plugin, no prompt and no meeting. The right column is what the video call carries.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Signal</th><th>Editor tab (CoderPad, HackerRank)</th><th>The meeting share (Zoom, Teams, Meet)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Typing, character by character</td><td>Kept as an edit history and replayed afterwards as a scrubbable timeline, at the speed you wrote it</td><td>Only as video, at frame rate, and only while someone was both sharing and recording</td></tr>
+            <tr><td>Run and submission history</td><td>Every execution, the code as it stood at that moment, the output and the timestamp</td><td>Whatever happened to be on screen at the time, nothing more</td></tr>
+            <tr><td>Paste events, and whether text came from outside the document</td><td>Yes, and this is the signal candidates underestimate most</td><td>Nothing. A pixel stream cannot tell typing from pasting, it only sees text appear</td></tr>
+            <tr><td>Tab blur, page hidden, window losing focus</td><td>Yes, from ordinary browser visibility and focus events, with no destination attached</td><td>Nothing directly. The shared surface simply sits there looking normal</td></tr>
+            <tr><td>Fullscreen exit</td><td>Recorded where the employer required fullscreen for that assessment</td><td>Nothing</td></tr>
+            <tr><td>Time per question, and the length of idle gaps</td><td>Yes, as timestamps in the report</td><td>Only by someone watching and inferring</td></tr>
+            <tr><td>Your other windows, notification toasts, a second monitor</td><td>Nothing at all. The page can see only itself</td><td>Only if you picked Entire Screen. A tab or window share sends one surface</td></tr>
+            <tr><td>Your face, your voice, the room behind you</td><td>Nothing, unless the assessment itself was granted a camera permission you clicked</td><td>Yes. That is what the call is</td></tr>
+            <tr><td>The other channel existing</td><td>No</td><td>No</td></tr>
+            <tr><td>Survives the other channel ending</td><td>Yes. The pad record stands alone if the call drops</td><td>Yes. The recording stands alone if the pad is closed</td></tr>
+            <tr><td>Who reads it</td><td>The interviewer live, then anyone sent the report or the playback link</td><td>Whoever the meeting host shares the cloud recording with</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Two rows carry most of the practical weight. Pastes and blur are invisible to the share and permanent in the editor, which is the reverse of how most candidates rank their risks. Meanwhile your desktop clutter is invisible to the editor and fully exposed by a full-screen share.</p>
+
+      <h2>Forty seconds, traced down both channels</h2>
+      <p>Concrete case. You are on a live CoderPad round, sharing your <strong>CoderPad tab only</strong> over Zoom, and you go to look up an argument order you have forgotten.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>00:00, you press Alt+Tab</h3>
+            <p><strong>Editor:</strong> a visibility or blur event fires immediately and a timer starts. The interviewer side may surface a live notice. No URL, no window title, no screenshot. <strong>Share:</strong> nothing changes. Viewers keep seeing the pad exactly as you left it, caret parked, because a tab share follows the tab and not your attention.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>00:04 to 00:36, you read documentation</h3>
+            <p><strong>Editor:</strong> a continuing gap, and nothing else. It cannot see the page you are reading. <strong>Share:</strong> still the frozen pad. Had you picked Entire Screen at the start of the call instead, this is the stretch where everyone watches you read, along with any notification that lands.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>00:38, you come back and paste eight lines</h3>
+            <p><strong>Editor:</strong> the gap closes at roughly 38 seconds, and a block arriving from outside the document is marked as such, in CoderPad visibly inside the shared buffer. <strong>Share:</strong> eight lines appear in a single frame. The video cannot say whether you typed them at superhuman speed or pasted them, but a human watching draws the obvious conclusion.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>00:41, you run it and it passes</h3>
+            <p><strong>Editor:</strong> a run entry holding the exact code, the output and the timestamp, forty one seconds after the blur began. That triple outlives the call, the recording and the recruiter memory of the session. <strong>Share:</strong> a green output pane, if anyone happened to be looking.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>Now compare the two artifacts. The video, if it was recorded at all, shows a still editor for most of a minute and then a jump. The editor record shows blur at 00:00, return at 00:38, an outside paste at 00:38 and a passing run at 00:41, in that order, with no ambiguity about sequence. The channel that felt scary carried the least. The channel nobody thought about wrote the timeline.</p>
+
+      <h2>The only place the channels join is a person</h2>
+      <p>No system correlates them. There is no pipeline stitching a Zoom recording to a HackerRank report, and the pad never learns what the camera saw. The join happens in an interviewer head, in real time, and a person is far better at it than software. They notice that you went quiet, then a block landed, then the explanation got vaguer. Which is why the practical countermeasure is verbal rather than technical. Say what you are doing before you do it. An announced lookup stops being a signal, because looking things up is ordinary engineering. An unannounced forty second silence followed by a highlighted paste is a story that tells itself.</p>
+      <blockquote>Interviewers rarely act on a flag by reporting it. They act by asking you to change the code in front of them. Anything you cannot extend under questioning is worth less than a partial solution you actually wrote.</blockquote>
+
+      <h2>Where OfferPilot AI is the wrong tool for this</h2>
+      <p>Said plainly by a company that sells an interview assistant. Our overlay is excluded from screen capture at the operating system level, so it is absent from a Zoom, Teams or Meet share, from recordings and from screenshots. That property lives entirely on the meeting channel, which is the channel already carrying the least in the trace above. It does nothing at all on the editor channel. Focus detection reads which window the operating system considers focused, not pixels, so clicking an overlay or firing the <a href="/code-copilot/">Code Copilot</a> screenshot shortcut produces the same blur event as any other application. Capture exclusion is also not a defence against webcam monitoring, a lockdown browser, eye tracking, a second-device camera or a human in the room, and none of this is a route through a proctored assessment.</p>
+      <p>A live pad is simply the wrong format for a pasted answer, whatever its source. The interviewer reads the code as it appears and will ask you to modify it. Conversational rounds, system design discussions and behavioural interviews are where live assistance earns its place, because the deliverable there is speech rather than a document with an audit trail attached to it.</p>
+
+      <h2>A four line pre-round checklist</h2>
+      <ul>
+        <li><strong>Choose the tab or the window, not Entire Screen.</strong> That single decision fixes what the meeting channel can ever carry, and you make it once, in the share picker.</li>
+        <li><strong>Type your snippets, do not paste them.</strong> A template typed out by hand is ordinary editing. The same characters pasted are marked as arriving from outside the document.</li>
+        <li><strong>Narrate anything that pulls you out of the tab</strong>, the browser console included, since developer tools take keyboard focus and read exactly like a second tab.</li>
+        <li><strong>If no picker appeared, the platform captured no pixels.</strong> Judge a test by the prompts it actually showed you, not by rumours about the vendor.</li>
+      </ul>
+
+      <p>OfferPilot AI is a Windows 10 and 11 desktop app for practice and for live conversational rounds. If your next round is a discussion rather than a shared editor, the <a href="/interview-copilot/">Interview Copilot</a> free tier runs five minutes a day with no card required, and the tiers are listed on the <a href="/pricing/">pricing page</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/coderpad-what-the-interviewer-sees/">Does CoderPad Detect Tab Switching? What the Interviewer Sees</a></li>
+        <li><a href="/guides/what-interviewers-see-on-coderpad/">Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank</a></li>
+        <li><a href="/guides/zoom-screen-share-what-interviewer-sees/">What an Interviewer Sees When You Share Your Zoom Screen</a></li>
+        <li><a href="/guides/codility-tab-switching-and-paste-detection/">Does Codility Track Tab Switching and Paste? What It Logs</a></li>
+        <li><a href="/guides/can-interviewer-see-alt-tab/">Can a Zoom Host See If You Switch Tabs? The Three Signals</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

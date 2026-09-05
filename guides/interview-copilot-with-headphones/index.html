@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does an Interview Copilot Work With Headphones or AirPods?</title>
+  <meta name="description" content="Yes, if it captures your system playback stream instead of listening through a microphone. What that difference means for AirPods, and the one Windows setting that silences it.">
+  <meta name="keywords" content="does interview copilot work with headphones, interview copilot airpods, ai interview assistant with headphones, system audio capture vs microphone, windows loopback audio capture interview, interview copilot not transcribing bluetooth, stereo mix interview copilot, hands-free profile breaks audio capture, does an interview copilot hear the interviewer">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/interview-copilot-with-headphones/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does an Interview Copilot Work With Headphones or AirPods?">
+  <meta property="og:description" content="Yes, if it captures your system playback stream instead of listening through a microphone. What that difference means for AirPods, and the one Windows setting that silences it.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/interview-copilot-with-headphones/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-interview-copilot-with-headphones.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does an Interview Copilot Work With Headphones or AirPods?">
+  <meta name="twitter:description" content="Yes, if it captures your system playback stream instead of listening through a microphone. What that difference means for AirPods, and the one Windows setting that silences it.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-interview-copilot-with-headphones.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does an Interview Copilot Work With Headphones or AirPods?","description":"Yes, if it captures your system playback stream instead of listening through a microphone. What that difference means for AirPods, and the one Windows setting that silences it.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/interview-copilot-with-headphones/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does an Interview Copilot Work With Headphones or AirPods?","url":"https://offerpilotai.ink/guides/interview-copilot-with-headphones/","mainEntity":[{"@type":"Question","name":"Does an interview copilot work if you are wearing headphones or AirPods?","acceptedAnswer":{"@type":"Answer","text":"Yes, provided it captures the system playback stream rather than listening to the room. Playback capture takes a copy of the audio Windows is already sending to your output device, at a point upstream of the earbuds themselves, so what is physically in your ears is irrelevant. A copilot that relies on a microphone hearing your laptop speakers, by contrast, goes deaf the moment you put headphones on."}},{"@type":"Question","name":"How does an interview copilot hear the interviewer if the sound is going into my ears?","acceptedAnswer":{"@type":"Answer","text":"The tap happens before the sound reaches you. Your meeting app decodes the interviewer's voice and hands it to the Windows audio engine, which mixes it and passes it to whichever output device is selected. Loopback capture reads a copy of that mix at the engine. Speakers, wired headphones, a USB headset and Bluetooth earbuds all sit downstream of that point, so none of them changes what is captured."}},{"@type":"Question","name":"What is the difference between system audio loopback and microphone capture?","acceptedAnswer":{"@type":"Answer","text":"Microphone capture listens to the air in your room, so it hears your interviewer only if their voice is coming out of a speaker, and it also hears your own voice, your keyboard and anyone nearby. Loopback capture takes the interviewer's audio straight from the playback stream, with no room, no echo and no bleed from your own microphone. Only the second kind survives headphones."}},{"@type":"Question","name":"Why does my interview copilot stop transcribing when I connect Bluetooth earbuds?","acceptedAnswer":{"@type":"Answer","text":"Usually because Windows changed the output endpoint underneath it. Bluetooth earbuds expose two separate devices, a stereo playback endpoint and a hands-free headset endpoint, and Windows switches between them when an application opens the earbud microphone. Audio moves to the other endpoint while the copilot is still reading the first one, so it captures silence. Settling your audio devices before the call starts avoids it."}},{"@type":"Question","name":"Are wired headphones better than Bluetooth for an interview copilot?","acceptedAnswer":{"@type":"Answer","text":"For capture purposes there is no difference, because both sit downstream of the point where the audio is copied. Wired and USB headsets are steadier in practice, since they never renegotiate a profile or move you to a second endpoint mid-call, and they will not drop the interviewer's voice into narrowband quality when an app opens their microphone. Bluetooth works, it simply has more ways to surprise you."}},{"@type":"Question","name":"Can an interview copilot hear the interviewer during an in-person or phone interview?","acceptedAnswer":{"@type":"Answer","text":"No. Playback capture needs a playback stream, and a conversation in a room does not produce one. The same is true of a call taken on a mobile phone or on a second laptop. If the audio never passes through the Windows machine running the copilot, there is nothing for it to copy, and no headphone choice changes that."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Headphones and AirPods","item":"https://offerpilotai.ink/guides/interview-copilot-with-headphones/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Screen sharing and video calls</p>
+      <h1 class="balance">Does an interview copilot work with headphones or AirPods?</h1>
+      <p class="meta">2026 &middot; ~8 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Yes, as long as it takes the interviewer's audio from the <strong>system playback stream</strong> rather than listening to your room through a microphone. Those are two different pieces of plumbing, and only one of them cares what is in your ears. A playback capture is a copy of the sound Windows is already sending to your output device, taken upstream of the earbuds, so AirPods, a wired headset and desk speakers all produce identical input. A microphone-based tool goes deaf the second you put headphones on, because the interviewer's voice stops existing in the air.</p>
+
+      <h2>Two completely different ways a copilot can hear your interviewer</h2>
+      <p>Almost every confused answer to this question comes from treating "the copilot listens to the interview" as one thing. It is two things, with opposite failure modes.</p>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th></th><th>Room microphone capture</th><th>System playback loopback</th></tr></thead><tbody>
+        <tr><td>Where the audio is taken from</td><td>The air in your room, through your mic</td><td>A copy of the stream Windows is already sending to your output device</td></tr>
+        <tr><td>Works with headphones or AirPods?</td><td><strong>No.</strong> The interviewer's voice never enters the room</td><td><strong>Yes.</strong> The earbuds sit downstream of the tap</td></tr>
+        <tr><td>Does it also hear you?</td><td>Yes, plus your keyboard, your fan and anyone else in the flat</td><td>No. Your microphone is a separate stream it never reads</td></tr>
+        <tr><td>Echo risk</td><td>Real. Speaker output re-enters your mic and the interviewer hears themselves</td><td>None. Nothing is being played into the room on your behalf</td></tr>
+        <tr><td>Effect of muting yourself in the meeting app</td><td>Depends on whether the tool reads the same device the app muted</td><td>None. Output and input are unrelated</td></tr>
+        <tr><td>Who ends up in the transcript</td><td>Both voices mixed together, to be separated afterwards</td><td>The far side only, by construction</td></tr>
+        <tr><td>What silences it</td><td>Headphones, a quiet room, a muted or wrong input device</td><td>The output endpoint moving underneath it</td></tr>
+      </tbody></table></div>
+      <p>Notice the last row. Each approach has exactly one common way to fail, and they are not the same failure. If a tool has ever told you to turn your speakers up, or to enable Stereo Mix as a permission-free workaround, you were being routed through a microphone or an old sound-card mix, and headphones were always going to be a problem. If it asks you to choose an <em>output</em> device rather than an input, it is doing loopback.</p>
+
+      <h2>Why AirPods change nothing when the audio comes from playback</h2>
+      <p>Follow one sentence of your interviewer's speech across your machine, in order.</p>
+      <ol>
+        <li>The meeting app receives packets and decodes them into audio samples.</li>
+        <li>It hands those samples to the Windows audio engine as a render stream.</li>
+        <li>The engine mixes that stream with everything else making noise, your browser, a notification, a video, into one output mix.</li>
+        <li>The mix goes to the driver for whichever output device is currently selected.</li>
+        <li>The driver pushes it out over the analogue jack, the USB cable, HDMI, or the Bluetooth radio.</li>
+        <li>Something finally turns electricity into air: a speaker cone, or a driver a few millimetres from your eardrum.</li>
+      </ol>
+      <p>Loopback capture reads a copy of the mix at <strong>step three</strong>. Everything you think of as "headphones" lives at steps five and six. Wired, USB, Bluetooth, bone conduction, active noise cancelling, one earbud in and one out: all downstream, all invisible to the capture. This is also why the transcript stays clean. Your own voice travels on a separate capture stream that is never read, so there is no echo cancellation to get wrong, no cross-talk, and no question of who was speaking.</p>
+      <blockquote>Loopback capture asks the operating system what it is playing. It never asks the room what it can hear.</blockquote>
+      <p>One useful side effect: the volume slider does not matter either. Turning your system volume down while a loopback capture is running does not blind it, because the mix still exists as data even when very little of it is being converted into sound. Do not build a strategy on that, but do not panic if you knock the volume down mid-question.</p>
+      <p>This is the model the <a href="/interview-copilot/">Interview Copilot</a> uses: it reads the playback loopback, transcribes on-device with Whisper, and drafts a speakable answer from your own resume plus a company-specific question bank in roughly a second. Headphones are not a supported edge case there, they are the normal case.</p>
+
+      <h2>The one setting that breaks it, and the five checks that fix it</h2>
+      <p>A loopback capture is bound to a <strong>specific output endpoint</strong>. Not to "your computer's sound" in the abstract, to one named device. If Windows quietly moves your call audio to a different endpoint, the copilot keeps reading the old one, and the old one is now playing nothing. You get silence in the transcript while sound plays perfectly in your ears, and usually no error at all, because from the software's point of view a stream of digital silence is a perfectly valid stream.</p>
+      <p>Bluetooth earbuds trigger this more than anything else, for a specific reason. They register with Windows as <strong>two devices, not one</strong>: a stereo playback endpoint, and a hands-free headset endpoint that carries a microphone and drops audio to narrowband quality. When an application opens the earbud microphone, Windows switches you over to the hands-free endpoint. Your meeting app follows the move. A capture bound to the stereo endpoint does not.</p>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Settle the audio before anything launches</h3><p>Connect the earbuds first, then open the meeting app, then start the copilot. In that order, everything binds to a device that has already stopped moving.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Read the output list once, deliberately</h3><p>Right-click the speaker icon in the tray and open Sound settings. Find your earbuds. On most machines they appear twice, once as stereo headphones and once as a hands-free headset. The exact wording varies by Windows build and driver, so look for the pattern rather than for one specific label.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Point the meeting app's microphone somewhere else</h3><p>In your Zoom, Teams or Meet audio settings, set the input to your laptop's built-in mic or a wired mic instead of the earbud mic. Opening the earbud microphone is the thing that triggers the switch. As a bonus, you stop sending the interviewer the thin, compressed voice the hands-free profile produces.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Do not connect or disconnect anything mid-call</h3><p>Popping one earbud out to answer the door, or a charging case lid closing on the desk, can move the endpoint in the middle of a question. This is the most common cause of a copilot that worked in testing and went quiet in the interview.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Verify with the headphones actually in</h3><p>Play any video with the earbuds in your ears and watch whether the transcript moves. Sound in your ears plus silence in the transcript is the endpoint problem, every time. Testing on speakers proves nothing about the case you care about.</p></div></div>
+      </div>
+      <p>If all five check out and it is still silent, there is one rarer culprit worth knowing. Open the playback device's properties, go to the Advanced tab, and look at <strong>Allow applications to take exclusive control of this device</strong>. When an application takes exclusive control of an endpoint, it bypasses the shared mix, and anything reading that shared mix gets nothing. Unchecking it costs you nothing in a normal meeting. Most conferencing apps do not ask for exclusive mode, so treat this as the second thing to try rather than the first.</p>
+
+      <h2>Should you wear headphones at all?</h2>
+      <p>Yes, but for the interviewer's benefit rather than the copilot's. On speakers, their voice comes out of your desk, goes back into your microphone, and returns to them as a delayed copy of themselves. Echo cancellation usually catches it. Usually is doing real work in that sentence, particularly on a laptop where the speakers sit two inches from the microphone array. Headphones remove the loop instead of asking software to subtract it.</p>
+      <p>What headphones will <em>not</em> do is improve a playback capture. The audio a loopback tap receives is identical whether you are wearing expensive earbuds, cheap ones, or nothing, because the copy is made before it reaches any of them. If a tool's transcription quality visibly improves when you change headphones, that tool is listening to your room, and you have just learned something important about it.</p>
+
+      <h2>Where headphones do not save you, and where we are the wrong tool</h2>
+      <p>The honest boundary is short: <strong>no playback stream, no capture.</strong></p>
+      <ul>
+        <li><strong>In-person interviews.</strong> A conversation across a table produces no render stream on your PC, so there is nothing to copy. Headphones are irrelevant because the entire mechanism is missing.</li>
+        <li><strong>Calls taken on a phone or a second laptop.</strong> If the audio arrives on a device other than the Windows machine running the copilot, that machine hears silence. Joining the same meeting twice to route audio through the PC changes the participant list and usually the audio quality, so it is rarely worth doing.</li>
+        <li><strong>Panels on one shared microphone.</strong> A conference room with four people around a single mic arrives as one mixed stream. Transcription handles the words. Reliably attributing them to the right person is a different problem.</li>
+        <li><strong>Silence and background noise.</strong> Speech models can produce fluent, confident text out of near-silence. If a line in the transcript surprises you, treat it as unconfirmed rather than as something the interviewer definitely said.</li>
+        <li><strong>Anything that is not Windows.</strong> OfferPilot AI runs on Windows 10 and 11 only. No macOS, no Linux, no mobile, no browser extension. On a Mac, none of the above applies to us at all.</li>
+      </ul>
+      <p>One more limit, because headphone questions often arrive from people who are really asking about visibility. Our overlay is excluded from screen capture at the operating-system level, so it does not appear in a Zoom, Teams, Meet or OBS share, or in screenshots, while staying visible on your own monitor, on every plan including the free one. That is about frames leaving your machine. It does nothing about a webcam, a lockdown browser, a proctor sitting in the room with you, eye tracking, or a phone camera pointed at your desk. On a monitored, proctored assessment it is the wrong tool, and we would rather say that than take the subscription. Metering counts listening time only, so the clock on the <a href="/pricing/">pricing page</a> advances only while interviewer audio is actually arriving. That makes it a poor diagnostic, incidentally: a copilot bound to a dead endpoint burns no minutes and also does no work.</p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li><strong>Headphones and AirPods are fine</strong> for any copilot that captures system playback, because the copy is made before the sound reaches your ears.</li>
+        <li><strong>They are fatal</strong> for anything listening through a microphone, which is why the answers you find online contradict each other.</li>
+        <li><strong>The failure worth planning for is the output endpoint changing</strong>, usually a Bluetooth profile switch when some app grabs the earbud microphone.</li>
+        <li><strong>Connect, then open the meeting app, then start the copilot</strong>, and leave your devices alone once the call begins.</li>
+        <li><strong>Test with headphones in.</strong> Sound in your ears with silence in the transcript is a device-binding problem, never a headphone problem.</li>
+      </ul>
+      <p>If you remember one line from this page, make it this one: the question is not whether a copilot can hear past your headphones, it is whether it was ever listening to the room in the first place.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/chrome-extension-vs-desktop-interview-copilot/">Chrome Extension vs Desktop Interview Copilot: What Shows</a></li>
+        <li><a href="/guides/google-meet-tab-vs-window-share/">Google Meet: Share a Tab, a Window, or Your Entire Screen?</a></li>
+        <li><a href="/guides/how-apps-hide-from-screen-capture/">How Apps Hide From Screen Sharing on Windows (and the Limits)</a></li>
+        <li><a href="/guides/windows-excluded-from-screen-recording/">Window Not Showing in Screen Share Recording: Why It Happens</a></li>
+        <li><a href="/guides/second-monitor-during-video-interview/">Using a Second Monitor in a Video Interview: The Webcam Tell</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Test it with your own earbuds in.</h2>
+      <p class="lede" style="margin:0 auto 8px">Five free minutes a day, no card needed. Put your headphones on, play anything, and watch whether the transcript moves.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the audio capture works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

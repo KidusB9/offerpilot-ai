@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can a Zoom Host See If You Switch Tabs? The Three Signals</title>
+  <meta name="description" content="No. A share carries only the source you picked and Zoom has no focus signal. What logs a tab switch is the assessment page; what hints at one is your camera.">
+  <meta name="keywords" content="can zoom host see if you switch tabs, can an interviewer tell if you alt tab, does zoom detect tab switching, can zoom see if i switch windows, can interviewer see other tabs during screen share, does screen share show other tabs, tab switch detection during interview, blur and visibilitychange proctoring, can interviewer tell if you look away">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/can-interviewer-see-alt-tab/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Can a Zoom Host See If You Switch Tabs? The Three Signals">
+  <meta property="og:description" content="No. A share carries only the source you picked and Zoom has no focus signal. What logs a tab switch is the assessment page; what hints at one is your camera.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/can-interviewer-see-alt-tab/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-can-interviewer-see-alt-tab.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Can a Zoom Host See If You Switch Tabs? The Three Signals">
+  <meta name="twitter:description" content="No. A share carries only the source you picked and Zoom has no focus signal. What logs a tab switch is the assessment page; what hints at one is your camera.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-can-interviewer-see-alt-tab.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Can a Zoom Host See If You Switch Tabs? The Three Signals","description":"No. A share carries only the source you picked and Zoom has no focus signal. What logs a tab switch is the assessment page; what hints at one is your camera.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/can-interviewer-see-alt-tab/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Can a Zoom Host See If You Switch Tabs? The Three Signals","url":"https://offerpilotai.ink/guides/can-interviewer-see-alt-tab/","mainEntity":[{"@type":"Question","name":"Can a Zoom host see if you switch tabs?","acceptedAnswer":{"@type":"Answer","text":"No. A Zoom share is a video encoder bound to the one source you picked, and nothing in the meeting stream describes which window holds keyboard focus. Zoom's attendee attention indicator was removed in April 2020 and was never replaced. Tab switching is detected on browser-based assessment pages instead, which is a different piece of software with a different owner."}},{"@type":"Question","name":"Can an interviewer tell if you alt-tab while screen sharing?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on what you shared. If you shared one window, the viewer keeps seeing that window, though Windows dims its title bar and stops the caret blinking when it loses focus, so an attentive interviewer can tell focus left without knowing where it went. If you shared Entire Screen, they see the alt-tab switcher and the other application outright."}},{"@type":"Question","name":"Do coding assessment platforms detect tab switching?","acceptedAnswer":{"@type":"Answer","text":"Yes, when the employer has monitoring enabled. The browser tells the page when its window loses focus and when the tab is hidden, so the platform can log a timestamp, a duration and a running count, then show that count to the recruiter. It is a record of leaving, not a record of where you went."}},{"@type":"Question","name":"Can a tab switch flag say which app or site I opened?","acceptedAnswer":{"@type":"Answer","text":"No. A web page is told only that it lost focus or became hidden, never what won focus instead. A report can therefore say a candidate left the tab four times with the longest gap over a minute, but any claim about which site was opened is a human inference layered on top of a plain count."}},{"@type":"Question","name":"Can an interviewer tell from my webcam that I looked at another screen?","acceptedAnswer":{"@type":"Answer","text":"Sometimes they can guess, and a guess is all it is. A camera records eye movement, head turns, glasses reflections and the glow of a second display, and a person or a model interprets that afterwards. Looking away is also what thinking looks like, so gaze evidence produces flags rather than findings."}},{"@type":"Question","name":"Does sharing a single window hide the rest of my desktop?","acceptedAnswer":{"@type":"Answer","text":"Yes. The capture is bound to that one window for the life of the share, so your taskbar, notification toasts, other applications and second monitor stay out of frame even while you work in them. Sharing Entire Screen instead puts all of that into the stream, which is how most accidental reveals actually happen."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Can an Interviewer See You Alt-Tab","item":"https://offerpilotai.ink/guides/can-interviewer-see-alt-tab/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Can an interviewer tell if you alt-tab or switch tabs?</h1>
+      <p class="meta">2026 &middot; ~7 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Not from the video call. Zoom sends the host your microphone, your camera and the frames of whichever source you picked in the share dialog, and none of those carries a signal that says your keyboard focus moved somewhere else. Zoom's attendee attention indicator was deleted in April 2020 and nothing replaced it. Tab switching really is detected, just not there. It is detected by <strong>the assessment page itself</strong>, and a third thing entirely, <strong>your camera</strong>, keeps getting blamed for both.</p>
+
+      <h2>Three mechanisms, three different owners</h2>
+      <p>Almost every argument about this question is two people describing different machinery. Separate them once and the answer stops moving.</p>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Mechanism</th><th>Where the code runs</th><th>What it can record</th><th>What it cannot know</th></tr></thead><tbody>
+        <tr><td><strong>The share stream</strong><br>Zoom, Teams, Meet, Webex</td><td>An encoder on your machine, bound to one source you chose</td><td>The pixels of that source, at whatever frame rate the call allows</td><td>Anything outside the frame, including which window currently holds focus</td></tr>
+        <tr><td><strong>Focus and blur events</strong><br>Browser assessment platforms</td><td>JavaScript inside the tab you are being tested in</td><td>That the page lost focus or was hidden, with a timestamp, a duration and a running count</td><td>What you switched to, or whether you switched at all rather than a toast stealing focus</td></tr>
+        <tr><td><strong>The camera</strong><br>Live call or one-way recording</td><td>The lens, plus a human or a model reading the footage afterwards</td><td>Where your eyes and head went, the glow of a second display, other people in the room</td><td>The contents of any screen it is not physically pointed at</td></tr>
+      </tbody></table></div>
+      <p>Only the middle row produces a written record with your name on it. Only the top row shows anybody a picture of your other application. They are not the same risk, they do not travel together, and removing one changes nothing about the other two.</p>
+
+      <h2>Mechanism one: a share is one source, not your desktop</h2>
+      <p>When you press Share, you pick a tile. That choice binds the encoder to a single handle for the life of the share, and the encoder has no concept of focus. It copies frames from the thing it was given.</p>
+      <p><strong>Share a single window</strong> and you can alt-tab all you like. The viewer keeps seeing that window, still live, still updating. There is one indirect tell worth knowing about, because people trip over it. Windows draws an unfocused window differently: the title bar goes flat, selected text turns grey instead of blue, and the text caret stops blinking. An attentive interviewer watching a shared window can therefore tell that focus left it. They still cannot tell where it went, and a window you have been staring at for ten seconds while thinking looks exactly like one you abandoned for a browser.</p>
+      <p><strong>Share Entire Screen</strong> and the picture is the whole answer. The alt-tab switcher itself appears, then the application you moved to, full size, plus every notification toast that lands while you are away. This is how most people actually reveal what they were doing, and they do it voluntarily while worrying about detection features that were removed years ago.</p>
+      <p><strong>Share a browser tab</strong> in the Chrome or Edge picker and the capture follows that tab, not your attention. Move to a different tab and the shared one keeps being sent, still rendering, while you look at something else. Meet, the Zoom web client and most browser-based rooms behave this way, because the browser owns the capture rather than the meeting app.</p>
+      <blockquote>A share transmits a source. It does not transmit a state of mind, and there is no field in it for one.</blockquote>
+
+      <h2>Mechanism two: blur, visibilitychange, and the row a recruiter reads</h2>
+      <p>A coding assessment is a web page, and a browser tells a page two genuinely different things about being left alone.</p>
+      <ul>
+        <li><strong>A window blur event</strong> fires when something else takes keyboard focus. Alt-tab to another application triggers it, even when the browser window is still fully visible on a second monitor.</li>
+        <li><strong>A visibilitychange event</strong> fires when the tab stops being the foreground tab in its window. Switching to a different tab triggers it, and so does minimising, while merely covering the window with another window generally does not.</li>
+      </ul>
+      <p>That distinction has a practical consequence. A platform listening only for visibility changes can miss an alt-tab to a second screen, while a platform listening for blur catches it. Which events any given vendor listens for is not published, so the safe assumption is both, plus copy and paste events, plus leaving full screen.</p>
+      <p>What lands on the recruiter's side is thin and blunt. A typical proctored report row reads like <code>Focus lost: 4 events, longest 1m 12s</code>, with timestamps beside it. There is no destination field, because the page cannot see one. "Candidate left the tab four times" is a claim these platforms can make. "Candidate opened a chatbot" is not, and a report that appears to say so is a human inference written on top of a count.</p>
+      <p>The same counter is fed by things you never chose. A Teams toast, a Windows update prompt, a password manager opening, a screen reader taking focus, clicking your own second monitor to check the time, the platform's own dialog. Reviewers who read these logs every week know that. A hiring manager seeing one for the first time sometimes does not, which is why a calm sentence in your follow-up email is worth more than any workaround.</p>
+
+      <h2>What one alt-tab actually produces, situation by situation</h2>
+      <div class="cmp-wrap"><table class="cmp"><thead><tr><th>Situation</th><th>What the other side gets from a single alt-tab</th></tr></thead><tbody>
+        <tr><td>Video call, nothing shared</td><td>Nothing. No event, no indicator, no log line, nothing to review later.</td></tr>
+        <tr><td>You are sharing <strong>one window</strong></td><td>The window keeps streaming. Its title bar and selection colour dim and the caret stops blinking, so a careful viewer can tell focus left, not where it went.</td></tr>
+        <tr><td>You are sharing <strong>Entire Screen</strong></td><td>The switcher, then the other application at full size, plus the taskbar and any toast that arrives.</td></tr>
+        <tr><td>Browser assessment, monitoring off</td><td>Usually nothing stored. Some platforms still show you an in-page nudge that nobody else sees.</td></tr>
+        <tr><td>Browser assessment, proctoring on</td><td>A timestamped focus-loss event with a duration, added to a count on the report the recruiter opens.</td></tr>
+        <tr><td>Shared coding pad with session playback</td><td>A marker on the replay timeline at that second, sitting beside your keystrokes and your test runs.</td></tr>
+        <tr><td>One-way recorded video interview</td><td>No focus data at all. Only your face, moving, on a recording somebody can scrub through.</td></tr>
+        <tr><td>Lockdown browser or a required proctoring client</td><td>Frequently blocked outright, or the attempt is ended. That software was installed for exactly this.</td></tr>
+      </tbody></table></div>
+
+      <h2>Mechanism three: what a camera can and cannot show</h2>
+      <p>A camera logs nothing by itself. It produces footage that a person or a model interprets later, which makes it the weakest evidence and the one candidates fear most.</p>
+      <p>In a live interview, the human on the other end sees your eyes leave the lens, your head turn, the reflection in your glasses, sometimes the blue wash of a second display on your face, and hears typing that does not line up with the pauses in your speech. All of that is suggestive and none of it is conclusive, because looking away is also what thinking looks like. In a one-way recorded interview the same footage is replayable and reviewers do scrub it. Some vendors run gaze or face-presence heuristics on top and raise a flag. A flag is a flag, not a finding, and how those thresholds are configured differs per employer in ways candidates are rarely told.</p>
+      <p>The camera case that overrides every screen-side consideration is the second device: a proctoring flow that asks you to place a phone behind your shoulder aimed at your monitor. At that point there is no software question left to argue about. Something is looking at your screen from outside the machine, and nothing running inside it can change what that lens sees.</p>
+
+      <h2>Two minutes that let you check all three yourself</h2>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Join your own meeting from your phone</h3><p>Start a meeting on your PC, join it from your phone, mute both to avoid feedback. The phone is now the interviewer's eyes, and it cannot be wrong about what actually left your machine.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Share one window, then alt-tab away</h3><p>The phone keeps showing the shared window. Look closely at its title bar on the phone screen: it dims. That dimming is the entire honest exposure of a window share.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Switch to Entire Screen and repeat</h3><p>Same meeting, same client, completely different result. The switcher, the taskbar and whatever you opened all appear on the phone. One tile in the picker decided that.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Watch the events fire in your own console</h3><p>Open any page, press F12, and paste <code>window.addEventListener('blur', () =&gt; console.log('blur'))</code> then <code>document.addEventListener('visibilitychange', () =&gt; console.log(document.visibilityState))</code>. Alt-tab, come back, then switch tabs. You will see which action produces which line. That is the exact signal a proctored assessment writes down.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Record yourself reading a second monitor</h3><p>Point your phone camera at your face and read something off your other screen for fifteen seconds. Play it back. Judge how visible the glance is at your camera angle and lighting, then fix the angle instead of guessing about it.</p></div></div>
+      </div>
+
+      <h2>Where our own tool is the wrong answer</h2>
+      <p>Since this question usually arrives attached to ours, here is the boundary drawn plainly. The <a href="/interview-copilot/">OfferPilot AI</a> overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom, Teams, Meet or OBS share, or in a screenshot, while staying visible on your own monitor. That holds on every plan, including the free one.</p>
+      <p>Now the honest part. Capture exclusion addresses mechanism one and nothing else. It does not touch mechanism two, because a focus-loss event is fired by your own browser about your own window, and it fires whether or not anything is visible in a capture. It does not touch mechanism three at all: a webcam still sees your face, a second-device camera still sees your monitor, and a lockdown browser or a proctor sitting in the room is outside the picture entirely. It runs on Windows 10 and 11 only, so it does not exist on macOS. On a monitored assessment where the rules say no assistance, it is the wrong tool, and we would rather say so than sell you a subscription you will regret. The free tier on the <a href="/pricing/">pricing page</a> takes no card, which is the cheapest way to test a capture claim rather than believe one.</p>
+
+      <h2>The short version</h2>
+      <ul>
+        <li><strong>The call cannot tell.</strong> A share carries one chosen source and has no focus signal in it. Zoom's attention indicator was removed in April 2020 and never came back.</li>
+        <li><strong>The assessment page can.</strong> Blur and visibility events give it a timestamped count, and that count reaches a recruiter as a number, never as a destination.</li>
+        <li><strong>Alt-tab and tab-switch are not the same event.</strong> One fires blur, the other also fires a visibility change, and which of them a platform listens for is not published.</li>
+        <li><strong>Entire Screen is the real leak.</strong> Most accidental reveals are a share choice, not a detection feature.</li>
+        <li><strong>A camera proves nothing on its own,</strong> but a second device aimed at your monitor makes every screen-side argument irrelevant.</li>
+      </ul>
+      <p>If you want the platform-specific version of any row above, the rest of the <a href="/guides/">guides</a> cover Zoom, Meet, HackerRank, CoderPad and Codility one at a time.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/what-interviewers-see-on-coderpad/">Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank</a></li>
+        <li><a href="/guides/can-zoom-see-other-apps-open/">Can Zoom See What Other Apps You Have Open? Three Exceptions</a></li>
+        <li><a href="/guides/coderpad-what-the-interviewer-sees/">Does CoderPad Detect Tab Switching? What the Interviewer Sees</a></li>
+        <li><a href="/guides/codility-tab-switching-and-paste-detection/">Does Codility Track Tab Switching and Paste? What It Logs</a></li>
+        <li><a href="/guides/zoom-screen-share-what-interviewer-sees/">What an Interviewer Sees When You Share Your Zoom Screen</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Stop guessing what leaves your machine.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card. Join your own meeting from your phone and watch exactly what the other side receives.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

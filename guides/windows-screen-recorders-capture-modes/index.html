@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OBS Display vs Window Capture: What Gets Recorded on Windows</title>
+  <meta name="description" content="OBS Display Capture records the whole monitor. Window Capture records one window even when it is buried behind others. Game Capture only sees the app's own frames.">
+  <meta name="keywords" content="obs display capture vs window capture, what does obs window capture record, obs window capture behind other windows, obs game capture vs window capture, xbox game bar record desktop, snipping tool video recording windows 11, obs display capture black screen, obs window capture black screen, what does screen recording capture windows">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/windows-screen-recorders-capture-modes/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="OBS Display vs Window Capture: What Gets Recorded on Windows">
+  <meta property="og:description" content="OBS Display Capture records the whole monitor. Window Capture records one window even when it is buried behind others. Game Capture only sees the app's own frames.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/windows-screen-recorders-capture-modes/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-windows-screen-recorders-capture-modes.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="OBS Display vs Window Capture: What Gets Recorded on Windows">
+  <meta name="twitter:description" content="OBS Display Capture records the whole monitor. Window Capture records one window even when it is buried behind others. Game Capture only sees the app's own frames.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-windows-screen-recorders-capture-modes.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OBS Display vs Window Capture: What Gets Recorded on Windows","description":"OBS Display Capture records the whole monitor. Window Capture records one window even when it is buried behind others. Game Capture only sees the app's own frames.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/windows-screen-recorders-capture-modes/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"OBS Display vs Window Capture: What Gets Recorded on Windows","url":"https://offerpilotai.ink/guides/windows-screen-recorders-capture-modes/","mainEntity":[{"@type":"Question","name":"What is the difference between Display Capture and Window Capture in OBS?","acceptedAnswer":{"@type":"Answer","text":"Display Capture takes the finished composited image of one monitor, so it records every window on that panel plus the taskbar, notification toasts, the Start menu and your cursor. Window Capture takes one window's own drawing surface, so it records only that application and nothing that sits on top of it. Display Capture is the only OBS mode that records everything on a screen."}},{"@type":"Question","name":"Why does OBS Window Capture still record a window that is hidden behind other windows?","acceptedAnswer":{"@type":"Answer","text":"Because on Windows the Desktop Window Manager gives each top-level window its own off-screen buffer and composites those buffers into the picture you see. The buried window is still drawing into its buffer, so Window Capture reads a live, unobstructed image of it. The exception is a minimised window, which stops being composited and usually records as a frozen last frame or black."}},{"@type":"Question","name":"Why is my OBS Display Capture a black screen?","acceptedAnswer":{"@type":"Answer","text":"On a laptop with two GPUs it is normally because OBS is running on the discrete GPU while the desktop is composited by the integrated one, so desktop duplication has nothing to read. Set OBS to Power saving in Windows graphics settings, or change the capture method in the source properties. A black rectangle in an otherwise fine recording is usually DRM-protected video instead."}},{"@type":"Question","name":"Can Xbox Game Bar record the whole desktop?","acceptedAnswer":{"@type":"Answer","text":"Traditionally no. Game Bar is scoped to one application window, refuses to record the Windows desktop and File Explorer, and keeps recording the app it started on even after you switch away. Microsoft has loosened what counts as a recordable app across Windows 11 builds, so check your own machine, but for whole-screen recording OBS Display Capture or Snipping Tool is the reliable choice."}},{"@type":"Question","name":"Does Snipping Tool video recording capture windows that cover the recording area?","acceptedAnswer":{"@type":"Answer","text":"Yes. Snipping Tool records a fixed rectangle of the display, not a window, so anything that passes through that rectangle is recorded: overlapping windows, notification toasts, dialogs and your cursor. It behaves like a cropped Display Capture. It also does not follow a window, so moving that window out of the rectangle leaves you recording whatever is underneath."}},{"@type":"Question","name":"Why does a window look normal on my monitor but come out missing or black in a recording?","acceptedAnswer":{"@type":"Answer","text":"Because the application asked Windows to exclude it from capture with SetWindowDisplayAffinity. The Desktop Window Manager strips it before any capture API receives a frame, so it is absent from OBS, Game Bar, Snipping Tool and screenshots while staying on your screen. The older WDA_MONITOR flag leaves a black rectangle instead; WDA_EXCLUDEFROMCAPTURE leaves nothing at all."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Windows Capture Modes Compared","item":"https://offerpilotai.ink/guides/windows-screen-recorders-capture-modes/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">OBS display capture vs window capture, and what Game Bar and Snipping Tool actually record</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede"><strong>Display Capture</strong> takes the finished image of one monitor, so it records everything on that panel: every window, the taskbar, notification toasts, the Start menu, your cursor. <strong>Window Capture</strong> takes one window's own drawing buffer, so it records that application alone and keeps recording it perfectly even when the window is buried behind three others. <strong>Game Capture</strong> hooks an application's graphics API and records only the frames that application renders. Xbox Game Bar is app-scoped like Game Capture; Snipping Tool records a fixed rectangle of the display, which makes it a cropped Display Capture. One window can be missing from all five at once, and that is a Windows feature rather than a bug.</p>
+
+      <h2>What each mode picks up, row by row</h2>
+      <p>Every cell describes what lands <em>in the recorded file</em>, not what you see while recording. Rows four and six are where people lose footage they were sure they had.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>What is on screen</th>
+              <th>OBS Display Capture</th>
+              <th>OBS Window Capture</th>
+              <th>OBS Game Capture</th>
+              <th>Xbox Game Bar</th>
+              <th>Snipping Tool video</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scope of the source</strong></td>
+              <td>One whole monitor.</td>
+              <td>One window, matched by title, class and executable.</td>
+              <td>One process rendering through DirectX, OpenGL or Vulkan.</td>
+              <td>One app window, fixed when you press record.</td>
+              <td>A rectangle you drag on one display.</td>
+            </tr>
+            <tr>
+              <td><strong>Taskbar, tray, toasts, Start menu</strong></td>
+              <td>Recorded, sender names inside toasts included.</td>
+              <td>Not recorded. They are separate windows.</td>
+              <td>Not recorded.</td>
+              <td>Not recorded.</td>
+              <td>Recorded if they appear inside the rectangle.</td>
+            </tr>
+            <tr>
+              <td><strong>Other windows covering the target</strong></td>
+              <td>Recorded, because they are part of the panel.</td>
+              <td>Not recorded. The covering window is invisible in the file.</td>
+              <td>Not recorded.</td>
+              <td>Not recorded.</td>
+              <td>Recorded. Whatever crosses the rectangle is in the file.</td>
+            </tr>
+            <tr>
+              <td><strong>Target window fully buried behind others</strong></td>
+              <td>Only its visible pixels, so effectively nothing.</td>
+              <td>Recorded in full, live and unobstructed.</td>
+              <td>Recorded, if the app keeps rendering while occluded.</td>
+              <td>Recorded. Game Bar stays bound to the app it started on.</td>
+              <td>Not recorded. You get the window on top instead.</td>
+            </tr>
+            <tr>
+              <td><strong>Target window minimised</strong></td>
+              <td>Nothing.</td>
+              <td>Usually a frozen last frame or black. Minimised windows stop composing.</td>
+              <td>Usually stops, because most apps stop rendering.</td>
+              <td>Usually pauses or stops.</td>
+              <td>Nothing.</td>
+            </tr>
+            <tr>
+              <td><strong>Menus spilling outside the window</strong></td>
+              <td>Recorded.</td>
+              <td>Often clipped or missing. A menu is its own popup window.</td>
+              <td>Only if the app draws it inside its own swap chain.</td>
+              <td>Usually missing.</td>
+              <td>Recorded if inside the rectangle.</td>
+            </tr>
+            <tr>
+              <td><strong>Second monitor</strong></td>
+              <td>No. Add a second source for the second display.</td>
+              <td>Not relevant. Capture follows the window across displays.</td>
+              <td>Not relevant.</td>
+              <td>Not relevant.</td>
+              <td>No. The rectangle lives on one display.</td>
+            </tr>
+            <tr>
+              <td><strong>Window moved or resized mid-recording</strong></td>
+              <td>Frame stays nailed to the monitor.</td>
+              <td>Follows it. Resizing changes the source dimensions.</td>
+              <td>Follows it.</td>
+              <td>Follows it.</td>
+              <td>Does not follow. The rectangle stays where you drew it.</td>
+            </tr>
+            <tr>
+              <td><strong>DRM-protected video</strong></td>
+              <td>Black rectangle where the player is.</td>
+              <td>Black.</td>
+              <td>Not applicable.</td>
+              <td>Black.</td>
+              <td>Black.</td>
+            </tr>
+            <tr>
+              <td><strong>UAC prompt on the secure desktop</strong></td>
+              <td>Missing or frozen unless OBS runs elevated.</td>
+              <td>Missing.</td>
+              <td>Missing.</td>
+              <td>Missing.</td>
+              <td>Missing.</td>
+            </tr>
+            <tr>
+              <td><strong>A window excluded from capture at OS level</strong></td>
+              <td>Absent. You record the desktop behind it.</td>
+              <td>Black or empty if you target it directly.</td>
+              <td>Absent.</td>
+              <td>Absent.</td>
+              <td>Absent.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Why a completely buried window still records perfectly</h2>
+      <p>Window Capture surprises anyone who assumes a recorder photographs the screen. It does not. Since Windows Vista, the Desktop Window Manager has given every top-level window its own off-screen buffer, and the monitor shows DWM's composite of those buffers. A window sitting behind four others is still drawing into its buffer at full size. Window Capture reads that buffer, so the file shows a clean, unobstructed window while your actual screen shows almost none of it.</p>
+      <p>The mechanics differ by method, and OBS puts the choice in the source properties:</p>
+      <ul>
+        <li><strong>Windows Graphics Capture</strong> asks DWM for the window's composition surface. It handles hardware-accelerated windows such as Chrome and Electron apps, which is most software now. Older Windows 10 builds draw a coloured border around the captured window on your own screen; recent Windows 11 builds let OBS switch that border off.</li>
+        <li><strong>BitBlt</strong> is the legacy path, effectively asking the window to paint itself into a device context. Cheap and border-free, but it returns black for many GPU-composited windows, which is the classic "Chrome records as a black box" symptom.</li>
+      </ul>
+      <p>Two limits. Minimising is not the same as covering: a minimised window is not composited at all, so capture freezes on the last frame or goes black. And some applications detect that they are occluded and stop rendering to save power, so there are no frames to read. Games and some Electron apps do exactly that.</p>
+      <p>One detail quietly ruins recordings. OBS matches a window by title, class and executable through the <strong>Window Match Priority</strong> dropdown. Leave it on title-matching against a browser and the source drops the moment the tab title changes, because the window it was watching no longer exists under that name. Set it to match the title and otherwise find a window of the same executable.</p>
+
+      <h2>Why Display Capture is the only mode that gets everything</h2>
+      <p>Display Capture reads the composited output of the monitor itself, through DXGI Desktop Duplication or the Windows Graphics Capture monitor path. There is no per-window concept in that frame, so anything DWM drew on the panel is in it, including the surfaces nobody thinks of as windows: notification toasts, the Alt-Tab thumbnail strip, tooltips, drag ghosts, the Start menu, the volume flyout, unread badges on taskbar icons. It has two known holes. The UAC consent prompt runs on a separate secure desktop, so an unelevated OBS records a frozen or missing prompt. And a wholly black Display Capture on a laptop is nearly always a GPU mismatch.</p>
+
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Try each capture method explicitly</h3><p>Right click the source, Properties, then step through Capture Method instead of leaving it on Automatic. DXGI Desktop Duplication and the Windows 10 or 11 method fail in different situations.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Check which GPU OBS runs on</h3><p>Settings, System, Display, Graphics. For Display Capture set OBS to Power saving so it runs on the integrated GPU that composites your desktop. For Game Capture, High performance is correct. This fixes most black display captures on dual-GPU laptops.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Rule out DRM before blaming OBS</h3><p>If only the video player is black and everything around it records fine, that is protected playback working as designed. No capture setting changes it.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Record ten seconds and open the file</h3><p>The OBS preview is not the deliverable. Play the MP4 back. Clipped menus and dropped sources show up there and nowhere else.</p></div></div>
+      </div>
+
+      <h2>Why an excluded window is missing from every recorder at once</h2>
+      <p>Windows lets an application call <code>SetWindowDisplayAffinity</code> on its own window. With the <code>WDA_EXCLUDEFROMCAPTURE</code> flag, available since Windows 10 build 19041, DWM composites that window to your physical display but strips it from the frames it hands to capture APIs. The exclusion happens before OBS, Game Bar, Snipping Tool or Zoom receive a single pixel, which is why one flag knocks the window out of all of them at the same time rather than needing a per-app trick. Display Capture records the desktop behind it. Point Window Capture straight at it and you get black or an empty source. The older <code>WDA_MONITOR</code> flag leaves a visible black rectangle instead, so "black box" and "not there at all" tell you which flag an app uses.</p>
+      <p><a href="/interview-copilot/">OfferPilot AI</a> uses that flag for its overlay, so the overlay stays readable on your own monitor while being absent from OBS in all three modes, from Game Bar, from Snipping Tool, from a plain screenshot, and from Zoom, Teams and Meet. The same applies to the screenshot flow in <a href="/code-copilot/">Code Copilot</a>: the selection rectangle you drag after Ctrl+Alt+S belongs to the excluded surface, so it does not appear in a recording of the same screen. Capture exclusion is on every plan including the free one, so you can verify it rather than take anyone's word for it.</p>
+
+      <h2>Where this stops being true</h2>
+      <p>Capture exclusion is a compositor feature, not invisibility. It applies only to software that asks Windows for the screen. It does nothing about anything looking at your monitor from outside the machine: a webcam or a proctor watching you live, a phone propped up as a second camera, a hardware capture card between your GPU and your display, eye tracking, or a lockdown browser that takes over the whole machine. If a round is proctored under rules you have agreed to, no capture behaviour changes what those rules say, and OfferPilot is the wrong tool there. It is Windows 10 and 11 only, with no macOS, Linux, mobile or browser-extension build.</p>
+      <p>Two caveats on the table itself. Game Bar's scope has shifted across Windows 11 builds as Microsoft widened what counts as a recordable app, so if yours records something this page says it will not, trust your machine. And OBS reshuffles capture method names between major versions while the underlying behaviour stays far more stable than the labels. Where your properties dialog disagrees with this text, the dialog wins.</p>
+
+      <p>If you are picking a mode because you want to know what an interviewer's recording would contain, there is a faster test than any table. Start a Display Capture, record thirty seconds of your normal setup with everything you would ordinarily have open, then watch the file. Whatever is in that MP4 is what a full-screen share sends. <a href="/pricing/">The free tier</a> is enough to run that test end to end.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/what-meeting-recordings-capture/">Does a Zoom, Teams or Meet Recording Capture My Whole Screen?</a></li>
+        <li><a href="/guides/how-apps-hide-from-screen-capture/">How Apps Hide From Screen Sharing on Windows (and the Limits)</a></li>
+        <li><a href="/guides/windows-excluded-from-screen-recording/">Window Not Showing in Screen Share Recording: Why It Happens</a></li>
+        <li><a href="/guides/teams-share-window-vs-screen/">Microsoft Teams Share Window vs Share Screen: What Others See</a></li>
+        <li><a href="/guides/chrome-extension-vs-desktop-interview-copilot/">Chrome Extension vs Desktop Interview Copilot: What Shows</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Record your own screen and see what survives.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free, no card required. Run a Display Capture of your desktop and check the file for yourself.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

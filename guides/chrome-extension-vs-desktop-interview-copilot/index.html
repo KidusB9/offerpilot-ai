@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chrome Extension vs Desktop Interview Copilot: What Shows</title>
+  <meta name="description" content="A copilot in a browser tab, an extension panel or a native window leaves very different things visible. Here is what each one transmits under tab, window and full screen share.">
+  <meta name="keywords" content="interview copilot chrome extension vs desktop app, does a chrome extension show in screen share, interview copilot browser extension, chrome side panel visible screen share, desktop interview copilot hidden from screen share, extension overlay visible in shared tab, can an extension hide from screen capture, interview copilot windows desktop app">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/chrome-extension-vs-desktop-interview-copilot/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Chrome Extension vs Desktop Interview Copilot: What Shows">
+  <meta property="og:description" content="A copilot in a browser tab, an extension panel or a native window leaves very different things visible. Here is what each one transmits under tab, window and full screen share.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/chrome-extension-vs-desktop-interview-copilot/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-chrome-extension-vs-desktop-interview-copilot.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Chrome Extension vs Desktop Interview Copilot: What Shows">
+  <meta name="twitter:description" content="A copilot in a browser tab, an extension panel or a native window leaves very different things visible. Here is what each one transmits under tab, window and full screen share.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-chrome-extension-vs-desktop-interview-copilot.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Chrome Extension vs Desktop Interview Copilot: What Shows","description":"A copilot in a browser tab, an extension panel or a native window leaves very different things visible. Here is what each one transmits under tab, window and full screen share.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/chrome-extension-vs-desktop-interview-copilot/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Chrome Extension vs Desktop Interview Copilot: What Shows","url":"https://offerpilotai.ink/guides/chrome-extension-vs-desktop-interview-copilot/","mainEntity":[{"@type":"Question","name":"Is a Chrome extension interview copilot visible in a screen share?","acceptedAnswer":{"@type":"Answer","text":"It depends entirely on which extension surface it uses. A panel injected into the page by a content script is inside the shared tab and is transmitted even in a tab share. A browser side panel escapes a tab share but is fully visible the moment you share the Chrome window or your whole display."}},{"@type":"Question","name":"Does a Chrome side panel show up when I share a single tab?","acceptedAnswer":{"@type":"Answer","text":"No. A tab share captures the page viewport only, and the side panel is browser chrome drawn beside that viewport rather than inside it. That protection disappears under a window share, because the side panel is part of the Chrome window, and under a full screen share for the same reason."}},{"@type":"Question","name":"Can a browser extension hide itself from screen capture?","acceptedAnswer":{"@type":"Answer","text":"Not in the way a native window can. Excluding a window from capture is a window manager property that the operating system applies before the frame reaches the capturing application. A web page cannot set it for itself, so extension user interface always lands in a window or full screen share."}},{"@type":"Question","name":"Can a Chrome extension hear the interviewer if the call is in the Zoom desktop app?","acceptedAnswer":{"@type":"Answer","text":"Generally no. A browser extension can only reach audio the browser hands it, which means a tab it is allowed to capture or your microphone. Audio playing through the Zoom or Teams desktop client never passes through the browser, so a browser-only copilot has no path to it, especially on headphones."}},{"@type":"Question","name":"Which is better for a coding interview, an extension or a desktop copilot?","acceptedAnswer":{"@type":"Answer","text":"A native desktop window wins on what a share transmits and on audio reach, since it can be excluded from capture and can read system playback. An extension wins on reach of a different kind: it installs without administrator rights and runs anywhere Chrome runs, including macOS and ChromeOS."}},{"@type":"Question","name":"Does OfferPilot AI have a Chrome extension?","acceptedAnswer":{"@type":"Answer","text":"No. OfferPilot AI is a native Windows 10 and 11 application only, with no browser extension and no macOS, Linux, ChromeOS or mobile build. If your machine blocks installers or you work on a Chromebook, it is the wrong tool and an extension based product will suit you better."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"Extension vs Desktop Copilot","item":"https://offerpilotai.ink/guides/chrome-extension-vs-desktop-interview-copilot/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Video call platforms and screen sharing</p>
+      <h1 class="balance">Chrome extension vs desktop interview copilot: what each one shows</h1>
+      <p class="meta">2026 &middot; ~9 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">A copilot can live in exactly three kinds of place, and the place decides what an interviewer receives. <strong>A second browser tab</strong> stays out of a tab share but appears in the tab strip the moment you share the browser window. <strong>An extension panel</strong> splits in two: a browser side panel escapes a tab share, while a panel injected into the page is inside the shared tab by definition. <strong>A native window excluded from capture at the operating system level</strong> is absent from all three modes, because the compositor removes it before the frame ever reaches Zoom.</p>
+
+      <h2>The three places a copilot can live</h2>
+      <p>People compare "extension versus app" as though it were a packaging decision. It is not. It is a decision about which rectangle your helper is drawn inside, and every screen sharing mode captures a different rectangle.</p>
+      <ul>
+        <li><strong>A browser tab.</strong> A web app you open in a second tab and read by switching to it, or by tiling two Chrome windows side by side. No install, no permissions, nothing sitting on the machine, and no way to look at it without leaving the tab you are working in.</li>
+        <li><strong>An extension surface.</strong> Three different things wear this one label. A toolbar popup, which closes the instant it loses focus and is therefore useless while you type. A side panel, drawn by Chrome along the edge of the window, beside the page. And an in-page panel injected by a content script, which is ordinary HTML added to the interviewer's page, floating over the editor.</li>
+        <li><strong>A native window.</strong> A normal desktop window, which can additionally be marked so that Windows strips it out of any capture before the capturing application receives a single frame. It stays lit on your own monitor and is simply not in the encoded video.</li>
+      </ul>
+      <p>That last mechanism is the only one on this page that is not a matter of geometry. The other surfaces are hidden or visible depending on where the capture rectangle happens to fall. An excluded window is removed by the operating system regardless of where it sits, what it overlaps, or which mode you picked.</p>
+
+      <h2>What each surface transmits, share mode by share mode</h2>
+      <p>Every cell describes what <em>the other participants receive</em>, not what your own monitor shows. Read the tab share column first, because it is the mode most interview platforms ask for and the one people most often assume is safe.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr>
+              <th>Where the copilot is drawn</th>
+              <th>Sharing one Chrome tab</th>
+              <th>Sharing a window</th>
+              <th>Sharing your entire screen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A second browser tab</strong></td>
+              <td>Not transmitted. Capture is bound to the chosen tab's viewport, and the tab strip sits above it.</td>
+              <td>Transmitted. Share the Chrome window and its title and favicon are readable in the strip, and reading it puts the whole page on screen.</td>
+              <td>Transmitted, along with everything else on that display.</td>
+            </tr>
+            <tr>
+              <td><strong>Extension toolbar popup</strong></td>
+              <td>Not transmitted. The popup is browser chrome anchored above the page, outside the captured rectangle.</td>
+              <td>Generally transmitted, since it is drawn over the browser window. Capture paths differ here, so verify rather than assume.</td>
+              <td>Transmitted. It also dismisses itself the moment you click back into the editor.</td>
+            </tr>
+            <tr>
+              <td><strong>Extension side panel</strong></td>
+              <td>Not transmitted. The panel sits beside the viewport, not inside it.</td>
+              <td>Transmitted in full. It is part of the Chrome window you selected.</td>
+              <td>Transmitted in full.</td>
+            </tr>
+            <tr>
+              <td><strong>In-page panel injected by a content script</strong></td>
+              <td><strong>Transmitted.</strong> It is DOM inside the page, so it is inside the captured viewport.</td>
+              <td>Transmitted.</td>
+              <td>Transmitted.</td>
+            </tr>
+            <tr>
+              <td><strong>Ordinary native window</strong></td>
+              <td>Not transmitted. It is not part of any tab.</td>
+              <td>Not transmitted if you shared a different window, though an overlapping window can bleed into older capture paths.</td>
+              <td>Transmitted. It is just another window on the display.</td>
+            </tr>
+            <tr>
+              <td><strong>Native window excluded from capture at OS level</strong></td>
+              <td>Absent.</td>
+              <td>Absent, even when it overlaps the shared window.</td>
+              <td>Absent. The compositor removes it from the display capture.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>The injected panel trap</h2>
+      <p>Row four is the one worth stopping on. Advice about screen sharing converges on "share a single tab, it leaks the least", and for browser chrome that is true: the address bar, the bookmarks bar, your other tabs and the downloads bubble all stay out of the frame. But a content script writes into the same document the page renders. Whatever it draws is page content, and page content is exactly what a tab share is designed to send.</p>
+      <p>There is a second consequence that has nothing to do with video. Because an injected panel lives in the page's own DOM tree, the page's own JavaScript can observe it. Any script on that origin can walk the document, or watch it with a mutation observer, and see nodes it did not create. Whether a particular assessment platform actually does that is a question about that platform, and I am not going to assert a specific behaviour for one. The structural point stands without it: a side panel and a native window are outside the document, and an injected panel is inside it.</p>
+      <p>So the ranking flips depending on the mode. Under a tab share, an injected panel is the worst of the six surfaces and a side panel is fine. Under a window share, the side panel is fully visible and a second tab is barely better. Under a full screen share, everything except an OS excluded window is on camera.</p>
+
+      <h2>Where the interviewer's voice actually comes from</h2>
+      <p>Visibility is only half the comparison. A copilot that cannot hear the question cannot answer it, and this is where the two architectures diverge hardest.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>Capability</th><th>Browser extension</th><th>Native Windows app</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Audio it can reach</strong></td><td>A tab it is permitted to capture, or your microphone.</td><td>System playback loopback, meaning the mix your output device receives.</td></tr>
+            <tr><td><strong>Interview held in the Zoom or Teams desktop client</strong></td><td>Out of reach. That audio never passes through the browser.</td><td>Works, because loopback does not care which application produced the sound.</td></tr>
+            <tr><td><strong>You are wearing headphones</strong></td><td>Removes the microphone fallback entirely.</td><td>Works. Loopback taps the output stream, not the room.</td></tr>
+            <tr><td><strong>Marking itself out of a screen capture</strong></td><td>Not available. That flag is a window property, and a page does not own a window.</td><td>Available for every window it owns.</td></tr>
+            <tr><td><strong>Installation</strong></td><td>Store install, usually with no administrator rights.</td><td>An installer, which a managed laptop may refuse.</td></tr>
+            <tr><td><strong>Operating systems</strong></td><td>Anywhere Chrome runs, macOS and ChromeOS included.</td><td>Whatever the vendor builds for, and nothing else.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The Interview Copilot in <a href="/interview-copilot/">OfferPilot AI</a> takes the loopback route and transcribes on device with Whisper, which is why headphones are the recommended setup rather than a problem to work around. Roughly a second passes between the interviewer finishing a sentence and a speakable draft appearing.</p>
+
+      <h2>Prove all of this on your own machine in six minutes</h2>
+      <p>Do not take a vendor's word for any row above, mine included. Every claim on this page is testable before it matters.</p>
+      <div class="steps">
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Start a solo meeting and join it from your phone</h3><p>Google Meet or Zoom, with the phone muted and its speaker off so nothing echoes. The phone is standing in for your interviewer and it is the only honest evidence in the room.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Open the copilot surface you actually plan to use</h3><p>Not a screenshot from a product page. The real panel, in the browser profile you will interview from, on the editor page you will be given.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Share one tab, then look at the phone</h3><p>An injected panel appears here. A side panel, a popup and a second tab do not. This single test settles most of the argument.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Stop, share the Chrome window, look again</h3><p>Now the side panel, the extension icons and every tab title are in frame. If you only ever test tab share, the day an interviewer asks for a window will be a surprise.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Share your entire screen, look again</h3><p>Everything except an OS excluded window is now transmitted, notification toasts and taskbar badges included.</p></div></div>
+        <div class="step"><div class="step__n" aria-hidden="true"></div><div><h3>Take a screenshot with Win+Shift+S and open the saved file</h3><p>Screenshot and recording paths are not the same code as a live share. Judge it on the image on disk, not the preview thumbnail.</p></div></div>
+      </div>
+      <p>For a browser based coding round, the arrangement that survives all three modes is a shared editor tab plus a native window beside it. That is how <a href="/code-copilot/">Code Copilot</a> is meant to be used: the problem stays in the tab you are sharing, and the working notes stay in a window that is not in the frame.</p>
+
+      <h2>What the extension model genuinely does better</h2>
+      <p>Three real advantages, none of them about screen sharing.</p>
+      <ul>
+        <li><strong>It installs where an executable cannot.</strong> A locked down corporate laptop that refuses installers will often still allow an extension from the store. If you cannot install software on the machine you interview from, the comparison is already over.</li>
+        <li><strong>It runs on hardware a Windows app never will.</strong> ChromeOS, macOS, a Linux desktop. A Chromebook has no native option at all, so the choice there is an extension or nothing.</li>
+        <li><strong>It asks nothing of the operating system.</strong> No loopback audio device, no window level flags, no background process. For some people that is the deciding factor and it is a reasonable one.</li>
+      </ul>
+      <p>What it cannot do is opt out of a capture, because that decision is made by the window manager about a window, and an extension does not have one to mark. Any comparison that skips past this is quietly comparing convenience with convenience.</p>
+
+      <h2>Where OfferPilot is the wrong tool</h2>
+      <p>Plainly, so nobody discovers it at the worst moment. There is <strong>no browser extension</strong>. It is Windows 10 and 11 only, with no macOS, Linux, ChromeOS or mobile build. On a Chromebook, on a Mac, or on a machine where IT blocks installers, an extension based product is the better fit, and the table above is the honest reason why.</p>
+      <p>Capture exclusion also has a hard boundary that gets blurred in marketing everywhere. It covers screen sharing, screen recording and screenshots. It does nothing about a webcam, a lockdown browser that owns the whole machine, a proctor watching you in person, eye tracking, or a phone propped up as a second camera. Eyes travelling repeatedly to one side read as exactly that on video, whatever is or is not inside the share. And in a proctored assessment running inside a lockdown browser, none of this applies at all. That is not the situation these tools are for.</p>
+
+      <h2>Choosing, in two sentences</h2>
+      <p>If the interview audio comes out of a desktop client, and any of the three share modes could be asked for, a native window that the operating system keeps out of the frame is the only surface that behaves identically in all three columns. If you cannot install software, or you are not on Windows, take a side panel over an injected panel, keep the copilot out of the tab you are sharing, and treat a window share request as the moment to close it.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/how-apps-hide-from-screen-capture/">How Apps Hide From Screen Sharing on Windows (and the Limits)</a></li>
+        <li><a href="/guides/what-meeting-recordings-capture/">Does a Zoom, Teams or Meet Recording Capture My Whole Screen?</a></li>
+        <li><a href="/guides/teams-screen-share-notifications/">Will My Notifications Show When I Share My Screen in Teams?</a></li>
+        <li><a href="/guides/browser-based-screen-share-whereby-ringcentral/">Whereby Screen Share: What Others Can See in Each Picker Tab</a></li>
+        <li><a href="/guides/webex-share-application-vs-screen/">Webex Share Application vs Share Screen (and Share a Portion)</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2 class="balance">Test it against your own screen share.</h2>
+      <p class="lede" style="margin:0 auto 8px">Free tier, no card. Start a solo meeting, share a tab, then a window, then the whole screen, and watch each one from your phone.</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid btn--lg" href="/download/">Start free<span class="btn__arr" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="/interview-copilot/">How the overlay works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>

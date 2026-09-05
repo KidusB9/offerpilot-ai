@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does CoderPad Detect Tab Switching? What the Interviewer Sees</title>
+  <meta name="description" content="Yes, and it shows live. CoderPad raises a notice when focus leaves the pad, highlights outside pastes inline, and alerts on fullscreen exits in Screen.">
+  <meta name="keywords" content="does coderpad detect tab switching, what does the interviewer see on coderpad, coderpad paste detection, coderpad playback, coderpad screen fullscreen alert, can coderpad see my screen, coderpad proctoring, is coderpad monitored">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://offerpilotai.ink/guides/coderpad-what-the-interviewer-sees/">
+  <meta name="theme-color" content="#05070A">
+  <meta name="base-path" content="">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="OfferPilot AI">
+  <meta property="og:title" content="Does CoderPad Detect Tab Switching? What the Interviewer Sees">
+  <meta property="og:description" content="Yes, and it shows live. CoderPad raises a notice when focus leaves the pad, highlights outside pastes inline, and alerts on fullscreen exits in Screen.">
+  <meta property="og:url" content="https://offerpilotai.ink/guides/coderpad-what-the-interviewer-sees/">
+  <meta property="og:image" content="https://offerpilotai.ink/assets/og/guides-coderpad-what-the-interviewer-sees.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@offerpilotai">
+  <meta name="twitter:title" content="Does CoderPad Detect Tab Switching? What the Interviewer Sees">
+  <meta name="twitter:description" content="Yes, and it shows live. CoderPad raises a notice when focus leaves the pad, highlights outside pastes inline, and alerts on fullscreen exits in Screen.">
+  <meta name="twitter:image" content="https://offerpilotai.ink/assets/og/guides-coderpad-what-the-interviewer-sees.png">
+
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/icon-512.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Does CoderPad Detect Tab Switching? What the Interviewer Sees","description":"Yes, and it shows live. CoderPad raises a notice when focus leaves the pad, highlights outside pastes inline, and alerts on fullscreen exits in Screen.","datePublished":"2026-09-05","dateModified":"2026-09-05","inLanguage":"en","author":{"@type":"Organization","name":"OfferPilot AI","url":"https://offerpilotai.ink/"},"publisher":{"@type":"Organization","name":"OfferPilot AI","logo":{"@type":"ImageObject","url":"https://offerpilotai.ink/assets/icon-180.png"}},"mainEntityOfPage":"https://offerpilotai.ink/guides/coderpad-what-the-interviewer-sees/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","name":"Does CoderPad Detect Tab Switching? What the Interviewer Sees","url":"https://offerpilotai.ink/guides/coderpad-what-the-interviewer-sees/","mainEntity":[{"@type":"Question","name":"Does CoderPad tell the interviewer which tab I switched to?","acceptedAnswer":{"@type":"Answer","text":"No. The pad is an ordinary web page, and the browser events it listens to carry no destination. The page learns that it stopped being visible or lost keyboard focus, and nothing else. There is no URL, no window title, no screenshot and no record of what you typed elsewhere. The interviewer sees that you left and roughly how long for."}},{"@type":"Question","name":"Does CoderPad show the interviewer when I paste code?","acceptedAnswer":{"@type":"Answer","text":"Yes, and immediately. Text arriving from outside the pad is marked in the editor itself rather than filed in a report, so the interviewer watching the same shared document sees the highlighted block appear at the moment it lands. Copying something from higher up in the pad and pasting it back is ordinary editing and is treated differently from content arriving from elsewhere."}},{"@type":"Question","name":"Does opening the browser console count as leaving the pad?","acceptedAnswer":{"@type":"Answer","text":"In practice, yes. Developer tools take keyboard focus away from the document whether they are docked or in a separate window, so the pad registers the same leave event it would for a second tab. Candidates who reflexively open the console to read an error trip it without going anywhere. Say out loud that you are opening it and the event stops meaning anything."}},{"@type":"Question","name":"What does CoderPad playback show after the interview?","acceptedAnswer":{"@type":"Answer","text":"Playback replays the pad's edit history as a scrubbable timeline, so someone who was not in the room can watch the solution appear at the speed it was written. It shows pauses, rewrites and blocks that arrived all at once. It never held your screen, your other tabs or your keystrokes anywhere else, because it is a recording of a document rather than of a person."}},{"@type":"Question","name":"Does leaving fullscreen fail a CoderPad Screen assessment?","acceptedAnswer":{"@type":"Answer","text":"No. Where fullscreen is required, an exit raises an alert after a short grace period rather than instantly, which is what stops a stray Esc or an operating system dialog from counting. The result is a flag recorded beside your work, not a deduction from your score. A human decides what it means, usually by asking you about the code."}},{"@type":"Question","name":"Can an overlay hidden from screen sharing avoid CoderPad's tab-switch alert?","acceptedAnswer":{"@type":"Answer","text":"No. Capture exclusion removes a window from screen shares, recordings and screenshots. Focus detection never looks at pixels, it reads which window the operating system considers focused, so clicking any overlay raises the same leave notice as any other application. Capture exclusion also does nothing against webcam monitoring, lockdown browsers, eye tracking or a person watching you."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offerpilotai.ink/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://offerpilotai.ink/guides/"},{"@type":"ListItem","position":3,"name":"What the interviewer sees on CoderPad","item":"https://offerpilotai.ink/guides/coderpad-what-the-interviewer-sees/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="brand" href="/" aria-label="OfferPilot AI home">
+      <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#bg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+        <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#bg)" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+        <defs><linearGradient id="bg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+      </svg>
+      <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/blog/">Resources</a>
+    </nav>
+
+    <div class="nav__cta">
+      <a class="btn btn--ghost" href="/download/">Download</a>
+      <a class="btn btn--solid" href="/download/">Start free<span class="btn__arr" aria-hidden="true">→</span></a>
+    </div>
+
+    <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="navMobile" hidden>
+    <a href="/interview-copilot/">Interview Copilot</a>
+    <a href="/code-copilot/">Code Copilot</a>
+    <a href="/interview-copilot/#generator">Company Q&amp;A</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/blog/">Resources</a>
+    <a class="btn btn--solid btn--block" href="/pricing/">Start free →</a>
+  </div>
+</header>
+
+  <main id="main">
+    <section class="section section--tight">
+  <div class="wrap">
+    <div class="article-head reveal">
+      <p class="eyebrow"><a href="/guides/" style="color:var(--muted-2)">Guides</a> &middot; Proctoring, privacy and detection</p>
+      <h1 class="balance">Does CoderPad detect tab switching, and what does the interviewer see?</h1>
+      <p class="meta">2026 &middot; ~6 min read &middot; OfferPilot AI</p>
+    </div>
+
+    <article class="prose reveal">
+      <p class="lede">Yes, and the important part is the timing: in a live pad the interviewer is not reading a report afterwards, they are watching it happen. Focus leaving the pad raises a notice on their side while you are still away. Text pasted in from outside arrives highlighted in the shared editor, where both of you can see it land. In a CoderPad Screen assessment, dropping out of fullscreen raises its own alert after a short grace period. What none of it carries is a destination, so the signal is always that you left and what appeared next, never where you went.</p>
+
+      <p>Start with the baseline, because it is bigger than any alert. A live pad is a shared document, so the interviewer sees every keystroke as you make it: the variable you rename twice, the loop you write and delete, the twenty seconds the caret sits still. Running the code puts the same output pane in front of them. There is no submit button and no moment where your work becomes visible, because it already was. The alerts below cover only what happens outside that document.</p>
+
+      <h2>The three alerts that fire while the session is still running</h2>
+      <p>CoderPad splits into two products that behave differently, and mixing them up causes most of the confusion online. The collaborative pad is a live interview with a human at the other end of the document. Screen is the assessment you take alone. The first two signals apply to both, the third only to Screen.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Focus leaves the pad</h3>
+            <p>The pad is a web page, so the trigger is the browser's own visibility and focus events. The tab becoming hidden, or the window losing keyboard focus, surfaces a notice on the interviewer's side, and the clock on it runs until you come back. It is a live nudge rather than a line in a file, which is why interviewers so often ask whether everything is alright four seconds after you Alt-Tab.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>An outside paste, marked in the editor</h3>
+            <p>Pasting is not treated as one thing. Copying a helper function from higher up in the pad and pasting it back is ordinary editing. Content arriving from outside the document is flagged in the editor itself, so the interviewer watching the same shared buffer sees a highlighted block appear the instant it drops in. Nothing to check later, no report to wait for.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step__n" aria-hidden="true"></div>
+          <div>
+            <h3>Fullscreen exit on a Screen assessment</h3>
+            <p>Where the hiring team has required fullscreen, leaving it does not flag instantly. A short grace period runs first, long enough that a stray Esc or an operating system dialog does not generate an incident on its own. Stay outside past it and the exit is alerted and recorded against the attempt, and repeats accumulate.</p>
+          </div>
+        </div>
+      </div>
+
+      <p>The exact wording, the length of that grace period and which of these a company has switched on depend on the plan and the settings the hiring team chose, so treat this as the shape of the behaviour rather than a fixed schema. The two sources underneath it do not change: standard browser events, plus the editor's own record of how text entered the document.</p>
+
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>What CoderPad has</th><th>What the interviewer gets</th><th>When</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Focus leaving the pad</td><td>A live notice, and how long you were gone once you return</td><td>During the session</td></tr>
+            <tr><td>Paste from outside the pad</td><td>The block highlighted inline for both of you</td><td>The moment it lands</td></tr>
+            <tr><td>Paste of text copied within the pad</td><td>Nothing special, it is ordinary editing</td><td>Not applicable</td></tr>
+            <tr><td>Fullscreen exit (Screen only)</td><td>An alert after a short grace period, kept on the attempt</td><td>During the assessment</td></tr>
+            <tr><td>The tab or app you switched to</td><td>Nothing. The browser event carries no URL or title</td><td>Never</td></tr>
+            <tr><td>Your screen or keystrokes elsewhere</td><td>Nothing. The pad is a web page, not a lockdown client</td><td>Never</td></tr>
+            <tr><td>The order the code was written in</td><td>A scrubbable replay of the edit history</td><td>After, in playback</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>The quirk: opening the console reads as leaving</h2>
+      <p>Developer tools take keyboard focus away from the document. Undocked they are a separate window, docked they are a panel your caret moves into, and either way the page stops being the focused thing. A candidate who hits F12 to read why a fetch is failing produces the same leave event as one who opened a second tab for the answer.</p>
+      <blockquote>The people most likely to trip this are the ones you want to hire. Reflexively opening the console when a front-end pad misbehaves is a good instinct that looks identical to a bad one in the log.</blockquote>
+      <p>Same for a chat toast that steals focus, a password manager popup, the machine auto-locking, and clicking a second monitor while the pad stays fully visible on the first. None of these arrive labelled as innocent.</p>
+      <p>The fix is verbal, not technical, and it works because a person is on the call. Say it before you do it: I am opening the console to check that error. An event the interviewer has already been told about stops being a signal, and looking something up is normal engineering behaviour. Silence is what makes a four minute gap interesting.</p>
+
+      <h2>What playback replays afterwards, and what it never had</h2>
+      <p>CoderPad keeps the pad's edit history and replays it as a scrubbable timeline, so someone who was not in the room can watch your solution appear at the speed it was written. That view is rich in ways the finished file is not. It shows the order you built things in, the long pause before you saw the trick, the function you wrote and deleted, and sixty working lines arriving in a single frame twenty seconds after focus came back.</p>
+      <p>What it never had is just as concrete. No screen recording, no view of your other tabs, no clipboard history saying where the text came from, no keystrokes outside the pad, no picture of you. A video call, if the round used one, is a separate stream on separate settings, not part of the replay. Playback records a document, not a person, which is why every flag CoderPad produces has the same shape: focus left, then this appeared. Never: you were here.</p>
+      <p>That is also why the raw count of leave events matters less than candidates fear. Fourteen two second losses across an hour is a laptop with notifications left on. One six minute loss starting right after the hard part loads, followed by a highlighted paste, is a story. In a live pad the interviewer usually just asks you to walk through the block, often within a minute of it landing.</p>
+
+      <h2>Where OfferPilot AI is the wrong tool for this</h2>
+      <p>Worth saying plainly on a page published by a company that sells an interview assistant. Our overlay is excluded from screen capture at the operating system level, so it does not appear in a Zoom, Teams or Meet share, in recordings or in screenshots. That property is irrelevant here. Focus detection does not look at pixels, it reads which window the operating system considers focused, so interacting with any overlay, or triggering the <a href="/code-copilot/">Code Copilot</a> screenshot shortcut, moves focus off the pad and raises the identical notice. Capture exclusion also does nothing against webcam monitoring, a lockdown browser, eye tracking, a second-device camera or a human proctor.</p>
+      <p>A live pad is also the format where a pasted answer helps least. The interviewer reads the code as it appears and will ask you to change it, so anything you cannot explain and extend under questioning is worse than a half solution you wrote yourself.</p>
+
+      <h2>A short pre-pad checklist</h2>
+      <ul>
+        <li><strong>Keep the pad on one screen</strong> and put nothing you will click on the other, since clicking a second monitor blurs the pad while it stays visible.</li>
+        <li><strong>Narrate anything that takes you out of the tab</strong>, the console included, before you do it.</li>
+        <li><strong>Type your snippets, do not paste them.</strong> A template typed by hand is ordinary editing, the same text pasted from a notes app is highlighted.</li>
+        <li><strong>If something interrupts you, say what it was at the time.</strong> An explained gap and an unexplained one read very differently.</li>
+      </ul>
+
+      <p>OfferPilot AI is a Windows 10 and 11 desktop app for practice and for live conversational rounds, not a way around a proctored assessment. If your next round is a discussion rather than a shared editor, the <a href="/interview-copilot/">Interview Copilot</a> free tier is five minutes a day with no card, listed on the <a href="/pricing/">pricing page</a>.</p>
+          <h2>Related guides</h2>
+      <ul>
+        <li><a href="/guides/what-interviewers-see-on-coderpad/">Can CoderPad See If You Switch Tabs? CoderPad vs HackerRank</a></li>
+        <li><a href="/guides/codility-tab-switching-and-paste-detection/">Does Codility Track Tab Switching and Paste? What It Logs</a></li>
+        <li><a href="/guides/coderpad-hackerrank-what-interviewer-sees/">Does CoderPad Detect Screen Sharing? Two Separate Channels</a></li>
+        <li><a href="/guides/can-interviewer-see-alt-tab/">Can a Zoom Host See If You Switch Tabs? The Three Signals</a></li>
+        <li><a href="/guides/is-codesignal-proctored/">Is CodeSignal Proctored? Camera, ID, Screen and Tab Rules</a></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+  </main>
+  <footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="/" aria-label="OfferPilot AI home">
+        <svg class="brand__mark" width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M16 2 3 9v14l13 7 13-7V9L16 2Z" stroke="url(#fg)" stroke-width="1.6" fill="rgba(110,231,255,0.05)"/>
+          <path d="M16 9v14M9 12.5v7l7 3.8 7-3.8v-7" stroke="url(#fg)" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2.4" fill="#37E39B"/>
+          <defs><linearGradient id="fg" x1="3" y1="2" x2="29" y2="30"><stop stop-color="#6EE7FF"/><stop offset="1" stop-color="#8B7BFF"/></linearGradient></defs>
+        </svg>
+        <span class="brand__name">OfferPilot<span class="brand__ai">AI</span></span>
+      </a>
+      <p class="footer__tag">Your invisible AI copilot for live interviews and coding tests. On-device transcription, screen-share-safe overlay, company-specific prep.</p>
+      <p class="footer__status"><span class="dot dot--live"></span> All systems operational</p>
+      <p class="footer__contact"><a href="mailto:support@offerpilotai.ink">support@offerpilotai.ink</a></p>
+    </div>
+
+    <nav class="footer__col" aria-label="Products">
+      <h4>Products</h4>
+      <a href="/interview-copilot/">Interview Copilot</a>
+      <a href="/code-copilot/">Code Copilot</a>
+      <a href="/download/">Desktop app</a>
+      <a href="/pricing/">Pricing</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Features">
+      <h4>Features</h4>
+      <a href="/interview-copilot/#generator">Company Q&amp;A generator</a>
+      <a href="/interview-copilot/">Undetectable overlay</a>
+      <a href="/code-copilot/">On-device transcription</a>
+    </nav>
+
+    <nav class="footer__col" aria-label="Resources">
+      <h4>Resources</h4>
+      <a href="/guides/">All guides</a>
+      <a href="/best-ai-interview-copilot/">Best AI interview copilot 2026</a>
+      <a href="/vs/cluely/">vs Cluely</a>
+      <a href="/vs/lockedin-ai/">vs LockedIn AI</a>
+      <a href="/vs/final-round-ai/">vs Final Round AI</a>
+      <a href="/interview-questions/">Company interview questions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/blog/best-ai-interview-copilot-2026/">Best AI copilot 2026</a>
+      <a href="/blog/ai-coding-copilot-leetcode/">AI for LeetCode</a>
+      <a href="/blog/company-specific-interview-prep/">Company-specific prep</a>
+    </nav>
+  </div>
+
+  <div class="footer__legal">
+    <p class="footer__links">
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="mailto:support@offerpilotai.ink">Contact</a>
+    </p>
+    <p>© 2026 OfferPilot AI. Built for candidates who prepare.</p>
+    <p class="footer__fine">Use responsibly and within the rules of any assessment you take. OfferPilot is a preparation and accessibility tool.</p>
+  </div>
+</footer>
+
+  <script src="/scripts/main.js" defer></script>
+</body>
+</html>
