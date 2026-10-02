@@ -1,0 +1,101 @@
+{
+  "company": "JPMorgan Chase",
+  "role": "Software Engineer II, C#/.NET (Global / Healthcare Payments)",
+  "stack": ["C#", ".NET", "Postgres", "Azure DevOps", "Angular", "React Native"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself. / Walk me through your background.",
+      "answer": "Give a tight 60-second arc: your background and education, your most relevant recent role and the C#/.NET stack you worked in, then one flagship project you owned end to end with a measurable result. If your background touches healthcare or payments, connect it, since this team sits at that intersection. Close with a specific, honest reason this role excites you, for a payments position tie it to caring about correctness, security, and resiliency at scale, and lead with what is most relevant to the job rather than your whole history.",
+      "keywords": ["tell me about yourself", "background", "intro", "walk me through"]
+    },
+    {
+      "section": "Opening",
+      "question": "Why JPMorgan Chase? / Why leave your current role?",
+      "answer": "Give two crisp reasons and keep the why-leave framed as running toward something, not away. Lead with scale and stakes, a bank's payments systems move money for millions so the bar for correctness, resiliency, and security is on another level, and second connect the role's domain to your own background so the fit reads as genuine. Avoid criticizing your current employer; frame the move as seeking higher engineering discipline, mentorship, and stakes.",
+      "keywords": ["why jpmorgan", "why leave", "motivation"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about the most challenging technical project you've worked on.",
+      "answer": "Pick a genuinely hard systems problem and use STAR, ideally something like offline-first sync or reliable data movement that maps to payments themes. Explain the core difficulty, conflict resolution or exactly-once delivery when the network cannot be trusted, and how you designed for it with deterministic merges, an idempotent write path, and integration tests that simulated failure. Land a measurable result and close on the lesson that idempotency and safe retries are the whole game when the network is unreliable, which is directly relevant to payments.",
+      "keywords": ["challenging project", "hardest", "offline sync", "idempotency", "star"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a time you failed or something went wrong.",
+      "answer": "Choose a real failure you owned, and a strong pattern is underestimating the human side of a rollout, assuming good software drives adoption on its own. Show that you stopped treating it as purely engineering: you sat with users, shipped UX and error-message fixes, set up real training instead of a one-time handoff, and gave stakeholders honest status. Land the recovery and close on the lesson that shipping code is half the job and telling stakeholders the truth, even we are behind, is the other half.",
+      "keywords": ["failure", "went wrong", "mistake", "adoption", "star"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a time you disagreed with a teammate or made a tough technical decision.",
+      "answer": "Use STAR and show you convert disagreement into a measurable comparison rather than trading opinions. Describe a build-versus-patch or similar decision where you built a cost-and-latency comparison and a small proof-of-concept, and crucially folded the other person's risk concerns into the plan rather than dismissing them. Land the aligned decision and result, and close on the takeaway: make the trade-off measurable and genuinely absorb the other side's concerns.",
+      "keywords": ["disagreement", "conflict", "tough decision", "star"]
+    },
+    {
+      "section": "Resume Deep-Dive",
+      "question": "Walk me through your flagship platform. What was your specific role?",
+      "answer": "Give a crisp architecture sketch of your flagship project, the backend, data store, and any web and mobile clients, plus the CI/CD setup, then be precise about your specific scope. State what you personally owned, architecture, pipeline, a hard subsystem, and the rollout, and quantify the business case, like retiring a costly vendor system and gaining control of the data model. Keep it factual and let the ownership and the measurable impact speak.",
+      "keywords": ["your project", "your role", "platform", "flagship"]
+    },
+    {
+      "section": "Resume Deep-Dive",
+      "question": "You mention big latency and cost savings, how do you back those numbers up?",
+      "answer": "Show intellectual honesty about your metrics. Separate the hard, invoiced number, a retired vendor's annual licensing, from the performance claim, and explain the mechanism behind the latency win, moving from external round-trips toward local-first reads on a data model you controlled. Offer to walk through exactly which operations improved and how you measured before and after, and make clear you would rather be precise than overstate a number you cannot defend.",
+      "keywords": ["latency", "cost savings", "metrics", "numbers", "defend"]
+    },
+    {
+      "section": "Resume Deep-Dive",
+      "question": "Tell me about the AI assistant you built. How did you handle data security?",
+      "answer": "Lead with the security decision as the point of the story. Describe keeping sensitive inputs and outputs inside your security boundary, running the model on-premise behind internal APIs rather than sending internal screens or voice to an external service, and containerizing it for control. Draw the explicit parallel to a bank: you want the productivity of AI, but sensitive data has to stay inside the boundary, which shows you already think about responsible AI the way a payments organization must.",
+      "keywords": ["ai assistant", "data security", "on-prem", "responsible ai"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "What's the difference between a value type and a reference type?",
+      "answer": "Define it precisely: a value type holds its data directly so assigning or passing copies the value, while a reference type holds a reference to a heap object so assignment copies the reference and two variables can alias the same object. Note where each tends to live, value types on the stack or inline, reference-type objects on the GC-managed heap. Close with the practical impact, copy semantics and allocation cost, which is exactly what matters in high-throughput payment code.",
+      "keywords": ["value type", "reference type", "stack", "heap", "clr"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "What is boxing and unboxing, and why should you care?",
+      "answer": "Explain boxing as wrapping a value type in a heap object so it can be used as a reference type, with unboxing extracting it back under a type check, and note boxing is implicit while unboxing is explicit. Make the why-care concrete: in hot paths boxing causes heap allocations and GC pressure that quietly kill throughput, as with non-generic collections or an object or interface where a generic would avoid the box. Tie it to payments, where millions of operations make that allocation pressure matter, and mention generics and Span-style APIs as the fix.",
+      "keywords": ["boxing", "unboxing", "gc pressure", "performance"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "IEnumerable vs IQueryable, what's the difference?",
+      "answer": "Frame it as where the query runs. IEnumerable executes in application memory as LINQ-to-Objects, so filtering database rows means you have already pulled them all into memory, while IQueryable builds an expression tree the provider translates to SQL so filtering happens at the source and you pull only what you need. Call out the classic bug, materializing too early with ToList() then filtering, which turns an efficient server-side query into dragging the whole table across the wire.",
+      "keywords": ["ienumerable", "iqueryable", "ef core", "linq", "deferred execution"]
+    },
+    {
+      "section": "C# Fundamentals",
+      "question": "What is IDisposable and the using statement for?",
+      "answer": "Explain that the GC handles managed memory but not deterministic release of unmanaged resources like file handles, sockets, or database connections, which is what IDisposable is for. Describe using as a guarantee that Dispose runs when scope exits, even on an exception, effectively a try/finally. Ground it in a service that opens many DB connections, where using is how you avoid leaking connections from the pool, which matters for a resilient payments service.",
+      "keywords": ["idisposable", "using", "dispose", "resource cleanup"]
+    },
+    {
+      "section": "Coding",
+      "question": "Two Sum, return indices of the two numbers that add to a target.",
+      "answer": "Restate the problem and confirm assumptions, exactly one solution and no reusing an element, then give the O(n^2) brute-force baseline. Present the single-pass hash map from value to index, checking whether target minus the current number was already seen, and state O(n) time and O(n) space. Dry-run [2,7,11,15] target 9 to show the complement lookup returning the right indices.",
+      "code": "public int[] TwoSum(int[] nums, int target) {\n    var seen = new Dictionary<int, int>();\n    for (int i = 0; i < nums.Length; i++) {\n        int need = target - nums[i];\n        if (seen.TryGetValue(need, out int j)) return new[] { j, i };\n        seen[nums[i]] = i;\n    }\n    return System.Array.Empty<int>();\n}\n// O(n) time, O(n) space, one pass, hash lookups are O(1) amortized.",
+      "lang": "csharp",
+      "keywords": ["two sum", "hash map", "array", "coding", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Detect a cycle in a linked list.",
+      "answer": "Reach for Floyd's tortoise and hare, advancing one pointer by one and another by two, concluding a cycle when they meet and no cycle when the fast pointer reaches null. Contrast it with the hash-set approach to show you know it is O(n) time and O(1) space versus O(n) space. Call out the edge cases, an empty list and a single node with no cycle both returning false.",
+      "code": "public bool HasCycle(ListNode head) {\n    var slow = head; var fast = head;\n    while (fast != null && fast.next != null) {\n        slow = slow.next;\n        fast = fast.next.next;\n        if (slow == fast) return true;\n    }\n    return false;\n}\n// O(n) time, O(1) space.",
+      "lang": "csharp",
+      "keywords": ["linked list", "cycle", "floyd", "two pointers"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that show a downstream-aware, bank-appropriate mindset. Strong ones: how the team measures a successful first 90 days, the hardest reliability or correctness problem the payments platform faces right now, and how they balance shipping velocity against the change-management and security controls a bank requires.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "company": "Goldman Sachs",
+  "role": "Software Engineer / Analyst, Engineering Division",
+  "stack": ["Java", "C++", "Python", "SQL", "Data Structures", "Systems"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself and why Goldman Sachs Engineering.",
+      "answer": "Give a concise arc of your background and the enterprise systems you have built end to end, emphasizing correctness and reliability. The key framing for Goldman is that it is a technology firm as much as a bank, engineers own systems that price, book, and risk-manage real money, so latency, correctness, and resiliency genuinely matter. Close on wanting to grow surrounded by people who hold that bar and a short, high-stakes feedback loop.",
+      "keywords": ["tell me about yourself", "why goldman", "intro", "engineering division"]
+    },
+    {
+      "section": "CS Fundamentals",
+      "question": "Walk me through the common collision-resolution strategies in a hash table and their trade-offs.",
+      "answer": "Lay out the two families cleanly: separate chaining stores entries per bucket, simple and tolerant of high load factors but with pointer-chasing and per-node memory, while open addressing keeps everything in the array and probes, cache-friendlier but degrading badly as load approaches one and needing tombstones for deletion. Mention real implementations, Java's HashMap chains and tree-ifies long buckets to bound worst case at O(log n), while many high-performance C++ maps use open addressing for locality. Close that the right choice depends on load factor, deletion frequency, and how much cache behavior matters.",
+      "keywords": ["hash table", "chaining", "open addressing", "load factor", "cache"]
+    },
+    {
+      "section": "CS Fundamentals",
+      "question": "In Java, what is the difference between the stack and the heap, and how does garbage collection relate?",
+      "answer": "Explain that each thread has its own stack of method frames, locals, and return addresses that unwinds automatically, while the heap is shared and holds all objects, with local references living on the stack but pointing into the heap. Note that garbage collection concerns only the heap, reclaiming objects unreachable from any GC root, typically with generational collectors because most objects die young. Land the practical implication: allocation pressure and object lifetime drive GC pauses, and you never manually free, you make objects unreachable.",
+      "keywords": ["stack", "heap", "garbage collection", "jvm", "gc roots"]
+    },
+    {
+      "section": "Finance / Markets Awareness",
+      "question": "You're building a system that stores tick data and computes a moving VWAP. What correctness and design concerns come up?",
+      "answer": "Define VWAP as sum of price times volume over sum of volume across a window, then organize your answer around correctness concerns. Hit exact money arithmetic to avoid float drift, a precisely defined window (rolling time versus session-to-date), out-of-order and late or corrected ticks keyed on exchange timestamp with an explicit policy, and high-throughput incremental accumulation instead of recompute with clean resets at session boundaries. Close on the theme that in markets data the boring correctness details matter more than any clever algorithm.",
+      "keywords": ["vwap", "tick data", "markets", "correctness", "rolling window"]
+    },
+    {
+      "section": "Brainteaser / Probability",
+      "question": "You roll a fair six-sided die repeatedly and sum the values until the running total is 4 or more. What is the probability the final total is exactly 4?",
+      "answer": "Set it up by conditioning on the first roll and defining f(n) as the probability of ever landing exactly on running total n. Show the recurrence f(n) = 1/6 plus one-sixth times the sum of f over the reachable earlier totals, compute f(1) through f(4) step by step, and present the clean answer of 343/1296. If you spot it, note the pattern f(n) = (7/6)^(n-1)/6, the classic renewal-process result, but the graded part is the clear conditioning.",
+      "keywords": ["probability", "brainteaser", "dice", "renewal", "conditioning"]
+    },
+    {
+      "section": "Coding",
+      "question": "Given an array of daily stock prices, find the maximum profit from a single buy-then-sell.",
+      "answer": "Restate that you buy once and sell strictly later, returning zero if no profit is possible, and give the O(n^2) brute-force baseline. Then present the single pass tracking the minimum price seen so far, since the best sale today is today's price minus the lowest price before it, keeping a running min and running best. Dry-run something like [7,1,5,3,6,4] and call out the edge cases, a strictly decreasing array and a single element both returning zero.",
+      "code": "public int maxProfit(int[] prices) {\n    int minPrice = Integer.MAX_VALUE;\n    int best = 0;\n    for (int p : prices) {\n        if (p < minPrice) minPrice = p;\n        else if (p - minPrice > best) best = p - minPrice;\n    }\n    return best;\n}\n// O(n) time, O(1) space, one pass tracking the running minimum.",
+      "lang": "java",
+      "keywords": ["max profit", "stock", "one pass", "array", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Determine whether a string of brackets is balanced, supporting (), [], and {}.",
+      "answer": "Clarify the alphabet and how non-bracket characters are treated, then reach for a stack. Push opening brackets, and on a closing bracket check the top matches the expected opener and pop it; an empty stack on a close, a mismatch, or a non-empty stack at the end all mean unbalanced. Dry-run a balanced and an unbalanced case, and state O(n) time with O(n) worst-case space.",
+      "code": "public boolean isBalanced(String s) {\n    Deque<Character> stack = new ArrayDeque<>();\n    Map<Character, Character> pairs = Map.of(')', '(', ']', '[', '}', '{');\n    for (char c : s.toCharArray()) {\n        if (c == '(' || c == '[' || c == '{') {\n            stack.push(c);\n        } else if (pairs.containsKey(c)) {\n            if (stack.isEmpty() || stack.pop() != pairs.get(c)) return false;\n        }\n    }\n    return stack.isEmpty();\n}\n// O(n) time, O(n) worst-case space.",
+      "lang": "java",
+      "keywords": ["balanced brackets", "stack", "parsing", "matching", "complexity"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a time you had to deliver under significant time pressure with a team.",
+      "answer": "Use STAR and pick a story where a hard deadline collided with a late problem. Show how you triaged: split the team so some isolated the failure while others kept the release path moving, set short daily check-ins to surface blockers in hours, and made the tough call to ship a narrower but correct scope. Land the result, hitting the date and folding the rest in next, and close that under pressure clear ownership and honest scope trade-offs beat heroics.",
+      "keywords": ["time pressure", "teamwork", "deadline", "ownership", "star"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Give me an example of when attention to detail prevented a serious problem.",
+      "answer": "Choose a moment where numbers that should have reconciled did not and you stopped to trace it. Describe catching a join fan-out that would have silently double-counted records, fixing the join key, adding a row-count assertion so future fan-out fails loudly, and backfilling the affected batch before anything wrong reached a report. Close on the habit of reconciling counts and money at every boundary rather than trusting a join did what you expected, which resonates strongly at a bank.",
+      "keywords": ["attention to detail", "reconciliation", "data quality", "row counts", "star"]
+    },
+    {
+      "section": "System Design",
+      "question": "How would you design a rate limiter for an internal API that must survive many application instances?",
+      "answer": "Clarify the limit and whether it must be strict or approximate, then center the design on a token-bucket or sliding-window counter keyed per client. Because there are many instances, the counter cannot live in one process, so centralize it in a fast shared store like Redis using an atomic increment-and-expire or a Lua script so the check-and-decrement is race-free. Decide fail-open versus fail-closed deliberately, return a clear 429 with Retry-After, and state the core insight that correctness under concurrency comes from making the read-modify-write atomic at the shared store.",
+      "keywords": ["rate limiter", "token bucket", "redis", "distributed", "concurrency"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that show you do your best work close to the people who depend on the system. Strong ones: what a strong first year looks like for an analyst and how impact is measured, the hardest correctness or latency problem the desk's systems face right now, and how directly engineers interact with the traders or business they support.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

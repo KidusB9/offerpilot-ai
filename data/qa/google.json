@@ -1,0 +1,79 @@
+{
+  "company": "Google",
+  "role": "Software Engineer (L3/L4), General",
+  "stack": ["Python", "Java", "C++", "Data Structures", "Algorithms", "Distributed Systems"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "Give a concise arc of your background and the production systems you have shipped, emphasizing correctness, clarity, and real algorithmic intuition rather than rote practice. A strong Google framing is that scale forces you to care about complexity for real, an O(n^2) that is fine at a thousand rows falls over at a billion, so tie your interest to that. Keep it to about a minute and lead with what is most relevant to the role.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "Coding",
+      "question": "Two Sum, return indices of the two numbers that add up to a target.",
+      "answer": "Confirm assumptions first, exactly one solution and no reusing an element, then state the brute-force O(n^2) baseline. Move to a single-pass hash map from value to index, checking whether target minus the current number is already seen, and state O(n) time and O(n) space. Dry-run [2,7,11,15] target 9 to show the lookup returning the right indices.",
+      "code": "def two_sum(nums, target):\n    seen = {}\n    for i, x in enumerate(nums):\n        need = target - x\n        if need in seen:\n            return [seen[need], i]\n        seen[x] = i\n    return []\n# O(n) time, O(n) space, one pass, O(1) amortized hash lookups.",
+      "lang": "python",
+      "keywords": ["two sum", "hash map", "array", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Number of islands, count connected groups of land in a grid.",
+      "answer": "Frame it as connected components on an implicit grid graph where each cell is a node and edges join orthogonally adjacent land. Scan the grid, and on each unvisited land cell increment the count and flood-fill to mark everything reachable so you do not recount it, noting DFS and BFS are both valid and that BFS avoids deep recursion on huge grids. State O(rows times cols) time and the worst-case space for the recursion or queue.",
+      "code": "def num_islands(grid):\n    if not grid:\n        return 0\n    R, C = len(grid), len(grid[0])\n    count = 0\n\n    def dfs(r, c):\n        if r < 0 or r >= R or c < 0 or c >= C or grid[r][c] != '1':\n            return\n        grid[r][c] = '0'\n        dfs(r+1, c); dfs(r-1, c); dfs(r, c+1); dfs(r, c-1)\n\n    for r in range(R):\n        for c in range(C):\n            if grid[r][c] == '1':\n                count += 1\n                dfs(r, c)\n    return count\n# O(R*C) time, O(R*C) space worst case for recursion stack.",
+      "lang": "python",
+      "keywords": ["number of islands", "graph", "dfs", "bfs", "connected components"]
+    },
+    {
+      "section": "Coding",
+      "question": "Longest increasing subsequence, return its length.",
+      "answer": "Give the clean O(n^2) DP first, dp[i] is the LIS length ending at i by scanning earlier smaller elements, then reach for the optimal O(n log n). Explain the patience-sorting tails array where tails[k] is the smallest possible tail of an increasing subsequence of length k+1, binary-searching for the first tail at least the current number and replacing it, or appending to extend. Note the answer is the length of tails and that tails is not a real subsequence but its length is provably correct.",
+      "code": "from bisect import bisect_left\n\ndef length_of_lis(nums):\n    tails = []\n    for x in nums:\n        i = bisect_left(tails, x)\n        if i == len(tails):\n            tails.append(x)\n        else:\n            tails[i] = x\n    return len(tails)\n# O(n log n) time, O(n) space, binary search per element.",
+      "lang": "python",
+      "keywords": ["longest increasing subsequence", "dynamic programming", "binary search", "dp"]
+    },
+    {
+      "section": "Algorithms & Complexity",
+      "question": "Walk me through analyzing time and space complexity, how do you reason about it?",
+      "answer": "Describe your method: count operations as a function of input size, keep the dominant term, drop constants, that is worst-case Big-O. Call out hidden costs like string concatenation in a loop, slicing that copies, or a nested lookup that is secretly O(n), and for recursion write the recurrence and use the Master Theorem, citing merge sort's T(n)=2T(n/2)+O(n) as O(n log n). For space, count memory beyond the input and explicitly include recursion-stack depth, and separate worst case from amortized, like a dynamic-array push.",
+      "keywords": ["big-o", "complexity", "master theorem", "amortized", "recurrence"]
+    },
+    {
+      "section": "Algorithms & Complexity",
+      "question": "How does a hash map work, and when does it degrade?",
+      "answer": "Explain that a hash function picks a bucket, giving O(1) average insert, lookup, and delete, with collisions handled by chaining or open addressing. Then be precise about degradation: O(n) when many keys collide from a bad hash or adversarial input, plus the hidden resize-and-rehash cost that is O(n) on that operation but amortizes to O(1). Close by noting that when you need a tight worst-case guarantee you reach for a balanced tree with O(log n) and ordering instead.",
+      "keywords": ["hash map", "hashing", "collisions", "load factor", "amortized"]
+    },
+    {
+      "section": "Algorithms & Complexity",
+      "question": "When would you use BFS versus DFS on a graph?",
+      "answer": "Start from the shared cost, both visit every node in O(V + E), then contrast use cases. Use BFS for shortest paths in unweighted graphs and level-order work because it explores by distance, and use DFS for reachability, topological sort, cycle detection, and full-path exploration. Mention the memory-and-depth trade-off, BFS can hold a wide frontier while DFS can blow the stack on deep graphs, and note that weighted shortest paths call for Dijkstra or Bellman-Ford instead.",
+      "keywords": ["bfs", "dfs", "graph traversal", "shortest path", "topological sort"]
+    },
+    {
+      "section": "System Sense",
+      "question": "How would you design a URL shortener like tinyurl?",
+      "answer": "Center it on a mapping from short key to long URL, and generate keys by base62-encoding an incrementing or distributed counter for short, collision-free keys, noting a hash works but needs collision handling. Emphasize that reads vastly outnumber writes, so keep the write path simple and put a cache in front of a sharded store, and push analytics asynchronously off the hot path. Show scale awareness, seven base62 characters is trillions of combinations, and close by asking about custom aliases, expiration, and the read-to-write ratio since those change the design.",
+      "keywords": ["system design", "url shortener", "base62", "caching", "sharding"]
+    },
+    {
+      "section": "Googleyness & Collaboration",
+      "question": "Tell me about a time you worked with a difficult teammate or resolved a conflict.",
+      "answer": "Pick a real technical disagreement and show you separated the person from the position. Describe asking what outcome each side was optimizing for, one protecting a timeline, one worried about scale, then turning it into something measurable like a small benchmark or risk assessment as the tiebreaker. Land a result where the data decided and you still folded the other person's concern in, like phasing a migration so nothing shipped late.",
+      "keywords": ["conflict", "collaboration", "googleyness", "teamwork", "difficult teammate"]
+    },
+    {
+      "section": "Googleyness & Collaboration",
+      "question": "Tell me about a time you had to learn something quickly or work through ambiguity.",
+      "answer": "Choose a story where you were handed something unfamiliar with no clear owner and a vague report. Show that you anchored on measurement first, reproduce it, profile to find the hot path, fix the real cause like an accidental O(n^2) from a lookup that should be a set, then leave the place better documented with a benchmark in CI so it cannot silently regress. Close that you are comfortable in ambiguity because you start from a real measurement.",
+      "keywords": ["ambiguity", "learn quickly", "debugging", "ownership", "googleyness"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that get past the recruiting version. Strong ones: what the strongest engineer on the team does differently from a solid one, how the team decides between a cleaner abstraction and the pragmatic version under a deadline, and what technical problem the team is stuck on right now.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}

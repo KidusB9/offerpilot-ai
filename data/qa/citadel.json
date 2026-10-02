@@ -1,0 +1,73 @@
+{
+  "company": "Citadel",
+  "role": "Software Engineer, Low-Latency / High-Frequency Trading",
+  "stack": ["C++", "Linux", "Concurrency", "Networking", "Algorithms", "Probability"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself and why low-latency engineering at Citadel.",
+      "answer": "Open with your background in performance-sensitive systems and the details you obsess over, allocation, memory layout, cache behavior, and lock contention, then tie it to why low-latency work appeals to you. The strongest hook is that low-latency trading is one of the few places microseconds are a real product feature and the hardware has nowhere to hide, so being right and being fast are the same goal. Keep it tight and let genuine interest in rigorous, measured performance carry it.",
+      "keywords": ["tell me about yourself", "why citadel", "low latency", "hft", "intro"]
+    },
+    {
+      "section": "Systems / Performance",
+      "question": "Why does cache locality matter so much on the hot path, and how do you design for it?",
+      "answer": "Anchor the answer in real numbers: an L1 hit is a nanosecond or two while a last-level miss to main memory is on the order of a hundred, so on the hot path cache behavior dominates the constant factors. Then give concrete design levers, keep data contiguous and accessed sequentially so the prefetcher wins, prefer struct-of-arrays when streaming one field, fit hot structures in a cache line, and avoid pointer-chasing structures. Close on false sharing, two threads writing different fields on the same 64-byte line, and the mental model that Big-O gives scaling but the cache gives you actual latency.",
+      "keywords": ["cache locality", "cache line", "prefetch", "false sharing", "struct of arrays"]
+    },
+    {
+      "section": "Concurrency",
+      "question": "Explain the basics of a lock-free single-producer single-consumer ring buffer and why it's fast.",
+      "answer": "Describe it structurally: a fixed-size array with a head index owned by the consumer and a tail owned by the producer, so exactly one thread writes each index and no mutex is needed. Explain the ordering, the producer writes the slot then does a release store to advance the tail while the consumer does an acquire load so it sees the data before the index, and note you separate head and tail onto different cache lines to avoid false sharing. Close by being honest about the limits: this is clean only for one producer and one consumer, and multi-producer needs a CAS loop.",
+      "keywords": ["lock-free", "ring buffer", "spsc", "memory ordering", "acquire release"]
+    },
+    {
+      "section": "Systems / Performance",
+      "question": "What causes latency jitter in a C++ trading process, and how do you keep the tail latency low?",
+      "answer": "Make the key point that tail latency is usually the system underneath, not the algorithm. Enumerate the real sources, allocator contention and page faults from dynamic allocation, scheduler preemption and migration, cold caches and branch predictors after a context switch, and NUMA effects, then give the countermeasures: pre-allocate and reuse memory pools, pin threads to isolated cores, pre-fault and lock memory, keep data NUMA-local, and push logging and syscalls off the hot path. Emphasize that you measure the full distribution because in trading the 99.9th percentile is what costs money.",
+      "keywords": ["jitter", "tail latency", "memory pool", "core pinning", "numa"]
+    },
+    {
+      "section": "Probability / Quant",
+      "question": "A random variable is the number of fair coin flips until you see two heads in a row. What is its expected value?",
+      "answer": "Set up states by progress toward the goal and solve with expectation equations rather than guessing. Define E0 for no progress and E1 for last-flip-was-a-head, write E0 = 1 + half E1 + half E0 and E1 = 1 + half times zero + half E0, then substitute to solve. Show the arithmetic cleanly to reach 6, and if you know it, sanity-check against the general result of 2^(k+1) minus 2 for k heads in a row.",
+      "keywords": ["probability", "expected value", "markov chain", "coin flips", "states"]
+    },
+    {
+      "section": "Algorithms / Coding",
+      "question": "Find the length of the longest substring without repeating characters.",
+      "answer": "Restate it as the longest contiguous run of distinct characters and give the brute-force baseline before optimizing. Describe the sliding window with a last-seen index per character: advance the right pointer, and when a character's last occurrence is inside the window, jump the left pointer just past it so the window stays valid in one pass. Dry-run a string like abcabcbb to show the window and state O(n) time with O(min(n, alphabet)) space.",
+      "code": "int longestUnique(const std::string& s) {\n    std::array<int, 256> last;\n    last.fill(-1);\n    int left = 0, best = 0;\n    for (int right = 0; right < (int)s.size(); ++right) {\n        unsigned char c = s[right];\n        if (last[c] >= left) left = last[c] + 1;\n        last[c] = right;\n        best = std::max(best, right - left + 1);\n    }\n    return best;\n}\n// O(n) time, O(1) space (fixed 256-entry table).",
+      "lang": "cpp",
+      "keywords": ["sliding window", "longest substring", "two pointers", "hashing", "complexity"]
+    },
+    {
+      "section": "Algorithms / Coding",
+      "question": "Given a stream of numbers, design a structure that returns the running median efficiently.",
+      "answer": "Clarify that numbers arrive one at a time and you need the median after each insert, so re-sorting every query is too slow. Present the two-heaps structure, a max-heap for the lower half and a min-heap for the upper half, kept balanced to within one element, with the median read from the larger heap's top or the average of the two tops. State the complexity, O(log n) per insert and O(1) to read, and verify on a tiny sequence like 1, then 2 giving 1.5, then 3 giving 2.",
+      "code": "class RunningMedian {\n    std::priority_queue<int> lo;                                   // max-heap, lower half\n    std::priority_queue<int, std::vector<int>, std::greater<>> hi; // min-heap, upper half\npublic:\n    void add(int x) {\n        if (lo.empty() || x <= lo.top()) lo.push(x); else hi.push(x);\n        if (lo.size() > hi.size() + 1) { hi.push(lo.top()); lo.pop(); }\n        else if (hi.size() > lo.size()) { lo.push(hi.top()); hi.pop(); }\n    }\n    double median() const {\n        if (lo.size() == hi.size()) return (lo.top() + hi.top()) / 2.0;\n        return lo.top();\n    }\n};\n// add: O(log n), median: O(1), space: O(n).",
+      "lang": "cpp",
+      "keywords": ["running median", "two heaps", "priority queue", "streaming", "complexity"]
+    },
+    {
+      "section": "Algorithms / Coding",
+      "question": "Detect whether a directed graph has a cycle.",
+      "answer": "Clarify it is directed-cycle detection, not just connectivity, and reach for a three-color DFS. Explain white for unvisited, gray for on the current recursion stack, black for fully explored, and that reaching a gray node is a back edge and therefore a cycle. State O(V + E) time and O(V) space, mention the iterative version if recursion depth is a concern, and sanity-check with a simple two-node cycle.",
+      "code": "bool hasCycle(int n, const std::vector<std::vector<int>>& adj) {\n    std::vector<int> color(n, 0); // 0 white, 1 gray, 2 black\n    std::function<bool(int)> dfs = [&](int u) {\n        color[u] = 1;\n        for (int v : adj[u]) {\n            if (color[v] == 1) return true;           // back edge\n            if (color[v] == 0 && dfs(v)) return true;\n        }\n        color[u] = 2;\n        return false;\n    };\n    for (int i = 0; i < n; ++i)\n        if (color[i] == 0 && dfs(i)) return true;\n    return false;\n}\n// O(V + E) time, O(V) space.",
+      "lang": "cpp",
+      "keywords": ["directed cycle", "dfs", "graph", "back edge", "complexity"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a performance problem you profiled and fixed.",
+      "answer": "Pick a story where you refused to guess and let the profiler and the tail latency lead you. Describe finding hot-path allocations driving allocator contention and cache misses, replacing them with a pre-allocated buffer pool, moving logging off the hot path, and re-measuring the full distribution. Land the result as a lower and, crucially, more stable 99th percentile, and close on the discipline of measuring the distribution rather than trusting intuition.",
+      "keywords": ["profiling", "latency", "allocation", "tail latency", "star"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that show you want performance measured rigorously, not just talked about. Strong ones: where the team's latency budget actually gets spent today and whether the bottleneck is the network, parsing, or strategy logic; how they regression-test latency so a change that adds a microsecond is caught; and how closely engineers work with the researchers and traders whose signals run on the system.",
+      "keywords": ["questions for us", "closing", "latency budget", "culture"]
+    }
+  ]
+}

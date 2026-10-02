@@ -1,0 +1,65 @@
+{
+  "company": "Neuberger Berman",
+  "role": "Application Developer II, Private Markets Technology (Front Office)",
+  "stack": ["SQL Server", "T-SQL", "Python", "pandas", "Front Office Analytics"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself and why Neuberger Berman.",
+      "answer": "Give a concise arc of your background in enterprise data systems, SQL Server, window functions, performance-tuned stored procedures, and Python/pandas pipelines, and lead with caring about correctness of the numbers first, then point-in-time storage, idempotent loads, and reconciliation. The framing that lands here is front-office private-markets technology where the data has to be right and engineers sit close to investment decisions. If you are ready to be on-site with the desk, say so plainly.",
+      "keywords": ["tell me about yourself", "why neuberger", "intro", "relocation"]
+    },
+    {
+      "section": "Domain (Private Markets)",
+      "question": "Explain commitment vs. called vs. unfunded, and how exposure is computed.",
+      "answer": "Define the terms precisely: commitment is total capital pledged, called or contributed is what has actually been drawn via capital calls, and unfunded is the remainder, commitment minus called. Then compute exposure as NAV plus unfunded, because you are economically on the hook for capital that can still be drawn. Close on why it matters for risk: two positions with the same NAV but different unfunded have very different true exposure.",
+      "keywords": ["commitment", "called", "unfunded", "exposure", "nav", "capital call"]
+    },
+    {
+      "section": "Domain (Private Markets)",
+      "question": "What's the difference between IRR and TVPI, and what is the J-curve?",
+      "answer": "Distinguish them cleanly: IRR is the money-weighted annualized return that accounts for cash-flow timing, while TVPI is a multiple, total value to paid-in, equal to DPI (realized) plus RVPI (unrealized). Explain you quote both because a high IRR on a quick flip can still be a small multiple. Then define the J-curve as the early-life dip where fees and early markdowns pull returns negative before investments mature and distributions arrive.",
+      "keywords": ["irr", "tvpi", "dpi", "rvpi", "j-curve", "multiple"]
+    },
+    {
+      "section": "SQL / Coding",
+      "question": "Get the latest NAV per fund as of a report date.",
+      "answer": "Restate it as one row per fund, its most recent NAV on or before the report date, and surface the assumptions, possible same-date ties broken by a load sequence, and never letting one fund's data bleed into another. Describe the plan: partition by fund, order by nav_date descending with a tiebreaker, take row number 1. Mention verifying with a same-date restatement across two funds and naming the supporting index on (fund_id, nav_date).",
+      "code": "WITH ranked AS (\n    SELECT fund_id, nav_date, nav,\n           ROW_NUMBER() OVER (\n               PARTITION BY fund_id\n               ORDER BY nav_date DESC, load_seq DESC\n           ) AS rn\n    FROM fund_nav\n    WHERE nav_date <= @report_date\n)\nSELECT fund_id, nav_date, nav\nFROM ranked\nWHERE rn = 1;\n-- index: (fund_id, nav_date DESC) INCLUDE (nav, load_seq)",
+      "lang": "sql",
+      "keywords": ["latest nav", "row_number", "window function", "partition by", "point-in-time"]
+    },
+    {
+      "section": "Python / Coding",
+      "question": "Forward-fill a fund's NAV time series without leaking across funds.",
+      "answer": "Call out the two traps up front: filling across fund boundaries and backfilling a future value backward, which is lookahead bias. So group by fund first, sort by date, and forward-fill only, never backfill. Close by describing your test: a fund with a gap fills from the prior value, while a second fund's first row stays NaN rather than inheriting another fund's value.",
+      "code": "import pandas as pd\n\ndef fill_nav(df: pd.DataFrame) -> pd.DataFrame:\n    df = df.sort_values([\"fund_id\", \"nav_date\"])\n    # group first so one fund can't bleed into another; forward-fill only\n    df[\"nav\"] = df.groupby(\"fund_id\")[\"nav\"].ffill()\n    return df\n# never bfill(): backfilling a future NAV is lookahead bias",
+      "lang": "python",
+      "keywords": ["forward fill", "ffill", "lookahead bias", "groupby", "pandas"]
+    },
+    {
+      "section": "Data Engineering",
+      "question": "How do you make an ingestion load idempotent and safe to re-run?",
+      "answer": "Make replayability the theme: a load must re-run without duplicates or half-loaded state. Describe keying each row on a natural business key plus a load batch, using MERGE or insert-if-not-exists so a re-run updates rather than duplicates, and wrapping the batch in a transaction for all-or-nothing. Add quarantining bad rows to a reject table, recording row counts around every join to catch fan-out, and comparing money with a tolerance, so a job that dies mid-file lands in exactly the same state on re-run.",
+      "keywords": ["idempotent", "merge", "reconciliation", "quarantine", "row counts"]
+    },
+    {
+      "section": "Finance-correctness",
+      "question": "Why shouldn't you compare two monetary amounts with '='?",
+      "answer": "Explain that floating-point money accumulates rounding error, so values that should be equal can differ by a fraction of a cent and fail equality, or worse pass when they should not. Say you compare with a tolerance, abs(a minus b) against a max of an absolute and relative tolerance, and for ledgers you use Decimal or integer cents so there is no float at all, rounding at the boundary for analytics. Frame it as a correctness reflex that matters more in front office than any clever algorithm.",
+      "keywords": ["money comparison", "tolerance", "decimal", "floating point", "correctness"]
+    },
+    {
+      "section": "Behavioral (STAR)",
+      "question": "Tell me about a performance problem you diagnosed and fixed.",
+      "answer": "Pick a story where you reached for the execution plan and the numbers instead of guessing. Describe a stored procedure that degraded as data grew, finding a non-sargable predicate and a scan where a seek belonged, rewriting to keep the predicate index-friendly, adding a covering index, and switching a RANGE window to ROWS where the frame semantics allowed. Stress that you validated correctness by pinning output to known totals before and after, then measured the runtime drop.",
+      "keywords": ["performance", "stored procedure", "index", "execution plan", "star"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that show getting the numbers provably right is what you care about most. Strong ones: how the team handles point-in-time and restatements and whether the store is bitemporal or snapshot-based, what the reconciliation and data-quality process looks like before numbers reach the front office, and where the role sits relative to the investment team and how close the feedback loop is.",
+      "keywords": ["questions for us", "closing", "bitemporal", "reconciliation"]
+    }
+  ]
+}
