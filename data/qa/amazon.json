@@ -1,0 +1,79 @@
+{
+  "company": "Amazon",
+  "role": "Software Development Engineer (SDE I/II)",
+  "stack": ["Java", "Python", "AWS", "Distributed Systems", "Data Structures", "Algorithms"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "Give a tight 60-second arc: your background, the kind of systems you have owned, and one flagship project you drove end to end with a measurable outcome. Remember Amazon runs a dual bar, the coding screen and the Leadership Principles, so frame yourself around ownership and customer impact and come armed with STAR stories whose numbers you can defend. Close with a specific reason this team excites you, ideally the ownership culture of diving deep into your own systems rather than throwing work over the wall.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "LP, Customer Obsession",
+      "question": "Tell me about a time you went above and beyond for a customer.",
+      "answer": "Use STAR and pick a story where you chose the customer's actual experience over a green dashboard. Set the situation, state that you owned the fix, then describe the concrete action, reproducing the real conditions, tracing sessions, moving a slow dependency off the critical path, and land a measurable result like a p99 or completion-rate improvement. End on the principle that the customer lives at the tail, not the average, which signals genuine Customer Obsession.",
+      "keywords": ["customer obsession", "customer", "star", "p99", "leadership principle"]
+    },
+    {
+      "section": "LP, Ownership",
+      "question": "Tell me about a time you took on something outside your job responsibilities.",
+      "answer": "Choose an example of work nobody assigned you that improved the long-term health of the system, like fixing a stale runbook, adding dashboards, or automating a painful remediation. Walk STAR: the recurring pain, your decision to own it because you felt the impact, the actions you took, and a result such as faster mean-time-to-recovery or new teammates onboarding smoothly. Define ownership as caring about the system beyond your ticket, which is exactly what Amazon means by the principle.",
+      "keywords": ["ownership", "on-call", "runbook", "star", "leadership principle"]
+    },
+    {
+      "section": "LP, Dive Deep",
+      "question": "Tell me about a time you had to dig deep to find the root cause of a problem.",
+      "answer": "Pick a bug that only appeared under real conditions and where you refused to paper over it with a retry. Show the mechanism you uncovered, add structured logging, correlate with metrics like connection-pool exhaustion, trace it to a concrete cause such as a missing index, and give the measured result. Close by saying you are not satisfied until you can explain the mechanism, not just the symptom, which is the heart of Dive Deep.",
+      "keywords": ["dive deep", "root cause", "debugging", "star", "leadership principle"]
+    },
+    {
+      "section": "LP, Bias for Action",
+      "question": "Tell me about a time you made a decision quickly with incomplete information.",
+      "answer": "Frame it around reversible versus irreversible decisions. Describe a live incident where you made the cheap, safe, reversible call first, like a rollback to stop customer impact, then investigated calmly once things were stable. Give the result in minutes-of-impact avoided and close with your rule: reversible decisions you make fast and correct later, only one-way doors deserve heavy deliberation.",
+      "keywords": ["bias for action", "quick decision", "rollback", "star", "leadership principle"]
+    },
+    {
+      "section": "LP, Deliver Results",
+      "question": "Tell me about a time you delivered a project under a tight deadline.",
+      "answer": "Choose a hard, immovable deadline and show how you protected the critical path. Separate must-have from nice-to-have, negotiate the nice-to-haves into a fast-follow, set clear checkpoints, and flag risk to stakeholders early and honestly rather than promising everything and slipping. Land the result, hitting the date with the essential scope, and close on ruthlessly protecting the critical path and being honest about trade-offs.",
+      "keywords": ["deliver results", "deadline", "scope", "star", "leadership principle"]
+    },
+    {
+      "section": "Coding",
+      "question": "Two Sum, return indices of two numbers that add to a target.",
+      "answer": "Start by confirming constraints out loud, exactly one solution and no reusing an element, then state the brute-force O(n^2) baseline before optimizing. Reach for a single-pass hash map from value to index, checking for the complement as you go, and state that it is O(n) time and O(n) space. Dry-run a small example like [2,7,11,15] target 9 to show the complement lookup returning the right indices.",
+      "code": "public int[] twoSum(int[] nums, int target) {\n    Map<Integer, Integer> seen = new HashMap<>();\n    for (int i = 0; i < nums.length; i++) {\n        int need = target - nums[i];\n        if (seen.containsKey(need)) return new int[]{seen.get(need), i};\n        seen.put(nums[i], i);\n    }\n    return new int[0];\n}\n// O(n) time, O(n) space, single pass, O(1) amortized hash lookups.",
+      "lang": "java",
+      "keywords": ["two sum", "hash map", "array", "coding", "complexity"]
+    },
+    {
+      "section": "Coding",
+      "question": "Merge two sorted linked lists into one sorted list.",
+      "answer": "Explain the dummy-head and tail-pointer pattern up front, since it removes the special cases around an empty result. Walk both lists attaching the smaller current node and advancing that list, then attach the remainder once one runs out because it is already sorted. State the complexity, O(n + m) time and O(1) extra space, and mention you splice existing nodes rather than allocating new ones.",
+      "code": "public ListNode mergeTwoLists(ListNode a, ListNode b) {\n    ListNode dummy = new ListNode(0), tail = dummy;\n    while (a != null && b != null) {\n        if (a.val <= b.val) { tail.next = a; a = a.next; }\n        else { tail.next = b; b = b.next; }\n        tail = tail.next;\n    }\n    tail.next = (a != null) ? a : b;\n    return dummy.next;\n}\n// O(n + m) time, O(1) extra space.",
+      "lang": "java",
+      "keywords": ["merge sorted lists", "linked list", "two pointers", "coding"]
+    },
+    {
+      "section": "Coding",
+      "question": "Find the length of the longest substring without repeating characters.",
+      "answer": "Identify it as a sliding window and describe expanding the right edge while tracking each character's last index. When you hit a repeat inside the window, jump the left edge just past the previous position instead of shrinking one step at a time, and track the max length as you go. Close with the complexity, O(n) time since each character is processed at most twice, and O(k) space bounded by the alphabet.",
+      "code": "public int lengthOfLongestSubstring(String s) {\n    Map<Character, Integer> last = new HashMap<>();\n    int left = 0, best = 0;\n    for (int right = 0; right < s.length(); right++) {\n        char c = s.charAt(right);\n        if (last.containsKey(c) && last.get(c) >= left) {\n            left = last.get(c) + 1;\n        }\n        last.put(c, right);\n        best = Math.max(best, right - left + 1);\n    }\n    return best;\n}\n// O(n) time, O(min(n, alphabet)) space.",
+      "lang": "java",
+      "keywords": ["longest substring", "sliding window", "string", "coding"]
+    },
+    {
+      "section": "Behavioral",
+      "question": "Tell me about a time you disagreed with your manager or a decision.",
+      "answer": "This maps directly to Have Backbone; Disagree and Commit, so structure it that way. Show that you raised the concern with evidence, a one-pager or a concrete failure scenario plus a modest alternative, made the case once clearly, then committed fully once the decision went another way. Land a result that vindicates the process, like scheduling the refactor as a smooth fast-follow, and state the principle: voice the concern with data, then commit wholeheartedly.",
+      "keywords": ["disagree and commit", "backbone", "conflict", "star", "behavioral"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that probe the real operating culture rather than the poster. Good ones: which Leadership Principle this team leans on most and where the principles tension against each other, how they apply the two-way versus one-way door framing to real decisions, and what a successful first six months looks like for an SDE here. This signals you care about how the team actually works, not just the slogans.",
+      "keywords": ["questions for us", "closing", "leadership principles"]
+    }
+  ]
+}

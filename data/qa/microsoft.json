@@ -1,0 +1,83 @@
+{
+  "company": "Microsoft",
+  "role": "Software Engineer, C#/.NET",
+  "stack": ["C#", ".NET", "ASP.NET Core", "Azure", "SQL Server", "Data Structures"],
+  "questions": [
+    {
+      "section": "Opening",
+      "question": "Tell me about yourself.",
+      "answer": "Give a concise arc centered on C#/.NET backend work and a genuine care for code that is correct and maintainable, clean OO design, the right abstraction, and tests that protect behavior. Signal depth by mentioning you understand CLR internals, value versus reference semantics and GC behavior, not just syntax, because that changes how you write hot paths. Close on what draws you to Microsoft, the .NET and Azure platform plus a growth-mindset culture that treats not knowing something yet as a starting point.",
+      "keywords": ["tell me about yourself", "intro", "background"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "What's the difference between a value type and a reference type in C#?",
+      "answer": "Define it precisely: a value type holds its data directly so assigning or passing copies the value, while a reference type holds a reference to a heap object so assignment copies the reference and two variables can alias the same object. Note where each lives, value types on the stack or inline, reference-type objects on the GC-managed heap. Close on the practical impact, copy semantics and allocation cost, which especially matters for large structs.",
+      "keywords": ["value type", "reference type", "stack", "heap", "clr"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "How does garbage collection work in .NET, and what are generations?",
+      "answer": "Explain the .NET GC as a generational mark-and-sweep collector that groups objects into gen 0, 1, and 2 on the assumption that most objects die young, so gen 0 is collected often and cheaply and survivors get promoted. Note it does not handle unmanaged resources, so for file handles, sockets, and connections you implement IDisposable and use a using block for deterministic cleanup. Close on why this shapes your code: avoiding unnecessary allocations in hot paths reduces gen 0 pressure and collection frequency.",
+      "keywords": ["garbage collection", "generations", "gc", "clr", "memory"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "Explain async/await. What does it actually do?",
+      "answer": "Explain that async/await lets you write asynchronous code that reads sequentially while freeing the thread during I/O waits: awaiting an incomplete operation returns control to the caller and the thread goes back to the pool, then execution resumes after the await via a compiler-generated state machine. Make the point that this is about throughput and scalability for I/O-bound services, the same thread count serves far more concurrent requests. Call out the classic mistakes, blocking on async with .Result or .Wait() which can deadlock, and using async for CPU-bound work where it does not help.",
+      "keywords": ["async await", "asynchronous", "task", "threads", "scalability"]
+    },
+    {
+      "section": "OOP & SOLID",
+      "question": "Walk me through the SOLID principles.",
+      "answer": "Name and define each crisply: Single Responsibility, one reason to change; Open/Closed, extend via new types rather than editing existing ones; Liskov Substitution, a subtype is usable anywhere its base is; Interface Segregation, several focused interfaces over one fat one; and Dependency Inversion, depend on abstractions, usually constructor-injected interfaces in .NET. Tie them together with the through-line, decoupling, each principle reduces how far one change ripples, which keeps a system testable and safe to modify.",
+      "keywords": ["solid", "oop", "single responsibility", "dependency inversion", "design principles"]
+    },
+    {
+      "section": "OOP & SOLID",
+      "question": "What's the difference between an abstract class and an interface, and when do you use each?",
+      "answer": "Contrast them: an interface is a pure contract that a type can implement many of, giving multiple inheritance of behavior, while an abstract class can hold state, constructors, and shared implementation but only one can be inherited. Say when you reach for each, an interface for a capability unrelated types might have and for dependency inversion and mocking, an abstract base when related types share real implementation and a common identity. Acknowledge default interface methods blur this, but the state-versus-contract and single-versus-multiple distinction still drives the decision.",
+      "keywords": ["abstract class", "interface", "inheritance", "oop", "polymorphism"]
+    },
+    {
+      "section": "Coding",
+      "question": "Reverse a singly linked list.",
+      "answer": "Describe the three-pointer walk, previous, current, and next: save the next node, point current's next back at previous, then advance previous and current, and when current hits null previous is the new head. State O(n) time and O(1) space since you rewire in place. Mention the recursive version is elegant but costs O(n) stack space, so you prefer iterative for a long list.",
+      "code": "public ListNode Reverse(ListNode head) {\n    ListNode prev = null, cur = head;\n    while (cur != null) {\n        ListNode next = cur.next;\n        cur.next = prev;\n        prev = cur;\n        cur = next;\n    }\n    return prev;\n}\n// O(n) time, O(1) space, in-place pointer reversal.",
+      "lang": "csharp",
+      "keywords": ["reverse linked list", "linked list", "pointers", "coding", "in place"]
+    },
+    {
+      "section": "Coding",
+      "question": "Check whether a string has balanced parentheses, brackets, and braces.",
+      "answer": "Frame it as a stack problem: on each opening bracket push its expected closing bracket, and on each closing bracket check it matches the top, failing if the stack is empty or the top does not match. The string is valid only if the stack is empty at the end. State O(n) time and O(n) worst-case space, and note that a map from open to close keeps the matching clean.",
+      "code": "public bool IsBalanced(string s) {\n    var pairs = new Dictionary<char, char> { {'(',')'}, {'[',']'}, {'{','}'} };\n    var stack = new Stack<char>();\n    foreach (char c in s) {\n        if (pairs.ContainsKey(c)) {\n            stack.Push(pairs[c]);\n        } else if (stack.Count == 0 || stack.Pop() != c) {\n            return false;\n        }\n    }\n    return stack.Count == 0;\n}\n// O(n) time, O(n) space worst case.",
+      "lang": "csharp",
+      "keywords": ["balanced parentheses", "stack", "string", "valid brackets", "coding"]
+    },
+    {
+      "section": "C#/.NET Fundamentals",
+      "question": "IEnumerable vs IQueryable, what's the difference?",
+      "answer": "Frame it as where the query executes. IEnumerable runs in application memory as LINQ-to-Objects, so filtering database rows means you have already pulled them all into memory, while IQueryable builds an expression tree the provider like EF Core translates to SQL so the filter happens at the source and you pull only what you need. Call out the classic bug, materializing too early with ToList() then filtering, which turns an efficient server-side query into dragging the whole table across the wire.",
+      "keywords": ["ienumerable", "iqueryable", "linq", "ef core", "deferred execution"]
+    },
+    {
+      "section": "Behavioral (Growth Mindset)",
+      "question": "Tell me about a time you received hard feedback or learned from a failure.",
+      "answer": "Pick real feedback you initially found stinging and show you treated it as information, not a verdict, which is the growth mindset Microsoft looks for. A strong shape is a review that flagged tightly coupled, hard-to-test code, and your response, learning dependency inversion, refactoring to constructor-injected interfaces, and finding the tests suddenly became straightforward. Close on carrying the lesson forward by designing for testability from the start.",
+      "keywords": ["growth mindset", "feedback", "learning", "failure", "behavioral"]
+    },
+    {
+      "section": "Behavioral (Growth Mindset)",
+      "question": "Tell me about a time you had to learn a new technology quickly.",
+      "answer": "Choose a story where you were upfront that something was new to you and made a plan rather than faking it. Describe reading the core docs, building a small throwaway prototype to understand the fundamentals like delivery guarantees and idempotency, and asking a teammate a couple of targeted questions, then building the real feature with safe retries because you understood at-least-once delivery. Close that you are comfortable being a beginner in public because it is the fastest way to stop being one.",
+      "keywords": ["learn new technology", "growth mindset", "learning agility", "behavioral"]
+    },
+    {
+      "section": "Closing",
+      "question": "Do you have any questions for us?",
+      "answer": "Ask questions that reveal how the team actually learns, not just how it ships. Strong ones: how the team practices growth mindset concretely when something ships and fails, how they balance adopting the newest .NET and Azure capabilities against production stability, and what would make someone really successful in their first six months.",
+      "keywords": ["questions for us", "closing", "culture"]
+    }
+  ]
+}
